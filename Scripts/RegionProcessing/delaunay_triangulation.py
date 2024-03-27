@@ -5,15 +5,18 @@ A triangle is stored as a tuple of IDs to corners.
 The corners are given in anticlockwise order.
 """
 
-
+# Importing
 import numpy as np
 import matplotlib.pyplot as plt
+import itertools
 
-N = 5
-points = np.random.rand(N, 2)*10
-triangles = []
 
-def add_super_triangle(data):
+class Delaunay():
+    
+    def __init__(self):
+
+# Initialisation
+def add_super_triangle(data, triangles):
     minimum = np.min(points) - 1
     maximum = np.max(points[:, 0] + points[:, 1]) + 5
     super_triangle = get_super_triangle(minimum, maximum)
@@ -28,18 +31,10 @@ def get_super_triangle(minimum, maximum):
         [minimum, maximum]])
     return super_triangle_coordinates
 
-def plot_points():
-    for point in points[3:, :]:
-        ax.plot(*point, marker=".")
 
-def plot_triangles():
-    for triangle in triangles:
-        triangle_points = points[triangle, :]
-        ax.add_patch(plt.Polygon(triangle_points, fill=False))
-
-
-def add_point(point_index, point):
-    bad_triangles = get_bad_triangles(point_index, point)
+# Iteration part of algorithm
+def add_point(point_index, point, triangles):
+    bad_triangles = get_bad_triangles(point_index, point, triangles)
     polygon_edges = get_polygon_edges(point_index, bad_triangles)
     filter_triangles(bad_triangles)
     add_new_triangles(point_index, polygon_edges)
@@ -124,23 +119,94 @@ def get_triangle_direction(point_index, edge):
     dot_product = (y1-y2)*(x3-x1) + (x2-x1)*(y3-y1)
     return (dot_product > 0)
 
-def remove_super_triangle_connecting_triangles():
-    global triangles
+def remove_super_triangle_connecting_triangles(triangles):
     triangles = [triangle for triangle in triangles
                  if min(triangle) > 2]
+        
 
-fig, ax = plt.subplots(1)
-points = add_super_triangle(points)
+def get_results():
+    results = [get_results_triangle(triangle)
+               for triangle in triangles]
+    return results
+
+def get_results_triangle(triangle):
+    centre, radius = get_circumcircle_properties(triangle)
+    results_triangle = {"PointIndices": triangle,
+                        "Centre": centre,
+                        "Radius": radius}
+    return results_triangle
+
+# Based on https://en.wikipedia.org/wiki/Circumcircle#Cartesian_coordinates
+def get_circumcircle_properties(triangle):
+    circle_matrix = get_circle_matrix(triangle)
+    a, b, s_x, s_y = get_circle_matrix_determinants(circle_matrix)
+    centre, radius = get_circle(a, b, s_x, s_y)
+
+def get_circle_matrix(triangle):
+    x, y = points[triangle, 0], points[triangle, 1]
+    distance = x**2 + y**2
+    ones = np.ones(3)
+    matrix = np.stack((distance, x, y, ones), axis=1)
+    return matrix
+
+def get_circle_matrix_determinants(circle_matrix):
+    a   = np.linalg.det(circle_matrix[:, [1, 2, 3]])
+    b   = np.linalg.det(circle_matrix[:, [1, 2, 0]])
+    s_x = np.linalg.det(circle_matrix[:, [0, 2, 3]])/2
+    s_y = np.linalg.det(circle_matrix[:, [1, 0, 3]])/2
+    return a, b, s_x, s_y
+
+def get_circle(a, b, s_x, s_y):
+    centre = [s_x/a, s_y/a]
+    radius = np.sqrt(b/a + (s_x**2+s_y**2)/a**2)
+    return centre, radius
+
+
+# Plotting
+def get_figure():
+    fig, ax = plt.subplots(1)
+    points = add_super_triangle(points)
+    ax.set_xlim(0, 10)
+    ax.set_ylim(0, 10)
+    return fig, ax
+
+def plot_points(ax):
+    for point in points[3:, :]:
+        ax.plot(*point, marker=".")
+
+def plot_triangles(ax):
+    for triangle in triangles:
+        triangle_points = points[triangle, :]
+        ax.add_patch(plt.Polygon(triangle_points, fill=False))
+
+def plot_circles(ax):
+    for triangle in results:
+        ax.add_patch(plt.Circle(
+            triangle["Centre"], triangle["Radius"],
+            fill=False, color="#BBBBBB"))
+
+# Problem definition
+N = 6
+points = np.random.rand(N, 2)*10
+triangles = []
 
 for point_index, point in enumerate(points):
     if point_index >= 3:
-        add_point(point_index, point)
+        add_point(point_index, point, triangles)
 
-remove_super_triangle_connecting_triangles()
-plot_points()
-plot_triangles()
+remove_super_triangle_connecting_triangles(triangles)
+results = get_results()
 
 
+# Interfacing with plotting functions
+"""
+fig, ax = get_figure()
+plot_points(ax)
+plot_triangles(ax)
+
+# Only for verificaion purposes on small problems
+plot_circles(ax)
+"""
 
 
 
