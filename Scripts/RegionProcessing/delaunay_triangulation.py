@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 
 class Delaunay():
     
-    def __init__(self, points=np.random.rand(7, 2)):
+    def __init__(self, points):
         self.points = points
         self.triangles = []
         self.add_super_triangle()
@@ -21,7 +21,7 @@ class Delaunay():
         for point_index, point in enumerate(self.points):
             if point_index >= 3:
                 self.add_point(point_index, point)
-        self.remove_super_triangle_connecting_triangles()
+        self.remove_super_triangle()
         self.set_results()
     
     # Initialisation
@@ -124,9 +124,18 @@ class Delaunay():
         dot_product = (y1-y2)*(x3-x1) + (x2-x1)*(y3-y1)
         return (dot_product > 0)
     
+    def remove_super_triangle(self):
+        self.points = self.points[3:, :]
+        self.remove_super_triangle_connecting_triangles()
+        self.shift_point_indices()
+    
     def remove_super_triangle_connecting_triangles(self):
         self.triangles = [triangle for triangle in self.triangles
                           if min(triangle) > 2]
+    
+    def shift_point_indices(self):
+        self.triangles = [tuple(np.array(triangle) - 3)
+                          for triangle in self.triangles]
             
     
     def set_results(self):
@@ -177,6 +186,7 @@ class Delaunay():
         self.plot_points()
         self.plot_triangles()
         self.plot_circles()
+        self.set_plot_limits()
     
     def plot_points(self):
         for point in self.points[3:, :]:
@@ -193,20 +203,18 @@ class Delaunay():
                 triangle["Centre"], triangle["Radius"],
                 fill=False, color="#BBBBBB"))
 
-
-delaunay = Delaunay()
-delaunay.triangulate()
-delaunay.plot_all()
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def set_plot_limits(self):
+        min_x, max_x = self.get_plot_bounds(0)
+        min_y, max_y = self.get_plot_bounds(1)
+        difference = max(max_x - min_x, max_y - min_y)
+        max_x, max_y = min_x + difference, min_y + difference
+        self.ax.set_xlim(min_x, max_x)
+        self.ax.set_ylim(min_y, max_y)
+        plt.gca().set_aspect('equal')
+    
+    def get_plot_bounds(self, dimension):
+        values = list(self.points[:, dimension])
+        minimum, maximum = min(values), max(values)
+        buffer = (maximum - minimum)/10
+        minimum, maximum = minimum - buffer, maximum + buffer
+        return minimum, maximum
