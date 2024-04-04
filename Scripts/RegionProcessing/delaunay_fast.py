@@ -3,11 +3,31 @@ Based on https://en.wikipedia.org/wiki/Bowyer%E2%80%93Watson_algorithm
 
 A triangle is stored as a tuple of IDs to corners.
 The corners are given in anticlockwise order.
+
+The original naive implementation was O(n^2), and this implementation
+aims to be faster. All the points need to be added so it is at least
+O(n), and the speed increase comes from a better way of finding bad
+triangles.
+
+This fast implementation does not check all the triangles when finding
+triangles where the new point is inside their circumcentre. Once a bad
+triangle has been identified, the triangles connected to it are added
+to the set of potentially bad triangles. These are then tested, adding
+to the set as it is explored, until all potentially bad triangles have
+been explored. Roughly, this is guaranteed to find all bad triangles as
+if the new point was contained in the circumcircle and the circle was
+not connected to any other bad triangles, then that would contradict
+the fact that the previous triangulation was a valid Delaunay
+triangulation.
+
+To find an initial triangle we cannot find the nearest points by
+computing distances, and then checking triangles involving those points.
+This would be O(n) which is too slow, and for N = 250,000 this step
+alone would take over 6 hours. Instead the points will be added in a
+precomputed order where previously added points are nearby.
 """
 
 # Importing
-import time
-
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -20,11 +40,6 @@ class Delaunay():
         self.add_super_triangle()
     
     def triangulate(self):
-        start_time = time.time()
-        self.do_triangulate()
-        self.time_taken = time.time() - start_time
-    
-    def do_triangulate(self):
         for point_index, point in enumerate(self.points):
             if point_index >= 3:
                 self.add_point(point_index, point)
@@ -184,16 +199,16 @@ class Delaunay():
     
     
     # Plotting
+    def set_figure(self):
+        if not hasattr(self, "ax"):
+            self.fig, self.ax = plt.subplots(1)
+        
     def plot_all(self):
         self.set_figure()
         self.plot_points()
         self.plot_triangles()
         self.plot_circles()
-        self.set_plot_limits(self.ax)
-    
-    def set_figure(self):
-        if not hasattr(self, "ax"):
-            self.fig, self.ax = plt.subplots(1)
+        self.set_plot_limits()
     
     def plot_points(self):
         for point in self.points[3:, :]:
@@ -210,20 +225,16 @@ class Delaunay():
                 triangle["Centre"], triangle["Radius"],
                 fill=False, color="#BBBBBB"))
 
-    def set_plot_limits(self, ax):
-        min_x, max_x, min_y, max_y = self.get_plot_limits()
-        ax.set_xlim(min_x, max_x)
-        ax.set_ylim(min_y, max_y)
-        plt.gca().set_aspect('equal')
-    
-    def get_plot_limits(self):
-        min_x, max_x = self.get_initial_plot_limits(0)
-        min_y, max_y = self.get_initial_plot_limits(1)
+    def set_plot_limits(self):
+        min_x, max_x = self.get_plot_bounds(0)
+        min_y, max_y = self.get_plot_bounds(1)
         difference = max(max_x - min_x, max_y - min_y)
         max_x, max_y = min_x + difference, min_y + difference
-        return min_x, max_x, min_y, max_y
+        self.ax.set_xlim(min_x, max_x)
+        self.ax.set_ylim(min_y, max_y)
+        plt.gca().set_aspect('equal')
     
-    def get_initial_plot_limits(self, dimension):
+    def get_plot_bounds(self, dimension):
         values = list(self.points[:, dimension])
         minimum, maximum = min(values), max(values)
         buffer = (maximum - minimum)/10
