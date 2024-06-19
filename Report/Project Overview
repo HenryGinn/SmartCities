@@ -1,0 +1,14 @@
+Motivations for project plan. Writing up the paper will be very fast, and most of the time will be spend exploring, finding out what is interesting to write about, and then producing the figures. I want to look at the literature to get an idea of things to look at, but I will hold off on writing the literature review until later in the exploration phase where I have narrowed down the exact ideas I want to look at in detail. 
+
+Week 1: Research into time series analysis and forecasting, exploration of software options, initial look at trends in data and geographic plots
+Week 2: Finish initial research into time series analysis and forecasting methods, build data analysis machinery, dip toes into literature
+Week 3: Explore the literature and use it as inspiration of things to look at, use previously built data analysis tools to explore the data
+Week 4: Start the code for forecasting and continue exploring the data
+Week 5: Finish the main development of the forecasting code. I also want to write a bit about how this works
+Week 6: I want to have a decent idea of what I am going to write about and explore in detail at this point. Further exploration will be done with the structure of the report in mind. I'll start writing the literature review here
+Week 7: Finish up the literature review early in the week and begin the outline of the bulk of the text. This outline will serve as a structure to determine what analysis needs to be done, and the main focus will be on doing that analysis rather than writing.
+Week 8: Continue doing analysis and forecasting
+Week 9: Methodology section will be written here, alongside further analysis
+Week 10: Write the bulk of the paper and do any necessary analysis that has been missed
+Week 11: Finish writing other sections, fill in periphery parts such as introduction, conclusion, and abstract. Start work on poster
+Week 12: Slack week to account for optimistic scheduling and tidying up

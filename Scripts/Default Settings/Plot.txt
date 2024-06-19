@@ -1,0 +1,15 @@
+{
+	"save": true,
+	"name": "Figure",
+	"legend": true,
+	"format": "pdf",
+	"edgecolor_upper": "black",
+	"edgecolor_middle": "black",
+	"edgecolor_lower": "face",
+	"linewidth_upper": 1.5,
+	"linewidth_middle": 0.5,
+	"linewidth_lower": 0.5,
+	"color": "red",
+	"fontsize_colorbar": 15,
+	"fontsize_title": 20
+}

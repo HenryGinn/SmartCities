@@ -1,0 +1,11 @@
+{
+	"agg_spatial": null,
+	"agg_time": null,
+	"agg_crime": null,
+	"borough": null,
+	"lsoa": null,
+	"major": null,
+	"minor": null,
+	"month": null,
+	"year": null
+}
