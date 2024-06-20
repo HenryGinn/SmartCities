@@ -9,25 +9,32 @@ Data can be aggregated over the following:
 
 
 import os
+import textwrap
 
 import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
 from hgutilities import defaults
-from hgutilities.utils import print_dict_aligned
+from hgutilities.utils import get_dict_string
 
 from plot import Plot
 
+title_case_exceptions = [
+    "and", "as", "but", "for", "if", "nor", "or", "so", "yet", "a", "an", "the",
+    "as", "at", "by", "for", "in", "of", "off", "on", "per", "to", "up", "via"]
 
-class Geo():
+months = ["January", "February", "March", "April", "May", "June", "July",
+          "August", "September", "October", "November", "December"]
+
+class Crime():
 
     def __init__(self, **kwargs):
         self.kwargs = kwargs
         defaults.kwargs(self, kwargs)
+        self.set_paths()
         self.read_data()
 
     def read_data(self):
-        self.set_paths()
         self.crime = pd.read_csv(self.path_crime)
 
     def set_paths(self):
@@ -37,19 +44,42 @@ class Geo():
         self.path_data = os.path.join(self.path_base, "Data")
         self.path_crime = os.path.join(self.path_data, "Crime.csv")
         
-    def print_paths(self):
-        paths_dict = {
-            "Current working directory": self.path_cwd,
-            "Base directory": self.path_base,
-            "Data directory": self.path_data,
-            "Geographic data directory": self.path_geography,
-            "Crime data directory": self.path_crime,
-            "Base output directory": self.path_output_base}
-        print_dict_aligned(paths_dict)
-
     def process(self):
-        self.aggregate()
+        self.set_property_values()
         self.filter()
+        self.aggregate()
+
+    def set_property_values(self):
+        self.region = self.get_region()
+        self.crime_type = self.get_crime_type()
+        self.set_time_month()
+        self.set_time_year()
+
+    def get_region(self):
+        if self.lsoa is not None:
+            return self.lsoa
+        if self.borough is not None:
+            return self.borough
+        return "London"
+
+    def get_crime_type(self):
+        if self.minor is not None:
+            return self.minor
+        if self.major is not None:
+            return self.major
+        return "Total"
+
+    def set_time_month(self):
+        if self.month is not None:
+            self.time_month = self.month
+        else:
+            self.time_month = "All"
+
+    def set_time_year(self):
+        if self.year is not None:
+            self.time_year = self.year
+        else:
+            self.time_year = "All"
 
     def aggregate(self):
         self.aggregate_spatial()
@@ -93,8 +123,6 @@ class Geo():
         return time_columns
 
     def get_column_groups_month(self, columns):
-        months = ["January", "February", "March", "April", "May", "June", "July",
-                  "August", "September", "October", "November", "December"]
         column_groups = {month: [] for month in months}
         for column in columns:
             column_groups[months[int(column[-2:])-1]].append(column)
@@ -126,9 +154,8 @@ class Geo():
             case "Total": self.aggregate_crime_total()
 
     def aggregate_crime_major(self):
-        agg_functions = {
-            "LSOA": "first", "Borough": "first", "Minor Category": "first"}
-        group_columns = ["Major Category"]
+        agg_functions = {"Minor Category": "first"}
+        group_columns = ["LSOA", "Borough", "Major Category"]
         self.aggregate_and_group(agg_functions, group_columns)
 
     def aggregate_crime_total(self):
@@ -138,8 +165,8 @@ class Geo():
 
     def aggregate_and_group(self, agg_functions, group_columns):
         agg_functions.update(self.get_aggregation_functions_time())
-        group_by_functions = self.get_groupby_functions(group_columns)
-        self.crime = self.crime.groupby(group_by_functions)
+        group_by_columns = self.get_groupby_columns(group_columns)
+        self.crime = self.crime.groupby(group_by_columns)
         self.crime = self.crime.aggregate(agg_functions).reset_index()
         columns_to_drop = [column for column in agg_functions
                            if agg_functions[column] == "first"]
@@ -150,36 +177,92 @@ class Geo():
         agg_functions_time = {month: "sum" for month in months}
         return agg_functions_time
 
-    def get_groupby_functions(self, group_columns):
+    def get_groupby_columns(self, group_columns):
         all_columns = set(self.crime.columns.values)
         group_columns = list(set(group_columns).intersection(all_columns))
         return group_columns
 
     def filter(self):
-        self.filter_borough()
-        self.filter_lsoa()
+        self.filter_property("borough", "Borough")
+        self.filter_property("lsoa", "LSOA")
+        self.filter_property("minor", "Minor Category")
+        self.filter_property("major", "Major Category")
+        self.filter_property("month", "Month")
+        self.filter_property("year", "Year")
 
-    def filter_borough(self):
+    def filter_property(self, attribute, property_name):
+        if hasattr(self, attribute) and getattr(self, attribute) is not None:
+            self.crime = self.crime.loc[self.crime[property_name] ==
+                                        getattr(self, attribute)]
+
+    def set_time_attributes(self, time):
+        if self.agg_time not in [None, "Total"]:
+            setattr(self, self.agg_time.lower(), time)
+        else:
+            self.month, self.year = months[int(time[4:])], int(time[:4])
+        
+
+    def generate_title(self):
+        self.title = (f"{self.get_title_crime()} in "
+                      f"{self.get_title_location()} "
+                      f"{self.get_title_time()}")
+        self.title_flat = self.get_capitalised(self.title)
+        self.title = self.add_line_breaks(self.title_flat)
+        print(self.title_flat)
+
+    def get_title_crime(self):
+        match self.agg_crime:
+            case "Minor": return self.minor
+            case "Major": return self.major
+            case "Total": return "Total Crime"
+
+    def get_title_location(self):
         if self.borough is not None:
-            self.crime = self.crime.loc[self.crime["Borough"] == self.borough]
+            return self.borough
+        else:
+            return "London"
 
-    def filter_lsoa(self):
-        if self.lsoa is not None:
-            self.crime = self.crime.loc[self.crime["LSOA"] == self.lsoa]
+    def get_title_time(self):
+        match self.agg_time:
+            case "Month": return f"in {self.month}"
+            case "Year": return f"in {self.year}"
+            case "Total": return "Since 2010"
+            case _: return f"in {self.month} {self.year}"
+
+    # https://stackoverflow.com/questions/3728655/titlecasing-a-string-with-exceptions?rq=3
+    def get_capitalised(self, string):
+        word_list = string.lower().split(' ')
+        capitalised = [word_list[0].capitalize()]
+        for word in word_list[1:]:
+            capitalised.append(word if word in title_case_exceptions else word.capitalize())
+        capitalised = " ".join(capitalised)
+        return capitalised
+
+    def add_line_breaks(self, string):
+        if len(string) > 25:
+            splits = self.get_splits(string)
+            differences = {abs(len(split[0]) - len(split[1])): split for split in splits}
+            minimum_difference = min(list(differences.keys()))
+            string = "\n".join(differences[minimum_difference])
+        return string
+
+    def get_splits(self, string):
+        words = string.split(" ")
+        splits = [[" ".join(word for word in words[:word_limit]),
+                   " ".join(word for word in words[word_limit:])]
+                  for word_limit in range(len(words))]
+        return splits
 
     def plot(self, **kwargs):
-        kwargs.update(self.kwargs)
-        self.plot = Plot(self.crime, **kwargs)
-        self.plot.plot()
+        kwargs.update({**self.kwargs, "title": self.title})
+        self.plot_obj = Plot(self, **kwargs)
+        self.plot_obj.plot()
 
-defaults.load(Geo)
+    def __str__(self):
+        attributes = ["agg_spatial", "agg_time", "agg_crime", "borough",
+                      "lsoa", "major", "minor", "month", "year"]
+        string_dict = {attribute: getattr(self, attribute)
+                       for attribute in attributes}
+        return get_dict_string(string_dict)
 
-#geo = Geo(agg_time="Total", agg_spatial="Borough", agg_crime="Total", name="Total Crime in London")
-#geo = Geo(agg_time="Total", agg_crime="Total", name="Total Crime in London\nby LSOA Region")
-#geo = Geo(agg_time="Total", agg_crime="Total", borough="Croydon", name="Total Crime in Croydon")
-#geo = Geo(agg_time="Total", agg_crime="Total", borough="Westminster", name="Total Crime in Westminster")
-#geo = Geo(agg_time="Total", lsoa="E01035716", name="Total Crime around Regents Street")
-geo = Geo(agg_time="Total", agg_crime="Total", name="Log Total Crime in London\nby LSOA Region")
-
-geo.process()
-geo.plot(save=True, log=True)
+defaults.load(Crime)

@@ -1,6 +1,7 @@
 {
+	"log": true,
 	"save": true,
-	"name": "Figure",
+	"title": null,
 	"legend": true,
 	"format": "pdf",
 	"edgecolor_upper": "black",

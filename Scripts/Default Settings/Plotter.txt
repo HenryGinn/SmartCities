@@ -1,0 +1,7 @@
+{
+	"absolute": true,
+	"region": "City",
+	"resolution": "LSOA",
+	"crime_type": "Major",
+	"time": "Total"
+}

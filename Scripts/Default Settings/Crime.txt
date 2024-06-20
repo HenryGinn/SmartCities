@@ -1,5 +1,5 @@
 {
-	"agg_spatial": null,
+	"agg_spatial": "LSOA",
 	"agg_time": null,
 	"agg_crime": null,
 	"borough": null,

@@ -16,7 +16,7 @@ import geopandas as gpd
 import pandas as pd
 from shapely.wkt import loads
 from mpl_toolkits.axes_grid1 import make_axes_locatable
-from hgutilities.utils import print_dict_aligned
+from hgutilities.utils import get_dict_string
 from matplotlib.colors import LogNorm
 
 
@@ -24,10 +24,11 @@ plt.rcParams["font.family"] = "Times New Roman"
 
 class Plot():
 
-    def __init__(self, data, **kwargs):
+    def __init__(self, crime, **kwargs):
         defaults.kwargs(self, kwargs)
-        self.data = data
-        self.columns = list(data.columns.values)
+        self.crime = crime
+        self.data = crime.crime
+        self.columns = list(self.data.columns.values)
         self.determine_settings()
 
     def determine_settings(self):
@@ -97,7 +98,7 @@ class Plot():
         if hasattr(self, "spatial_lower") and hasattr(self, "spatial_upper"):
             properties = {"Spatial lower": self.spatial_lower,
                           "Spatial upper": self.spatial_upper}
-            utils.print_dict_aligned(properties)
+            print(get_dict_string(properties))
     
 
     # The upper values for the edge properties are used
@@ -144,6 +145,7 @@ class Plot():
     
 
     def plot(self):
+        plt.close('all')
         self.fig, self.ax = plt.subplots(1)
         self.set_colorbar_kwargs()
         self.plot_values()
@@ -152,7 +154,7 @@ class Plot():
         
     def plot_peripheries(self):
         self.ax.set_axis_off()
-        self.ax.set_title(self.name, fontsize=self.fontsize_title)
+        self.ax.set_title(self.title, fontsize=self.fontsize_title)
         self.fig.axes[1].tick_params(labelsize=self.fontsize_colorbar)
 
     def set_colorbar_kwargs(self):
@@ -245,12 +247,22 @@ class Plot():
             **self.edge_kwargs_lsoa,
             **self.colorbar_kwargs)
 
-    def save_figure(self):
+    def output_figure(self):
         if self.save:
-            self.set_path_output()
-            plt.savefig(self.path_output, format=self.format, bbox_inches="tight")
+            self.save_figure()
         else:
             plt.show()
+
+    def save_figure(self):
+        self.set_name()
+        self.set_path_output()
+        plt.savefig(self.path_output, format=self.format, bbox_inches="tight")
+
+    def set_name(self):
+        self.name = utils.get_file_name({
+            "Region": self.crime.region, "Crime": self.crime.crime_type,
+            "Year": self.crime.time_year, "Month": self.crime.time_month,
+            "Resolution": self.crime.agg_spatial, "Log": self.log})
 
     def set_path_output(self):
         if not hasattr(self, "path_output"):
@@ -275,17 +287,3 @@ lsoa = gpd.GeoDataFrame(pd.read_csv(path_lsoa))
 city = city.set_geometry(loads(city["geometry"].values))
 borough = borough.set_geometry(loads(borough["geometry"].values))
 lsoa = lsoa.set_geometry(loads(lsoa["geometry"].values))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
