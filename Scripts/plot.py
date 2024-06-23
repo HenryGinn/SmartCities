@@ -16,7 +16,6 @@ import geopandas as gpd
 import pandas as pd
 from shapely.wkt import loads
 from mpl_toolkits.axes_grid1 import make_axes_locatable
-from hgutilities.utils import get_dict_string
 from matplotlib.colors import LogNorm
 
 
@@ -69,7 +68,7 @@ class Plot():
     
 
     def determine_plot_column(self):
-        if not hasattr(self, "plot_column"):
+        if not hasattr(self, "plot_column") or self.plot_column is None:
             self.set_plot_column()
 
     def set_plot_column(self):
@@ -81,9 +80,22 @@ class Plot():
     def process_plottable_columns(self):
         plottable_column_count = len(self.plottable_columns)
         match plottable_column_count:
-            case 1: self.plot_column = self.plottable_columns[0]
+            case 2: self.plot_column_population_check()
+            case 1: self.set_non_population_weighted_plot_column()
             case 0: self.non_extractable_plottable_column_empty()
             case _: self.non_extractable_plottable_column_multiple()
+
+    def plot_column_population_check(self):
+        if "Population" in self.plottable_columns:
+            self.plottable_columns.remove("Population")
+            self.plot_column = self.plottable_columns[0]
+            self.population_weighted = True
+        else:
+            self.non_extractable_plottable_column_multiple()
+
+    def set_non_population_weighted_plot_column(self):
+        self.plot_column = self.plottable_columns[0]
+        self.population_weighted = False
 
     def non_extractable_plottable_column_empty(self):
         raise Exception("No plottable columns could be found\n"
@@ -98,7 +110,7 @@ class Plot():
         if hasattr(self, "spatial_lower") and hasattr(self, "spatial_upper"):
             properties = {"Spatial lower": self.spatial_lower,
                           "Spatial upper": self.spatial_upper}
-            print(get_dict_string(properties))
+            print(utils.get_dict_string(properties))
     
 
     # The upper values for the edge properties are used
@@ -145,12 +157,16 @@ class Plot():
     
 
     def plot(self):
+        self.setup_figure()
+        self.plot_values()
+        self.plot_peripheries()
+        self.output_figure()
+
+    def setup_figure(self):
         plt.close('all')
         self.fig, self.ax = plt.subplots(1)
         self.set_colorbar_kwargs()
-        self.plot_values()
-        self.plot_peripheries()
-        self.save_figure()
+        self.population_weight_data()
         
     def plot_peripheries(self):
         self.ax.set_axis_off()
@@ -158,16 +174,41 @@ class Plot():
         self.fig.axes[1].tick_params(labelsize=self.fontsize_colorbar)
 
     def set_colorbar_kwargs(self):
+        self.setup_colorbar()
+        self.colorbar_kwargs = {
+            "cax": self.cax, "norm": self.norm, "cmap": self.cmap,
+            "legend_kwds": {"label": self.colorbar_label}}
+
+    def setup_colorbar(self):
         divider = make_axes_locatable(self.ax)
         self.cax = divider.append_axes("right", size="5%", pad=0.1)
         self.set_norm()
-        self.colorbar_kwargs = {"cax": self.cax, "norm": self.norm}
+        self.set_colorbar_label()
+
+    def set_colorbar_label(self):
+        if self.population_weighted:
+            self.set_colorbar_label_weighted()
+            self.per_n_people_int = int(str(self.per_n_people).replace(",", ""))
+        else:
+            self.colorbar_label = "Reported Crimes"
+
+    def set_colorbar_label_weighted(self):
+        if str(self.per_n_people) == "1":
+            self.colorbar_label = "Reported Crimes Per Person"
+        else:
+            self.colorbar_label = f"Reported Crimes Per {self.per_n_people} People"
 
     def set_norm(self):
         if self.log:
             self.norm=LogNorm()
         else:
             self.norm = None
+
+    def population_weight_data(self):
+        self.data = self.data.copy()
+        if self.population_weighted:
+            self.data[self.plot_column] = (self.per_n_people_int
+                * self.data[self.plot_column] / self.data["Population"])
 
     def plot_values(self):
         self.plot_lsoa()
@@ -259,6 +300,12 @@ class Plot():
         plt.savefig(self.path_output, format=self.format, bbox_inches="tight")
 
     def set_name(self):
+        if self.crime.name is None:
+            self.do_set_name()
+        else:
+            self.name = self.crime.name
+
+    def do_set_name(self):
         self.name = utils.get_file_name({
             "Region": self.crime.region, "Crime": self.crime.crime_type,
             "Year": self.crime.time_year, "Month": self.crime.time_month,

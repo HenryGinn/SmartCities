@@ -1,7 +1,6 @@
 {
 	"log": true,
 	"save": true,
-	"title": null,
 	"legend": true,
 	"format": "pdf",
 	"edgecolor_upper": "black",
@@ -10,7 +9,9 @@
 	"linewidth_upper": 1.5,
 	"linewidth_middle": 0.5,
 	"linewidth_lower": 0.5,
-	"color": "red",
+	"cmap": "Purples",
 	"fontsize_colorbar": 15,
-	"fontsize_title": 20
+	"fontsize_title": 20,
+	"population_weighted": true,
+	"per_n_people": "100,000"
 }

@@ -18,13 +18,11 @@ from hgutilities import defaults
 from hgutilities.utils import get_dict_string
 
 from plot import Plot
+from timeseries import Time
+from utils import get_capitalised
+from utils import add_line_breaks
+from utils import get_time_columns
 
-title_case_exceptions = [
-    "and", "as", "but", "for", "if", "nor", "or", "so", "yet", "a", "an", "the",
-    "as", "at", "by", "for", "in", "of", "off", "on", "per", "to", "up", "via"]
-
-months = ["January", "February", "March", "April", "May", "June", "July",
-          "August", "September", "October", "November", "December"]
 
 class Crime():
 
@@ -35,7 +33,7 @@ class Crime():
         self.read_data()
 
     def read_data(self):
-        self.crime = pd.read_csv(self.path_crime)
+        self.crime = pd.read_csv(self.path_crime, index_col="index")
 
     def set_paths(self):
         self.path_cwd = os.getcwd()
@@ -93,12 +91,15 @@ class Crime():
             case "City":    self.aggregate_spatial_city()
 
     def aggregate_spatial_borough(self):
-        agg_functions = {"LSOA": "first"}
+        agg_functions = {"LSOA": "first",
+                         "Population": "sum"}
         group_columns = ["Borough", "Major Category", "Minor Category"]
         self.aggregate_and_group(agg_functions, group_columns)
 
     def aggregate_spatial_city(self):
-        agg_functions = {"LSOA": "first", "Borough": "first"}
+        agg_functions = {"LSOA": "first",
+                         "Borough": "first",
+                         "Population": "sum"}
         group_columns = ["Major Category", "Minor Category"]
         self.aggregate_and_group(agg_functions, group_columns)
 
@@ -109,27 +110,20 @@ class Crime():
             case "Total": self.aggregate_time_total()
 
     def aggregate_time_month(self):
-        original_time_columns = self.get_time_columns(self.crime)
+        original_time_columns = get_time_columns(self.crime)
         column_groups = self.get_column_groups_month(original_time_columns)
         for month, values in column_groups.items():
             self.crime[month] = self.crime[values].sum(axis=1)
         self.crime = self.crime.drop(original_time_columns, axis=1)
 
-    def get_time_columns(self, dataframe):
-        columns = set(dataframe.columns.values)
-        non_time_columns = set([
-            "LSOA", "Borough", "Minor Category", "Major Category"])
-        time_columns = sorted(list(columns - non_time_columns))
-        return time_columns
-
     def get_column_groups_month(self, columns):
         column_groups = {month: [] for month in months}
         for column in columns:
-            column_groups[months[int(column[-2:])-1]].append(column)
+            column_groups[column.split(" ")[1]].append(column)
         return column_groups
 
     def aggregate_time_year(self):
-        original_time_columns = self.get_time_columns(self.crime)
+        original_time_columns = get_time_columns(self.crime)
         column_groups = self.get_column_groups_year(original_time_columns)
         for year, values in column_groups.items():
             self.crime[year] = self.crime[values].sum(axis=1)
@@ -137,13 +131,13 @@ class Crime():
 
     def get_column_groups_year(self, columns):
         column_groups = {year: [] for year in sorted(
-            list(set([int(column[:4]) for column in columns])))}
+            list(set([int(column.split(" ")[0]) for column in columns])))}
         for column in columns:
-            column_group[int(column[:4])].append(column)
+            column_group[int(column.split(" ")[0])].append(column)
         return column_groups
 
     def aggregate_time_total(self):
-        original_time_columns = self.get_time_columns(self.crime)
+        original_time_columns = get_time_columns(self.crime)
         self.crime["Crime"] = self.crime[original_time_columns].sum(axis=1)
         self.crime = self.crime.drop(original_time_columns, axis=1)
 
@@ -154,12 +148,15 @@ class Crime():
             case "Total": self.aggregate_crime_total()
 
     def aggregate_crime_major(self):
-        agg_functions = {"Minor Category": "first"}
+        agg_functions = {"Minor Category": "first",
+                         "Population": "sum"}
         group_columns = ["LSOA", "Borough", "Major Category"]
         self.aggregate_and_group(agg_functions, group_columns)
 
     def aggregate_crime_total(self):
-        agg_functions = {"Major Category": "first", "Minor Category": "first"}
+        agg_functions = {"Major Category": "first",
+                         "Minor Category": "first",
+                         "Population": "sum"}
         group_columns = ["LSOA", "Borough"]
         self.aggregate_and_group(agg_functions, group_columns)
 
@@ -173,7 +170,7 @@ class Crime():
         self.crime = self.crime.drop(columns_to_drop, axis=1)
 
     def get_aggregation_functions_time(self):
-        months = self.get_time_columns(self.crime)
+        months = get_time_columns(self.crime)
         agg_functions_time = {month: "sum" for month in months}
         return agg_functions_time
 
@@ -199,16 +196,22 @@ class Crime():
         if self.agg_time not in [None, "Total"]:
             setattr(self, self.agg_time.lower(), time)
         else:
-            self.month, self.year = months[int(time[4:])], int(time[:4])
+            self.year, self.month = time.split(" ")
+            self.year = int(self.year)
         
 
     def generate_title(self):
+        if self.title is None:
+            self.do_generate_title()
+        elif self.title is False:
+            self.title = None
+
+    def do_generate_title(self):
         self.title = (f"{self.get_title_crime()} in "
                       f"{self.get_title_location()} "
                       f"{self.get_title_time()}")
-        self.title_flat = self.get_capitalised(self.title)
-        self.title = self.add_line_breaks(self.title_flat)
-        print(self.title_flat)
+        self.title_flat = get_capitalised(self.title)
+        self.title = add_line_breaks(self.title_flat)
 
     def get_title_crime(self):
         match self.agg_crime:
@@ -229,38 +232,22 @@ class Crime():
             case "Total": return "Since 2010"
             case _: return f"in {self.month} {self.year}"
 
-    # https://stackoverflow.com/questions/3728655/titlecasing-a-string-with-exceptions?rq=3
-    def get_capitalised(self, string):
-        word_list = string.lower().split(' ')
-        capitalised = [word_list[0].capitalize()]
-        for word in word_list[1:]:
-            capitalised.append(word if word in title_case_exceptions else word.capitalize())
-        capitalised = " ".join(capitalised)
-        return capitalised
-
-    def add_line_breaks(self, string):
-        if len(string) > 25:
-            splits = self.get_splits(string)
-            differences = {abs(len(split[0]) - len(split[1])): split for split in splits}
-            minimum_difference = min(list(differences.keys()))
-            string = "\n".join(differences[minimum_difference])
-        return string
-
-    def get_splits(self, string):
-        words = string.split(" ")
-        splits = [[" ".join(word for word in words[:word_limit]),
-                   " ".join(word for word in words[word_limit:])]
-                  for word_limit in range(len(words))]
-        return splits
-
     def plot(self, **kwargs):
-        kwargs.update({**self.kwargs, "title": self.title})
+        kwargs.update({**self.kwargs})
+        defaults.kwargs(self, kwargs)
+        self.generate_title()
         self.plot_obj = Plot(self, **kwargs)
         self.plot_obj.plot()
 
+    def time(self, **kwargs):
+        self.time_obj = Time(self, **kwargs)
+
+    def time_plot(self):
+        self.time_obj.plot()
+
     def __str__(self):
-        attributes = ["agg_spatial", "agg_time", "agg_crime", "borough",
-                      "lsoa", "major", "minor", "month", "year"]
+        attributes = ["agg_spatial", "agg_time", "agg_crime", "borough", "lsoa",
+                      "major", "minor", "month", "year"]
         string_dict = {attribute: getattr(self, attribute)
                        for attribute in attributes}
         return get_dict_string(string_dict)

@@ -1,6 +1,6 @@
 """
-There are two preprocessing scripts, and this one focuses on crime.
-This script should be run after the crime preprocesser.
+This script preprocesses the geographic dataset
+This script should be run after the crime preprocesser
 
 The following preprocessing steps are done:
 

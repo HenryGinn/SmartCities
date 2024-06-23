@@ -1,0 +1,9 @@
+{
+	"log": true,
+	"save": true,
+	"legend": true,
+	"format": "pdf",
+	"fontsize_title": 20,
+	"population_weighted": true,
+	"per_n_people": "100,000"
+}

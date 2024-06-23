@@ -75,8 +75,10 @@ class Plotter():
             case "LSOA": self.crime.agg_spatial = "LSOA"
 
     def set_path_resolution(self):
-        self.path_resolution = os.path.join(
-            self.path_region, f"{self.resolution} Resolution")
+        match self.region:
+            case "City": self.path_resolution = (
+                os.path.join(self.path_region, f"{self.resolution} Resolution"))
+            case "Borough": self.path_resolution = self.path_region
 
     def process_crime(self):
         match self.crime_type:

@@ -7,5 +7,7 @@
 	"major": null,
 	"minor": null,
 	"month": null,
-	"year": null
+	"year": null,
+	"title": null,
+	"name": null
 }

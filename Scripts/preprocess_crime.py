@@ -1,12 +1,14 @@
 """
-There are two preprocessing scripts, and this one focuses on crime.
-This script should be run before the geography preprocesser
+This script preprocesses the crime dataset
+It should be run before the geography preprocesser
 
 The following preprocessing steps are done:
 
 - Rename LSOA identifier to LSOA
 - Change the borough code to the name of the borough
 - Orders the crime data chronologically
+- Changes crime categories to title case
+- Adds a column for the population of each LSOA region
 - Handles discepency between LSOA regions for Brent
 
 This dataframe is not merged with the geography dataframe.
@@ -24,6 +26,13 @@ df_with_polygons = pd.merge(
 import os
 
 import pandas as pd
+
+from utils import get_capitalised
+from hgutilities.utils import get_dict_string
+
+
+months = ["January", "February", "March", "April", "May", "June", "July",
+          "August", "September", "October", "November", "December"]
 
 
 class PreProcess():
@@ -63,25 +72,56 @@ class PreProcess():
 
     def manipulate_crime(self):
         self.human_readable_borough()
-        self.remove_lsoa_name()
-        self.rename_lsoa_column()
-        self.sort_columns()
+        self.process_LSOA_columns()
+        self.crime_categories_title_case()
+        self.add_population_column()
+        self.process_time_columns()
 
     def human_readable_borough(self):
         lsoa_names = list(self.crime["LSOA Name"])
         borough = [lsoa_name[:-5] for lsoa_name in lsoa_names]
         self.crime["Borough"] = borough
 
-    def remove_lsoa_name(self):
+    def process_LSOA_columns(self):
         self.crime = self.crime.drop(columns="LSOA Name")
-
-    def rename_lsoa_column(self):
         self.crime = self.crime.rename(columns={"LSOA Code": "LSOA"})
+
+    def crime_categories_title_case(self):
+        self.crime["Minor Category"] = [
+            get_capitalised(name) for name in self.crime["Minor Category"].values]
+        self.crime["Major Category"] = [
+            get_capitalised(name) for name in self.crime["Major Category"].values]
+
+    def add_population_column(self):
+        self.read_population_data()
+        self.population = self.population[["LSOA 2021 Code", "Mid-2021 population"]]
+        self.population = self.population.rename(
+            columns={"LSOA 2021 Code": "LSOA", "Mid-2021 population": "Population"})
+        self.crime = pd.merge(self.crime, self.population, on="LSOA").reset_index()
+
+    def read_population_data(self):
+        path = os.path.join(self.path_original_data, "sapelsoapopdensitytablefinal.xlsx")
+        self.population = pd.read_excel(path, sheet_name="Mid-2021 LSOA 2021", header=3)
+
+    def process_time_columns(self):
+        self.sort_columns()
+        self.rename_time_columns()
 
     def sort_columns(self):
         columns = list(self.crime.columns.values)
-        columns = columns[:4] + sorted(columns[4:])
+        columns = columns[:5] + [columns[-1]] + sorted(columns[5:-1])
         self.crime = self.crime[columns]
+
+    def rename_time_columns(self):
+        time_columns = list(self.crime.columns.values[6:])
+        new_time_columns = [self.get_time_column(name) for name in time_columns]
+        time_columns_dict = dict(zip(time_columns, new_time_columns))
+        self.crime = self.crime.rename(columns=time_columns_dict)
+
+    def get_time_column(self, name):
+        year, month = int(name[:4]), months[int(name[4:])-1]
+        new_name = f"{year} {month}"
+        return new_name
 
 preprocess = PreProcess()
 preprocess.preprocess()
