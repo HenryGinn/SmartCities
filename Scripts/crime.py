@@ -192,6 +192,9 @@ class Crime():
             self.crime = self.crime.loc[self.crime[property_name] ==
                                         getattr(self, attribute)]
 
+    def remove_major(self, category="Fraud and Forgery"):
+        self.crime = self.crime.loc[self.crime["Major Category"] != category]
+
     def set_time_attributes(self, time):
         if self.agg_time not in [None, "Total"]:
             setattr(self, self.agg_time.lower(), time)
@@ -207,11 +210,14 @@ class Crime():
             self.title = None
 
     def do_generate_title(self):
+        self.set_title_base()
+        self.title_flat = get_capitalised(self.title)
+        self.title = add_line_breaks(self.title_flat)
+
+    def set_title_base(self):
         self.title = (f"{self.get_title_crime()} in "
                       f"{self.get_title_location()} "
                       f"{self.get_title_time()}")
-        self.title_flat = get_capitalised(self.title)
-        self.title = add_line_breaks(self.title_flat)
 
     def get_title_crime(self):
         match self.agg_crime:
@@ -242,8 +248,10 @@ class Crime():
     def time(self, **kwargs):
         self.time_obj = Time(self, **kwargs)
 
-    def time_plot(self):
-        self.time_obj.plot()
+    def time_plot(self, **kwargs):
+        self.time_obj.kwargs.update(kwargs)
+        defaults.kwargs(self.time_obj, self.time_obj.kwargs)
+        self.time_obj.create_figure()
 
     def __str__(self):
         attributes = ["agg_spatial", "agg_time", "agg_crime", "borough", "lsoa",

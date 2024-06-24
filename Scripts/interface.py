@@ -7,12 +7,17 @@ from plotter import Plotter
 #crime = Crime(agg_time="Total", agg_crime="Total", borough="Westminster", title="Total Crime in Westminster")
 #crime = Crime(agg_time="Total", lsoa="E01035716", title="Total Crime around Regents Street")
 #crime = Crime(agg_time="Total", agg_crime="Total", title="Total Crime in London by LSOA Region")
-crime = Crime(agg_crime="Total", borough="Westminster", title="Total Crime in Westminster")
+#crime = Crime(agg_crime="Total", agg_spatial="Borough", borough="Westminster")
+crime = Crime(agg_crime="Major", agg_spatial="Borough", borough="Westminster")
 
 crime.process()
+crime.remove_major()
 #crime.plot(per_n_people=1)
 
+import numpy as np
+
 crime.time()
+crime.time_plot(save=False, log=True)#, bbox_to_anchor=(0.5, 0.5), squish_vertical=0.35)
 
 """
 crime = Crime(agg_time="Total", agg_crime="Major", major="Violence Against the Person", borough="Haringey")

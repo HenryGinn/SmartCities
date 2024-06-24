@@ -11,8 +11,8 @@ def get_capitalised(string):
     capitalised = " ".join(capitalised)
     return capitalised
 
-def add_line_breaks(string):
-    if len(string) > 25:
+def add_line_breaks(string, length=25):
+    if len(string) > length:
         splits = get_splits(string)
         differences = {abs(len(split[0]) - len(split[1])): split for split in splits}
         minimum_difference = min(list(differences.keys()))

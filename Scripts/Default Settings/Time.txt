@@ -1,9 +1,17 @@
 {
-	"log": true,
+	"title": null,
+	"log": false,
 	"save": true,
 	"legend": true,
 	"format": "pdf",
 	"fontsize_title": 20,
+	"fontsize_axis_labels": 16,
 	"population_weighted": true,
-	"per_n_people": "100,000"
+	"per_n_people": "100,000",
+	"title_pad": 12,
+	"squish_vertical": 0,
+	"bbox_to_anchor": null,
+	"ncol": 1,
+	"loc": null,
+	"legend": true
 }
