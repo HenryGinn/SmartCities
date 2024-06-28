@@ -7,8 +7,8 @@ from plotter import Plotter
 #crime = Crime(agg_time="Total", agg_crime="Total", borough="Westminster", title="Total Crime in Westminster")
 #crime = Crime(agg_time="Total", lsoa="E01035716", title="Total Crime around Regents Street")
 #crime = Crime(agg_time="Total", agg_crime="Total", title="Total Crime in London by LSOA Region")
-#crime = Crime(agg_crime="Total", agg_spatial="Borough", borough="Westminster")
-crime = Crime(agg_crime="Major", agg_spatial="Borough", borough="Westminster")
+crime = Crime(agg_crime="Total", agg_spatial="Borough", borough="Westminster")
+#crime = Crime(agg_crime="Major", agg_spatial="Borough", borough="Westminster")
 
 crime.process()
 crime.remove_major()

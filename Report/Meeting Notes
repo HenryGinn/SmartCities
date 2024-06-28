@@ -1,0 +1,16 @@
+Week 2
+
+Q: How much of the background mathematics should be included in the methodology section? Should I be explaining the models from the ground up or just tell the reader to go read 180 pages of a textbook?
+A: Skip preliminaries to ARIMA, but explain ARIMA.
+
+
+Week 3
+
+Q: Is the length of the methodology suitable?
+A: Summarise 3.2.1 and put it in 3.2.2
+
+Q: Should I give an example of why we care about autocorrelation?
+
+Q: Ask about colormaps
+
+I need to justify my use of both ARIMA and LSTM at the start of the methodology section.
