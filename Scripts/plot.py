@@ -164,13 +164,13 @@ class Plot():
 
     def setup_figure(self):
         plt.close('all')
-        self.fig, self.ax = plt.subplots(1)
+        self.fig, self.ax = plt.subplots(1, figsize=(6, 5))
         self.set_colorbar_kwargs()
         self.population_weight_data()
         
     def plot_peripheries(self):
         self.ax.set_axis_off()
-        self.ax.set_title(self.title, fontsize=self.fontsize_title)
+        self.ax.set_title(self.crime.title, fontsize=self.fontsize_title)
         self.fig.axes[1].tick_params(labelsize=self.fontsize_colorbar)
 
     def set_colorbar_kwargs(self):
@@ -297,7 +297,7 @@ class Plot():
     def save_figure(self):
         self.set_name()
         self.set_path_output()
-        plt.savefig(self.path_output, format=self.format, bbox_inches="tight")
+        plt.savefig(self.path_output, format=self.format)#, bbox_inches="tight")
 
     def set_name(self):
         if self.crime.name is None:

@@ -15,14 +15,16 @@ import os
 
 from hgutilities import defaults
 from hgutilities import utils
+import imageio
 
 from crime import Crime
 from plot import Plot
+from utils import get_time_columns
 
 
 class Plotter():
 
-    def __init__(self, **kwargs):
+    def __init__(self):
         self.set_paths()
 
     def set_paths(self):
@@ -55,7 +57,9 @@ class Plotter():
 
     def process_region_boroughs(self):
         boroughs = sorted(set(list(self.crime.crime["Borough"])))
-        for borough in boroughs:
+        if self.boroughs is None:
+            self.boroughs = boroughs
+        for borough in self.boroughs:
             self.generate_borough(borough)
 
     def generate_borough(self, borough):
@@ -104,8 +108,9 @@ class Plotter():
         self.process_time()
 
     def process_crime_major(self):
-        categories = sorted(list(set(self.crime.crime["Major Category"].values)))
-        for category in categories:
+        if self.categories_major is None:
+            self.categories_major = sorted(list(set(self.crime.crime["Major Category"].values)))
+        for category in self.categories_major:
             self.process_crime_major_category(category)
 
     def process_crime_major_category(self, category):
@@ -123,7 +128,7 @@ class Plotter():
     def process_time(self):
         self.set_time_properties()
         utils.make_folder(self.path_time)
-        self.time_columns = self.crime.get_time_columns(self.crime.crime)
+        self.time_columns = get_time_columns(self.crime.crime)
         self.process_time_columns()
 
     def set_time_properties(self):
@@ -155,19 +160,47 @@ class Plotter():
             self.process_time_non_total()
 
     def process_time_total(self):
-        self.plot(path_output=self.path_time)
+        self.path_output = self.path_time
+        self.plot()
         self.crime.read_data()
 
     def process_time_non_total(self):
+        self.filenames = []
+        self.create_plots_time()
+        if self.animate:
+            self.create_animation()
+
+    def create_plots_time(self):
         for time in self.time_columns:
             self.crime.read_data()
             self.crime.set_time_attributes(time)
-            self.plot(path_output=self.path_time, plotting_column=time)
+            self.path_output = self.path_time
+            self.plot(plotting_column=time)
+            self.filenames.append(self.path_time)
 
     def plot(self, **additional_kwargs):
         self.crime.process()
-        self.crime.generate_title()
-        self.crime.plot(**self.kwargs, **additional_kwargs)
+        self.reset_title()
+        self.crime.plot(path_output=self.path_output, **self.kwargs, **additional_kwargs)
+
+    def reset_title(self):
+        if self.crime.title not in [None, False]:
+            self.crime.title = None
+    
+    def create_animation(self):
+        self.set_path_gif()
+        with imageio.get_writer(self.path_gif, mode='I') as writer:
+            for filename in self.filenames:
+                image = imageio.imread(filename)
+                writer.append_data(image)
+
+    def set_path_gif(self):
+        self.crime.month = "All"
+        self.crime.year = "All"
+        self.crime.plot_obj.do_set_name()
+        name = f"{self.crime.plot_obj.name}.gif"
+        self.path_gif = os.path.join(self.path_output, name)
+        print(self.path_gif)
 
 defaults.load(Plotter)
 

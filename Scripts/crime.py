@@ -184,13 +184,20 @@ class Crime():
         self.filter_property("lsoa", "LSOA")
         self.filter_property("minor", "Minor Category")
         self.filter_property("major", "Major Category")
-        self.filter_property("month", "Month")
-        self.filter_property("year", "Year")
+        self.filter_time("month")
+        self.filter_time("year")
 
     def filter_property(self, attribute, property_name):
         if hasattr(self, attribute) and getattr(self, attribute) is not None:
             self.crime = self.crime.loc[self.crime[property_name] ==
                                         getattr(self, attribute)]
+
+    def filter_time(self, attribute):
+        if hasattr(self, attribute) and getattr(self, attribute) is not None:
+            time_columns = get_time_columns(self.crime)
+            columns_to_drop = [column for column in time_columns
+                               if str(getattr(self, attribute)) not in str(column)]
+            self.crime = self.crime.drop(columns_to_drop, axis=1)
 
     def remove_major(self, category="Fraud and Forgery"):
         self.crime = self.crime.loc[self.crime["Major Category"] != category]
