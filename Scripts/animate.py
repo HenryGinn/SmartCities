@@ -9,7 +9,6 @@ class Animate():
 
     def __init__(self, plotter):
         self.plotter = plotter
-        self.plotter.format = "png"
         self.path_gif = f"{os.path.split(self.plotter.path_output)[0]}.gif"
     
     def create_animation(self):
@@ -29,12 +28,13 @@ class Animate():
         return image
 
     def get_buffer(self, time, index):
-        self.plotter.create_plot_time(time)
+        self.plotter.create_plot_time(time, format="png", output=None)
         buffer = io.BytesIO()
         return buffer
 
     def get_image(self, buffer):
-        plt.savefig(buffer, bbox_inches="tight", pad_inches=self.plotter.crime.plot_obj.pad_inches)
+        plt.savefig(buffer, bbox_inches="tight",
+                    pad_inches=self.plotter.crime.plot_obj.pad_inches)
         buffer.seek(0)
         image = PIL.Image.open(buffer)
         return image

@@ -201,10 +201,10 @@ class Plotter():
         for time in self.time_columns:
             self.create_plot_time(time)
 
-    def create_plot_time(self, time):
+    def create_plot_time(self, time, **kwargs):
         self.set_time_attributes(time)
         self.plot(month=self.month, year=self.year,
-                  vmin=self.vmin, vmax=self.vmax)
+                  vmin=self.vmin, vmax=self.vmax, **kwargs)
 
     def set_time_attributes(self, time):
         if self.crime.agg_time not in [None, "Total"]:
