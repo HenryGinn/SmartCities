@@ -6,8 +6,6 @@
 	"lsoa": null,
 	"major": null,
 	"minor": null,
-	"month": null,
-	"year": null,
 	"population_weighted": true,
 	"per_n_people": "100,000"
 }

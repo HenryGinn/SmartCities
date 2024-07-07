@@ -18,7 +18,7 @@ from hgutilities import utils
 import imageio
 
 from crime import Crime
-from plot import Plot
+from animate import Animate
 from utils import get_time_columns
 
 
@@ -43,7 +43,8 @@ class Plotter():
         if self.absolute:
             self.path_absolute = os.path.join(self.path_output_base, "Absolute")
         else:
-            self.path_absolute = os.path.join(self.path_output_base, "Per 100k")
+            self.path_absolute = os.path.join(self.path_output_base,
+                f"Per {self.per_n_people.replace(',000', 'k')}")
 
     def process_region(self):
         match self.region:
@@ -126,9 +127,14 @@ class Plotter():
         self.process_time()
 
     def process_time(self):
+        self.crime.process()
+        self.populate_terminal_folder()
+        self.crime.read_data()
+
+    def populate_terminal_folder(self):
+        self.time_columns = get_time_columns(self.crime.crime)
         self.set_time_properties()
         utils.make_folder(self.path_time)
-        self.time_columns = get_time_columns(self.crime.crime)
         self.process_time_columns()
 
     def set_time_properties(self):
@@ -140,6 +146,7 @@ class Plotter():
 
     def set_time_properties_full(self):
         self.path_time = os.path.join(self.path_crime, "All")
+        self.filter_time_interval()
 
     def set_time_properties_month(self):
         self.crime.agg_time = "Month"
@@ -148,10 +155,22 @@ class Plotter():
     def set_time_properties_year(self):
         self.crime.agg_time = "Year"
         self.path_time = os.path.join(self.path_crime, "Years")
+        self.filter_time_interval()
 
     def set_time_properties_total(self):
         self.crime.agg_time = "Total"
         self.path_time = self.path_resolution
+
+    def filter_time_interval(self):
+        self.set_valid_years()
+        self.time_columns = sorted(
+            [column for column in self.time_columns
+             if int(column[:4]) in self.valid_years])
+
+    def set_valid_years(self):
+        self.valid_years = list(range(
+            2010 if self.start is None else self.start,
+            2025 if self.end is None else self.end+1))
 
     def process_time_columns(self):
         if self.crime.agg_time == "Total":
@@ -165,22 +184,30 @@ class Plotter():
         self.crime.read_data()
 
     def process_time_non_total(self):
-        self.filenames = []
+        self.path_output = self.path_time
         self.create_plots_time()
         if self.animate:
             self.create_animation()
 
     def create_plots_time(self):
         for time in self.time_columns:
-            self.crime.read_data()
-            self.crime.set_time_attributes(time)
-            self.path_output = self.path_time
-            self.plot(plotting_column=time)
-            self.filenames.append(self.path_time)
+            self.set_time_attributes(time)
+            self.plot(month=self.month, year=self.year)
+
+    def set_time_attributes(self, time):
+        if self.crime.agg_time not in [None, "Total"]:
+            setattr(self, self.crime.agg_time.lower(), time)
+        else:
+            self.year, self.month = time.split(" ")
+            self.year = int(self.year)
 
     def plot(self, **additional_kwargs):
-        self.crime.process()
-        self.crime.plot(path_output=self.path_output, **self.kwargs, **additional_kwargs)
+        self.crime.plot(path_output=self.path_output,
+                        **self.kwargs, **additional_kwargs)
+
+    def create_animation(self):
+        self.animate_obj = Animate(self, self.path_output)
+        self.animate_obj.create_animation()
 
 defaults.load(Plotter)
 

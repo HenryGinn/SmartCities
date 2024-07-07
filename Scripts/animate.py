@@ -1,8 +1,9 @@
+import imageio
+
 class Animate():
 
-    def __init__(self, crime, path):
-        self.crime = crime
-        self.path = path
+    def __init__(self, base_path):
+        self.base_path = base_path
     
     def create_animation(self):
         self.set_path_gif()
@@ -12,8 +13,4 @@ class Animate():
                 writer.append_data(image)
 
     def set_path_gif(self):
-        self.crime.month = "All"
-        self.crime.year = "All"
-        self.crime.plot_obj.do_set_name()
-        name = f"{self.crime.plot_obj.name}.gif"
         self.path_gif = os.path.join(self.path_output, name)

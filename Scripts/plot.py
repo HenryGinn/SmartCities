@@ -131,8 +131,9 @@ class Plot():
 
     def filter_plottable_columns_by_time_component(self, attribute):
         if hasattr(self, attribute):
-            self.plottable_columns = [column for column in self.plottable_columns
-                                      if str(getattr(self, attribute)) in column]
+            self.plottable_columns = sorted(
+                [column for column in self.plottable_columns
+                 if str(getattr(self, attribute)) in column])
 
     def process_plottable_columns(self):
         plottable_column_count = len(self.plottable_columns)
@@ -151,7 +152,7 @@ class Plot():
 
     def non_extractable_plottable_column_multiple(self):
         raise Exception("Multiple columns could potentially be plotted\n"
-                        "Specify one with the plot_column kwarg or drop all other columns\n"
+                        "Specify one with the plot_column kwarg or month and year kwargs\n"
                         f"Plottable columns: {', '.join(self.plottable_columns)}")
 
     def print_spatial(self):
@@ -339,7 +340,6 @@ class Plot():
             ax=self.ax, **self.lsoa_value_kwargs,
             **self.edge_kwargs_lsoa,
             **self.colorbar_kwargs)
-    
 
     def output_figure(self):
         self.set_figure_name()
@@ -351,7 +351,7 @@ class Plot():
     def set_figure_name(self):
         self.figure_name = utils.get_file_name({
             "Region": self.crime.region, "Crime": self.crime.crime_type,
-            "Year": self.crime.time_year, "Month": self.crime.time_month,
+            "Year": self.year, "Month": self.month,
             "Resolution": self.crime.agg_spatial, "Log": self.log})
         self.fig.canvas.manager.set_window_title(self.figure_name)
 

@@ -50,8 +50,6 @@ class Crime():
     def set_property_values(self):
         self.region = self.get_region()
         self.crime_type = self.get_crime_type()
-        self.set_time_month()
-        self.set_time_year()
 
     def get_region(self):
         if self.lsoa is not None:
@@ -66,18 +64,6 @@ class Crime():
         if self.major is not None:
             return self.major
         return "Total"
-
-    def set_time_month(self):
-        if self.month is not None:
-            self.time_month = self.month
-        else:
-            self.time_month = "All"
-
-    def set_time_year(self):
-        if self.year is not None:
-            self.time_year = self.year
-        else:
-            self.time_year = "All"
 
     def aggregate(self):
         self.aggregate_spatial()
@@ -191,10 +177,6 @@ class Crime():
         return group_columns
 
     def filter(self):
-        self.filter_properties()
-        self.filter_timewise()
-
-    def filter_properties(self):
         self.filter_property("borough", "Borough")
         self.filter_property("lsoa", "LSOA")
         self.filter_property("minor", "Minor Category")
@@ -204,17 +186,6 @@ class Crime():
         if hasattr(self, attribute) and getattr(self, attribute) is not None:
             self.crime = self.crime.loc[self.crime[property_name] ==
                                         getattr(self, attribute)]
-
-    def filter_timewise(self):
-        self.filter_time("month")
-        self.filter_time("year")
-
-    def filter_time(self, attribute):
-        if hasattr(self, attribute) and getattr(self, attribute) is not None:
-            time_columns = get_time_columns(self.crime)
-            columns_to_drop = [column for column in time_columns
-                               if str(getattr(self, attribute)) not in str(column)]
-            self.crime = self.crime.drop(columns_to_drop, axis=1)
 
     def population_weight_data(self):
         if self.population_weighted:
@@ -229,13 +200,6 @@ class Crime():
 
     def remove_major(self, category="Fraud and Forgery"):
         self.crime = self.crime.loc[self.crime["Major Category"] != category]
-
-    def set_time_attributes(self, time):
-        if self.agg_time not in [None, "Total"]:
-            setattr(self, self.agg_time.lower(), time)
-        else:
-            self.year, self.month = time.split(" ")
-            self.year = int(self.year)
 
     def plot(self, **kwargs):
         self.plot_obj = Plot(self, **kwargs)

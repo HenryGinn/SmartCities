@@ -1,7 +1,11 @@
 {
-	"absolute": true,
+	"absolute": false,
 	"region": "City",
 	"resolution": "LSOA",
 	"crime_type": "Major",
-	"time": "Total"
+	"time": "Total",
+	"start": null,
+	"end": null,
+	"per_n_people": "100,000",
+	"animate": false
 }

@@ -31,10 +31,6 @@ from utils import get_capitalised
 from hgutilities.utils import get_dict_string
 
 
-months = ["January", "February", "March", "April", "May", "June", "July",
-          "August", "September", "October", "November", "December"]
-
-
 class PreProcess():
 
     def __init__(self):
@@ -119,7 +115,7 @@ class PreProcess():
         self.crime = self.crime.rename(columns=time_columns_dict)
 
     def get_time_column(self, name):
-        year, month = int(name[:4]), months[int(name[4:])-1]
+        year, month = name[:4], name[4:]
         new_name = f"{year} {month}"
         return new_name
 
