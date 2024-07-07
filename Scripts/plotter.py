@@ -180,27 +180,7 @@ class Plotter():
 
     def plot(self, **additional_kwargs):
         self.crime.process()
-        self.reset_title()
         self.crime.plot(path_output=self.path_output, **self.kwargs, **additional_kwargs)
-
-    def reset_title(self):
-        if self.crime.title not in [None, False]:
-            self.crime.title = None
-    
-    def create_animation(self):
-        self.set_path_gif()
-        with imageio.get_writer(self.path_gif, mode='I') as writer:
-            for filename in self.filenames:
-                image = imageio.imread(filename)
-                writer.append_data(image)
-
-    def set_path_gif(self):
-        self.crime.month = "All"
-        self.crime.year = "All"
-        self.crime.plot_obj.do_set_name()
-        name = f"{self.crime.plot_obj.name}.gif"
-        self.path_gif = os.path.join(self.path_output, name)
-        print(self.path_gif)
 
 defaults.load(Plotter)
 

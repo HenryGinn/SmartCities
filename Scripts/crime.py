@@ -9,6 +9,7 @@ Data can be aggregated over the following:
 
 
 import os
+import warnings
 import textwrap
 
 import pandas as pd
@@ -19,8 +20,6 @@ from hgutilities.utils import get_dict_string
 
 from plot import Plot
 from timeseries import Time
-from utils import get_capitalised
-from utils import add_line_breaks
 from utils import get_time_columns
 
 
@@ -46,6 +45,7 @@ class Crime():
         self.set_property_values()
         self.filter()
         self.aggregate()
+        self.population_weight_data()
 
     def set_property_values(self):
         self.region = self.get_region()
@@ -161,6 +161,12 @@ class Crime():
         self.aggregate_and_group(agg_functions, group_columns)
 
     def aggregate_and_group(self, agg_functions, group_columns):
+        if "Population" in self.crime.columns.values:
+            self.do_aggregate_and_group(agg_functions, group_columns)
+        else:
+            self.aggregating_weighted_data_warning()
+
+    def do_aggregate_and_group(self, agg_functions, group_columns):
         agg_functions.update(self.get_aggregation_functions_time())
         group_by_columns = self.get_groupby_columns(group_columns)
         self.crime = self.crime.groupby(group_by_columns)
@@ -168,6 +174,11 @@ class Crime():
         columns_to_drop = [column for column in agg_functions
                            if agg_functions[column] == "first"]
         self.crime = self.crime.drop(columns_to_drop, axis=1)
+
+    def aggregating_weighted_data_warning(self):
+        warnings.warn("Population column missing, the data may have been"
+                      "population weighted, and should not be aggregated",
+                      UserWarning)
 
     def get_aggregation_functions_time(self):
         months = get_time_columns(self.crime)
@@ -180,17 +191,23 @@ class Crime():
         return group_columns
 
     def filter(self):
+        self.filter_properties()
+        self.filter_timewise()
+
+    def filter_properties(self):
         self.filter_property("borough", "Borough")
         self.filter_property("lsoa", "LSOA")
         self.filter_property("minor", "Minor Category")
         self.filter_property("major", "Major Category")
-        self.filter_time("month")
-        self.filter_time("year")
 
     def filter_property(self, attribute, property_name):
         if hasattr(self, attribute) and getattr(self, attribute) is not None:
             self.crime = self.crime.loc[self.crime[property_name] ==
                                         getattr(self, attribute)]
+
+    def filter_timewise(self):
+        self.filter_time("month")
+        self.filter_time("year")
 
     def filter_time(self, attribute):
         if hasattr(self, attribute) and getattr(self, attribute) is not None:
@@ -198,6 +215,17 @@ class Crime():
             columns_to_drop = [column for column in time_columns
                                if str(getattr(self, attribute)) not in str(column)]
             self.crime = self.crime.drop(columns_to_drop, axis=1)
+
+    def population_weight_data(self):
+        if self.population_weighted:
+            self.per_n_people_int = int(str(self.per_n_people).replace(",", ""))
+            self.weight_time_columns_by_population()
+            self.crime = self.crime.drop(columns="Population")
+
+    def weight_time_columns_by_population(self):
+        time_columns = get_time_columns(self.crime)
+        self.crime[time_columns] = (self.per_n_people_int
+            * self.crime[time_columns].values / self.crime["Population"].values[:, None])
 
     def remove_major(self, category="Fraud and Forgery"):
         self.crime = self.crime.loc[self.crime["Major Category"] != category]
@@ -208,49 +236,10 @@ class Crime():
         else:
             self.year, self.month = time.split(" ")
             self.year = int(self.year)
-        
-
-    def generate_title(self):
-        if self.title is None:
-            self.do_generate_title()
-        elif self.title is False:
-            self.title = None
-
-    def do_generate_title(self):
-        self.set_title_base()
-        self.title_flat = get_capitalised(self.title)
-        self.title = add_line_breaks(self.title_flat)
-
-    def set_title_base(self):
-        self.title = (f"{self.get_title_crime()} in "
-                      f"{self.get_title_location()} "
-                      f"{self.get_title_time()}")
-
-    def get_title_crime(self):
-        match self.agg_crime:
-            case "Minor": return self.minor
-            case "Major": return self.major
-            case "Total": return "Total Crime"
-
-    def get_title_location(self):
-        if self.borough is not None:
-            return self.borough
-        else:
-            return "London"
-
-    def get_title_time(self):
-        match self.agg_time:
-            case "Month": return f"in {self.month}"
-            case "Year": return f"in {self.year}"
-            case "Total": return "Since 2010"
-            case _: return f"in {self.month} {self.year}"
 
     def plot(self, **kwargs):
-        kwargs.update({**self.kwargs})
-        defaults.kwargs(self, kwargs)
-        self.generate_title()
         self.plot_obj = Plot(self, **kwargs)
-        self.plot_obj.plot()
+        self.plot_obj.plot(**kwargs)
 
     def time(self, **kwargs):
         self.time_obj = Time(self, **kwargs)

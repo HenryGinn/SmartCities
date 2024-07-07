@@ -8,6 +8,7 @@ contains data about each borough then it will not draw in the LSOA regions.
 
 
 import os
+from copy import deepcopy
 
 from hgutilities import defaults
 from hgutilities import utils
@@ -18,6 +19,10 @@ from shapely.wkt import loads
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib.colors import LogNorm
 
+from utils import get_capitalised
+from utils import add_line_breaks
+from utils import get_time_columns
+
 
 plt.rcParams["font.family"] = "Times New Roman"
 
@@ -25,14 +30,13 @@ class Plot():
 
     def __init__(self, crime, **kwargs):
         defaults.kwargs(self, kwargs)
-        self.crime = crime
-        self.data = crime.crime
+        self.crime = deepcopy(crime)
+        self.data = self.crime.crime
         self.columns = list(self.data.columns.values)
         self.determine_settings()
 
     def determine_settings(self):
         self.determine_spatial_scope()
-        self.determine_plot_column()
         self.determine_edge_data()
         self.determine_spatial_plot_types()
 
@@ -65,52 +69,6 @@ class Plot():
             lsoas = list(set(self.data["LSOA"]))
             if len(lsoas) == 1:
                 self.spatial_upper = "LSOA"
-    
-
-    def determine_plot_column(self):
-        if not hasattr(self, "plot_column") or self.plot_column is None:
-            self.set_plot_column()
-
-    def set_plot_column(self):
-        non_plot_columns = set([
-            "LSOA", "Borough", "Minor Category", "Major Category"])
-        self.plottable_columns = list(set(self.columns) - non_plot_columns)
-        self.process_plottable_columns()
-
-    def process_plottable_columns(self):
-        plottable_column_count = len(self.plottable_columns)
-        match plottable_column_count:
-            case 2: self.plot_column_population_check()
-            case 1: self.set_non_population_weighted_plot_column()
-            case 0: self.non_extractable_plottable_column_empty()
-            case _: self.non_extractable_plottable_column_multiple()
-
-    def plot_column_population_check(self):
-        if "Population" in self.plottable_columns:
-            self.plottable_columns.remove("Population")
-            self.plot_column = self.plottable_columns[0]
-            self.population_weighted = True
-        else:
-            self.non_extractable_plottable_column_multiple()
-
-    def set_non_population_weighted_plot_column(self):
-        self.plot_column = self.plottable_columns[0]
-        self.population_weighted = False
-
-    def non_extractable_plottable_column_empty(self):
-        raise Exception("No plottable columns could be found\n"
-                        f"Columns: {', '.join(self.columns)}")
-
-    def non_extractable_plottable_column_multiple(self):
-        raise Exception("Multiple columns could potentially be plotted\n"
-                        "Specify one with the plot_column kwarg or drop all other columns\n"
-                        f"Plottable columns: {', '.join(self.plottable_columns)}")
-
-    def print_spatial(self):
-        if hasattr(self, "spatial_lower") and hasattr(self, "spatial_upper"):
-            properties = {"Spatial lower": self.spatial_lower,
-                          "Spatial upper": self.spatial_upper}
-            print(utils.get_dict_string(properties))
     
 
     # The upper values for the edge properties are used
@@ -154,24 +112,125 @@ class Plot():
             ("LSOA",    "Borough"):    ("Blank",   "Outline", "Values"),
             ("LSOA",    "LSOA"):    ("Blank",   "Blank",   "Values")
             }[(self.spatial_lower, self.spatial_upper)]
+
+
+    def set_plot_column(self):
+        if self.plot_column is None:
+            self.do_set_plot_column()
+
+    def do_set_plot_column(self):
+        non_plot_columns = set([
+            "LSOA", "Borough", "Minor Category", "Major Category"])
+        self.plottable_columns = list(set(self.columns) - non_plot_columns)
+        self.filter_plottable_columns_by_time()
+        self.process_plottable_columns()
+
+    def filter_plottable_columns_by_time(self):
+        self.filter_plottable_columns_by_time_component("month")
+        self.filter_plottable_columns_by_time_component("year")
+
+    def filter_plottable_columns_by_time_component(self, attribute):
+        if hasattr(self, attribute):
+            self.plottable_columns = [column for column in self.plottable_columns
+                                      if str(getattr(self, attribute)) in column]
+
+    def process_plottable_columns(self):
+        plottable_column_count = len(self.plottable_columns)
+        match plottable_column_count:
+            case 1: self.set_unique_plot_column()
+            case 0: self.non_extractable_plottable_column_empty()
+            case _: self.non_extractable_plottable_column_multiple()
+
+    def set_unique_plot_column(self):
+        self.plot_column = self.plottable_columns[0]
+        self.population_weighted = False
+
+    def non_extractable_plottable_column_empty(self):
+        raise Exception("No plottable columns could be found\n"
+                        f"Columns: {', '.join(self.columns)}")
+
+    def non_extractable_plottable_column_multiple(self):
+        raise Exception("Multiple columns could potentially be plotted\n"
+                        "Specify one with the plot_column kwarg or drop all other columns\n"
+                        f"Plottable columns: {', '.join(self.plottable_columns)}")
+
+    def print_spatial(self):
+        if hasattr(self, "spatial_lower") and hasattr(self, "spatial_upper"):
+            properties = {"Spatial lower": self.spatial_lower,
+                          "Spatial upper": self.spatial_upper}
+            print(utils.get_dict_string(properties))
     
 
-    def plot(self):
+    def plot(self, **kwargs):
+        self.preplot_checks_and_settings(**kwargs)
         self.setup_figure()
         self.plot_values()
         self.plot_peripheries()
         self.output_figure()
 
+    def preplot_checks_and_settings(self, **kwargs):
+        defaults.kwargs(self, kwargs)
+        self.set_plot_column()
+        self.check_crime_category("Major")
+        self.check_crime_category("Minor")
+
+    def check_crime_category(self, crime_type):
+        if f"{crime_type} Category" in self.data.columns.values:
+            crime_types = set(self.data[f"{crime_type} Category"].values)
+            if len(crime_types) > 1:
+                raise self.crime_category_not_defined(crime_types)
+
+    def crime_category_not_defined(self, crime_types):
+        raise ValueError("Crime category is not defined.\n"
+                         "Either aggregate or filter to a unique crime\n"
+                         f"Categories: {', '.join(crime_types)}")
+
     def setup_figure(self):
         plt.close('all')
-        self.fig, self.ax = plt.subplots(1, figsize=(6, 5))
+        self.fig, self.ax = plt.subplots(1, figsize=self.figsize)
         self.set_colorbar_kwargs()
-        self.population_weight_data()
         
     def plot_peripheries(self):
         self.ax.set_axis_off()
-        self.ax.set_title(self.crime.title, fontsize=self.fontsize_title)
+        self.set_title()
         self.fig.axes[1].tick_params(labelsize=self.fontsize_colorbar)
+
+    def set_title(self):
+        self.generate_title()
+        self.ax.set_title(self.title, fontsize=self.fontsize_title)
+
+    def generate_title(self):
+        if self.title is None and self.no_title is False:
+            self.do_generate_title()
+
+    def do_generate_title(self):
+        self.set_title_base()
+        self.title_flat = get_capitalised(self.title)
+        self.title = add_line_breaks(self.title_flat)
+
+    def set_title_base(self):
+        self.title = (f"{self.get_title_crime()} in "
+                      f"{self.get_title_location()} "
+                      f"{self.get_title_time()}")
+
+    def get_title_crime(self):
+        match self.crime.agg_crime:
+            case "Minor": return self.crime.minor
+            case "Major": return self.crime.major
+            case "Total": return "Total Crime"
+
+    def get_title_location(self):
+        if self.crime.borough is not None:
+            return self.crime.borough
+        else:
+            return "London"
+
+    def get_title_time(self):
+        match self.crime.agg_time:
+            case "Month": return f"in {self.month}"
+            case "Year": return f"in {self.year}"
+            case "Total": return "Since 2010"
+            case _: return f"in {self.month} {self.year}"
 
     def set_colorbar_kwargs(self):
         self.setup_colorbar()
@@ -186,29 +245,22 @@ class Plot():
         self.set_colorbar_label()
 
     def set_colorbar_label(self):
-        if self.population_weighted:
+        if self.crime.population_weighted:
             self.set_colorbar_label_weighted()
-            self.per_n_people_int = int(str(self.per_n_people).replace(",", ""))
         else:
             self.colorbar_label = "Reported Crimes"
 
     def set_colorbar_label_weighted(self):
-        if str(self.per_n_people) == "1":
+        if str(self.crime.per_n_people) == "1":
             self.colorbar_label = "Reported Crimes Per Person"
         else:
-            self.colorbar_label = f"Reported Crimes Per {self.per_n_people} People"
+            self.colorbar_label = f"Reported Crimes Per {self.crime.per_n_people} People"
 
     def set_norm(self):
         if self.log:
             self.norm=LogNorm()
         else:
             self.norm = None
-
-    def population_weight_data(self):
-        self.data = self.data.copy()
-        if self.population_weighted:
-            self.data[self.plot_column] = (self.per_n_people_int
-                * self.data[self.plot_column] / self.data["Population"])
 
     def plot_values(self):
         self.plot_lsoa()
@@ -287,35 +339,32 @@ class Plot():
             ax=self.ax, **self.lsoa_value_kwargs,
             **self.edge_kwargs_lsoa,
             **self.colorbar_kwargs)
+    
 
     def output_figure(self):
-        if self.save:
-            self.save_figure()
-        else:
-            plt.show()
+        self.set_figure_name()
+        match self.output:
+            case "save": self.save_figure()
+            case "show": plt.show()
+            case _: pass
 
-    def save_figure(self):
-        self.set_name()
-        self.set_path_output()
-        plt.savefig(self.path_output, format=self.format)#, bbox_inches="tight")
-
-    def set_name(self):
-        if self.crime.name is None:
-            self.do_set_name()
-        else:
-            self.name = self.crime.name
-
-    def do_set_name(self):
-        self.name = utils.get_file_name({
+    def set_figure_name(self):
+        self.figure_name = utils.get_file_name({
             "Region": self.crime.region, "Crime": self.crime.crime_type,
             "Year": self.crime.time_year, "Month": self.crime.time_month,
             "Resolution": self.crime.agg_spatial, "Log": self.log})
+        self.fig.canvas.manager.set_window_title(self.figure_name)
+
+    def save_figure(self):
+        self.set_path_output()
+        plt.savefig(self.path_output, format=self.format,
+                    bbox_inches=self.bbox_inches)
 
     def set_path_output(self):
         if not hasattr(self, "path_output"):
             self.path_output = path_output_base
         self.path_output = os.path.join(
-            self.path_output, f"{self.name}.{self.format}")
+            self.path_output, f"{self.figure_name}.{self.format}")
 
 defaults.load(Plot)
 

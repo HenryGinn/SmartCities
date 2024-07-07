@@ -8,6 +8,6 @@
 	"minor": null,
 	"month": null,
 	"year": null,
-	"title": null,
-	"name": null
+	"population_weighted": true,
+	"per_n_people": "100,000"
 }

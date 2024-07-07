@@ -1,6 +1,7 @@
 {
 	"log": true,
-	"save": true,
+	"plot_column": null,
+	"output": "save",
 	"legend": true,
 	"format": "pdf",
 	"edgecolor_upper": "black",
@@ -12,6 +13,8 @@
 	"cmap": "Purples",
 	"fontsize_colorbar": 15,
 	"fontsize_title": 20,
-	"population_weighted": true,
-	"per_n_people": "100,000"
+	"bbox_inches": "tight",
+	"title": null,
+	"no_title": false,
+	"figsize": null
 }
