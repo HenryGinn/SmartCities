@@ -14,7 +14,10 @@
 	"fontsize_colorbar": 15,
 	"fontsize_title": 20,
 	"bbox_inches": "tight",
+	"pad_inches": 0.1,
 	"title": null,
 	"no_title": false,
-	"figsize": null
+	"figsize": null,
+	"vmin": null,
+	"vmax": null
 }

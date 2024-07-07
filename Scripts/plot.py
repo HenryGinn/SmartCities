@@ -30,7 +30,7 @@ class Plot():
 
     def __init__(self, crime, **kwargs):
         defaults.kwargs(self, kwargs)
-        self.crime = deepcopy(crime)
+        self.crime = crime
         self.data = self.crime.crime
         self.columns = list(self.data.columns.values)
         self.determine_settings()
@@ -126,14 +126,20 @@ class Plot():
         self.process_plottable_columns()
 
     def filter_plottable_columns_by_time(self):
-        self.filter_plottable_columns_by_time_component("month")
-        self.filter_plottable_columns_by_time_component("year")
+        self.filter_plottable_columns_by_time_month()
+        self.filter_plottable_columns_by_time_year()
 
-    def filter_plottable_columns_by_time_component(self, attribute):
-        if hasattr(self, attribute):
+    def filter_plottable_columns_by_time_month(self):
+        if hasattr(self, "month"):
             self.plottable_columns = sorted(
                 [column for column in self.plottable_columns
-                 if str(getattr(self, attribute)) in column])
+                 if str(self.month) in column[-2:]])
+
+    def filter_plottable_columns_by_time_year(self):
+        if hasattr(self, "year"):
+            self.plottable_columns = sorted(
+                [column for column in self.plottable_columns
+                 if str(self.year) in column[:4]])
 
     def process_plottable_columns(self):
         plottable_column_count = len(self.plottable_columns)
@@ -231,12 +237,19 @@ class Plot():
             case "Month": return f"in {self.month}"
             case "Year": return f"in {self.year}"
             case "Total": return "Since 2010"
-            case _: return f"in {self.month} {self.year}"
+            case _: return self.get_title_time_full()
+
+    def get_title_time_full(self):
+        if self.animate:
+            return f"in {self.year}"
+        else:
+            return f"in {self.month} {self.year}"
 
     def set_colorbar_kwargs(self):
         self.setup_colorbar()
         self.colorbar_kwargs = {
-            "cax": self.cax, "norm": self.norm, "cmap": self.cmap,
+            "cax": self.cax, "cmap": self.cmap, "norm": self.norm,
+            "vmin": self.vmin, "vmax": self.vmax,
             "legend_kwds": {"label": self.colorbar_label}}
 
     def setup_colorbar(self):
@@ -259,7 +272,7 @@ class Plot():
 
     def set_norm(self):
         if self.log:
-            self.norm=LogNorm()
+            self.norm=LogNorm(vmin=self.vmin, vmax=self.vmax)
         else:
             self.norm = None
 

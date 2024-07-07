@@ -12,6 +12,7 @@ The information is organised in a dictionary according to the following:
 
 
 import os
+from math import ceil, floor
 
 from hgutilities import defaults
 from hgutilities import utils
@@ -185,14 +186,25 @@ class Plotter():
 
     def process_time_non_total(self):
         self.path_output = self.path_time
-        self.create_plots_time()
+        self.set_vmin_and_vmax()
         if self.animate:
             self.create_animation()
+        else:
+            self.create_plots_time()
+
+    def set_vmin_and_vmax(self):
+        values = self.crime.crime[self.time_columns].values
+        self.vmin = max(1, floor(values.min()))
+        self.vmax = ceil(values.max())
 
     def create_plots_time(self):
         for time in self.time_columns:
-            self.set_time_attributes(time)
-            self.plot(month=self.month, year=self.year)
+            self.create_plot_time(time)
+
+    def create_plot_time(self, time):
+        self.set_time_attributes(time)
+        self.plot(month=self.month, year=self.year,
+                  vmin=self.vmin, vmax=self.vmax)
 
     def set_time_attributes(self, time):
         if self.crime.agg_time not in [None, "Total"]:
@@ -206,7 +218,7 @@ class Plotter():
                         **self.kwargs, **additional_kwargs)
 
     def create_animation(self):
-        self.animate_obj = Animate(self, self.path_output)
+        self.animate_obj = Animate(self)
         self.animate_obj.create_animation()
 
 defaults.load(Plotter)

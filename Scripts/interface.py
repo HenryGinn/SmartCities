@@ -19,5 +19,5 @@ from plotter import Plotter
 
 plotter = Plotter()
 plotter.generate(boroughs=["Westminster"], categories_major=["Theft"], animate=True,
-                 time="Full", start=2024, region="Borough", dpi=200, format="png")
+                 time="Full", region="Borough")
 
