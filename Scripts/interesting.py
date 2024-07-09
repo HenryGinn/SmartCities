@@ -7,8 +7,11 @@ metric are then output. This is done both overall and for each crime category.
 """
 
 
-from crime import Crime
+from os.path import join
 
+from hgutilities import utils
+
+from crime import Crime
 from utils import get_time_columns
 
 
@@ -18,6 +21,7 @@ class Interesting():
         self.crime_obj = Crime()
         self.crime = self.crime_obj.crime
         self.major_categories = list(set(self.crime["Major Category"].values))
+        self.path_output = join(self.crime_obj.path_output, "Interesting")
         self.initialise_scores_dataframe()
 
     def analyse(self):
@@ -37,13 +41,16 @@ class Interesting():
         self.scores.loc[:, "Normalised Deviation"] = (
             self.scores["Mean"] / self.scores["Standard Deviation"])
 
-    def output(self, n=10, measure=None):
+    def output(self, measure=None, n=10):
         if measure is None:
             self.process_measure(self.output, n=n)
         else:
-            self.output_overall(measure=measure, n=n)
-            for category in self.major_categories:
-                self.output_category(category, measure=measure, n=n)
+            self.output_measure(measure, n)
+
+    def output_measure(self, measure, n):
+        self.output_overall(measure=measure, n=n)
+        for category in self.major_categories:
+            self.output_category(category, measure=measure, n=n)
 
     def process_measure(self, function, *args, **kwargs):
         measures = [column for column in self.scores.columns.values
@@ -55,7 +62,7 @@ class Interesting():
         if measure is None:
             self.process_measure(output_overall, self.scores)
         else:
-            self.output_from_dataframe(measure, self.scores, n)
+            self.output_from_dataframe(measure, self.scores, "Overall", n)
 
     def output_category(self, category, measure=None, n=10):
         if measure is None:
@@ -65,11 +72,11 @@ class Interesting():
 
     def output_category_measure(self, measure, category, n):
         scores_category = self.scores.loc[self.scores["Major Category"] == category]
-        print(category, end="\t")
-        self.output_from_dataframe(measure, scores_category, n)
+        self.output_from_dataframe(measure, scores_category, category, n)
 
-    def output_from_dataframe(self, measure, scores, n):
-        scores = scores.sort_values(by=measure, ascending=
+    def output_from_dataframe(self, measure, scores, name, n):
+        scores = scores.sort_values(by=measure, ascending=False)
+        
         print(measure)
         print(scores.head(n).to_string())
         print("")
