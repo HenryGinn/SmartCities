@@ -1,5 +1,7 @@
 from crime import Crime
 from plotter import Plotter
+from interesting import Interesting
+
 
 #crime = Crime(agg_time="Total", agg_spatial="Borough", agg_crime="Total", title="Total Crime in London")
 #crime = Crime(agg_time="Total", agg_crime="Total", title="Total Crime in London\nby LSOA Region")
@@ -17,7 +19,18 @@ from plotter import Plotter
 #crime.time()
 #crime.time_plot(save=False, log=True)#, bbox_to_anchor=(0.5, 0.5), squish_vertical=0.35)
 
-plotter = Plotter()
-plotter.generate(boroughs=["Westminster"], categories_major=["Theft"], animate=True,
-                 time="Full", region="Borough")
+#plotter = Plotter()
+#plotter.generate(boroughs=["Westminster"], categories_major=["Theft"], animate=True, time="Full", start=2024, region="Borough")
+#plotter.generate(animate=True, time="Month", region="Borough", crime_type="Total")
+#plotter.generate(animate=True, time="Year", region="Borough", crime_type="Total")
+#plotter.generate(animate=True, time="Full", region="Borough", crime_type="Total")
+#plotter.generate(animate=True, time="Full", region="City", crime_type="Total")
+#plotter.generate(animate=True, time="Month", region="City", crime_type="Total")
+#plotter.generate(animate=True, time="Year", region="City", crime_type="Total")
+#plotter.generate(animate=True, time="Full", region="City", crime_type="Total", resolution="Borough")
+#plotter.generate(animate=True, time="Month", region="City", crime_type="Total", resolution="Borough")
+#plotter.generate(animate=True, time="Year", region="City", crime_type="Total", resolution="Borough")
 
+interesting = Interesting()
+interesting.analyse()
+interesting.output(n=20)

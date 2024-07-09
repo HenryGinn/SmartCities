@@ -1,15 +1,30 @@
-import os
+from os.path import split, join
 import io
 
 import imageio
 import PIL
 import matplotlib.pyplot as plt
+from hgutilities import utils
+
 
 class Animate():
 
     def __init__(self, plotter):
         self.plotter = plotter
-        self.path_gif = f"{os.path.split(self.plotter.path_output)[0]}.gif"
+        self.crime = plotter.crime
+        self.set_path_fig()
+
+    def set_path_fig(self):
+        self.set_gif_name()
+        self.path_base = split(self.plotter.path_output)[0]
+        self.path_gif = join(self.path_base, f"{self.gif_name}.gif")
+        utils.make_folder(self.path_base)
+
+    def set_gif_name(self):
+        self.gif_name = utils.get_file_name({
+            "Region": split(self.plotter.path_region)[1],
+            "Crime": split(self.plotter.path_crime)[1],
+            "Time": self.plotter.time})
     
     def create_animation(self):
         frames = self.get_frames()
@@ -21,7 +36,6 @@ class Animate():
         return frames
 
     def get_frame(self, time, index):
-        print(time)
         buffer = self.get_buffer(time, index)
         image = self.get_image(buffer).copy()
         plt.close()
@@ -34,7 +48,7 @@ class Animate():
 
     def get_image(self, buffer):
         plt.savefig(buffer, bbox_inches="tight",
-                    pad_inches=self.plotter.crime.plot_obj.pad_inches)
+                    pad_inches=self.crime.plot_obj.pad_inches)
         buffer.seek(0)
         image = PIL.Image.open(buffer)
         return image

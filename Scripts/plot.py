@@ -130,13 +130,13 @@ class Plot():
         self.filter_plottable_columns_by_time_year()
 
     def filter_plottable_columns_by_time_month(self):
-        if hasattr(self, "month"):
+        if hasattr(self, "month") and self.month is not None:
             self.plottable_columns = sorted(
                 [column for column in self.plottable_columns
                  if str(self.month) in column[-2:]])
 
     def filter_plottable_columns_by_time_year(self):
-        if hasattr(self, "year"):
+        if hasattr(self, "year") and self.year is not None:
             self.plottable_columns = sorted(
                 [column for column in self.plottable_columns
                  if str(self.year) in column[:4]])
@@ -199,8 +199,15 @@ class Plot():
         
     def plot_peripheries(self):
         self.ax.set_axis_off()
+        self.adjust_colorbar()
         self.set_title()
-        self.fig.axes[1].tick_params(labelsize=self.fontsize_colorbar)
+
+    def adjust_colorbar(self):
+        cbar_fig = self.fig.axes[1]
+        cbar_fig.tick_params(labelsize=self.fontsize_colorbar_ticks)
+        cbar_fig.set_ylabel(cbar_fig.get_ylabel(),
+                            fontsize=self.fontsize_colorbar_label,
+                            labelpad=self.colorbar_label_pad)
 
     def set_title(self):
         self.generate_title()
@@ -213,7 +220,7 @@ class Plot():
     def do_generate_title(self):
         self.set_title_base()
         self.title_flat = get_capitalised(self.title)
-        self.title = add_line_breaks(self.title_flat)
+        self.title = add_line_breaks(self.title_flat, length=35)
 
     def set_title_base(self):
         self.title = (f"{self.get_title_crime()} in "

@@ -99,10 +99,11 @@ class Crime():
         original_time_columns = get_time_columns(self.crime)
         column_groups = self.get_column_groups_month(original_time_columns)
         for month, values in column_groups.items():
-            self.crime[month] = self.crime[values].sum(axis=1)
+            self.crime[month] = self.crime[values].mean(axis=1)
         self.crime = self.crime.drop(original_time_columns, axis=1)
 
     def get_column_groups_month(self, columns):
+        months = sorted(list(set(column[-2:] for column in columns)))
         column_groups = {month: [] for month in months}
         for column in columns:
             column_groups[column.split(" ")[1]].append(column)
@@ -112,14 +113,14 @@ class Crime():
         original_time_columns = get_time_columns(self.crime)
         column_groups = self.get_column_groups_year(original_time_columns)
         for year, values in column_groups.items():
-            self.crime[year] = self.crime[values].sum(axis=1)
+            self.crime[year] = self.crime[values].mean(axis=1)
         self.crime = self.crime.drop(original_time_columns, axis=1)
 
     def get_column_groups_year(self, columns):
         column_groups = {year: [] for year in sorted(
-            list(set([int(column.split(" ")[0]) for column in columns])))}
+            list(set([column.split(" ")[0] for column in columns])))}
         for column in columns:
-            column_group[int(column.split(" ")[0])].append(column)
+            column_groups[column.split(" ")[0]].append(column)
         return column_groups
 
     def aggregate_time_total(self):

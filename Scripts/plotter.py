@@ -105,7 +105,7 @@ class Plotter():
 
     def process_crime_minor_category(self, category):
         self.path_crime = os.path.join(
-            self.path_resolution, "Crime: Minor Categories", category)
+            self.path_resolution, "Crime Minor Categories", category)
         self.crime.minor = category
         self.process_time()
 
@@ -117,25 +117,33 @@ class Plotter():
 
     def process_crime_major_category(self, category):
         self.path_crime = os.path.join(
-            self.path_resolution, "Crime: Major Categories", category)
+            self.path_resolution, f"Major Categories  {self.time}", category)
         self.crime.major = category
         self.crime.agg_crime = "Major"
         self.process_time()
 
     def process_crime_total(self):
-        self.path_crime = os.path.join(self.path_resolution, "Crime: Total")
-        self.crime_agg = "Total"
+        self.path_crime = os.path.join(self.path_resolution, "Crime Total")
+        self.crime.agg_crime = "Total"
         self.process_time()
 
     def process_time(self):
-        self.crime.process()
+        self.print_progress()
         self.populate_terminal_folder()
         self.crime.read_data()
 
+    def print_progress(self):
+        if self.progress:
+            print(utils.get_dict_string({
+                "Borough": self.crime.borough,
+                "Crime": os.path.split(self.path_crime)[1]}))
+            print("")
+
     def populate_terminal_folder(self):
-        self.time_columns = get_time_columns(self.crime.crime)
         self.set_time_properties()
-        utils.make_folder(self.path_time)
+        self.crime.process()
+        self.time_columns = get_time_columns(self.crime.crime)
+        self.filter_time_interval()
         self.process_time_columns()
 
     def set_time_properties(self):
@@ -146,27 +154,30 @@ class Plotter():
             case "Total": self.set_time_properties_total()
 
     def set_time_properties_full(self):
-        self.path_time = os.path.join(self.path_crime, "All")
-        self.filter_time_interval()
+        self.path_time = self.path_crime
+        self.filter_time_needed = True
 
     def set_time_properties_month(self):
         self.crime.agg_time = "Month"
-        self.path_time = os.path.join(self.path_crime, "Months")
+        self.path_time = self.path_crime
+        self.filter_time_needed = False
 
     def set_time_properties_year(self):
         self.crime.agg_time = "Year"
-        self.path_time = os.path.join(self.path_crime, "Years")
-        self.filter_time_interval()
+        self.path_time = self.path_crime
+        self.filter_time_needed = True
 
     def set_time_properties_total(self):
         self.crime.agg_time = "Total"
         self.path_time = self.path_resolution
+        self.filter_time_needed = False
 
     def filter_time_interval(self):
-        self.set_valid_years()
-        self.time_columns = sorted(
-            [column for column in self.time_columns
-             if int(column[:4]) in self.valid_years])
+        if self.filter_time_needed:
+            self.set_valid_years()
+            self.time_columns = sorted(
+                [column for column in self.time_columns
+                 if int(column[:4]) in self.valid_years])
 
     def set_valid_years(self):
         self.valid_years = list(range(
@@ -180,6 +191,7 @@ class Plotter():
             self.process_time_non_total()
 
     def process_time_total(self):
+        utils.make_folder(self.path_time)
         self.path_output = self.path_time
         self.plot()
         self.crime.read_data()
@@ -187,6 +199,9 @@ class Plotter():
     def process_time_non_total(self):
         self.path_output = self.path_time
         self.set_vmin_and_vmax()
+        self.animate_or_not()
+
+    def animate_or_not(self):
         if self.animate:
             self.create_animation()
         else:
@@ -194,10 +209,12 @@ class Plotter():
 
     def set_vmin_and_vmax(self):
         values = self.crime.crime[self.time_columns].values
-        self.vmin = max(1, floor(values.min()))
-        self.vmax = ceil(values.max())
+        if values.size != 0:
+            self.vmin = max(1, floor(values.min()))
+            self.vmax = ceil(values.max())
 
     def create_plots_time(self):
+        utils.make_folder(self.path_time)
         for time in self.time_columns:
             self.create_plot_time(time)
 
@@ -211,7 +228,6 @@ class Plotter():
             setattr(self, self.crime.agg_time.lower(), time)
         else:
             self.year, self.month = time.split(" ")
-            self.year = int(self.year)
 
     def plot(self, **additional_kwargs):
         self.crime.plot(path_output=self.path_output,

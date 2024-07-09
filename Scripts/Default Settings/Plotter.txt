@@ -7,5 +7,10 @@
 	"start": null,
 	"end": null,
 	"per_n_people": "100,000",
-	"animate": false
+	"animate": false,
+	"progress": true,
+	"boroughs": null,
+	"month": null,
+	"year": null,
+	"categories_major": null
 }
