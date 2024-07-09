@@ -30,6 +30,7 @@ class Crime():
         defaults.kwargs(self, kwargs)
         self.set_paths()
         self.read_data()
+        self.set_property_values()
 
     def read_data(self):
         self.crime = pd.read_csv(self.path_crime, index_col="index")

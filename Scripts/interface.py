@@ -33,4 +33,4 @@ from interesting import Interesting
 
 interesting = Interesting()
 interesting.analyse()
-interesting.output(n=20)
+interesting.output_category("Theft", measure="Mean")

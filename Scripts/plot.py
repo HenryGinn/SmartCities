@@ -258,6 +258,7 @@ class Plot():
             "cax": self.cax, "cmap": self.cmap, "norm": self.norm,
             "vmin": self.vmin, "vmax": self.vmax,
             "legend_kwds": {"label": self.colorbar_label}}
+        print(self.colorbar_kwargs)
 
     def setup_colorbar(self):
         divider = make_axes_locatable(self.ax)
@@ -285,16 +286,15 @@ class Plot():
 
     def plot_values(self):
         self.plot_lsoa()
-        self.plot_borough()
-        self.plot_city()
+        #self.plot_borough()
+        #self.plot_city()
 
     def plot_city(self):
         match self.city_plot_type:
             case "Blank":   return
             case "Outline": self.setup_city_outline()
             case "Values":  self.setup_city_values()
-        #self.city = gpd.GeoDataFrame(self.data.iloc[0], geometry=city["geometry"])
-        self.city = pd.concat((city, self.data), join="inner", axis=1)
+        self.city = pd.concat((city, self.data.head(1)), axis=1)
         self.draw_city()
 
     def setup_city_outline(self):
@@ -369,11 +369,15 @@ class Plot():
             case _: pass
 
     def set_figure_name(self):
+        if not hasattr(self, "figure_name") or self.figure_name is None:
+            self.generate_figure_name()
+        self.fig.canvas.manager.set_window_title(self.figure_name)
+
+    def generate_figure_name(self):
         self.figure_name = utils.get_file_name({
             "Region": self.crime.region, "Crime": self.crime.crime_type,
             "Year": self.year, "Month": self.month,
             "Resolution": self.crime.agg_spatial, "Log": self.log})
-        self.fig.canvas.manager.set_window_title(self.figure_name)
 
     def save_figure(self):
         self.set_path_output()

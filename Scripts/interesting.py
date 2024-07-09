@@ -12,17 +12,26 @@ from os.path import join
 from hgutilities import utils
 
 from crime import Crime
+from plot import Plot
 from utils import get_time_columns
 
 
 class Interesting():
 
-    def __init__(self):
+    def __init__(self, **kwargs):
+        self.kwargs = kwargs
         self.crime_obj = Crime()
         self.crime = self.crime_obj.crime
         self.major_categories = list(set(self.crime["Major Category"].values))
-        self.path_output = join(self.crime_obj.path_output, "Interesting")
         self.initialise_scores_dataframe()
+        self.set_paths()
+
+    def set_paths(self):
+        path_base = join(self.crime_obj.path_output_base, "Interesting")
+        self.path_text = join(path_base, "Text")
+        self.path_figures = join(path_base, "Figures")
+        utils.make_folder(self.path_text)
+        utils.make_folder(self.path_figures)
 
     def analyse(self):
         self.add_scores_basic()
@@ -36,12 +45,12 @@ class Interesting():
         self.scores = self.crime.loc[:, self.non_time_columns].copy()
 
     def add_scores_basic(self):
-        self.scores.loc[:, "Mean"] = self.data.mean(axis=1)
-        self.scores.loc[:, "Standard Deviation"] = self.data.std(axis=1)
+        self.scores.loc[:, "Mean"] = self.data.mean(axis=1).round(1)
+        self.scores.loc[:, "Standard Deviation"] = self.data.std(axis=1).round(1)
         self.scores.loc[:, "Normalised Deviation"] = (
-            self.scores["Mean"] / self.scores["Standard Deviation"])
+            self.scores["Mean"] / self.scores["Standard Deviation"]).round(2)
 
-    def output(self, measure=None, n=10):
+    def output(self, measure=None, n=200):
         if measure is None:
             self.process_measure(self.output, n=n)
         else:
@@ -58,13 +67,13 @@ class Interesting():
         for measure in measures:
             function(measure=measure, *args, **kwargs)
 
-    def output_overall(self, measure=None, n=10):
+    def output_overall(self, measure=None, n=200):
         if measure is None:
             self.process_measure(output_overall, self.scores)
         else:
             self.output_from_dataframe(measure, self.scores, "Overall", n)
 
-    def output_category(self, category, measure=None, n=10):
+    def output_category(self, category, measure=None, n=200):
         if measure is None:
             self.process_measure(self.output_category, category)
         else:
@@ -75,12 +84,23 @@ class Interesting():
         self.output_from_dataframe(measure, scores_category, category, n)
 
     def output_from_dataframe(self, measure, scores, name, n):
-        scores = scores.sort_values(by=measure, ascending=False)
-        
-        print(measure)
-        print(scores.head(n).to_string())
-        print("")
+        scores = scores.sort_values(by=measure, ascending=False).copy()
+        name = f"{name}: {measure}"
+        self.output_text(scores.head(n), name, measure)
+        self.output_figure(scores.head(1000), name, measure)
 
+    def output_text(self, scores, name, measure):
+        if False:
+            path = join(self.path_text, f"{name}.csv")
+            scores.to_csv(path)
+
+    def output_figure(self, scores, name, measure):
+        scores = scores.drop(columns=["Major Category", "Minor Category"])
+        self.crime_obj.crime = scores
+        self.plot_obj = Plot(
+            self.crime_obj, path_output=self.path_figures,log=False,
+            title=name, figure_name=name, plot_column=measure, **self.kwargs)
+        self.plot_obj.plot()
 
 
 
