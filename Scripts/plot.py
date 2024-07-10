@@ -258,7 +258,6 @@ class Plot():
             "cax": self.cax, "cmap": self.cmap, "norm": self.norm,
             "vmin": self.vmin, "vmax": self.vmax,
             "legend_kwds": {"label": self.colorbar_label}}
-        print(self.colorbar_kwargs)
 
     def setup_colorbar(self):
         divider = make_axes_locatable(self.ax)
@@ -267,10 +266,11 @@ class Plot():
         self.set_colorbar_label()
 
     def set_colorbar_label(self):
-        if self.crime.population_weighted:
-            self.set_colorbar_label_weighted()
-        else:
-            self.colorbar_label = "Reported Crimes"
+        if self.colorbar_label is None:
+            if self.crime.population_weighted:
+                self.set_colorbar_label_weighted()
+            else:
+                self.colorbar_label = "Reported Crimes"
 
     def set_colorbar_label_weighted(self):
         if str(self.crime.per_n_people) == "1":
@@ -286,8 +286,8 @@ class Plot():
 
     def plot_values(self):
         self.plot_lsoa()
-        #self.plot_borough()
-        #self.plot_city()
+        self.plot_borough()
+        self.plot_city()
 
     def plot_city(self):
         match self.city_plot_type:

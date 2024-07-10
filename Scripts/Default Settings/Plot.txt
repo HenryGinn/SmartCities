@@ -14,6 +14,7 @@
 	"fontsize_title": 24,
 	"fontsize_colorbar_label": 16,
 	"fontsize_colorbar_ticks": 14,
+	"colorbar_label": null,
 	"colorbar_label_pad": 10,
 	"bbox_inches": "tight",
 	"pad_inches": 0.1,

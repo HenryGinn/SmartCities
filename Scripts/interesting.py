@@ -10,6 +10,8 @@ metric are then output. This is done both overall and for each crime category.
 from os.path import join
 
 from hgutilities import utils
+import numpy as np
+import pandas as pd
 
 from crime import Crime
 from plot import Plot
@@ -20,11 +22,15 @@ class Interesting():
 
     def __init__(self, **kwargs):
         self.kwargs = kwargs
-        self.crime_obj = Crime()
-        self.crime = self.crime_obj.crime
+        self.initialise_crime()
         self.major_categories = list(set(self.crime["Major Category"].values))
         self.initialise_scores_dataframe()
         self.set_paths()
+
+    def initialise_crime(self):
+        self.crime_obj = Crime(agg_crime="Major")
+        self.crime_obj.process()
+        self.crime = self.crime_obj.crime
 
     def set_paths(self):
         path_base = join(self.crime_obj.path_output_base, "Interesting")
@@ -86,20 +92,22 @@ class Interesting():
     def output_from_dataframe(self, measure, scores, name, n):
         scores = scores.sort_values(by=measure, ascending=False).copy()
         name = f"{name}: {measure}"
+        print(name)
         self.output_text(scores.head(n), name, measure)
         self.output_figure(scores.head(1000), name, measure)
 
     def output_text(self, scores, name, measure):
-        if False:
+        if True:
             path = join(self.path_text, f"{name}.csv")
             scores.to_csv(path)
 
     def output_figure(self, scores, name, measure):
-        scores = scores.drop(columns=["Major Category", "Minor Category"])
+        scores = scores.drop(columns=["Major Category"])
         self.crime_obj.crime = scores
         self.plot_obj = Plot(
-            self.crime_obj, path_output=self.path_figures,log=False,
-            title=name, figure_name=name, plot_column=measure, **self.kwargs)
+            self.crime_obj, path_output=self.path_figures,
+            title=name, figure_name=name, plot_column=measure, **self.kwargs,
+            population_weighted=False, colorbar_label="Score")
         self.plot_obj.plot()
 
 

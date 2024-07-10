@@ -1,201 +1,201 @@
-index,LSOA,Borough,Major Category,Minor Category,Population,Mean,Standard Deviation,Normalised Deviation
-94510,E01035716,Westminster,Theft,Other Theft,2201,236.0,110.6,2.13
-94512,E01035716,Westminster,Theft,Theft From the Person,2201,193.2,169.6,1.14
-84475,E01004734,Westminster,Theft,Other Theft,1699,167.6,80.5,2.08
-84969,E01004763,Westminster,Theft,Other Theft,2031,159.2,77.1,2.06
-84971,E01004763,Westminster,Theft,Theft From the Person,2031,151.5,128.4,1.18
-84477,E01004734,Westminster,Theft,Theft From the Person,1699,143.5,109.7,1.31
-94511,E01035716,Westminster,Theft,Shoplifting,2201,96.7,29.8,3.24
-84521,E01004736,Westminster,Theft,Other Theft,1547,95.3,37.8,2.52
-84523,E01004736,Westminster,Theft,Theft From the Person,1547,82.3,51.3,1.6
-43293,E01002444,Hillingdon,Theft,Other Theft,1903,76.6,23.2,3.3
-84498,E01004735,Westminster,Theft,Other Theft,2044,72.1,31.1,2.32
-84067,E01004714,Westminster,Theft,Other Theft,1667,56.3,23.9,2.36
-84992,E01004765,Westminster,Theft,Other Theft,1862,49.9,20.6,2.42
-52817,E01002968,Kingston upon Thames,Theft,Shoplifting,2937,47.5,16.3,2.91
-87541,E01033708,Hackney,Theft,Other Theft,1883,47.2,19.1,2.47
-34374,E01001943,Hammersmith and Fulham,Theft,Shoplifting,2225,47.1,15.4,3.06
-94408,E01035711,Camden,Theft,Other Theft,2400,44.9,18.0,2.49
-84923,E01004761,Westminster,Theft,Other Theft,1217,44.5,19.1,2.33
-15914,E01000914,Camden,Theft,Other Theft,1402,43.4,18.1,2.4
-84500,E01004735,Westminster,Theft,Theft From the Person,2044,42.9,33.3,1.29
-91083,E01034220,Newham,Theft,Shoplifting,1188,42.4,24.8,1.71
-87543,E01033708,Hackney,Theft,Theft From the Person,1883,42.3,17.5,2.42
-91082,E01034220,Newham,Theft,Other Theft,1188,42.1,19.3,2.18
-70392,E01003929,Southwark,Theft,Other Theft,1981,39.9,15.7,2.54
-84068,E01004714,Westminster,Theft,Shoplifting,1667,39.6,14.2,2.79
-34373,E01001943,Hammersmith and Fulham,Theft,Other Theft,2225,37.8,12.1,3.12
-91084,E01034220,Newham,Theft,Theft From the Person,1188,37.8,25.2,1.5
-84069,E01004714,Westminster,Theft,Theft From the Person,1667,36.4,28.4,1.28
-84947,E01004762,Westminster,Theft,Other Theft,1579,34.8,13.5,2.58
-16022,E01000919,Camden,Theft,Other Theft,1459,33.1,18.2,1.82
-14817,E01000855,Camden,Theft,Other Theft,1327,32.8,15.3,2.14
-15999,E01000918,Camden,Theft,Other Theft,1805,32.8,17.3,1.9
-52816,E01002968,Kingston upon Thames,Theft,Other Theft,2937,32.7,10.0,3.27
-86261,E01033083,Hounslow,Theft,Shoplifting,2178,32.1,12.1,2.65
-14980,E01000863,Camden,Theft,Other Theft,1479,31.9,13.0,2.45
-94552,E01035718,Westminster,Theft,Other Theft,2659,29.8,13.9,2.14
-85409,E01032582,Lambeth,Theft,Other Theft,2281,28.4,10.7,2.65
-14982,E01000863,Camden,Theft,Theft From the Person,1479,28.1,15.2,1.85
-53593,E01003013,Lambeth,Theft,Other Theft,1934,27.8,9.2,3.02
-14819,E01000855,Camden,Theft,Theft From the Person,1327,26.5,17.4,1.52
-84949,E01004762,Westminster,Theft,Theft From the Person,1579,26.3,20.1,1.31
-84970,E01004763,Westminster,Theft,Shoplifting,2031,25.7,11.4,2.25
-84499,E01004735,Westminster,Theft,Shoplifting,2044,25.7,9.8,2.62
-94410,E01035711,Camden,Theft,Theft From the Person,2400,25.6,15.2,1.68
-84409,E01004731,Westminster,Theft,Other Theft,1996,25.6,12.5,2.05
-84994,E01004765,Westminster,Theft,Theft From the Person,1862,25.3,15.5,1.63
-85599,E01032741,Havering,Theft,Shoplifting,1484,25.3,9.6,2.64
-16024,E01000919,Camden,Theft,Theft From the Person,1459,25.0,25.1,1.0
-14753,E01000850,Camden,Theft,Other Theft,1411,24.8,11.2,2.21
-90676,E01034200,Newham,Theft,Shoplifting,1573,24.6,12.0,2.05
-89450,E01034030,Ealing,Theft,Shoplifting,1834,24.2,11.8,2.05
-35942,E01002026,Haringey,Theft,Shoplifting,1780,23.8,10.8,2.2
-88609,E01033884,Southwark,Theft,Other Theft,1083,23.2,10.3,2.25
-87520,E01033706,Hackney,Theft,Other Theft,1427,23.0,11.4,2.02
-5403,E01000307,Barnet,Theft,Shoplifting,1645,23.0,10.3,2.23
-70581,E01003939,Southwark,Theft,Other Theft,1962,22.7,10.1,2.25
-79457,E01004455,Waltham Forest,Theft,Other Theft,1799,22.5,17.6,1.28
-52818,E01002968,Kingston upon Thames,Theft,Theft From the Person,2937,22.4,11.8,1.9
-35941,E01002026,Haringey,Theft,Other Theft,1780,22.2,8.1,2.74
-87210,E01033594,Westminster,Theft,Other Theft,1514,21.9,8.1,2.7
-83153,E01004658,Westminster,Theft,Other Theft,1548,21.8,12.7,1.72
-90135,E01034156,Sutton,Theft,Shoplifting,1353,21.7,7.3,2.97
-47893,E01002704,Islington,Theft,Other Theft,2341,21.7,9.0,2.41
-54271,E01003047,Lambeth,Theft,Other Theft,1798,21.3,7.5,2.84
-76691,E01004307,Tower Hamlets,Theft,Other Theft,2385,20.9,11.7,1.79
-89449,E01034030,Ealing,Theft,Other Theft,1834,20.9,7.4,2.82
-48284,E01002724,Islington,Theft,Other Theft,1943,20.2,9.1,2.22
-90675,E01034200,Newham,Theft,Other Theft,1573,20.2,6.8,2.97
-84750,E01004750,Westminster,Theft,Other Theft,1634,20.2,7.6,2.66
-48017,E01002711,Islington,Theft,Other Theft,2052,20.2,11.8,1.71
-84948,E01004762,Westminster,Theft,Shoplifting,1579,20.0,20.5,0.98
-11808,E01000676,Bromley,Theft,Shoplifting,2046,19.8,12.5,1.58
-49611,E01002794,Islington,Theft,Other Theft,2028,19.7,11.0,1.79
-15916,E01000914,Camden,Theft,Theft From the Person,1402,19.7,12.7,1.55
-66142,E01003689,Redbridge,Theft,Shoplifting,2230,19.6,6.9,2.84
-87522,E01033706,Hackney,Theft,Theft From the Person,1427,19.5,10.7,1.82
-78333,E01004397,Waltham Forest,Theft,Other Theft,2896,19.2,6.2,3.1
-47895,E01002704,Islington,Theft,Theft From the Person,2341,19.1,10.9,1.75
-27667,E01001559,Enfield,Theft,Other Theft,2127,19.1,11.8,1.62
-67828,E01003783,Redbridge,Theft,Shoplifting,2549,18.8,12.4,1.52
-54273,E01003047,Lambeth,Theft,Theft From the Person,1798,18.7,8.4,2.23
-63063,E01003521,Newham,Theft,Shoplifting,2187,18.0,9.6,1.88
-89909,E01034145,Croydon,Theft,Shoplifting,1330,18.0,7.8,2.31
-14755,E01000850,Camden,Theft,Theft From the Person,1411,17.7,11.0,1.61
-50117,E01002821,Kensington and Chelsea,Theft,Other Theft,1132,17.6,7.4,2.38
-66141,E01003689,Redbridge,Theft,Other Theft,2230,17.5,5.6,3.12
-50096,E01002819,Kensington and Chelsea,Theft,Other Theft,1106,17.4,7.7,2.26
-47734,E01002696,Islington,Theft,Shoplifting,1788,17.3,8.5,2.04
-33556,E01001898,Hammersmith and Fulham,Theft,Other Theft,2100,17.3,6.0,2.88
-34375,E01001943,Hammersmith and Fulham,Theft,Theft From the Person,2225,17.3,8.7,1.99
-33580,E01001899,Hammersmith and Fulham,Theft,Shoplifting,1636,17.2,8.5,2.02
-50097,E01002819,Kensington and Chelsea,Theft,Shoplifting,1106,17.2,10.2,1.69
-84993,E01004765,Westminster,Theft,Shoplifting,1862,17.2,8.5,2.02
-54033,E01003035,Lambeth,Theft,Other Theft,1671,17.0,8.0,2.12
-63062,E01003521,Newham,Theft,Other Theft,2187,16.9,7.1,2.38
-35943,E01002026,Haringey,Theft,Theft From the Person,1780,16.7,8.7,1.92
-89867,E01034143,Croydon,Theft,Shoplifting,1311,16.5,8.0,2.06
-94609,E01035721,Westminster,Theft,Other Theft,2336,16.5,6.8,2.43
-86609,E01033327,Lewisham,Theft,Shoplifting,2169,16.3,9.9,1.65
-37911,E01002129,Harrow,Theft,Shoplifting,2691,16.2,6.6,2.45
-84476,E01004734,Westminster,Theft,Shoplifting,1699,16.2,7.0,2.31
-43294,E01002444,Hillingdon,Theft,Shoplifting,1903,16.0,7.2,2.22
-48286,E01002724,Islington,Theft,Theft From the Person,1943,15.9,9.1,1.75
-80748,E01004525,Wandsworth,Theft,Shoplifting,1933,15.9,6.9,2.3
-21888,E01001247,Ealing,Theft,Other Theft,2326,15.9,6.0,2.65
-37910,E01002129,Harrow,Theft,Other Theft,2691,15.8,6.2,2.55
-84925,E01004761,Westminster,Theft,Theft From the Person,1217,15.7,11.7,1.34
-14774,E01000851,Camden,Theft,Other Theft,1472,15.7,8.0,1.96
-83796,E01004699,Westminster,Theft,Other Theft,1745,15.6,7.4,2.11
-70394,E01003929,Southwark,Theft,Theft From the Person,1981,15.4,13.0,1.18
-49612,E01002794,Islington,Theft,Shoplifting,2028,15.4,7.0,2.2
-69461,E01003876,Richmond upon Thames,Theft,Shoplifting,1877,15.3,6.5,2.35
-50076,E01002818,Kensington and Chelsea,Theft,Shoplifting,1401,15.0,5.9,2.54
-54566,E01003061,Lambeth,Theft,Theft From the Person,1327,15.0,18.0,0.83
-86260,E01033083,Hounslow,Theft,Other Theft,2178,14.8,5.2,2.85
-54035,E01003035,Lambeth,Theft,Theft From the Person,1671,14.8,10.9,1.36
-84025,E01004712,Westminster,Theft,Other Theft,1494,14.7,8.3,1.77
-16545,E01000947,Camden,Theft,Theft From the Person,1656,14.7,9.6,1.53
-90007,E01034150,Croydon,Theft,Other Theft,1312,14.7,8.2,1.79
-94554,E01035718,Westminster,Theft,Theft From the Person,2659,14.5,18.7,0.78
-16543,E01000947,Camden,Theft,Other Theft,1656,14.5,6.3,2.3
-44360,E01002505,Hillingdon,Theft,Shoplifting,1775,14.4,6.7,2.15
-16001,E01000918,Camden,Theft,Theft From the Person,1805,14.4,8.2,1.76
-66143,E01003689,Redbridge,Theft,Theft From the Person,2230,14.4,9.2,1.57
-52815,E01002968,Kingston upon Thames,Theft,Bicycle Theft,2937,14.4,10.2,1.41
-83716,E01004695,Westminster,Theft,Other Theft,1056,14.2,6.8,2.09
-87391,E01033699,Hackney,Theft,Other Theft,1409,14.0,5.6,2.5
-70477,E01003934,Southwark,Theft,Other Theft,1998,13.9,6.8,2.04
-41766,E01002356,Havering,Theft,Other Theft,2107,13.9,5.4,2.57
-84454,E01004733,Westminster,Theft,Theft From the Person,2116,13.8,11.7,1.18
-14981,E01000863,Camden,Theft,Shoplifting,1479,13.7,6.2,2.21
-50385,E01002835,Kensington and Chelsea,Theft,Other Theft,1404,13.7,6.1,2.25
-90777,E01034205,Newham,Theft,Other Theft,1565,13.7,7.7,1.78
-90456,E01034188,Greenwich,Theft,Other Theft,1418,13.6,5.9,2.31
-69460,E01003876,Richmond upon Thames,Theft,Other Theft,1877,13.6,5.2,2.62
-90677,E01034200,Newham,Theft,Theft From the Person,1573,13.6,6.7,2.03
-85411,E01032582,Lambeth,Theft,Theft From the Person,2281,13.5,10.6,1.27
-84522,E01004736,Westminster,Theft,Shoplifting,1547,13.5,6.3,2.14
-94451,E01035713,Kensington and Chelsea,Theft,Other Theft,2039,13.4,5.6,2.39
-14877,E01000858,Camden,Theft,Theft From the Person,1992,13.2,12.5,1.06
-84452,E01004733,Westminster,Theft,Other Theft,2116,13.2,6.8,1.94
-53595,E01003013,Lambeth,Theft,Theft From the Person,1934,13.1,8.8,1.49
-62981,E01003517,Newham,Theft,Other Theft,1915,12.9,10.8,1.19
-49613,E01002794,Islington,Theft,Theft From the Person,2028,12.8,7.0,1.83
-16023,E01000919,Camden,Theft,Shoplifting,1459,12.8,5.5,2.33
-90778,E01034205,Newham,Theft,Shoplifting,1565,12.8,5.2,2.46
-14875,E01000858,Camden,Theft,Other Theft,1992,12.8,8.0,1.6
-94343,E01035708,Camden,Theft,Other Theft,1930,12.7,11.5,1.1
-91640,E01034473,Barking and Dagenham,Theft,Shoplifting,1294,12.7,5.4,2.35
-78335,E01004397,Waltham Forest,Theft,Theft From the Person,2896,12.6,6.1,2.07
-82243,E01004609,Wandsworth,Theft,Other Theft,2194,12.5,5.4,2.31
-85598,E01032741,Havering,Theft,Other Theft,1484,12.4,5.4,2.3
-91361,E01034386,Bromley,Theft,Shoplifting,1224,12.3,6.8,1.81
-63064,E01003521,Newham,Theft,Theft From the Person,2187,12.3,8.1,1.52
-50075,E01002818,Kensington and Chelsea,Theft,Other Theft,1401,12.2,6.4,1.91
-93234,E01035652,Islington,Theft,Shoplifting,1271,12.1,5.9,2.05
-85804,E01032771,Tower Hamlets,Theft,Other Theft,1540,12.0,5.2,2.31
-76735,E01004309,Tower Hamlets,Theft,Other Theft,2843,11.9,5.1,2.33
-72746,E01004067,Southwark,Theft,Other Theft,2212,11.8,4.4,2.68
-13784,E01000790,Bromley,Theft,Shoplifting,2290,11.8,6.4,1.84
-84411,E01004731,Westminster,Theft,Theft From the Person,1996,11.8,10.9,1.08
-6364,E01000362,Bexley,Theft,Shoplifting,1904,11.7,4.8,2.44
-24022,E01001361,Ealing,Theft,Other Theft,2271,11.7,5.0,2.34
-84088,E01004715,Westminster,Theft,Other Theft,1854,11.7,6.0,1.95
-72747,E01004067,Southwark,Theft,Shoplifting,2212,11.6,5.9,1.97
-16680,E01000956,Camden,Theft,Other Theft,1515,11.5,5.0,2.3
-16460,E01000942,Camden,Theft,Other Theft,997,11.5,6.4,1.8
-89451,E01034030,Ealing,Theft,Theft From the Person,1834,11.4,6.4,1.78
-37912,E01002129,Harrow,Theft,Theft From the Person,2691,11.4,7.1,1.61
-2858,E01000164,Barnet,Theft,Other Theft,1716,11.4,10.5,1.09
-85805,E01032771,Tower Hamlets,Theft,Shoplifting,1540,11.3,6.7,1.69
-80747,E01004525,Wandsworth,Theft,Other Theft,1933,11.3,4.5,2.51
-78334,E01004397,Waltham Forest,Theft,Shoplifting,2896,11.3,6.5,1.74
-84129,E01004717,Westminster,Theft,Other Theft,1274,11.2,5.8,1.93
-51436,E01002889,Kensington and Chelsea,Theft,Other Theft,1566,11.2,4.5,2.49
-86608,E01033327,Lewisham,Theft,Other Theft,2169,11.2,3.5,3.2
-78995,E01004430,Waltham Forest,Theft,Shoplifting,2671,11.1,6.0,1.85
-81270,E01004552,Wandsworth,Theft,Other Theft,1964,11.1,5.7,1.95
-36004,E01002029,Haringey,Theft,Other Theft,2138,11.1,4.8,2.31
-84752,E01004750,Westminster,Theft,Theft From the Person,1634,10.9,6.7,1.63
-91639,E01034473,Barking and Dagenham,Theft,Other Theft,1294,10.9,4.3,2.53
-90134,E01034156,Sutton,Theft,Other Theft,1353,10.9,4.6,2.37
-71206,E01003981,Southwark,Theft,Other Theft,1514,10.8,4.8,2.25
-31035,E01001760,Hackney,Theft,Shoplifting,1925,10.8,6.3,1.71
-87393,E01033699,Hackney,Theft,Theft From the Person,1409,10.7,5.8,1.84
-61950,E01003456,Merton,Theft,Shoplifting,1610,10.7,5.3,2.02
-93575,E01035669,Tower Hamlets,Theft,Other Theft,1347,10.7,4.9,2.18
-1627,E01000095,Barking and Dagenham,Theft,Shoplifting,2229,10.7,8.3,1.29
-47733,E01002696,Islington,Theft,Other Theft,1788,10.6,6.2,1.71
-14754,E01000850,Camden,Theft,Shoplifting,1411,10.5,4.9,2.14
-76693,E01004307,Tower Hamlets,Theft,Theft From the Person,2385,10.5,6.3,1.67
-92055,E01034581,Merton,Theft,Shoplifting,1499,10.5,5.1,2.06
-50195,E01002826,Kensington and Chelsea,Theft,Other Theft,1281,10.4,4.9,2.12
-76234,E01004277,Tower Hamlets,Theft,Other Theft,1578,10.4,4.9,2.12
-84729,E01004749,Westminster,Theft,Other Theft,2199,10.4,5.0,2.08
-11807,E01000676,Bromley,Theft,Other Theft,2046,10.4,4.9,2.12
-83518,E01004682,Westminster,Theft,Other Theft,1292,10.4,5.4,1.93
-25279,E01001429,Enfield,Theft,Other Theft,2294,10.4,4.1,2.54
-91339,E01034385,Bromley,Theft,Shoplifting,1439,10.4,13.4,0.78
-93233,E01035652,Islington,Theft,Other Theft,1271,10.2,3.8,2.68
+,Major Category,LSOA,Borough,Mean,Standard Deviation,Normalised Deviation
+37757,Theft,E01035716,Westminster,6084.2,3142.0,1.94
+37252,Theft,E01004734,Westminster,4894.4,2689.6,1.82
+37276,Theft,E01004763,Westminster,4225.2,2447.3,1.73
+37254,Theft,E01004736,Westminster,3190.7,1386.4,2.3
+37583,Theft,E01034220,Newham,2681.3,1267.1,2.12
+37232,Theft,E01004714,Westminster,2034.6,784.9,2.59
+37253,Theft,E01004735,Westminster,1832.0,751.3,2.44
+37274,Theft,E01004761,Westminster,1492.1,561.1,2.66
+33648,Theft,E01000914,Camden,1336.7,424.5,3.15
+37406,Theft,E01033708,Hackney,1335.2,457.9,2.92
+37277,Theft,E01004765,Westminster,1308.4,417.0,3.14
+37275,Theft,E01004762,Westminster,1307.1,542.8,2.41
+33599,Theft,E01000863,Camden,1288.9,435.9,2.96
+35102,Theft,E01002444,Hillingdon,1280.6,383.0,3.34
+33591,Theft,E01000855,Camden,1280.6,586.6,2.18
+33653,Theft,E01000919,Camden,1279.1,713.3,1.79
+34616,Theft,E01001943,Hammersmith and Fulham,1238.6,326.2,3.8
+33588,Theft,E01000850,Camden,1007.9,388.6,2.59
+35595,Theft,E01002968,Kingston upon Thames,996.1,221.9,4.49
+37563,Theft,E01034200,Newham,985.2,242.7,4.06
+35451,Theft,E01002819,Kensington and Chelsea,981.8,447.4,2.19
+37460,Theft,E01033884,Southwark,920.0,361.0,2.55
+34698,Theft,E01002026,Haringey,901.6,252.1,3.58
+37752,Theft,E01035711,Camden,878.0,287.6,3.05
+37405,Theft,E01033706,Hackney,833.3,356.3,2.34
+37502,Theft,E01034030,Ealing,815.9,203.1,4.02
+37308,Theft,E01032741,Havering,789.1,241.6,3.27
+36521,Theft,E01003929,Southwark,786.5,310.7,2.53
+37536,Theft,E01034156,Sutton,735.4,206.1,3.57
+33652,Theft,E01000918,Camden,732.7,323.1,2.27
+35673,Theft,E01003047,Lambeth,716.1,215.2,3.33
+37342,Theft,E01033083,Hounslow,682.4,160.8,4.24
+37525,Theft,E01034145,Croydon,629.3,212.2,2.97
+35427,Theft,E01002794,Islington,626.2,228.3,2.74
+33066,Theft,E01000307,Barnet,626.0,235.4,2.66
+37399,Theft,E01033699,Hackney,623.4,200.8,3.1
+35450,Theft,E01002818,Kensington and Chelsea,611.4,276.6,2.21
+37693,Theft,E01035652,Islington,602.7,172.0,3.5
+36287,Theft,E01003689,Redbridge,599.7,184.4,3.25
+35639,Theft,E01003013,Lambeth,594.2,187.3,3.17
+37249,Theft,E01004731,Westminster,592.7,296.6,2.0
+37612,Theft,E01034473,Barking and Dagenham,590.1,148.4,3.98
+37298,Theft,E01032582,Lambeth,558.7,223.2,2.5
+37186,Theft,E01004658,Westminster,555.7,242.7,2.29
+36129,Theft,E01003521,Newham,555.4,208.8,2.66
+35342,Theft,E01002704,Islington,554.4,185.0,3.0
+37523,Theft,E01034143,Croydon,545.4,180.6,3.02
+37390,Theft,E01033594,Westminster,534.4,188.4,2.84
+37552,Theft,E01034188,Greenwich,522.9,289.7,1.8
+36470,Theft,E01003876,Richmond upon Thames,522.6,134.0,3.9
+35334,Theft,E01002696,Islington,522.4,168.8,3.09
+37265,Theft,E01004750,Westminster,519.7,203.6,2.55
+35361,Theft,E01002724,Islington,516.2,204.7,2.52
+35452,Theft,E01002821,Kensington and Chelsea,514.4,210.9,2.44
+37530,Theft,E01034150,Croydon,513.7,256.2,2.01
+33678,Theft,E01000947,Camden,508.3,209.9,2.42
+35661,Theft,E01003035,Lambeth,507.0,253.1,2.0
+37759,Theft,E01035718,Westminster,500.4,289.6,1.73
+34574,Theft,E01001899,Hammersmith and Fulham,496.7,134.2,3.7
+37214,Theft,E01004695,Westminster,488.2,194.1,2.52
+35687,Theft,E01003061,Lambeth,471.2,381.6,1.23
+37318,Theft,E01032771,Tower Hamlets,469.3,160.9,2.92
+36530,Theft,E01003939,Southwark,468.4,196.3,2.39
+35530,Theft,E01002902,Kensington and Chelsea,465.7,260.8,1.79
+37059,Theft,E01004525,Wandsworth,465.6,134.4,3.46
+33418,Theft,E01000676,Bromley,451.0,250.6,1.8
+36850,Theft,E01004307,Tower Hamlets,447.3,172.5,2.59
+37568,Theft,E01034205,Newham,446.4,144.7,3.09
+37598,Theft,E01034386,Bromley,444.1,189.7,2.34
+37185,Theft,E01004657,Westminster,439.5,224.7,1.96
+35456,Theft,E01002826,Kensington and Chelsea,439.2,188.9,2.33
+33674,Theft,E01000942,Camden,439.0,186.3,2.36
+37235,Theft,E01004717,Westminster,435.5,162.5,2.68
+37710,Theft,E01035669,Tower Hamlets,434.5,164.7,2.64
+33589,Theft,E01000851,Camden,431.9,171.3,2.52
+34797,Theft,E01002129,Harrow,415.5,135.7,3.06
+37360,Theft,E01033327,Lewisham,402.0,131.4,3.06
+36991,Theft,E01004455,Waltham Forest,401.3,257.1,1.56
+37085,Theft,E01004551,Wandsworth,399.2,149.1,2.68
+36935,Theft,E01004397,Waltham Forest,399.0,109.0,3.66
+37647,Theft,E01034602,Hillingdon,398.8,144.1,2.77
+37674,Theft,E01035495,Wandsworth,381.4,151.3,2.52
+37218,Theft,E01004699,Westminster,380.0,144.6,2.63
+34573,Theft,E01001898,Hammersmith and Fulham,372.1,114.2,3.26
+33594,Theft,E01000858,Camden,370.8,245.7,1.51
+35017,Theft,E01002356,Havering,368.7,118.5,3.11
+36562,Theft,E01003981,Southwark,365.6,170.9,2.14
+35348,Theft,E01002711,Islington,363.8,159.0,2.29
+37450,Theft,E01033874,Southwark,363.1,202.1,1.8
+35463,Theft,E01002833,Kensington and Chelsea,362.8,153.1,2.37
+35488,Theft,E01002859,Kensington and Chelsea,361.9,162.2,2.23
+36827,Theft,E01004277,Tower Hamlets,357.7,111.2,3.22
+35518,Theft,E01002889,Kensington and Chelsea,355.8,104.5,3.4
+37251,Theft,E01004733,Westminster,353.4,199.9,1.77
+37606,Theft,E01034394,Lewisham,352.1,106.4,3.31
+37417,Theft,E01033735,Greenwich,350.0,124.3,2.82
+35681,Theft,E01003055,Lambeth,346.2,124.2,2.79
+36525,Theft,E01003934,Southwark,345.7,172.8,2.0
+34445,Theft,E01001760,Hackney,343.2,121.4,2.83
+36640,Theft,E01004067,Southwark,343.0,96.4,3.56
+36378,Theft,E01003783,Redbridge,341.6,142.1,2.4
+37263,Theft,E01004748,Westminster,341.3,321.5,1.06
+36070,Theft,E01003456,Merton,339.0,120.3,2.82
+37138,Theft,E01004609,Wandsworth,332.5,103.8,3.2
+37749,Theft,E01035708,Camden,331.9,259.1,1.28
+35465,Theft,E01002835,Kensington and Chelsea,330.6,129.3,2.56
+37230,Theft,E01004712,Westminster,330.3,170.4,1.94
+33685,Theft,E01000956,Camden,324.4,136.5,2.38
+35161,Theft,E01002505,Hillingdon,316.5,116.0,2.73
+34533,Theft,E01001857,Hammersmith and Fulham,316.4,115.0,2.75
+36777,Theft,E01004208,Tower Hamlets,315.8,115.4,2.74
+37444,Theft,E01033868,Southwark,311.3,169.3,1.84
+37597,Theft,E01034385,Bromley,308.9,289.4,1.07
+35513,Theft,E01002884,Kensington and Chelsea,307.3,159.0,1.93
+35642,Theft,E01003016,Lambeth,306.1,130.8,2.34
+35174,Theft,E01002521,Hillingdon,304.8,99.4,3.07
+34080,Theft,E01001361,Ealing,303.1,104.9,2.89
+34147,Theft,E01001429,Enfield,302.5,95.5,3.17
+37086,Theft,E01004552,Wandsworth,300.4,121.6,2.47
+35461,Theft,E01002831,Kensington and Chelsea,300.3,157.1,1.91
+34272,Theft,E01001559,Enfield,300.3,155.1,1.94
+37438,Theft,E01033862,Lambeth,299.8,130.7,2.29
+33347,Theft,E01000601,Brent,298.8,128.6,2.32
+37696,Theft,E01035655,Islington,284.4,117.5,2.42
+36861,Theft,E01004322,Tower Hamlets,280.7,107.5,2.61
+37410,Theft,E01033712,Hackney,280.5,101.5,2.76
+37633,Theft,E01034581,Merton,280.2,104.0,2.69
+37682,Theft,E01035641,Hackney,278.7,105.1,2.65
+35667,Theft,E01003041,Lambeth,278.2,123.3,2.26
+37204,Theft,E01004682,Westminster,276.6,123.8,2.23
+36604,Theft,E01004031,Southwark,275.7,79.2,3.48
+34703,Theft,E01002031,Haringey,271.0,79.7,3.4
+34675,Theft,E01002002,Haringey,269.9,244.6,1.1
+33590,Theft,E01000853,Camden,268.2,105.8,2.53
+37210,Theft,E01004691,Westminster,261.7,113.6,2.3
+35428,Theft,E01002795,Islington,260.3,86.5,3.01
+35512,Theft,E01002883,Kensington and Chelsea,258.1,168.9,1.53
+34614,Theft,E01001941,Hammersmith and Fulham,256.7,130.4,1.97
+37245,Theft,E01004727,Westminster,255.0,129.8,1.96
+36930,Theft,E01004392,Waltham Forest,254.7,75.5,3.37
+35728,Theft,E01003102,Lambeth,254.6,106.7,2.39
+33967,Theft,E01001247,Ealing,254.3,85.5,2.97
+33121,Theft,E01000362,Bexley,253.3,78.3,3.23
+35403,Theft,E01002770,Islington,253.2,124.1,2.04
+37762,Theft,E01035721,Westminster,251.5,99.2,2.54
+33597,Theft,E01000861,Camden,250.3,96.9,2.58
+35542,Theft,E01002914,Kensington and Chelsea,250.1,96.7,2.59
+32981,Theft,E01000221,Barnet,249.6,138.1,1.81
+33672,Theft,E01000939,Camden,248.5,106.4,2.34
+37233,Theft,E01004715,Westminster,248.0,105.7,2.35
+34701,Theft,E01002029,Haringey,246.7,109.4,2.26
+37754,Theft,E01035713,Kensington and Chelsea,240.3,90.2,2.66
+37009,Theft,E01004474,Wandsworth,239.1,72.4,3.3
+35643,Theft,E01003017,Lambeth,236.9,99.2,2.39
+33650,Theft,E01000916,Camden,232.9,92.5,2.52
+35363,Theft,E01002726,Islington,232.9,122.9,1.9
+37419,Theft,E01033737,Greenwich,230.0,76.9,2.99
+33519,Theft,E01000779,Bromley,229.3,172.1,1.33
+35479,Theft,E01002850,Kensington and Chelsea,227.4,94.0,2.42
+34344,Theft,E01001641,Greenwich,226.8,82.4,2.75
+34227,Theft,E01001513,Enfield,226.3,103.8,2.18
+35997,Theft,E01003383,Merton,224.1,83.7,2.68
+37371,Theft,E01033490,Islington,223.2,116.0,1.92
+35933,Theft,E01003318,Lewisham,223.2,64.5,3.46
+33671,Theft,E01000938,Camden,223.0,90.3,2.47
+35434,Theft,E01002801,Islington,222.4,103.6,2.15
+37188,Theft,E01004660,Westminster,221.9,101.1,2.19
+37286,Theft,E01032568,Bromley,221.7,94.9,2.34
+34595,Theft,E01001920,Hammersmith and Fulham,220.5,94.9,2.32
+34167,Theft,E01001450,Enfield,220.0,83.9,2.62
+33530,Theft,E01000790,Bromley,219.2,84.9,2.58
+36838,Theft,E01004293,Tower Hamlets,218.4,116.8,1.87
+33419,Theft,E01000677,Bromley,217.8,102.2,2.13
+37443,Theft,E01033867,Southwark,216.6,119.8,1.81
+32860,Theft,E01000095,Barking and Dagenham,216.4,108.1,2.0
+37370,Theft,E01033489,Islington,216.3,113.2,1.91
+36526,Theft,E01003935,Southwark,215.4,107.5,2.0
+32953,Theft,E01000193,Barnet,214.3,75.3,2.85
+35283,Theft,E01002637,Hounslow,213.3,102.7,2.08
+37493,Theft,E01033942,Brent,212.5,183.7,1.16
+37403,Theft,E01033704,Hackney,212.4,70.8,3.0
+32924,Theft,E01000164,Barnet,210.4,154.3,1.36
+33738,Theft,E01001010,Croydon,209.6,114.3,1.83
+35370,Theft,E01002734,Islington,208.2,105.5,1.97
+37290,Theft,E01032573,Hounslow,207.9,77.5,2.68
+36177,Theft,E01003569,Newham,206.1,122.5,1.68
+36515,Theft,E01003921,Southwark,205.0,67.3,3.05
+37670,Theft,E01035491,Wandsworth,202.6,110.2,1.84
+33665,Theft,E01000931,Camden,201.4,92.3,2.18
+35742,Theft,E01003118,Lambeth,201.2,75.6,2.66
+37487,Theft,E01033936,Brent,199.2,81.1,2.46
+36125,Theft,E01003517,Newham,198.9,169.6,1.17
+36968,Theft,E01004430,Waltham Forest,198.7,64.8,3.07
+35457,Theft,E01002827,Kensington and Chelsea,197.2,87.6,2.25
+34626,Theft,E01001953,Hammersmith and Fulham,196.6,86.9,2.26
+33598,Theft,E01000862,Camden,196.5,92.1,2.13
+37526,Theft,E01034146,Croydon,196.0,97.0,2.02
+37543,Theft,E01034179,Greenwich,195.8,100.0,1.96
+36849,Theft,E01004306,Tower Hamlets,195.6,90.8,2.15
+35162,Theft,E01002506,Hillingdon,195.2,101.6,1.92
