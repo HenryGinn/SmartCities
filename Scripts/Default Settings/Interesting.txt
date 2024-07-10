@@ -1,0 +1,8 @@
+{
+	"figures": true,
+	"csv": true,
+	"series": true,
+	"n_figure": 1000,
+	"n_csv": 200,
+	"n_time": 5
+}

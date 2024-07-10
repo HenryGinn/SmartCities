@@ -31,6 +31,6 @@ from interesting import Interesting
 #plotter.generate(animate=True, time="Month", region="City", crime_type="Total", resolution="Borough")
 #plotter.generate(animate=True, time="Year", region="City", crime_type="Total", resolution="Borough")
 
-interesting = Interesting()
+interesting = Interesting(figures=False, csv=False, series=True)
 interesting.analyse()
-interesting.output()
+interesting.output_category(measure="Mean", category="Theft")

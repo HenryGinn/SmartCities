@@ -13,5 +13,6 @@
 	"bbox_to_anchor": null,
 	"ncol": 1,
 	"loc": null,
-	"legend": true
+	"legend": true,
+	"label_format": "f'{crime} {lsoa}'"
 }

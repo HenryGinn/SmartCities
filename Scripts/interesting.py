@@ -10,20 +10,22 @@ metric are then output. This is done both overall and for each crime category.
 from os.path import join
 
 from hgutilities import utils
+from hgutilities import defaults
 import numpy as np
 import pandas as pd
 
 from crime import Crime
 from plot import Plot
 from utils import get_time_columns
+from timeseries import Time
 
 
 class Interesting():
 
     def __init__(self, **kwargs):
         self.kwargs = kwargs
+        defaults.kwargs(self, kwargs)
         self.initialise_crime()
-        self.major_categories = list(set(self.crime["Major Category"].values))
         self.initialise_scores_dataframe()
         self.set_paths()
 
@@ -31,13 +33,25 @@ class Interesting():
         self.crime_obj = Crime(agg_crime="Major")
         self.crime_obj.process()
         self.crime = self.crime_obj.crime
+        self.major_categories = list(set(self.crime["Major Category"].values))
 
     def set_paths(self):
-        path_base = join(self.crime_obj.path_output_base, "Interesting")
-        self.path_text = join(path_base, "Text")
-        self.path_figures = join(path_base, "Figures")
-        utils.make_folder(self.path_text)
+        self.path_base = join(self.crime_obj.path_output_base, "Interesting")
+        self.set_paths_csv()
+        self.set_paths_figures()
+        self.set_paths_time()
+
+    def set_paths_csv(self):
+        self.path_csv = join(self.path_base, "Text")
+        utils.make_folder(self.path_csv)
+
+    def set_paths_figures(self):
+        self.path_figures = join(self.path_base, "Figures")
         utils.make_folder(self.path_figures)
+
+    def set_paths_time(self):
+        self.path_time = join(self.path_base, "Time Series")
+        utils.make_folder(self.path_time)
 
     def analyse(self):
         self.add_scores_basic()
@@ -56,16 +70,16 @@ class Interesting():
         self.scores.loc[:, "Normalised Deviation"] = (
             self.scores["Mean"] / self.scores["Standard Deviation"]).round(2)
 
-    def output(self, measure=None, n=200):
+    def output(self, measure=None):
         if measure is None:
-            self.process_measure(self.output, n=n)
+            self.process_measure(self.output)
         else:
-            self.output_measure(measure, n)
+            self.output_measure(measure)
 
-    def output_measure(self, measure, n):
-        self.output_overall(measure=measure, n=n)
+    def output_measure(self, measure):
+        self.output_overall(measure=measure)
         for category in self.major_categories:
-            self.output_category(category, measure=measure, n=n)
+            self.output_category(category, measure=measure)
 
     def process_measure(self, function, *args, **kwargs):
         measures = [column for column in self.scores.columns.values
@@ -73,44 +87,65 @@ class Interesting():
         for measure in measures:
             function(measure=measure, *args, **kwargs)
 
-    def output_overall(self, measure=None, n=200):
+    def output_overall(self, measure=None):
         if measure is None:
             self.process_measure(output_overall, self.scores)
         else:
-            self.output_from_dataframe(measure, self.scores, "Overall", n)
+            self.output_from_dataframe(measure, self.scores, "Overall")
 
-    def output_category(self, category, measure=None, n=200):
+    def output_category(self, category, measure=None):
         if measure is None:
             self.process_measure(self.output_category, category)
         else:
-            self.output_category_measure(measure, category, n)
+            self.output_category_measure(measure, category)
 
-    def output_category_measure(self, measure, category, n):
+    def output_category_measure(self, measure, category):
         scores_category = self.scores.loc[self.scores["Major Category"] == category]
-        self.output_from_dataframe(measure, scores_category, category, n)
+        self.output_from_dataframe(measure, scores_category, category)
 
-    def output_from_dataframe(self, measure, scores, name, n):
+    def output_from_dataframe(self, measure, scores, name):
         scores = scores.sort_values(by=measure, ascending=False).copy()
         name = f"{name}: {measure}"
         print(name)
-        self.output_text(scores.head(n), name, measure)
-        self.output_figure(scores.head(1000), name, measure)
+        self.output_all(measure, scores, name)
 
-    def output_text(self, scores, name, measure):
-        if True:
-            path = join(self.path_text, f"{name}.csv")
+    def output_all(self, measure, scores, name):
+        self.output_csv(scores.head(self.n_csv), name, measure)
+        self.output_figure(scores.head(self.n_figure), name, measure)
+        self.output_time_series(scores.head(self.n_time), name, measure)
+
+    def output_csv(self, scores, name, measure):
+        if self.csv:
+            path = join(self.path_csv, f"{name}.csv")
             scores.to_csv(path)
 
     def output_figure(self, scores, name, measure):
-        scores = scores.drop(columns=["Major Category"])
-        self.crime_obj.crime = scores
+        if self.figures:
+            scores = scores.drop(columns=["Major Category"])
+            self.crime_obj.crime = scores
+            self.plot(name, measure)
+
+    def plot(self, name, measure):
         self.plot_obj = Plot(
             self.crime_obj, path_output=self.path_figures,
             title=name, figure_name=name, plot_column=measure, **self.kwargs,
             population_weighted=False, colorbar_label="Score")
         self.plot_obj.plot()
 
+    def output_time_series(self, scores, name, measure):
+        filtered = self.get_filtered_dataframe(scores)
+        self.time_obj = Time(filtered, output="Show")
+        self.time_obj.create_figure()
 
+    def get_filtered_dataframe(self, scores):
+        filtered = self.crime[self.crime["LSOA"].isin(scores["LSOA"])]
+        if "Major Category" in scores.columns.values:
+            filtered = filtered[filtered["Major Category"].isin(
+                scores["Major Category"])]
+        return filtered
+
+
+defaults.load(Interesting)
 
 
 
