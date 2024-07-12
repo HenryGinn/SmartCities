@@ -1,0 +1,201 @@
+,Borough,LSOA,Major Category,Population,Mean,Standard Deviation,Normalised Deviation
+24104,Hillingdon,E01002444,Drug Offences,3806,158.1,72.6,2.18
+23255,Havering,E01002356,Drug Offences,4214,232.3,116.4,2.0
+19193,Hammersmith and Fulham,E01001943,Drug Offences,4450,210.2,106.3,1.98
+30145,Lambeth,E01003047,Drug Offences,3596,368.2,190.1,1.94
+29386,Kingston upon Thames,E01002968,Drug Offences,5874,310.9,161.2,1.93
+31678,Lewisham,E01003199,Drug Offences,3932,127.0,66.4,1.91
+8150,Bromley,E01034386,Drug Offences,2448,201.6,111.1,1.81
+32758,Lewisham,E01003318,Drug Offences,4152,108.4,60.8,1.78
+26712,Islington,E01002695,Drug Offences,2966,178.1,100.5,1.77
+10724,Croydon,E01001118,Drug Offences,4298,86.4,49.5,1.75
+1063,Barking and Dagenham,E01034473,Drug Offences,2588,187.7,109.2,1.72
+10039,Croydon,E01001042,Drug Offences,4322,114.6,66.6,1.72
+1014,Barking and Dagenham,E01033587,Drug Offences,4890,94.1,56.1,1.68
+23226,Havering,E01002353,Drug Offences,4120,111.8,66.8,1.67
+47309,Westminster,E01004736,Drug Offences,3094,733.5,441.3,1.66
+47289,Westminster,E01004734,Drug Offences,3398,1337.1,824.9,1.62
+11544,Croydon,E01034145,Drug Offences,2660,209.0,129.2,1.62
+35976,Newham,E01034200,Drug Offences,3146,211.1,134.0,1.58
+8345,Camden,E01000863,Drug Offences,2958,706.6,451.5,1.57
+36751,Redbridge,E01003689,Drug Offences,4460,147.9,94.5,1.57
+13900,Enfield,E01001429,Drug Offences,4588,103.3,65.6,1.57
+47527,Westminster,E01004763,Drug Offences,4062,697.1,445.6,1.56
+47675,Westminster,E01035716,Drug Offences,4402,650.0,417.0,1.56
+40320,Southwark,E01032639,Drug Offences,3820,134.6,86.4,1.56
+46471,Wandsworth,E01035493,Drug Offences,3308,104.9,68.2,1.54
+5076,Brent,E01000526,Drug Offences,4380,99.0,64.6,1.53
+42174,Tower Hamlets,E01004259,Drug Offences,3504,124.1,81.1,1.53
+35321,Newham,E01003570,Drug Offences,3872,93.3,60.8,1.53
+11592,Croydon,E01034150,Drug Offences,2624,375.9,246.3,1.53
+18086,Hackney,E01033699,Drug Offences,2818,135.1,88.3,1.53
+17878,Hackney,E01001830,Drug Offences,3834,84.5,56.0,1.51
+13072,Ealing,E01001351,Drug Offences,3986,97.0,64.8,1.5
+8294,Camden,E01000858,Drug Offences,3984,228.3,153.6,1.49
+42544,Tower Hamlets,E01004309,Drug Offences,5686,73.5,49.2,1.49
+9778,Croydon,E01001013,Drug Offences,4370,171.5,115.6,1.48
+37619,Redbridge,E01003783,Drug Offences,5098,121.3,82.7,1.47
+8823,Camden,E01000915,Drug Offences,2992,73.9,50.3,1.47
+19173,Hammersmith and Fulham,E01001941,Drug Offences,3092,137.2,93.7,1.46
+39048,Southwark,E01003929,Drug Offences,3962,83.1,56.9,1.46
+26051,Hounslow,E01002641,Drug Offences,5456,58.7,40.5,1.45
+6007,Brent,E01000631,Drug Offences,4132,91.1,62.9,1.45
+18146,Hackney,E01033706,Drug Offences,2854,192.3,132.4,1.45
+10704,Croydon,E01001115,Drug Offences,3666,54.4,37.5,1.45
+44027,Waltham Forest,E01004397,Drug Offences,5792,100.8,69.4,1.45
+33189,Lewisham,E01033327,Drug Offences,4338,86.8,60.1,1.44
+18156,Hackney,E01033708,Drug Offences,3766,265.7,186.3,1.43
+5026,Brent,E01000521,Drug Offences,4582,130.4,91.5,1.43
+16176,Greenwich,E01001677,Drug Offences,4352,58.8,41.7,1.41
+11524,Croydon,E01034143,Drug Offences,2622,116.9,83.6,1.4
+11582,Croydon,E01034149,Drug Offences,4222,98.5,70.2,1.4
+5056,Brent,E01000524,Drug Offences,4768,75.3,54.0,1.39
+5046,Brent,E01000523,Drug Offences,4592,76.0,55.5,1.37
+8715,Camden,E01000904,Drug Offences,4170,59.4,43.3,1.37
+41829,Tower Hamlets,E01004211,Drug Offences,3230,103.8,75.6,1.37
+13502,Ealing,E01034030,Drug Offences,3668,90.0,66.4,1.36
+21071,Harrow,E01002130,Drug Offences,5846,41.2,30.3,1.36
+37763,Redbridge,E01033589,Drug Offences,3860,107.6,79.4,1.36
+13169,Ealing,E01001361,Drug Offences,4542,89.9,66.8,1.35
+37840,Redbridge,E01034484,Drug Offences,3402,97.2,71.9,1.35
+21513,Harrow,E01002179,Drug Offences,5216,60.1,45.0,1.34
+16546,Greenwich,E01033737,Drug Offences,3786,74.4,56.1,1.33
+11572,Croydon,E01034148,Drug Offences,3268,80.1,60.1,1.33
+3527,Bexley,E01000360,Drug Offences,3804,78.2,59.8,1.31
+17286,Hackney,E01001760,Drug Offences,3850,56.5,43.2,1.31
+18786,Hammersmith and Fulham,E01001898,Drug Offences,4200,150.1,114.5,1.31
+20064,Haringey,E01002029,Drug Offences,4276,70.0,53.4,1.31
+47299,Westminster,E01004735,Drug Offences,4088,81.7,62.6,1.31
+18396,Hammersmith and Fulham,E01001857,Drug Offences,3102,99.6,76.2,1.31
+41699,Sutton,E01034156,Drug Offences,2706,172.8,132.4,1.31
+26534,Hounslow,E01033083,Drug Offences,4356,71.0,54.0,1.31
+41839,Tower Hamlets,E01004212,Drug Offences,4508,45.1,34.7,1.3
+16526,Greenwich,E01033735,Drug Offences,1270,158.4,121.4,1.3
+20114,Haringey,E01002034,Drug Offences,4942,102.7,78.7,1.3
+20034,Haringey,E01002026,Drug Offences,3560,87.7,67.7,1.3
+23578,Havering,E01032741,Drug Offences,2968,119.1,92.0,1.29
+8276,Camden,E01000856,Drug Offences,3150,172.7,134.1,1.29
+39355,Southwark,E01003969,Drug Offences,4776,82.4,63.7,1.29
+34843,Newham,E01003521,Drug Offences,4374,69.7,54.1,1.29
+39086,Southwark,E01003934,Drug Offences,3996,58.1,45.4,1.28
+44251,Waltham Forest,E01004420,Drug Offences,4474,51.8,40.4,1.28
+43003,Tower Hamlets,E01035670,Drug Offences,8760,31.1,24.3,1.28
+3117,Barnet,E01033917,Drug Offences,2934,70.6,55.1,1.28
+47507,Westminster,E01004761,Drug Offences,2434,169.4,132.2,1.28
+5133,Brent,E01000533,Drug Offences,4328,65.6,51.8,1.27
+35887,Newham,E01003636,Drug Offences,4378,81.8,64.6,1.27
+26859,Islington,E01002711,Drug Offences,4104,62.1,49.2,1.26
+42584,Tower Hamlets,E01004313,Drug Offences,4224,46.7,37.1,1.26
+29346,Kingston upon Thames,E01002964,Drug Offences,5020,88.2,69.8,1.26
+3547,Bexley,E01000362,Drug Offences,3808,71.1,56.5,1.26
+41758,Tower Hamlets,E01004203,Drug Offences,3632,53.1,42.4,1.25
+27853,Islington,E01033491,Drug Offences,3850,54.2,43.4,1.25
+39345,Southwark,E01003966,Drug Offences,4334,47.5,38.1,1.25
+47279,Westminster,E01004733,Drug Offences,4232,74.5,59.7,1.25
+43772,Waltham Forest,E01004370,Drug Offences,4130,60.8,48.9,1.24
+21061,Harrow,E01002129,Drug Offences,5382,62.3,50.3,1.24
+9110,Camden,E01000947,Drug Offences,3312,171.2,138.7,1.23
+33275,Lewisham,E01034394,Drug Offences,2496,101.3,82.3,1.23
+15100,Enfield,E01001558,Drug Offences,4012,57.0,46.8,1.22
+47695,Westminster,E01035718,Drug Offences,5318,268.1,219.9,1.22
+20555,Haringey,E01002081,Drug Offences,3954,61.7,50.4,1.22
+6116,Brent,E01000643,Drug Offences,4400,52.7,43.2,1.22
+8325,Camden,E01000861,Drug Offences,2760,107.0,87.5,1.22
+43980,Waltham Forest,E01004392,Drug Offences,5146,70.1,57.5,1.22
+39136,Southwark,E01003939,Drug Offences,3924,61.0,50.1,1.22
+31825,Lewisham,E01003215,Drug Offences,3786,53.1,43.6,1.22
+4904,Brent,E01000508,Drug Offences,5316,63.8,52.8,1.21
+27398,Islington,E01002770,Drug Offences,3788,40.2,33.1,1.21
+9758,Croydon,E01001011,Drug Offences,4578,55.0,45.5,1.21
+9388,Camden,E01035710,Drug Offences,5196,47.5,39.2,1.21
+11078,Croydon,E01001155,Drug Offences,3574,60.4,49.9,1.21
+47537,Westminster,E01004765,Drug Offences,3724,70.4,58.6,1.2
+6146,Brent,E01033456,Drug Offences,5272,54.6,45.5,1.2
+9398,Camden,E01035711,Drug Offences,4800,61.3,51.2,1.2
+32630,Lewisham,E01003303,Drug Offences,3486,91.8,76.6,1.2
+30125,Lambeth,E01003045,Drug Offences,4040,58.7,49.1,1.2
+27048,Islington,E01002730,Drug Offences,3540,51.8,43.0,1.2
+26595,Hounslow,E01034036,Drug Offences,3640,93.7,78.5,1.19
+13860,Enfield,E01001425,Drug Offences,4014,76.8,64.8,1.19
+6216,Brent,E01033932,Drug Offences,3372,58.8,49.3,1.19
+35155,Newham,E01003553,Drug Offences,4028,49.5,41.8,1.18
+9040,Camden,E01000938,Drug Offences,2766,60.6,51.5,1.18
+31385,Lambeth,E01003176,Drug Offences,3884,73.6,62.2,1.18
+30195,Lambeth,E01003052,Drug Offences,4432,64.6,54.9,1.18
+35720,Newham,E01003618,Drug Offences,4472,50.2,42.4,1.18
+47577,Westminster,E01033594,Drug Offences,3028,94.2,80.6,1.17
+26071,Hounslow,E01002645,Drug Offences,4518,80.3,68.4,1.17
+8864,Camden,E01000919,Drug Offences,2918,276.6,235.6,1.17
+9358,Camden,E01035707,Drug Offences,4926,39.2,33.5,1.17
+41778,Tower Hamlets,E01004205,Drug Offences,4502,61.5,52.7,1.17
+6136,Brent,E01033455,Drug Offences,2228,136.8,116.7,1.17
+24655,Hillingdon,E01002505,Drug Offences,3550,77.2,66.5,1.16
+30185,Lambeth,E01003051,Drug Offences,4158,62.5,54.1,1.16
+42594,Tower Hamlets,E01004315,Drug Offences,3234,115.3,99.8,1.16
+41975,Tower Hamlets,E01004232,Drug Offences,3586,67.7,58.2,1.16
+21101,Harrow,E01002133,Drug Offences,4044,56.3,48.6,1.16
+40445,Southwark,E01033874,Drug Offences,2286,206.9,179.1,1.16
+42674,Tower Hamlets,E01032764,Drug Offences,4772,33.0,28.5,1.16
+9179,Camden,E01000956,Drug Offences,3030,68.5,59.8,1.15
+10655,Croydon,E01001110,Drug Offences,4198,34.0,29.6,1.15
+29885,Lambeth,E01003020,Drug Offences,3574,59.6,52.0,1.15
+12897,Ealing,E01001333,Drug Offences,4928,57.1,49.6,1.15
+5725,Brent,E01000601,Drug Offences,2784,64.4,56.2,1.15
+6176,Brent,E01033485,Drug Offences,3294,91.1,79.0,1.15
+31483,Lambeth,E01003186,Drug Offences,4914,41.8,36.5,1.15
+30430,Lambeth,E01003076,Drug Offences,5320,31.1,27.1,1.15
+17188,Hackney,E01001747,Drug Offences,4656,42.2,36.6,1.15
+39676,Southwark,E01004008,Drug Offences,4210,47.5,41.3,1.15
+28000,Kensington and Chelsea,E01002818,Drug Offences,2802,86.5,74.9,1.15
+9050,Camden,E01000939,Drug Offences,2892,83.6,72.4,1.15
+34588,Newham,E01003491,Drug Offences,4066,52.2,45.3,1.15
+26722,Islington,E01002696,Drug Offences,3576,60.5,52.9,1.14
+30683,Lambeth,E01003102,Drug Offences,3542,143.7,125.8,1.14
+8893,Camden,E01000922,Drug Offences,3858,53.5,47.1,1.14
+32640,Lewisham,E01003304,Drug Offences,4440,38.8,34.1,1.14
+42244,Tower Hamlets,E01004270,Drug Offences,4804,56.2,49.4,1.14
+20134,Haringey,E01002037,Drug Offences,3372,49.4,43.5,1.14
+20416,Haringey,E01002066,Drug Offences,5198,38.7,34.1,1.13
+11,Barking and Dagenham,E01000007,Drug Offences,5682,76.9,68.2,1.13
+40350,Southwark,E01032719,Drug Offences,2904,71.3,63.1,1.13
+578,Barking and Dagenham,E01000070,Drug Offences,4146,68.5,60.8,1.13
+26545,Hounslow,E01033084,Drug Offences,3918,67.0,59.4,1.13
+46882,Westminster,E01004691,Drug Offences,2414,87.7,77.6,1.13
+4887,Brent,E01000506,Drug Offences,3266,69.9,61.7,1.13
+31,Barking and Dagenham,E01000009,Drug Offences,3590,91.4,80.8,1.13
+42983,Tower Hamlets,E01035668,Drug Offences,4142,161.6,143.4,1.13
+19213,Hammersmith and Fulham,E01001945,Drug Offences,3376,62.7,56.2,1.12
+47095,Westminster,E01004714,Drug Offences,3334,59.6,53.2,1.12
+39067,Southwark,E01003932,Drug Offences,3068,80.9,72.1,1.12
+47517,Westminster,E01004762,Drug Offences,3158,90.2,80.2,1.12
+15332,Greenwich,E01001575,Drug Offences,3606,54.0,48.4,1.12
+19527,Haringey,E01001971,Drug Offences,3764,72.8,64.8,1.12
+27646,Islington,E01002795,Drug Offences,3892,55.6,49.6,1.12
+14680,Enfield,E01001513,Drug Offences,3960,39.1,34.9,1.12
+12095,Ealing,E01001247,Drug Offences,4652,44.5,39.8,1.12
+40197,Southwark,E01004067,Drug Offences,4424,82.2,73.6,1.12
+9199,Camden,E01000958,Drug Offences,5962,30.4,27.1,1.12
+11688,Ealing,E01001202,Drug Offences,4958,44.7,39.8,1.12
+8236,Camden,E01000850,Drug Offences,2822,65.9,58.8,1.12
+8813,Camden,E01000914,Drug Offences,2804,78.2,70.0,1.12
+31754,Lewisham,E01003207,Drug Offences,4660,32.8,29.4,1.12
+9768,Croydon,E01001012,Drug Offences,4096,54.6,48.9,1.12
+30175,Lambeth,E01003050,Drug Offences,3146,81.1,72.5,1.12
+4924,Brent,E01000510,Drug Offences,3400,78.5,70.7,1.11
+39424,Southwark,E01003979,Drug Offences,4098,35.5,31.9,1.11
+35523,Newham,E01003591,Drug Offences,4502,50.0,45.2,1.11
+11307,Croydon,E01001178,Drug Offences,3226,48.7,43.7,1.11
+24782,Hillingdon,E01002521,Drug Offences,4110,71.7,64.6,1.11
+42634,Tower Hamlets,E01004322,Drug Offences,2752,57.9,52.1,1.11
+29866,Lambeth,E01003018,Drug Offences,4012,38.4,34.6,1.11
+30597,Lambeth,E01003093,Drug Offences,4446,38.4,34.6,1.11
+30165,Lambeth,E01003049,Drug Offences,3452,43.6,39.3,1.11
+17071,Hackney,E01001734,Drug Offences,3710,58.2,52.5,1.11
+30567,Lambeth,E01003090,Drug Offences,4732,57.1,51.4,1.11
+39116,Southwark,E01003937,Drug Offences,3006,77.1,69.7,1.11
+40150,Southwark,E01004062,Drug Offences,4356,49.8,44.8,1.11
+19405,Hammersmith and Fulham,E01035484,Drug Offences,3372,50.1,45.5,1.1
+43492,Waltham Forest,E01004341,Drug Offences,3938,46.5,42.2,1.1
+9408,Camden,E01035712,Drug Offences,4956,31.8,28.9,1.1
+41887,Tower Hamlets,E01004219,Drug Offences,5528,31.1,28.3,1.1
+37667,Redbridge,E01003788,Drug Offences,3708,52.4,47.6,1.1

@@ -193,6 +193,10 @@ class Crime():
         if self.population_weighted:
             self.per_n_people_int = int(str(self.per_n_people).replace(",", ""))
             self.weight_time_columns_by_population()
+            self.remove_population_column()
+
+    def remove_population_column(self):
+        if not self.keep_population_column:
             self.crime = self.crime.drop(columns="Population")
 
     def weight_time_columns_by_population(self):

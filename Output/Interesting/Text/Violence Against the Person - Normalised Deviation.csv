@@ -1,0 +1,201 @@
+,Borough,LSOA,Major Category,Population,Mean,Standard Deviation,Normalised Deviation
+29393,Kingston upon Thames,E01002968,Violence Against the Person,5874,658.4,165.7,3.97
+47296,Westminster,E01004734,Violence Against the Person,3398,2333.2,676.1,3.45
+11599,Croydon,E01034150,Violence Against the Person,2624,1011.3,324.5,3.12
+47682,Westminster,E01035716,Violence Against the Person,4402,1226.2,397.3,3.09
+44035,Waltham Forest,E01004397,Violence Against the Person,5792,259.6,86.6,3.0
+23262,Havering,E01002356,Violence Against the Person,4214,736.3,245.8,3.0
+8352,Camden,E01000863,Violence Against the Person,2958,956.3,324.6,2.95
+13510,Ealing,E01034030,Violence Against the Person,3668,466.7,158.7,2.94
+9117,Camden,E01000947,Violence Against the Person,3312,382.6,130.8,2.93
+47534,Westminster,E01004763,Violence Against the Person,6093,780.4,267.0,2.92
+42551,Tower Hamlets,E01004309,Violence Against the Person,5686,230.2,80.6,2.86
+1071,Barking and Dagenham,E01034473,Violence Against the Person,2588,539.1,190.0,2.84
+41706,Sutton,E01034156,Violence Against the Person,2706,691.7,245.2,2.82
+26602,Hounslow,E01034036,Violence Against the Person,3640,266.6,95.3,2.8
+19180,Hammersmith and Fulham,E01001941,Violence Against the Person,3092,398.4,143.1,2.78
+13176,Ealing,E01001361,Violence Against the Person,4542,380.9,139.2,2.74
+9405,Camden,E01035711,Violence Against the Person,4800,334.1,122.9,2.72
+40204,Southwark,E01004067,Violence Against the Person,4424,334.8,124.3,2.69
+32637,Lewisham,E01003303,Violence Against the Person,3486,314.9,116.9,2.69
+35738,Newham,E01003619,Violence Against the Person,4946,198.3,73.6,2.69
+19200,Hammersmith and Fulham,E01001943,Violence Against the Person,4450,484.3,180.2,2.69
+13907,Enfield,E01001429,Violence Against the Person,4588,326.0,121.6,2.68
+30152,Lambeth,E01003047,Violence Against the Person,3596,811.2,303.5,2.67
+47316,Westminster,E01004736,Violence Against the Person,3094,1399.7,525.7,2.66
+13079,Ealing,E01001351,Violence Against the Person,3986,298.7,112.8,2.65
+38996,Southwark,E01003921,Violence Against the Person,3794,306.8,115.6,2.65
+47306,Westminster,E01004735,Violence Against the Person,4088,496.6,188.7,2.63
+41816,Tower Hamlets,E01004208,Violence Against the Person,3954,276.1,104.8,2.63
+37770,Redbridge,E01033589,Violence Against the Person,3860,331.3,126.9,2.61
+5063,Brent,E01000524,Violence Against the Person,4768,251.7,96.9,2.6
+32765,Lewisham,E01003318,Violence Against the Person,6228,245.1,94.5,2.59
+20091,Haringey,E01002031,Violence Against the Person,3746,230.8,89.3,2.58
+46653,Westminster,E01004658,Violence Against the Person,3096,327.9,128.3,2.56
+24789,Hillingdon,E01002521,Violence Against the Person,4110,319.9,125.5,2.55
+40157,Southwark,E01004062,Violence Against the Person,4356,220.7,86.4,2.55
+9785,Croydon,E01001013,Violence Against the Person,4370,306.9,120.9,2.54
+24672,Hillingdon,E01002506,Violence Against the Person,6162,182.6,71.9,2.54
+23586,Havering,E01032741,Violence Against the Person,2968,395.4,157.0,2.52
+45272,Wandsworth,E01004525,Violence Against the Person,3866,345.2,137.5,2.51
+35211,Newham,E01003558,Violence Against the Person,3420,232.4,92.9,2.5
+12227,Ealing,E01001261,Violence Against the Person,4588,209.4,84.4,2.48
+47514,Westminster,E01004761,Violence Against the Person,3651,483.5,194.6,2.48
+35983,Newham,E01034200,Violence Against the Person,3146,550.7,222.4,2.48
+38564,Richmond upon Thames,E01003876,Violence Against the Person,3754,289.1,117.1,2.47
+20071,Haringey,E01002029,Violence Against the Person,6414,216.3,87.6,2.47
+8871,Camden,E01000919,Violence Against the Person,2918,389.5,157.4,2.47
+11695,Ealing,E01001202,Violence Against the Person,4958,188.3,76.7,2.46
+47426,Westminster,E01004750,Violence Against the Person,3268,300.1,122.5,2.45
+27653,Islington,E01002795,Violence Against the Person,3892,230.5,94.2,2.45
+30036,Lambeth,E01003035,Violence Against the Person,3342,368.6,150.4,2.45
+16533,Greenwich,E01033735,Violence Against the Person,2540,352.5,144.4,2.44
+43987,Waltham Forest,E01004392,Violence Against the Person,5146,176.4,73.0,2.42
+30631,Lambeth,E01003096,Violence Against the Person,4196,263.0,108.5,2.42
+37626,Redbridge,E01003783,Violence Against the Person,5098,238.7,99.0,2.41
+47102,Westminster,E01004714,Violence Against the Person,3334,367.5,153.4,2.4
+36758,Redbridge,E01003689,Violence Against the Person,4460,329.1,137.4,2.4
+33196,Lewisham,E01033327,Violence Against the Person,4338,341.4,142.3,2.4
+21078,Harrow,E01002130,Violence Against the Person,5846,197.2,82.4,2.39
+12122,Ealing,E01001249,Violence Against the Person,7224,109.2,45.7,2.39
+26807,Islington,E01002704,Violence Against the Person,4682,283.3,119.0,2.38
+19613,Haringey,E01001979,Violence Against the Person,4530,218.3,91.8,2.38
+21520,Harrow,E01002179,Violence Against the Person,5216,147.5,62.0,2.38
+16348,Greenwich,E01001696,Violence Against the Person,5138,192.2,80.7,2.38
+11551,Croydon,E01034145,Violence Against the Person,2660,438.7,185.2,2.37
+21068,Harrow,E01002129,Violence Against the Person,5382,219.5,92.6,2.37
+23699,Hillingdon,E01002397,Violence Against the Person,3908,223.7,94.3,2.37
+13233,Ealing,E01001367,Violence Against the Person,5400,178.1,75.4,2.36
+27085,Islington,E01002734,Violence Against the Person,4726,230.3,98.2,2.35
+10046,Croydon,E01001042,Violence Against the Person,4322,230.6,98.0,2.35
+16553,Greenwich,E01033737,Violence Against the Person,3786,267.2,114.4,2.34
+8861,Camden,E01000918,Violence Against the Person,3610,269.3,114.9,2.34
+30231,Lambeth,E01003055,Violence Against the Person,3236,314.7,135.0,2.33
+47544,Westminster,E01004765,Violence Against the Person,3724,348.8,149.9,2.33
+24111,Hillingdon,E01002444,Violence Against the Person,3806,669.1,288.6,2.32
+10546,Croydon,E01001097,Violence Against the Person,4838,185.1,79.8,2.32
+7721,Bromley,E01000799,Violence Against the Person,3626,210.6,90.8,2.32
+3534,Bexley,E01000360,Violence Against the Person,3804,303.4,130.6,2.32
+6113,Brent,E01000642,Violence Against the Person,4424,157.7,68.3,2.31
+26542,Hounslow,E01033083,Violence Against the Person,4356,324.4,140.6,2.31
+39055,Southwark,E01003929,Violence Against the Person,3962,226.1,97.9,2.31
+27643,Islington,E01002794,Violence Against the Person,4056,254.7,110.4,2.31
+19603,Haringey,E01001978,Violence Against the Person,3862,151.1,65.3,2.31
+1267,Barnet,E01000129,Violence Against the Person,4767,142.6,61.9,2.3
+39362,Southwark,E01003969,Violence Against the Person,4776,173.8,75.7,2.3
+29353,Kingston upon Thames,E01002964,Violence Against the Person,7530,135.9,59.3,2.29
+27405,Islington,E01002770,Violence Against the Person,3788,331.4,144.6,2.29
+44357,Waltham Forest,E01004430,Violence Against the Person,5342,156.0,68.2,2.29
+4911,Brent,E01000508,Violence Against the Person,5316,128.7,56.2,2.29
+23233,Havering,E01002353,Violence Against the Person,4120,239.0,104.6,2.28
+6600,Bromley,E01000676,Violence Against the Person,4092,340.3,149.1,2.28
+5265,Brent,E01000548,Violence Against the Person,3868,187.2,82.1,2.28
+11589,Croydon,E01034149,Violence Against the Person,4222,264.6,116.8,2.27
+31520,Lambeth,E01032582,Violence Against the Person,6843,187.1,82.6,2.27
+26866,Islington,E01002711,Violence Against the Person,4104,205.0,90.4,2.27
+18163,Hackney,E01033708,Violence Against the Person,3766,620.6,273.6,2.27
+43010,Tower Hamlets,E01035670,Violence Against the Person,8760,183.4,81.1,2.26
+20121,Haringey,E01002034,Violence Against the Person,7413,169.7,75.5,2.25
+6093,Brent,E01000640,Violence Against the Person,4496,145.9,65.0,2.24
+1379,Barnet,E01000141,Violence Against the Person,3722,257.1,114.6,2.24
+32647,Lewisham,E01003304,Violence Against the Person,4440,185.3,82.8,2.24
+5053,Brent,E01000523,Violence Against the Person,4592,165.8,74.5,2.23
+43000,Tower Hamlets,E01035669,Violence Against the Person,2694,243.0,109.1,2.23
+27899,Islington,E01035652,Violence Against the Person,2542,371.9,166.7,2.23
+20452,Haringey,E01002069,Violence Against the Person,4184,286.0,128.2,2.23
+44417,Waltham Forest,E01004438,Violence Against the Person,4234,178.2,79.9,2.23
+7451,Bromley,E01000769,Violence Against the Person,2760,528.3,237.9,2.22
+34693,Newham,E01003502,Violence Against the Person,5310,135.5,61.0,2.22
+47730,Westminster,E01035721,Violence Against the Person,4672,175.0,78.8,2.22
+8332,Camden,E01000861,Violence Against the Person,4140,176.8,79.7,2.22
+43729,Waltham Forest,E01004365,Violence Against the Person,4994,127.8,57.6,2.22
+20562,Haringey,E01002081,Violence Against the Person,3954,184.2,83.5,2.21
+18403,Hammersmith and Fulham,E01001857,Violence Against the Person,3102,274.0,124.0,2.21
+12102,Ealing,E01001247,Violence Against the Person,4652,213.4,96.9,2.2
+5033,Brent,E01000521,Violence Against the Person,4582,183.2,83.2,2.2
+44258,Waltham Forest,E01004420,Violence Against the Person,4474,180.3,82.0,2.2
+31490,Lambeth,E01003186,Violence Against the Person,4914,109.1,49.7,2.2
+20041,Haringey,E01002026,Violence Against the Person,3560,333.1,151.1,2.2
+18793,Hammersmith and Fulham,E01001898,Violence Against the Person,4200,391.6,178.1,2.2
+8989,Camden,E01000931,Violence Against the Person,4112,202.3,91.8,2.2
+42531,Tower Hamlets,E01004307,Violence Against the Person,4770,167.3,75.9,2.2
+17885,Hackney,E01001830,Violence Against the Person,3834,196.8,89.5,2.2
+67,Barking and Dagenham,E01000013,Violence Against the Person,3674,162.7,73.9,2.2
+38916,Southwark,E01003913,Violence Against the Person,4150,286.6,130.9,2.19
+26058,Hounslow,E01002641,Violence Against the Person,5456,147.7,67.3,2.19
+14006,Enfield,E01001439,Violence Against the Person,4220,170.1,77.8,2.19
+8820,Camden,E01000914,Violence Against the Person,2804,425.2,194.3,2.19
+4931,Brent,E01000510,Violence Against the Person,3400,254.2,115.9,2.19
+11085,Croydon,E01001155,Violence Against the Person,3574,246.9,113.2,2.18
+8302,Camden,E01000858,Violence Against the Person,3984,275.1,126.1,2.18
+47524,Westminster,E01004762,Violence Against the Person,3158,286.1,132.1,2.17
+17048,Hackney,E01001731,Violence Against the Person,5330,151.7,69.9,2.17
+5343,Brent,E01000556,Violence Against the Person,4128,169.4,78.1,2.17
+47266,Westminster,E01004731,Violence Against the Person,3992,234.0,108.2,2.16
+17440,Hackney,E01001777,Violence Against the Person,5314,122.1,56.6,2.16
+39693,Southwark,E01004010,Violence Against the Person,2982,276.6,127.8,2.16
+34247,Merton,E01003456,Violence Against the Person,3220,240.4,111.1,2.16
+6945,Bromley,E01000714,Violence Against the Person,4284,206.0,96.0,2.15
+32038,Lewisham,E01003237,Violence Against the Person,3446,178.7,83.1,2.15
+30291,Lambeth,E01003061,Violence Against the Person,3981,190.0,88.2,2.15
+34850,Newham,E01003521,Violence Against the Person,4374,247.2,115.6,2.14
+8722,Camden,E01000904,Violence Against the Person,4170,193.5,90.3,2.14
+39352,Southwark,E01003966,Violence Against the Person,4334,145.2,68.0,2.14
+12904,Ealing,E01001333,Violence Against the Person,4928,138.5,65.0,2.13
+26719,Islington,E01002695,Violence Against the Person,2966,265.6,124.7,2.13
+46104,Wandsworth,E01004617,Violence Against the Person,3830,300.9,141.5,2.13
+24740,Hillingdon,E01002514,Violence Against the Person,3930,209.3,98.1,2.13
+26642,Hounslow,E01034040,Violence Against the Person,4968,139.7,65.7,2.13
+30846,Lambeth,E01003120,Violence Against the Person,4778,140.5,66.3,2.12
+43244,Tower Hamlets,E01035694,Violence Against the Person,4370,147.8,69.8,2.12
+6253,Brent,E01033935,Violence Against the Person,3996,161.6,76.3,2.12
+15806,Greenwich,E01001631,Violence Against the Person,4156,181.5,85.6,2.12
+31293,Lambeth,E01003166,Violence Against the Person,5114,112.3,53.0,2.12
+25561,Hounslow,E01002589,Violence Against the Person,5012,119.0,56.3,2.11
+6123,Brent,E01000643,Violence Against the Person,4400,156.8,74.2,2.11
+27356,Islington,E01002765,Violence Against the Person,5754,105.5,49.9,2.11
+27066,Islington,E01002732,Violence Against the Person,3674,165.6,78.4,2.11
+45523,Wandsworth,E01004551,Violence Against the Person,3102,288.6,136.9,2.11
+15269,Enfield,E01033926,Violence Against the Person,5234,147.6,70.1,2.11
+40985,Sutton,E01004123,Violence Against the Person,4592,146.2,69.2,2.11
+20801,Haringey,E01002105,Violence Against the Person,4094,173.1,82.3,2.1
+8157,Bromley,E01034386,Violence Against the Person,2448,432.3,205.7,2.1
+34663,Newham,E01003499,Violence Against the Person,4884,124.8,59.4,2.1
+18093,Hackney,E01033699,Violence Against the Person,2818,446.3,213.5,2.09
+9186,Camden,E01000956,Violence Against the Person,3030,234.3,112.0,2.09
+17972,Hackney,E01001839,Violence Against the Person,7158,123.8,59.1,2.09
+41836,Tower Hamlets,E01004211,Violence Against the Person,3230,211.3,101.1,2.09
+25096,Hillingdon,E01034602,Violence Against the Person,2716,309.3,147.8,2.09
+18153,Hackney,E01033706,Violence Against the Person,2854,493.8,236.8,2.09
+20532,Haringey,E01002077,Violence Against the Person,6786,136.5,65.2,2.09
+39653,Southwark,E01004005,Violence Against the Person,4646,138.6,66.2,2.09
+5140,Brent,E01000533,Violence Against the Person,4328,192.2,92.6,2.08
+26552,Hounslow,E01033084,Violence Against the Person,3918,194.6,93.6,2.08
+47652,Westminster,E01033604,Violence Against the Person,2384,300.3,144.3,2.08
+39006,Southwark,E01003922,Violence Against the Person,4496,137.5,66.1,2.08
+37847,Redbridge,E01034484,Violence Against the Person,3402,188.5,90.8,2.08
+20151,Haringey,E01002038,Violence Against the Person,3652,188.1,90.6,2.08
+42081,Tower Hamlets,E01004244,Violence Against the Person,4208,130.4,62.9,2.07
+42101,Tower Hamlets,E01004247,Violence Against the Person,5384,144.0,69.5,2.07
+1131,Barking and Dagenham,E01034479,Violence Against the Person,4410,131.4,63.5,2.07
+39441,Southwark,E01003980,Violence Against the Person,4026,132.1,63.9,2.07
+16288,Greenwich,E01001688,Violence Against the Person,5390,112.8,54.4,2.07
+18578,Hammersmith and Fulham,E01001876,Violence Against the Person,4718,197.2,95.3,2.07
+12132,Ealing,E01001250,Violence Against the Person,4336,125.6,60.8,2.07
+17195,Hackney,E01001747,Violence Against the Person,4656,135.4,65.3,2.07
+40510,Southwark,E01033880,Violence Against the Person,4220,151.2,73.5,2.06
+930,Barking and Dagenham,E01000106,Violence Against the Person,4468,139.7,67.8,2.06
+17078,Hackney,E01001734,Violence Against the Person,3710,166.3,80.8,2.06
+31540,Lambeth,E01033862,Violence Against the Person,2844,272.6,132.8,2.05
+40451,Southwark,E01033874,Violence Against the Person,2286,345.8,168.5,2.05
+42521,Tower Hamlets,E01004306,Violence Against the Person,3742,167.9,82.1,2.05
+38,Barking and Dagenham,E01000009,Violence Against the Person,3590,177.9,86.6,2.05
+6183,Brent,E01033485,Violence Against the Person,3294,194.1,94.5,2.05
+35727,Newham,E01003618,Violence Against the Person,4472,142.5,69.6,2.05
+31685,Lewisham,E01003199,Violence Against the Person,3932,194.5,95.1,2.05
+47416,Westminster,E01004749,Violence Against the Person,4398,156.8,76.6,2.05
+10898,Croydon,E01001136,Violence Against the Person,4114,171.0,83.9,2.04
+26219,Hounslow,E01002661,Violence Against the Person,4704,115.8,56.8,2.04
+15107,Enfield,E01001558,Violence Against the Person,4012,205.3,100.7,2.04
+920,Barking and Dagenham,E01000105,Violence Against the Person,4606,155.6,76.4,2.04
+7090,Bromley,E01000729,Violence Against the Person,3894,166.6,81.6,2.04

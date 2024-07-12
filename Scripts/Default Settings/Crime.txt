@@ -7,5 +7,6 @@
 	"major": null,
 	"minor": null,
 	"population_weighted": true,
-	"per_n_people": "100,000"
+	"per_n_people": "100,000",
+	"keep_population_column": false
 }

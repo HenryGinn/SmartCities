@@ -1,0 +1,201 @@
+,Borough,LSOA,Major Category,Population,Mean,Standard Deviation,Normalised Deviation
+24105,Hillingdon,E01002444,Miscellaneous Crimes Against Society,1903,3093.6,1990.0,1.55
+35928,Newham,E01033581,Miscellaneous Crimes Against Society,1936,233.0,255.5,0.91
+26870,Islington,E01002712,Miscellaneous Crimes Against Society,1370,223.7,265.9,0.84
+26626,Hounslow,E01034039,Miscellaneous Crimes Against Society,1719,202.2,237.1,0.85
+47290,Westminster,E01004734,Miscellaneous Crimes Against Society,1699,179.3,123.5,1.45
+47676,Westminster,E01035716,Miscellaneous Crimes Against Society,2201,178.8,103.8,1.72
+16272,Greenwich,E01001687,Miscellaneous Crimes Against Society,1639,162.9,161.9,1.01
+19194,Hammersmith and Fulham,E01001943,Miscellaneous Crimes Against Society,2225,128.0,106.2,1.21
+36173,Newham,E01034220,Miscellaneous Crimes Against Society,1188,116.9,132.1,0.88
+47310,Westminster,E01004736,Miscellaneous Crimes Against Society,1547,109.1,86.8,1.26
+18572,Hammersmith and Fulham,E01001876,Miscellaneous Crimes Against Society,2359,103.5,83.5,1.24
+28011,Kensington and Chelsea,E01002819,Miscellaneous Crimes Against Society,1106,102.6,114.7,0.89
+47528,Westminster,E01004763,Miscellaneous Crimes Against Society,2031,97.6,81.0,1.2
+30146,Lambeth,E01003047,Miscellaneous Crimes Against Society,1798,82.8,80.1,1.03
+47096,Westminster,E01004714,Miscellaneous Crimes Against Society,1667,82.2,82.5,1.0
+8346,Camden,E01000863,Miscellaneous Crimes Against Society,1479,79.1,77.9,1.02
+29896,Lambeth,E01003021,Miscellaneous Crimes Against Society,2167,77.6,87.0,0.89
+47508,Westminster,E01004761,Miscellaneous Crimes Against Society,1217,71.5,79.2,0.9
+25555,Hounslow,E01002589,Miscellaneous Crimes Against Society,2506,71.4,90.0,0.79
+8814,Camden,E01000914,Miscellaneous Crimes Against Society,1402,71.3,104.1,0.68
+46143,Wandsworth,E01004622,Miscellaneous Crimes Against Society,1860,71.2,91.1,0.78
+8151,Bromley,E01034386,Miscellaneous Crimes Against Society,1224,70.2,77.1,0.91
+12995,Ealing,E01001343,Miscellaneous Crimes Against Society,1431,67.8,82.7,0.82
+11593,Croydon,E01034150,Miscellaneous Crimes Against Society,1312,67.3,81.6,0.82
+40544,Southwark,E01033884,Miscellaneous Crimes Against Society,1083,66.8,80.4,0.83
+16586,Greenwich,E01033741,Miscellaneous Crimes Against Society,2677,63.5,55.1,1.15
+44968,Wandsworth,E01004493,Miscellaneous Crimes Against Society,1916,62.6,93.6,0.67
+15061,Enfield,E01001554,Miscellaneous Crimes Against Society,1778,62.5,137.8,0.45
+15499,Greenwich,E01001592,Miscellaneous Crimes Against Society,1924,61.8,68.8,0.9
+41700,Sutton,E01034156,Miscellaneous Crimes Against Society,1353,61.3,74.1,0.83
+25625,Hounslow,E01002596,Miscellaneous Crimes Against Society,2128,61.1,77.0,0.79
+35977,Newham,E01034200,Miscellaneous Crimes Against Society,1573,59.5,69.2,0.86
+11545,Croydon,E01034145,Miscellaneous Crimes Against Society,1330,58.8,70.1,0.84
+29387,Kingston upon Thames,E01002968,Miscellaneous Crimes Against Society,2937,54.9,45.7,1.2
+19174,Hammersmith and Fulham,E01001941,Miscellaneous Crimes Against Society,1546,54.4,67.3,0.81
+25664,Hounslow,E01002601,Miscellaneous Crimes Against Society,1838,52.5,111.8,0.47
+27893,Islington,E01035652,Miscellaneous Crimes Against Society,1271,51.4,62.5,0.82
+13504,Ealing,E01034030,Miscellaneous Crimes Against Society,1834,51.3,58.9,0.87
+1065,Barking and Dagenham,E01034473,Miscellaneous Crimes Against Society,1294,50.9,63.0,0.81
+28001,Kensington and Chelsea,E01002818,Miscellaneous Crimes Against Society,1401,50.8,63.8,0.8
+16527,Greenwich,E01033735,Miscellaneous Crimes Against Society,1270,49.1,75.6,0.65
+47538,Westminster,E01004765,Miscellaneous Crimes Against Society,1862,48.7,59.1,0.82
+3641,Bexley,E01000372,Miscellaneous Crimes Against Society,1705,48.6,301.3,0.16
+1392,Barnet,E01000143,Miscellaneous Crimes Against Society,1675,47.8,310.9,0.15
+47300,Westminster,E01004735,Miscellaneous Crimes Against Society,2044,45.8,53.5,0.86
+38558,Richmond upon Thames,E01003876,Miscellaneous Crimes Against Society,1877,44.8,55.1,0.81
+18787,Hammersmith and Fulham,E01001898,Miscellaneous Crimes Against Society,2100,44.0,48.9,0.9
+8865,Camden,E01000919,Miscellaneous Crimes Against Society,1459,43.9,54.1,0.81
+8267,Camden,E01000855,Miscellaneous Crimes Against Society,1327,41.2,57.4,0.72
+23580,Havering,E01032741,Miscellaneous Crimes Against Society,1484,41.2,70.0,0.59
+6594,Bromley,E01000676,Miscellaneous Crimes Against Society,2046,40.5,47.6,0.85
+6277,Brent,E01033938,Miscellaneous Crimes Against Society,1277,40.5,57.9,0.7
+42735,Tower Hamlets,E01032771,Miscellaneous Crimes Against Society,1540,40.1,51.5,0.78
+46647,Westminster,E01004658,Miscellaneous Crimes Against Society,1548,39.9,48.7,0.82
+18797,Hammersmith and Fulham,E01001899,Miscellaneous Crimes Against Society,1636,39.6,49.5,0.8
+31679,Lewisham,E01003199,Miscellaneous Crimes Against Society,1966,39.5,107.0,0.37
+20035,Haringey,E01002026,Miscellaneous Crimes Against Society,1780,39.0,48.5,0.8
+26713,Islington,E01002695,Miscellaneous Crimes Against Society,1483,38.9,55.7,0.7
+18087,Hackney,E01033699,Miscellaneous Crimes Against Society,1409,38.8,57.8,0.67
+29818,Lambeth,E01003013,Miscellaneous Crimes Against Society,1934,37.4,48.1,0.78
+36752,Redbridge,E01003689,Miscellaneous Crimes Against Society,2230,37.2,47.1,0.79
+45517,Wandsworth,E01004551,Miscellaneous Crimes Against Society,1551,36.4,48.0,0.76
+18157,Hackney,E01033708,Miscellaneous Crimes Against Society,1883,35.9,43.8,0.82
+42175,Tower Hamlets,E01004259,Miscellaneous Crimes Against Society,1752,35.9,48.4,0.74
+45266,Wandsworth,E01004525,Miscellaneous Crimes Against Society,1933,35.9,51.3,0.7
+33190,Lewisham,E01033327,Miscellaneous Crimes Against Society,2169,35.8,41.3,0.87
+46019,Wandsworth,E01004609,Miscellaneous Crimes Against Society,2194,35.7,59.8,0.6
+13901,Enfield,E01001429,Miscellaneous Crimes Against Society,2294,35.4,51.9,0.68
+11583,Croydon,E01034149,Miscellaneous Crimes Against Society,2111,35.4,42.8,0.83
+11525,Croydon,E01034143,Miscellaneous Crimes Against Society,1311,35.4,51.2,0.69
+32759,Lewisham,E01003318,Miscellaneous Crimes Against Society,2076,35.4,45.5,0.78
+9399,Camden,E01035711,Miscellaneous Crimes Against Society,2400,35.3,44.4,0.8
+46922,Westminster,E01004695,Miscellaneous Crimes Against Society,1056,35.1,62.5,0.56
+47578,Westminster,E01033594,Miscellaneous Crimes Against Society,1514,34.6,51.4,0.67
+47518,Westminster,E01004762,Miscellaneous Crimes Against Society,1579,34.3,46.8,0.73
+24783,Hillingdon,E01002521,Miscellaneous Crimes Against Society,2055,34.3,45.4,0.76
+37117,Redbridge,E01003729,Miscellaneous Crimes Against Society,1748,34.0,96.7,0.35
+13170,Ealing,E01001361,Miscellaneous Crimes Against Society,2271,33.7,40.2,0.84
+8855,Camden,E01000918,Miscellaneous Crimes Against Society,1805,33.6,49.1,0.68
+47646,Westminster,E01033604,Miscellaneous Crimes Against Society,1192,33.6,56.6,0.59
+2892,Barnet,E01000307,Miscellaneous Crimes Against Society,1645,33.3,48.2,0.69
+28283,Kensington and Chelsea,E01002850,Miscellaneous Crimes Against Society,1451,32.8,57.2,0.57
+23256,Havering,E01002356,Miscellaneous Crimes Against Society,2107,32.7,40.4,0.81
+26536,Hounslow,E01033083,Miscellaneous Crimes Against Society,2178,32.4,45.4,0.71
+41810,Tower Hamlets,E01004208,Miscellaneous Crimes Against Society,1977,32.4,43.9,0.74
+5726,Brent,E01000601,Miscellaneous Crimes Against Society,1392,32.1,52.4,0.61
+47400,Westminster,E01004748,Miscellaneous Crimes Against Society,1234,31.9,62.5,0.51
+2099,Barnet,E01000221,Miscellaneous Crimes Against Society,1392,31.3,48.7,0.64
+16792,Greenwich,E01034188,Miscellaneous Crimes Against Society,1418,31.1,50.3,0.62
+13073,Ealing,E01001351,Miscellaneous Crimes Against Society,1993,31.0,42.3,0.73
+37841,Redbridge,E01034484,Miscellaneous Crimes Against Society,1701,30.8,65.3,0.47
+36026,Newham,E01034205,Miscellaneous Crimes Against Society,1565,30.8,44.6,0.69
+31534,Lambeth,E01033862,Miscellaneous Crimes Against Society,1422,30.6,52.4,0.58
+23227,Havering,E01002353,Miscellaneous Crimes Against Society,2060,30.6,40.2,0.76
+15101,Enfield,E01001558,Miscellaneous Crimes Against Society,2006,30.5,46.7,0.65
+8237,Camden,E01000850,Miscellaneous Crimes Against Society,1411,29.6,46.0,0.64
+46472,Wandsworth,E01035493,Miscellaneous Crimes Against Society,1654,29.5,47.1,0.63
+19105,Hammersmith and Fulham,E01001932,Miscellaneous Crimes Against Society,1563,29.4,48.3,0.61
+42994,Tower Hamlets,E01035669,Miscellaneous Crimes Against Society,1347,29.3,51.3,0.57
+37764,Redbridge,E01033589,Miscellaneous Crimes Against Society,1930,29.0,43.6,0.67
+20115,Haringey,E01002034,Miscellaneous Crimes Against Society,2471,29.0,50.4,0.58
+34241,Merton,E01003456,Miscellaneous Crimes Against Society,1610,28.9,50.6,0.57
+33276,Lewisham,E01034394,Miscellaneous Crimes Against Society,1248,28.8,58.8,0.49
+24734,Hillingdon,E01002514,Miscellaneous Crimes Against Society,1965,28.7,43.2,0.66
+30225,Lambeth,E01003055,Miscellaneous Crimes Against Society,1618,28.4,43.1,0.66
+3548,Bexley,E01000362,Miscellaneous Crimes Against Society,1904,28.4,37.1,0.77
+9779,Croydon,E01001013,Miscellaneous Crimes Against Society,2185,28.3,41.7,0.68
+20085,Haringey,E01002031,Miscellaneous Crimes Against Society,1873,28.3,50.0,0.57
+6443,Bromley,E01000658,Miscellaneous Crimes Against Society,1342,28.1,74.3,0.38
+9111,Camden,E01000947,Miscellaneous Crimes Against Society,1656,28.1,46.5,0.6
+41830,Tower Hamlets,E01004211,Miscellaneous Crimes Against Society,1615,28.0,50.0,0.56
+3118,Barnet,E01033917,Miscellaneous Crimes Against Society,1467,27.7,48.3,0.57
+6207,Brent,E01033931,Miscellaneous Crimes Against Society,1369,27.5,55.0,0.5
+12096,Ealing,E01001247,Miscellaneous Crimes Against Society,2326,27.3,41.5,0.66
+34844,Newham,E01003521,Miscellaneous Crimes Against Society,2187,27.2,39.3,0.69
+20065,Haringey,E01002029,Miscellaneous Crimes Against Society,2138,27.2,53.8,0.51
+16547,Greenwich,E01033737,Miscellaneous Crimes Against Society,1893,27.0,40.7,0.66
+28616,Kensington and Chelsea,E01002884,Miscellaneous Crimes Against Society,1407,26.8,44.4,0.6
+28606,Kensington and Chelsea,E01002883,Miscellaneous Crimes Against Society,1494,26.8,50.1,0.53
+44029,Waltham Forest,E01004397,Miscellaneous Crimes Against Society,2896,26.6,33.4,0.8
+26724,Islington,E01002696,Miscellaneous Crimes Against Society,1788,26.6,40.9,0.65
+35732,Newham,E01003619,Miscellaneous Crimes Against Society,2473,26.6,36.0,0.74
+28021,Kensington and Chelsea,E01002821,Miscellaneous Crimes Against Society,1132,26.5,46.9,0.57
+18147,Hackney,E01033706,Miscellaneous Crimes Against Society,1427,26.4,46.3,0.57
+8824,Camden,E01000915,Miscellaneous Crimes Against Society,1496,26.3,45.0,0.58
+18747,Hammersmith and Fulham,E01001894,Miscellaneous Crimes Against Society,1347,26.2,46.0,0.57
+26596,Hounslow,E01034036,Miscellaneous Crimes Against Society,1820,26.2,39.3,0.67
+7715,Bromley,E01000799,Miscellaneous Crimes Against Society,1813,26.0,36.1,0.72
+27637,Islington,E01002794,Miscellaneous Crimes Against Society,2028,25.8,37.2,0.69
+28777,Kensington and Chelsea,E01002902,Miscellaneous Crimes Against Society,1235,25.7,47.0,0.55
+42301,Tower Hamlets,E01004277,Miscellaneous Crimes Against Society,1578,25.7,40.5,0.63
+47280,Westminster,E01004733,Miscellaneous Crimes Against Society,2116,25.6,55.6,0.46
+15702,Greenwich,E01001615,Miscellaneous Crimes Against Society,2049,25.3,36.9,0.69
+8894,Camden,E01000922,Miscellaneous Crimes Against Society,1929,25.0,35.8,0.7
+17879,Hackney,E01001830,Miscellaneous Crimes Against Society,1917,24.9,39.0,0.64
+1261,Barnet,E01000129,Miscellaneous Crimes Against Society,1589,24.8,40.1,0.62
+11613,Croydon,E01034152,Miscellaneous Crimes Against Society,1572,24.7,41.6,0.59
+39117,Southwark,E01003937,Miscellaneous Crimes Against Society,1503,24.7,43.3,0.57
+42635,Tower Hamlets,E01004322,Miscellaneous Crimes Against Society,1376,24.4,44.0,0.55
+41759,Tower Hamlets,E01004203,Miscellaneous Crimes Against Society,1816,24.3,41.9,0.58
+1373,Barnet,E01000141,Miscellaneous Crimes Against Society,1861,24.3,33.1,0.73
+24656,Hillingdon,E01002505,Miscellaneous Crimes Against Society,1775,24.2,41.0,0.59
+14681,Enfield,E01001513,Miscellaneous Crimes Against Society,1980,24.1,38.5,0.63
+31514,Lambeth,E01032582,Miscellaneous Crimes Against Society,2281,24.0,33.4,0.72
+44252,Waltham Forest,E01004420,Miscellaneous Crimes Against Society,2237,23.9,104.1,0.23
+47260,Westminster,E01004731,Miscellaneous Crimes Against Society,1996,23.9,41.6,0.57
+30684,Lambeth,E01003102,Miscellaneous Crimes Against Society,1771,23.9,37.2,0.64
+46492,Wandsworth,E01035495,Miscellaneous Crimes Against Society,1332,23.8,42.0,0.57
+8141,Bromley,E01034385,Miscellaneous Crimes Against Society,1439,23.7,47.9,0.49
+15273,Enfield,E01033927,Miscellaneous Crimes Against Society,1647,23.6,39.2,0.6
+27399,Islington,E01002770,Miscellaneous Crimes Against Society,1894,23.6,35.9,0.66
+35322,Newham,E01003570,Miscellaneous Crimes Against Society,1936,23.4,37.3,0.63
+35205,Newham,E01003558,Miscellaneous Crimes Against Society,1710,23.4,46.9,0.5
+18807,Hammersmith and Fulham,E01001900,Miscellaneous Crimes Against Society,1732,23.4,50.8,0.46
+26801,Islington,E01002704,Miscellaneous Crimes Against Society,2341,23.4,36.9,0.63
+47420,Westminster,E01004750,Miscellaneous Crimes Against Society,1634,23.4,40.0,0.58
+26013,Hounslow,E01002637,Miscellaneous Crimes Against Society,1940,23.3,42.4,0.55
+27647,Islington,E01002795,Miscellaneous Crimes Against Society,1946,23.3,35.8,0.65
+43981,Waltham Forest,E01004392,Miscellaneous Crimes Against Society,2573,23.3,31.2,0.75
+4558,Bexley,E01033791,Miscellaneous Crimes Against Society,1386,23.3,44.8,0.52
+9051,Camden,E01000939,Miscellaneous Crimes Against Society,1446,23.2,41.2,0.56
+15111,Enfield,E01001559,Miscellaneous Crimes Against Society,2127,23.2,33.2,0.7
+40198,Southwark,E01004067,Miscellaneous Crimes Against Society,2212,23.1,33.8,0.68
+15071,Enfield,E01001555,Miscellaneous Crimes Against Society,2229,23.0,41.5,0.55
+816,Barking and Dagenham,E01000095,Miscellaneous Crimes Against Society,2229,23.0,33.2,0.69
+32631,Lewisham,E01003303,Miscellaneous Crimes Against Society,1743,22.9,37.7,0.61
+7631,Bromley,E01000790,Miscellaneous Crimes Against Society,2290,22.9,31.9,0.72
+42695,Tower Hamlets,E01032767,Miscellaneous Crimes Against Society,1554,22.7,63.9,0.36
+15655,Greenwich,E01001609,Miscellaneous Crimes Against Society,1719,22.6,40.1,0.56
+12221,Ealing,E01001261,Miscellaneous Crimes Against Society,2294,22.6,35.6,0.63
+23693,Hillingdon,E01002397,Miscellaneous Crimes Against Society,1954,22.6,32.9,0.69
+25090,Hillingdon,E01034602,Miscellaneous Crimes Against Society,1358,22.5,45.3,0.5
+23599,Havering,E01033784,Miscellaneous Crimes Against Society,1570,22.5,38.8,0.58
+39137,Southwark,E01003939,Miscellaneous Crimes Against Society,1962,22.5,38.4,0.59
+16782,Greenwich,E01034187,Miscellaneous Crimes Against Society,1259,22.4,42.5,0.53
+6316,Brent,E01033942,Miscellaneous Crimes Against Society,1599,22.4,47.9,0.47
+27854,Islington,E01033491,Miscellaneous Crimes Against Society,1925,22.3,34.8,0.64
+24666,Hillingdon,E01002506,Miscellaneous Crimes Against Society,2054,22.3,30.9,0.72
+28147,Kensington and Chelsea,E01002835,Miscellaneous Crimes Against Society,1404,22.2,43.3,0.51
+11079,Croydon,E01001155,Miscellaneous Crimes Against Society,1787,22.1,36.7,0.6
+16704,Greenwich,E01034179,Miscellaneous Crimes Against Society,1410,22.1,41.0,0.54
+37555,Redbridge,E01003776,Miscellaneous Crimes Against Society,1713,22.0,35.9,0.61
+46825,Westminster,E01004682,Miscellaneous Crimes Against Society,1292,21.9,38.8,0.56
+21062,Harrow,E01002129,Miscellaneous Crimes Against Society,2691,21.9,31.5,0.7
+40321,Southwark,E01032639,Miscellaneous Crimes Against Society,1910,21.9,32.1,0.68
+26052,Hounslow,E01002641,Miscellaneous Crimes Against Society,2728,21.8,30.8,0.71
+1421,Barnet,E01000146,Miscellaneous Crimes Against Society,1859,21.8,34.9,0.62
+47724,Westminster,E01035721,Miscellaneous Crimes Against Society,2336,21.7,34.3,0.63
+39552,Southwark,E01003994,Miscellaneous Crimes Against Society,1825,21.6,37.4,0.58
+40151,Southwark,E01004062,Miscellaneous Crimes Against Society,2178,21.6,46.9,0.46
+26546,Hounslow,E01033084,Miscellaneous Crimes Against Society,1959,21.6,38.8,0.56
+46961,Westminster,E01004699,Miscellaneous Crimes Against Society,1745,21.6,37.9,0.57
+20135,Haringey,E01002037,Miscellaneous Crimes Against Society,1686,21.6,34.6,0.62
+38734,Richmond upon Thames,E01003896,Miscellaneous Crimes Against Society,1914,21.5,37.1,0.58
+37620,Redbridge,E01003783,Miscellaneous Crimes Against Society,2549,21.5,29.6,0.73
+46098,Wandsworth,E01004617,Miscellaneous Crimes Against Society,1915,21.5,33.9,0.63
+3528,Bexley,E01000360,Miscellaneous Crimes Against Society,1902,21.3,41.0,0.52
+9041,Camden,E01000938,Miscellaneous Crimes Against Society,1383,21.3,38.3,0.56
+47696,Westminster,E01035718,Miscellaneous Crimes Against Society,2659,21.2,33.0,0.64
+11573,Croydon,E01034148,Miscellaneous Crimes Against Society,1634,21.2,40.1,0.53

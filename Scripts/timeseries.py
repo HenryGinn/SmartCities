@@ -44,18 +44,18 @@ class Time():
             self.columns_non_time.remove("Population")
 
     def convert_to_date_datatype(self):
-        self.set_format()
+        self.set_date_format()
         self.data = self.data.reset_index()
         self.data = self.data.rename(columns={"index": "Time"})
-        self.data["Time"] = pd.to_datetime(self.data["Time"], format=self.format)
+        self.data["Time"] = pd.to_datetime(self.data["Time"], format=self.date_format)
         self.data = self.data.sort_values("Time")
         self.data = self.data.set_index("Time", drop=True)
 
-    def set_format(self):
+    def set_date_format(self):
         match len(self.columns_time[0]):
-            case 2: self.format = "%m"
-            case 4: self.format = "%Y"
-            case 7: self.format = "%Y %m"
+            case 2: self.date_format = "%m"
+            case 4: self.date_format = "%Y"
+            case 7: self.date_format = "%Y %m"
 
     def create_figure(self):
         self.setup_figure()
@@ -75,13 +75,11 @@ class Time():
         else:
             self.plot_function = self.ax.plot
 
-    def plot_values(self):
-        self.plot_function(self.data, label=self.labels)
-
     def set_labels(self):
         self.set_labels_crime()
         self.set_labels_borough()
         self.set_labels_lsoa()
+        self.set_labels_rank()
         self.combine_labels()
 
     def set_labels_crime(self):
@@ -100,15 +98,34 @@ class Time():
         if "LSOA" in self.data.columns.names:
             self.labels_lsoa = self.data.columns.to_frame()["LSOA"].values
 
+    def set_labels_rank(self):
+        self.labels_rank = np.arange(len(self.data.columns)) + 1
+
     def combine_labels(self):
         formatting_string = self.label_format.replace("{", "{")
-        self.labels = [eval(formatting_string) for crime, borough, lsoa in
-                       zip(self.labels_crime, self.labels_borough, self.labels_lsoa)]
+        self.labels = [eval(formatting_string) for crime, borough, lsoa, rank in
+                       zip(self.labels_crime, self.labels_borough,
+                           self.labels_lsoa, self.labels_rank)]
+
+    def plot_values(self):
+        self.plot_function(self.data, label=self.labels)
         
     def plot_peripheries(self):
-        self.ax.set_xlabel("Time", fontsize=self.fontsize_axis_labels)
-        #self.ax.set_ylabel(self.y_label, fontsize=self.fontsize_axis_labels)
+        self.set_axis_labels()
+        self.set_ticks()
+        self.set_title()
         self.add_legend()
+
+    def set_axis_labels(self):
+        self.ax.set_xlabel("Date", fontsize=self.fontsize_labels)
+        self.ax.set_ylabel(self.y_label, fontsize=self.fontsize_labels)
+
+    def set_ticks(self):
+        self.ax.xaxis.set_tick_params(labelsize=self.fontsize_ticks)
+        self.ax.yaxis.set_tick_params(labelsize=self.fontsize_ticks)
+
+    def set_title(self):
+        self.ax.set_title(self.title, fontsize=self.fontsize_title)
 
     def add_legend(self):
         self.set_legend()
@@ -125,7 +142,7 @@ class Time():
         box = self.ax.get_position()
         self.ax.set_position([box.x0, box.y0 + box.height * self.squish_vertical,
                               box.width, box.height * (1-self.squish_vertical)])
-        self.ax.legend(ncols=self.ncol, loc=self.loc,
+        self.ax.legend(ncols=self.ncol, loc=self.loc, fontsize=self.fontsize_legend,
                        bbox_to_anchor=self.bbox_to_anchor)
 
     def output_figure(self):

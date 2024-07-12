@@ -1,0 +1,201 @@
+,Borough,LSOA,Major Category,Population,Mean,Standard Deviation,Normalised Deviation
+47680,Westminster,E01035716,Theft,8804,6084.2,3142.0,1.94
+47294,Westminster,E01004734,Theft,6796,4894.4,2689.6,1.82
+47532,Westminster,E01004763,Theft,8124,4225.2,2447.3,1.73
+47314,Westminster,E01004736,Theft,6188,3190.7,1386.4,2.3
+24105,Hillingdon,E01002444,Miscellaneous Crimes Against Society,1903,3093.6,1990.0,1.55
+36177,Newham,E01034220,Theft,4752,2681.3,1267.1,2.12
+47296,Westminster,E01004734,Violence Against the Person,3398,2333.2,676.1,3.45
+47100,Westminster,E01004714,Theft,6668,2034.6,784.9,2.59
+47304,Westminster,E01004735,Theft,8176,1832.0,751.3,2.44
+47512,Westminster,E01004761,Theft,4868,1492.1,561.1,2.66
+47316,Westminster,E01004736,Violence Against the Person,3094,1399.7,525.7,2.66
+47289,Westminster,E01004734,Drug Offences,3398,1337.1,824.9,1.62
+8818,Camden,E01000914,Theft,5608,1336.7,424.5,3.15
+18161,Hackney,E01033708,Theft,7532,1335.2,457.9,2.92
+47542,Westminster,E01004765,Theft,7448,1308.4,417.0,3.14
+47522,Westminster,E01004762,Theft,6316,1307.1,542.8,2.41
+8350,Camden,E01000863,Theft,5916,1288.9,435.9,2.96
+8271,Camden,E01000855,Theft,5308,1280.6,586.6,2.18
+24109,Hillingdon,E01002444,Theft,7612,1280.6,383.0,3.34
+8869,Camden,E01000919,Theft,5836,1279.1,713.3,1.79
+19198,Hammersmith and Fulham,E01001943,Theft,8900,1238.6,326.2,3.8
+47682,Westminster,E01035716,Violence Against the Person,4402,1226.2,397.3,3.09
+11599,Croydon,E01034150,Violence Against the Person,2624,1011.3,324.5,3.12
+8241,Camden,E01000850,Theft,5644,1007.9,388.6,2.59
+29391,Kingston upon Thames,E01002968,Theft,11748,996.1,221.9,4.49
+35981,Newham,E01034200,Theft,6292,985.2,242.7,4.06
+28015,Kensington and Chelsea,E01002819,Theft,4424,981.8,447.4,2.19
+8352,Camden,E01000863,Violence Against the Person,2958,956.3,324.6,2.95
+40548,Southwark,E01033884,Theft,4332,920.0,361.0,2.55
+20039,Haringey,E01002026,Theft,7120,901.6,252.1,3.58
+9403,Camden,E01035711,Theft,9600,878.0,287.6,3.05
+18151,Hackney,E01033706,Theft,5708,833.3,356.3,2.34
+13508,Ealing,E01034030,Theft,7336,815.9,203.1,4.02
+30152,Lambeth,E01003047,Violence Against the Person,3596,811.2,303.5,2.67
+23584,Havering,E01032741,Theft,5936,789.1,241.6,3.27
+39053,Southwark,E01003929,Theft,7924,786.5,310.7,2.53
+47534,Westminster,E01004763,Violence Against the Person,6093,780.4,267.0,2.92
+47293,Westminster,E01004734,Robbery,3398,760.0,386.9,1.96
+23262,Havering,E01002356,Violence Against the Person,4214,736.3,245.8,3.0
+41704,Sutton,E01034156,Theft,5412,735.4,206.1,3.57
+47309,Westminster,E01004736,Drug Offences,3094,733.5,441.3,1.66
+36179,Newham,E01034220,Violence Against the Person,2376,733.1,452.8,1.62
+8859,Camden,E01000918,Theft,7220,732.7,323.1,2.27
+30150,Lambeth,E01003047,Theft,7192,716.1,215.2,3.33
+8345,Camden,E01000863,Drug Offences,2958,706.6,451.5,1.57
+47527,Westminster,E01004763,Drug Offences,4062,697.1,445.6,1.56
+41706,Sutton,E01034156,Violence Against the Person,2706,691.7,245.2,2.82
+26540,Hounslow,E01033083,Theft,8712,682.4,160.8,4.24
+47679,Westminster,E01035716,Robbery,4402,676.6,401.9,1.68
+24111,Hillingdon,E01002444,Violence Against the Person,3806,669.1,288.6,2.32
+47531,Westminster,E01004763,Robbery,4062,668.0,420.2,1.59
+29393,Kingston upon Thames,E01002968,Violence Against the Person,5874,658.4,165.7,3.97
+47675,Westminster,E01035716,Drug Offences,4402,650.0,417.0,1.56
+11549,Croydon,E01034145,Theft,5320,629.3,212.2,2.97
+27641,Islington,E01002794,Theft,8112,626.2,228.3,2.74
+2896,Barnet,E01000307,Theft,6580,626.0,235.4,2.66
+18091,Hackney,E01033699,Theft,5636,623.4,200.8,3.1
+18163,Hackney,E01033708,Violence Against the Person,3766,620.6,273.6,2.27
+28005,Kensington and Chelsea,E01002818,Theft,5604,611.4,276.6,2.21
+27897,Islington,E01035652,Theft,5084,602.7,172.0,3.5
+36756,Redbridge,E01003689,Theft,8920,599.7,184.4,3.25
+29822,Lambeth,E01003013,Theft,7736,594.2,187.3,3.17
+47264,Westminster,E01004731,Theft,7984,592.7,296.6,2.0
+1069,Barking and Dagenham,E01034473,Theft,5176,590.1,148.4,3.98
+12972,Ealing,E01001340,Violence Against the Person,3126,573.0,330.4,1.73
+31518,Lambeth,E01032582,Theft,9124,558.7,223.2,2.5
+46651,Westminster,E01004658,Theft,6192,555.7,242.7,2.29
+34848,Newham,E01003521,Theft,8748,555.4,208.8,2.66
+26805,Islington,E01002704,Theft,9364,554.4,185.0,3.0
+35983,Newham,E01034200,Violence Against the Person,3146,550.7,222.4,2.48
+47674,Westminster,E01035716,Burglary,4402,550.0,235.6,2.33
+11529,Croydon,E01034143,Theft,5244,545.4,180.6,3.02
+1071,Barking and Dagenham,E01034473,Violence Against the Person,2588,539.1,190.0,2.84
+47582,Westminster,E01033594,Theft,6056,534.4,188.4,2.84
+7451,Bromley,E01000769,Violence Against the Person,2760,528.3,237.9,2.22
+16796,Greenwich,E01034188,Theft,5672,522.9,289.7,1.8
+38562,Richmond upon Thames,E01003876,Theft,7508,522.6,134.0,3.9
+26728,Islington,E01002696,Theft,7152,522.4,168.8,3.09
+47424,Westminster,E01004750,Theft,6536,519.7,203.6,2.55
+26994,Islington,E01002724,Theft,7772,516.2,204.7,2.52
+6283,Brent,E01033938,Violence Against the Person,2554,515.7,296.3,1.74
+28025,Kensington and Chelsea,E01002821,Theft,4528,514.4,210.9,2.44
+11597,Croydon,E01034150,Theft,5248,513.7,256.2,2.01
+9115,Camden,E01000947,Theft,6624,508.3,209.9,2.42
+30034,Lambeth,E01003035,Theft,6684,507.0,253.1,2.0
+47700,Westminster,E01035718,Theft,10636,500.4,289.6,1.73
+18801,Hammersmith and Fulham,E01001899,Theft,6544,496.7,134.2,3.7
+47306,Westminster,E01004735,Violence Against the Person,4088,496.6,188.7,2.63
+18153,Hackney,E01033706,Violence Against the Person,2854,493.8,236.8,2.09
+46926,Westminster,E01004695,Theft,4224,488.2,194.1,2.52
+19200,Hammersmith and Fulham,E01001943,Violence Against the Person,4450,484.3,180.2,2.69
+29824,Lambeth,E01003013,Violence Against the Person,3868,484.2,246.1,1.97
+47514,Westminster,E01004761,Violence Against the Person,3651,483.5,194.6,2.48
+32538,Lewisham,E01003291,Violence Against the Person,3070,477.1,238.1,2.0
+16798,Greenwich,E01034188,Violence Against the Person,2836,474.2,274.4,1.73
+30289,Lambeth,E01003061,Theft,5308,471.2,381.6,1.23
+42739,Tower Hamlets,E01032771,Theft,6160,469.3,160.9,2.92
+39141,Southwark,E01003939,Theft,7848,468.4,196.3,2.39
+13510,Ealing,E01034030,Violence Against the Person,3668,466.7,158.7,2.94
+28781,Kensington and Chelsea,E01002902,Theft,4940,465.7,260.8,1.79
+45270,Wandsworth,E01004525,Theft,7732,465.6,134.4,3.46
+47313,Westminster,E01004736,Robbery,3094,458.4,269.6,1.7
+47584,Westminster,E01033594,Violence Against the Person,3028,456.9,230.1,1.99
+6598,Bromley,E01000676,Theft,8184,451.0,250.6,1.8
+42529,Tower Hamlets,E01004307,Theft,9540,447.3,172.5,2.59
+36030,Newham,E01034205,Theft,6260,446.4,144.7,3.09
+18093,Hackney,E01033699,Violence Against the Person,2818,446.3,213.5,2.09
+8155,Bromley,E01034386,Theft,4896,444.1,189.7,2.34
+46641,Westminster,E01004657,Theft,4924,439.5,224.7,1.96
+28062,Kensington and Chelsea,E01002826,Theft,5124,439.2,188.9,2.33
+9075,Camden,E01000942,Theft,3988,439.0,186.3,2.36
+11551,Croydon,E01034145,Violence Against the Person,2660,438.7,185.2,2.37
+47129,Westminster,E01004717,Theft,5096,435.5,162.5,2.68
+42998,Tower Hamlets,E01035669,Theft,5388,434.5,164.7,2.64
+8157,Bromley,E01034386,Violence Against the Person,2448,432.3,205.7,2.1
+8251,Camden,E01000851,Theft,5888,431.9,171.3,2.52
+8820,Camden,E01000914,Violence Against the Person,2804,425.2,194.3,2.19
+21066,Harrow,E01002129,Theft,10764,415.5,135.7,3.06
+47287,Westminster,E01004734,Arson and Criminal Damage,3398,405.6,129.4,3.13
+33194,Lewisham,E01033327,Theft,8676,402.0,131.4,3.06
+44581,Waltham Forest,E01004455,Theft,7196,401.3,257.1,1.56
+45521,Wandsworth,E01004551,Theft,6204,399.2,149.1,2.68
+44033,Waltham Forest,E01004397,Theft,11584,399.0,109.0,3.66
+25094,Hillingdon,E01034602,Theft,5432,398.8,144.1,2.77
+19180,Hammersmith and Fulham,E01001941,Violence Against the Person,3092,398.4,143.1,2.78
+23586,Havering,E01032741,Violence Against the Person,2968,395.4,157.0,2.52
+18793,Hammersmith and Fulham,E01001898,Violence Against the Person,4200,391.6,178.1,2.2
+8871,Camden,E01000919,Violence Against the Person,2918,389.5,157.4,2.47
+47286,Westminster,E01004733,Violence Against the Person,4232,384.9,294.0,1.31
+9117,Camden,E01000947,Violence Against the Person,3312,382.6,130.8,2.93
+46496,Wandsworth,E01035495,Theft,5328,381.4,151.3,2.52
+13176,Ealing,E01001361,Violence Against the Person,4542,380.9,139.2,2.74
+46965,Westminster,E01004699,Theft,6980,380.0,144.6,2.63
+16398,Greenwich,E01001701,Violence Against the Person,3508,379.8,205.2,1.85
+11592,Croydon,E01034150,Drug Offences,2624,375.9,246.3,1.53
+46186,Wandsworth,E01004626,Violence Against the Person,3708,374.5,221.3,1.69
+28006,Kensington and Chelsea,E01002818,Vehicle Offences,4203,373.1,253.2,1.47
+18791,Hammersmith and Fulham,E01001898,Theft,8400,372.1,114.2,3.26
+27899,Islington,E01035652,Violence Against the Person,2542,371.9,166.7,2.23
+16788,Greenwich,E01034187,Violence Against the Person,2518,371.2,185.9,2.0
+8300,Camden,E01000858,Theft,7968,370.8,245.7,1.51
+40550,Southwark,E01033884,Violence Against the Person,2166,370.7,193.2,1.92
+23260,Havering,E01002356,Theft,8428,368.7,118.5,3.11
+30036,Lambeth,E01003035,Violence Against the Person,3342,368.6,150.4,2.45
+30145,Lambeth,E01003047,Drug Offences,3596,368.2,190.1,1.94
+47102,Westminster,E01004714,Violence Against the Person,3334,367.5,153.4,2.4
+39449,Southwark,E01003981,Theft,6056,365.6,170.9,2.14
+47292,Westminster,E01004734,Public Order Offences,6796,364.2,151.0,2.41
+14275,Enfield,E01001468,Violence Against the Person,2774,364.1,251.2,1.45
+26864,Islington,E01002711,Theft,8208,363.8,159.0,2.29
+40449,Southwark,E01033874,Theft,4572,363.1,202.1,1.8
+28131,Kensington and Chelsea,E01002833,Theft,4864,362.8,153.1,2.37
+28376,Kensington and Chelsea,E01002859,Theft,4956,361.9,162.2,2.23
+11314,Croydon,E01001178,Violence Against the Person,3226,358.8,194.6,1.84
+42305,Tower Hamlets,E01004277,Theft,6312,357.7,111.2,3.22
+47513,Westminster,E01004761,Vehicle Offences,4868,356.1,174.0,2.05
+28668,Kensington and Chelsea,E01002889,Theft,6264,355.8,104.5,3.4
+47284,Westminster,E01004733,Theft,8464,353.4,199.9,1.77
+16533,Greenwich,E01033735,Violence Against the Person,2540,352.5,144.4,2.44
+33280,Lewisham,E01034394,Theft,4992,352.1,106.4,3.31
+16531,Greenwich,E01033735,Theft,5080,350.0,124.3,2.82
+47544,Westminster,E01004765,Violence Against the Person,3724,348.8,149.9,2.33
+30229,Lambeth,E01003055,Theft,6472,346.2,124.2,2.79
+40451,Southwark,E01033874,Violence Against the Person,2286,345.8,168.5,2.05
+39091,Southwark,E01003934,Theft,7992,345.7,172.8,2.0
+45272,Wandsworth,E01004525,Violence Against the Person,3866,345.2,137.5,2.51
+37503,Redbridge,E01003770,Violence Against the Person,5728,344.5,245.0,1.41
+17027,Hackney,E01001729,Violence Against the Person,4000,344.3,212.8,1.62
+17291,Hackney,E01001760,Theft,7700,343.2,121.4,2.83
+40202,Southwark,E01004067,Theft,8848,343.0,96.4,3.56
+37624,Redbridge,E01003783,Theft,10196,341.6,142.1,2.4
+33196,Lewisham,E01033327,Violence Against the Person,4338,341.4,142.3,2.4
+47404,Westminster,E01004748,Theft,4936,341.3,321.5,1.06
+28823,Kensington and Chelsea,E01002906,Violence Against the Person,3570,340.6,170.7,2.0
+6600,Bromley,E01000676,Violence Against the Person,4092,340.3,149.1,2.28
+34245,Merton,E01003456,Theft,6440,339.0,120.3,2.82
+26876,Islington,E01002712,Violence Against the Person,2740,336.0,193.0,1.74
+40204,Southwark,E01004067,Violence Against the Person,4424,334.8,124.3,2.69
+9405,Camden,E01035711,Violence Against the Person,4800,334.1,122.9,2.72
+20041,Haringey,E01002026,Violence Against the Person,3560,333.1,151.1,2.2
+47526,Westminster,E01004763,Burglary,4062,333.1,146.7,2.27
+18713,Hammersmith and Fulham,E01001890,Violence Against the Person,3364,332.6,181.3,1.83
+46023,Wandsworth,E01004609,Theft,8776,332.5,103.8,3.2
+9373,Camden,E01035708,Theft,7720,331.9,259.1,1.28
+11531,Croydon,E01034143,Violence Against the Person,2622,331.6,175.1,1.89
+27405,Islington,E01002770,Violence Against the Person,3788,331.4,144.6,2.29
+37770,Redbridge,E01033589,Violence Against the Person,3860,331.3,126.9,2.61
+28151,Kensington and Chelsea,E01002835,Theft,5616,330.6,129.3,2.56
+47080,Westminster,E01004712,Theft,5976,330.3,170.4,1.94
+47506,Westminster,E01004761,Burglary,2434,329.6,174.5,1.89
+36758,Redbridge,E01003689,Violence Against the Person,4460,329.1,137.4,2.4
+46653,Westminster,E01004658,Violence Against the Person,3096,327.9,128.3,2.56
+13907,Enfield,E01001429,Violence Against the Person,4588,326.0,121.6,2.68
+26542,Hounslow,E01033083,Violence Against the Person,4356,324.4,140.6,2.31
+9184,Camden,E01000956,Theft,6060,324.4,136.5,2.38
+5732,Brent,E01000601,Violence Against the Person,2784,321.2,160.1,2.01
+47288,Westminster,E01004734,Burglary,3398,320.4,147.0,2.18
+24789,Hillingdon,E01002521,Violence Against the Person,4110,319.9,125.5,2.55
+24660,Hillingdon,E01002505,Theft,7100,316.5,116.0,2.73
+18401,Hammersmith and Fulham,E01001857,Theft,6204,316.4,115.0,2.75

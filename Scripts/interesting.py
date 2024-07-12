@@ -16,8 +16,9 @@ import pandas as pd
 
 from crime import Crime
 from plot import Plot
-from utils import get_time_columns
 from timeseries import Time
+from utils import get_time_columns
+from utils import add_line_breaks
 
 
 class Interesting():
@@ -30,7 +31,7 @@ class Interesting():
         self.set_paths()
 
     def initialise_crime(self):
-        self.crime_obj = Crime(agg_crime="Major")
+        self.crime_obj = Crime(agg_crime="Major", keep_population_column=True)
         self.crime_obj.process()
         self.crime = self.crime_obj.crime
         self.major_categories = list(set(self.crime["Major Category"].values))
@@ -105,44 +106,71 @@ class Interesting():
 
     def output_from_dataframe(self, measure, scores, name):
         scores = scores.sort_values(by=measure, ascending=False).copy()
-        name = f"{name}: {measure}"
-        print(name)
-        self.output_all(measure, scores, name)
+        self.name = f"{name} - {measure}"
+        self.measure = measure
+        print(self.name)
+        self.output_all(scores)
 
-    def output_all(self, measure, scores, name):
-        self.output_csv(scores.head(self.n_csv), name, measure)
-        self.output_figure(scores.head(self.n_figure), name, measure)
-        self.output_time_series(scores.head(self.n_time), name, measure)
+    def output_all(self, scores):
+        self.output_csv(scores.head(self.n_csv))
+        self.output_figure(scores.head(self.n_figure))
+        self.output_time_series(scores.head(self.n_time))
 
-    def output_csv(self, scores, name, measure):
+    def output_csv(self, scores):
         if self.csv:
-            path = join(self.path_csv, f"{name}.csv")
+            path = join(self.path_csv, f"{self.name}.csv")
             scores.to_csv(path)
 
-    def output_figure(self, scores, name, measure):
+    def output_figure(self, scores):
         if self.figures:
             scores = scores.drop(columns=["Major Category"])
             self.crime_obj.crime = scores
-            self.plot(name, measure)
+            self.plot()
 
-    def plot(self, name, measure):
+    def plot(self):
         self.plot_obj = Plot(
-            self.crime_obj, path_output=self.path_figures,
-            title=name, figure_name=name, plot_column=measure, **self.kwargs,
+            self.crime_obj, path_output=self.path_figures, title=self.name,
+            figure_name=self.name, plot_column=self.measure, **self.kwargs,
             population_weighted=False, colorbar_label="Score")
         self.plot_obj.plot()
 
-    def output_time_series(self, scores, name, measure):
+    def output_time_series(self, scores):
         filtered = self.get_filtered_dataframe(scores)
-        self.time_obj = Time(filtered, output="Show")
+        self.set_plot_peripherals()
+        self.create_time_obj(filtered)
         self.time_obj.create_figure()
 
     def get_filtered_dataframe(self, scores):
-        filtered = self.crime[self.crime["LSOA"].isin(scores["LSOA"])]
-        if "Major Category" in scores.columns.values:
-            filtered = filtered[filtered["Major Category"].isin(
-                scores["Major Category"])]
+        key = self.get_filtering_key(scores)
+        crime_reindex = self.crime.set_index(key)
+        scores = scores.set_index(key)
+        filtered = crime_reindex.loc[scores.index, :].reset_index()
         return filtered
+
+    def get_filtering_key(self, scores):
+        potential_keys = ["LSOA", "Major Category"]
+        columns = set(scores.columns.values)
+        keys = list(set(potential_keys).intersection(columns))
+        return keys
+
+    def create_time_obj(self, filtered):
+        self.time_obj = Time(filtered, output="Save", title=self.time_series_title,
+                             label_format="f'{rank}: {crime} {lsoa}'",
+                             y_label=self.time_series_y_label, name=self.name,
+                             path_output=self.path_time)
+
+    def set_plot_peripherals(self):
+        self.set_time_series_y_label()
+        self.set_title()
+
+    def set_time_series_y_label(self):
+        self.time_series_y_label = (
+            f"Report Crimes per {self.crime_obj.per_n_people} People")
+
+    def set_title(self):
+        self.time_series_title = add_line_breaks(
+            f"Interesting Candidates: {self.name}")
+        
 
 
 defaults.load(Interesting)

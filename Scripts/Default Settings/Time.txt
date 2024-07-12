@@ -4,8 +4,10 @@
 	"save": true,
 	"legend": true,
 	"format": "pdf",
-	"fontsize_title": 20,
-	"fontsize_axis_labels": 16,
+	"fontsize_title": 24,
+	"fontsize_labels": 16,
+	"fontsize_ticks": 12,
+	"fontsize_legend": 12,
 	"population_weighted": true,
 	"per_n_people": "100,000",
 	"title_pad": 12,
@@ -14,5 +16,6 @@
 	"ncol": 1,
 	"loc": null,
 	"legend": true,
-	"label_format": "f'{crime} {lsoa}'"
+	"label_format": "f'{crime}'",
+	"title": null
 }
