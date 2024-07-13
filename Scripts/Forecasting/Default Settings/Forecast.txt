@@ -1,3 +1,22 @@
 {
-	"case": 1
+	"case": 1,
+	"train": 0.6,
+	"validate": 0.2,
+	"forecast": 0.1,
+	"color_original": "#501f8b",
+	"color_modelled": "#d9007b",
+	"color_divider": "6d6d6d",
+	"label_original": "Original",
+	"label_modelled": "Modelled",
+	"title": null,
+	"y_label": "Crimes",
+	"fontsize_title": 24,
+	"fontsize_labels": 16,
+	"fontsize_ticks": 12,
+	"fontsize_legend": 12,
+	"title_pad": 12,
+	"loc": null,
+	"output": "show",
+	"figure_name": null,
+	"format": "pdf"
 }

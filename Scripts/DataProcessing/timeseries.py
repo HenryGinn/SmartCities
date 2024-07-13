@@ -110,7 +110,7 @@ class Time():
     def plot_values(self):
         self.plot_function(self.data, label=self.labels)
         
-    def plot_peripheries(self):
+    def plot_peripherals(self):
         self.set_axis_labels()
         self.set_ticks()
         self.set_title()
