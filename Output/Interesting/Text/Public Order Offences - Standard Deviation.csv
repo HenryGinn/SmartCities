@@ -1,201 +1,86 @@
 ,Borough,LSOA,Major Category,Population,Mean,Standard Deviation,Normalised Deviation
-47292,Westminster,E01004734,Public Order Offences,6796,364.2,151.0,2.41
-47678,Westminster,E01035716,Public Order Offences,6603,230.4,110.7,2.08
-12968,Ealing,E01001340,Public Order Offences,4689,80.0,109.4,0.73
-47312,Westminster,E01004736,Public Order Offences,6188,195.5,107.8,1.81
-47530,Westminster,E01004763,Public Order Offences,6093,216.7,98.8,2.19
-47510,Westminster,E01004761,Public Order Offences,3651,127.3,95.2,1.34
-24107,Hillingdon,E01002444,Public Order Offences,5709,147.9,92.9,1.59
-8153,Bromley,E01034386,Public Order Offences,3672,140.3,87.3,1.61
-8348,Camden,E01000863,Public Order Offences,4437,188.1,86.8,2.17
-46924,Westminster,E01004695,Public Order Offences,2112,80.2,83.2,0.96
-36175,Newham,E01034220,Public Order Offences,4752,109.2,82.5,1.32
-41702,Sutton,E01034156,Public Order Offences,4059,124.1,80.5,1.54
-30148,Lambeth,E01003047,Public Order Offences,7192,134.5,72.0,1.87
-47580,Westminster,E01033594,Public Order Offences,4542,105.0,71.5,1.47
-11595,Croydon,E01034150,Public Order Offences,3936,155.1,70.1,2.21
-35979,Newham,E01034200,Public Order Offences,4719,109.4,69.3,1.58
-27895,Islington,E01035652,Public Order Offences,3813,107.7,69.0,1.56
-8867,Camden,E01000919,Public Order Offences,4377,84.4,66.8,1.26
-8816,Camden,E01000914,Public Order Offences,4206,105.9,66.6,1.59
-23582,Havering,E01032741,Public Order Offences,4452,83.4,65.3,1.28
-11547,Croydon,E01034145,Public Order Offences,3990,86.4,65.3,1.32
-19196,Hammersmith and Fulham,E01001943,Public Order Offences,6675,127.0,65.2,1.95
-16784,Greenwich,E01034187,Public Order Offences,3777,78.6,63.9,1.23
-18089,Hackney,E01033699,Public Order Offences,4227,102.1,63.4,1.61
-19176,Hammersmith and Fulham,E01001941,Public Order Offences,4638,104.3,62.8,1.66
-13506,Ealing,E01034030,Public Order Offences,5502,97.5,62.2,1.57
-47272,Westminster,E01004732,Public Order Offences,3939,59.7,62.1,0.96
-47098,Westminster,E01004714,Public Order Offences,5001,85.3,62.0,1.38
-47402,Westminster,E01004748,Public Order Offences,3702,74.0,61.9,1.2
-29820,Lambeth,E01003013,Public Order Offences,5802,96.4,61.7,1.56
-18789,Hammersmith and Fulham,E01001898,Public Order Offences,6300,108.3,59.5,1.82
-29389,Kingston upon Thames,E01002968,Public Order Offences,8811,119.0,59.2,2.01
-16529,Greenwich,E01033735,Public Order Offences,3810,81.2,59.2,1.37
-26715,Islington,E01002695,Public Order Offences,4449,87.7,58.5,1.5
-42637,Tower Hamlets,E01004322,Public Order Offences,4128,64.6,57.8,1.12
-23258,Havering,E01002356,Public Order Offences,6321,103.2,57.6,1.79
-8269,Camden,E01000855,Public Order Offences,3981,75.7,57.6,1.31
-32534,Lewisham,E01003291,Public Order Offences,4605,65.9,55.7,1.18
-40546,Southwark,E01033884,Public Order Offences,3249,60.7,54.3,1.12
-3720,Bexley,E01000381,Public Order Offences,1623,26.5,53.5,0.5
-26538,Hounslow,E01033083,Public Order Offences,6534,81.7,53.5,1.53
-25092,Hillingdon,E01034602,Public Order Offences,4074,71.2,53.5,1.33
-27401,Islington,E01002770,Public Order Offences,5682,82.9,53.3,1.56
-47422,Westminster,E01004750,Public Order Offences,4902,73.8,52.5,1.41
-36194,Newham,E01034222,Public Order Offences,4440,34.7,52.5,0.66
-9113,Camden,E01000947,Public Order Offences,4968,82.4,52.0,1.58
-16794,Greenwich,E01034188,Public Order Offences,4254,60.8,51.6,1.18
-8239,Camden,E01000850,Public Order Offences,4233,62.7,51.0,1.23
-46649,Westminster,E01004658,Public Order Offences,4644,78.0,50.1,1.56
-36028,Newham,E01034205,Public Order Offences,4695,59.5,49.8,1.19
-1067,Barking and Dagenham,E01034473,Public Order Offences,5176,73.1,49.6,1.47
-22179,Harrow,E01034598,Public Order Offences,3681,38.7,49.3,0.78
-33182,Lewisham,E01033325,Public Order Offences,1320,12.5,49.2,0.25
-30227,Lambeth,E01003055,Public Order Offences,4854,61.0,49.0,1.24
-3255,Bexley,E01000330,Public Order Offences,4932,45.7,48.8,0.94
-42177,Tower Hamlets,E01004259,Public Order Offences,5256,60.7,48.8,1.24
-20037,Haringey,E01002026,Public Order Offences,5340,62.3,48.8,1.28
-30822,Lambeth,E01003118,Public Order Offences,3756,56.4,48.5,1.16
-7652,Bromley,E01000792,Public Order Offences,1512,33.8,48.4,0.7
-28013,Kensington and Chelsea,E01002819,Public Order Offences,3318,48.9,48.3,1.01
-11527,Croydon,E01034143,Public Order Offences,3933,65.8,48.3,1.36
-3235,Bexley,E01000328,Public Order Offences,1649,17.5,48.2,0.36
-17289,Hackney,E01001760,Public Order Offences,5775,64.3,48.0,1.34
-45268,Wandsworth,E01004525,Public Order Offences,5799,72.8,48.0,1.52
-6318,Brent,E01033942,Public Order Offences,6396,37.9,48.0,0.79
-19245,Hammersmith and Fulham,E01001948,Public Order Offences,1889,25.8,47.9,0.54
-45519,Wandsworth,E01004551,Public Order Offences,4653,66.9,47.5,1.41
-47302,Westminster,E01004735,Public Order Offences,8176,77.1,47.4,1.63
-18159,Hackney,E01033708,Public Order Offences,5649,73.8,47.4,1.56
-4560,Bexley,E01033791,Public Order Offences,4158,48.8,47.1,1.04
-6209,Brent,E01033931,Public Order Offences,4107,49.7,47.0,1.06
-6279,Brent,E01033938,Public Order Offences,3831,60.2,46.8,1.29
-27282,Islington,E01002757,Public Order Offences,1450,25.2,46.7,0.54
-15575,Greenwich,E01001600,Public Order Offences,1526,24.3,46.7,0.52
-28898,Kensington and Chelsea,E01002914,Public Order Offences,2398,31.6,46.6,0.68
-33278,Lewisham,E01034394,Public Order Offences,3744,55.9,46.4,1.2
-10108,Croydon,E01001052,Public Order Offences,1471,19.6,46.4,0.42
-11730,Ealing,E01001206,Public Order Offences,1586,24.8,46.2,0.54
-2894,Barnet,E01000307,Public Order Offences,4935,46.8,46.0,1.02
-3120,Barnet,E01033917,Public Order Offences,4401,36.0,45.6,0.79
-11310,Croydon,E01001178,Public Order Offences,4839,47.5,45.5,1.04
-18799,Hammersmith and Fulham,E01001899,Public Order Offences,4908,60.4,45.4,1.33
-46040,Wandsworth,E01004611,Public Order Offences,1575,23.5,45.2,0.52
-37852,Richmond upon Thames,E01003797,Public Order Offences,1417,8.7,44.9,0.19
-47648,Westminster,E01033604,Public Order Offences,3576,57.4,44.9,1.28
-27639,Islington,E01002794,Public Order Offences,6084,62.0,44.8,1.38
-18749,Hammersmith and Fulham,E01001894,Public Order Offences,4041,56.8,44.8,1.27
-28139,Kensington and Chelsea,E01002834,Public Order Offences,1276,17.1,44.7,0.38
-26726,Islington,E01002696,Public Order Offences,5364,63.6,44.7,1.42
-28285,Kensington and Chelsea,E01002850,Public Order Offences,4353,54.2,44.7,1.21
-41812,Tower Hamlets,E01004208,Public Order Offences,5931,66.0,44.5,1.48
-24610,Hillingdon,E01002498,Public Order Offences,1416,18.7,44.5,0.42
-9401,Camden,E01035711,Public Order Offences,7200,79.3,44.2,1.79
-18246,Hackney,E01035641,Public Order Offences,4209,48.2,44.1,1.09
-30931,Lambeth,E01003129,Public Order Offences,1789,28.9,43.9,0.66
-18399,Hammersmith and Fulham,E01001857,Public Order Offences,4653,55.5,43.8,1.27
-46718,Westminster,E01004668,Public Order Offences,1442,18.4,43.7,0.42
-38462,Richmond upon Thames,E01003865,Public Order Offences,1447,20.7,43.7,0.47
-11575,Croydon,E01034148,Public Order Offences,4902,50.8,43.6,1.17
-27856,Islington,E01033491,Public Order Offences,5775,56.1,43.5,1.29
-47520,Westminster,E01004762,Public Order Offences,4737,57.6,43.5,1.32
-40323,Southwark,E01032639,Public Order Offences,5730,51.8,43.5,1.19
-8481,Camden,E01000879,Public Order Offences,1272,21.3,43.4,0.49
-42737,Tower Hamlets,E01032771,Public Order Offences,4620,43.5,43.3,1.0
-30052,Lambeth,E01003037,Public Order Offences,4395,43.8,43.1,1.02
-38221,Richmond upon Thames,E01003838,Public Order Offences,1771,19.6,43.1,0.45
-46100,Wandsworth,E01004617,Public Order Offences,5745,53.6,42.9,1.25
-6596,Bromley,E01000676,Public Order Offences,6138,80.1,42.8,1.87
-28109,Kensington and Chelsea,E01002831,Public Order Offences,5244,59.7,42.8,1.39
-33444,Merton,E01003372,Public Order Offences,1678,24.5,42.8,0.57
-26015,Hounslow,E01002637,Public Order Offences,3880,42.8,42.7,1.0
-34291,Merton,E01003461,Public Order Offences,1476,21.9,42.7,0.51
-34542,Newham,E01003486,Public Order Offences,3630,44.1,42.6,1.04
-19146,Hammersmith and Fulham,E01001937,Public Order Offences,1809,27.0,42.6,0.63
-7258,Bromley,E01000748,Public Order Offences,1666,17.3,42.5,0.41
-36754,Redbridge,E01003689,Public Order Offences,6690,66.0,42.3,1.56
-25812,Hounslow,E01002616,Public Order Offences,1603,23.1,42.3,0.55
-32761,Lewisham,E01003318,Public Order Offences,6228,75.3,42.3,1.78
-27421,Islington,E01002772,Public Order Offences,3770,46.5,42.3,1.1
-13172,Ealing,E01001361,Public Order Offences,6813,73.2,42.2,1.73
-13903,Enfield,E01001429,Public Order Offences,6882,61.6,42.2,1.46
-47282,Westminster,E01004733,Public Order Offences,8464,49.8,42.1,1.18
-19530,Haringey,E01001971,Public Order Offences,5646,38.4,42.0,0.91
-38560,Richmond upon Thames,E01003876,Public Order Offences,5631,62.6,41.8,1.5
-34243,Merton,E01003456,Public Order Offences,4830,51.2,41.7,1.23
-9053,Camden,E01000939,Public Order Offences,4338,56.0,41.5,1.35
-46963,Westminster,E01004699,Public Order Offences,5235,49.3,41.5,1.19
-20448,Haringey,E01002069,Public Order Offences,6276,49.8,41.2,1.21
-6139,Brent,E01033455,Public Order Offences,3342,48.8,41.2,1.18
-7767,Bromley,E01000804,Public Order Offences,1461,17.7,41.0,0.43
-11585,Croydon,E01034149,Public Order Offences,6333,70.0,41.0,1.71
-19369,Hammersmith and Fulham,E01001961,Public Order Offences,3206,32.5,40.8,0.8
-12939,Ealing,E01001337,Public Order Offences,6315,38.7,40.7,0.95
-19569,Haringey,E01001975,Public Order Offences,1823,22.6,40.7,0.56
-30686,Lambeth,E01003102,Public Order Offences,5313,50.9,40.6,1.25
-30287,Lambeth,E01003061,Public Order Offences,3981,53.2,40.5,1.31
-30178,Lambeth,E01003050,Public Order Offences,4719,25.7,40.4,0.64
-1423,Barnet,E01000146,Public Order Offences,5577,44.0,40.2,1.09
-9073,Camden,E01000942,Public Order Offences,2991,35.4,40.1,0.88
-9043,Camden,E01000938,Public Order Offences,4149,46.9,40.1,1.17
-28878,Kensington and Chelsea,E01002912,Public Order Offences,4530,44.2,40.0,1.1
-44012,Waltham Forest,E01004395,Public Order Offences,1653,10.3,40.0,0.26
-8658,Camden,E01000898,Public Order Offences,4797,40.6,39.8,1.02
-27865,Islington,E01033493,Public Order Offences,1251,10.8,39.8,0.27
-42008,Tower Hamlets,E01004235,Public Order Offences,1328,18.2,39.8,0.46
-46494,Wandsworth,E01035495,Public Order Offences,3996,51.8,39.7,1.3
-24658,Hillingdon,E01002505,Public Order Offences,5325,51.8,39.7,1.3
-29539,Kingston upon Thames,E01002984,Public Order Offences,1423,19.4,39.7,0.49
-14232,Enfield,E01001464,Public Order Offences,1301,12.2,39.5,0.31
-19290,Hammersmith and Fulham,E01001953,Public Order Offences,4350,45.7,39.4,1.16
-34629,Newham,E01003496,Public Order Offences,1341,18.0,39.4,0.46
-17023,Hackney,E01001729,Public Order Offences,6000,43.6,39.4,1.11
-41832,Tower Hamlets,E01004211,Public Order Offences,4845,48.8,39.4,1.24
-39447,Southwark,E01003981,Public Order Offences,4542,42.2,39.2,1.08
-23571,Havering,E01002391,Public Order Offences,1724,10.2,39.1,0.26
-29849,Lambeth,E01003016,Public Order Offences,3642,35.5,39.1,0.91
-16706,Greenwich,E01034179,Public Order Offences,4230,37.0,39.1,0.95
-17594,Hackney,E01001796,Public Order Offences,2926,25.3,38.9,0.65
-31681,Lewisham,E01003199,Public Order Offences,5898,61.1,38.7,1.58
-28060,Kensington and Chelsea,E01002826,Public Order Offences,3843,32.5,38.6,0.84
-7447,Bromley,E01000769,Public Order Offences,4140,34.5,38.6,0.89
-12855,Ealing,E01001328,Public Order Offences,3720,30.8,38.5,0.8
-18149,Hackney,E01033706,Public Order Offences,4281,53.5,38.5,1.39
-31536,Lambeth,E01033862,Public Order Offences,4266,38.5,38.5,1.0
-17693,Hackney,E01001808,Public Order Offences,4893,37.6,38.4,0.98
-24736,Hillingdon,E01002514,Public Order Offences,5895,51.4,38.2,1.35
-18341,Hammersmith and Fulham,E01001851,Public Order Offences,1449,15.4,38.1,0.4
-28442,Kensington and Chelsea,E01002866,Public Order Offences,1827,23.8,38.1,0.62
-12845,Ealing,E01001327,Public Order Offences,3846,29.4,38.0,0.77
-47372,Westminster,E01004744,Public Order Offences,4395,30.1,37.9,0.79
-3550,Bexley,E01000362,Public Order Offences,5712,52.9,37.8,1.4
-44215,Waltham Forest,E01004416,Public Order Offences,1814,13.6,37.8,0.36
-40200,Southwark,E01004067,Public Order Offences,6636,64.4,37.7,1.71
-40304,Southwark,E01032637,Public Order Offences,1024,12.6,37.7,0.33
-28003,Kensington and Chelsea,E01002818,Public Order Offences,4203,34.1,37.6,0.91
-28295,Kensington and Chelsea,E01002851,Public Order Offences,4020,34.4,37.6,0.91
-47412,Westminster,E01004749,Public Order Offences,6597,45.1,37.5,1.2
-11981,Ealing,E01001234,Public Order Offences,2656,27.2,37.5,0.73
-37766,Redbridge,E01033589,Public Order Offences,5790,49.4,37.5,1.32
-8143,Bromley,E01034385,Public Order Offences,4317,44.8,37.5,1.19
-8328,Camden,E01000861,Public Order Offences,4140,47.7,37.5,1.27
-18458,Hammersmith and Fulham,E01001863,Public Order Offences,1379,19.2,37.5,0.51
-18477,Hammersmith and Fulham,E01001865,Public Order Offences,1565,17.3,37.3,0.46
-38203,Richmond upon Thames,E01003836,Public Order Offences,1362,16.4,37.3,0.44
-43889,Waltham Forest,E01004382,Public Order Offences,1775,18.6,37.2,0.5
-39689,Southwark,E01004010,Public Order Offences,4473,48.5,37.2,1.3
-46639,Westminster,E01004657,Public Order Offences,3693,41.6,37.2,1.12
-11884,Ealing,E01001224,Public Order Offences,1551,13.7,37.2,0.37
-26598,Hounslow,E01034036,Public Order Offences,5460,51.1,37.1,1.38
-30462,Lambeth,E01003079,Public Order Offences,3358,36.6,37.1,0.99
-44031,Waltham Forest,E01004397,Public Order Offences,8688,57.6,37.1,1.55
-7633,Bromley,E01000790,Public Order Offences,6870,50.7,37.1,1.37
-42996,Tower Hamlets,E01035669,Public Order Offences,4041,44.3,37.0,1.2
-9538,Croydon,E01000987,Public Order Offences,1325,13.3,37.0,0.36
-4927,Brent,E01000510,Public Order Offences,5100,49.9,36.9,1.35
-42303,Tower Hamlets,E01004277,Public Order Offences,4734,38.6,36.9,1.05
-20087,Haringey,E01002031,Public Order Offences,5619,51.4,36.8,1.4
-32593,Lewisham,E01003299,Public Order Offences,3638,32.8,36.8,0.89
-47698,Westminster,E01035718,Public Order Offences,7977,47.6,36.8,1.29
-47262,Westminster,E01004731,Public Order Offences,5988,56.0,36.8,1.52
+43006,Tower Hamlets,E01035670,Public Order Offences,13140,25.8,1.00377,516.0
+26054,Hounslow,E01002641,Public Order Offences,8184,33.6,1.00263,819.84
+11691,Ealing,E01001202,Public Order Offences,7437,40.2,1.00217,1105.5
+31516,Lambeth,E01032582,Public Order Offences,9124,38.5,1.00213,1047.2
+8857,Camden,E01000918,Public Order Offences,5415,50.7,1.00175,1607.19
+21064,Harrow,E01002129,Public Order Offences,10764,37.3,1.00163,1096.62
+20067,Haringey,E01002029,Public Order Offences,8552,44.0,1.00155,1386.0
+26803,Islington,E01002704,Public Order Offences,7023,45.7,1.00151,1471.54
+5059,Brent,E01000524,Public Order Offences,7152,49.0,1.00149,1621.9
+24785,Hillingdon,E01002521,Public Order Offences,8220,49.3,1.00147,1636.76
+33192,Lewisham,E01033327,Public Order Offences,8676,54.0,1.00138,1890.0
+13075,Ealing,E01001351,Public Order Offences,5979,61.6,1.00137,2248.4
+30433,Lambeth,E01003076,Public Order Offences,7980,38.9,1.00136,1229.24
+24668,Hillingdon,E01002506,Public Order Offences,6162,57.8,1.00134,2086.58
+32633,Lewisham,E01003303,Public Order Offences,5229,49.9,1.00125,1751.49
+42547,Tower Hamlets,E01004309,Public Order Offences,8529,51.5,1.00125,1828.25
+26862,Islington,E01002711,Public Order Offences,6156,43.7,1.00125,1472.69
+27081,Islington,E01002734,Public Order Offences,7089,51.8,1.00125,1844.08
+27649,Islington,E01002795,Public Order Offences,5838,54.8,1.00121,2005.68
+40200,Southwark,E01004067,Public Order Offences,6636,64.4,1.0012,2492.28
+1375,Barnet,E01000141,Public Order Offences,5583,52.5,1.00119,1905.75
+38992,Southwark,E01003921,Public Order Offences,5691,57.1,1.00119,2129.83
+47262,Westminster,E01004731,Public Order Offences,5988,56.0,1.00113,2116.8
+44031,Waltham Forest,E01004397,Public Order Offences,8688,57.6,1.00112,2194.56
+31681,Lewisham,E01003199,Public Order Offences,5898,61.1,1.00106,2425.67
+47540,Westminster,E01004765,Public Order Offences,7448,49.8,1.00105,1847.58
+20117,Haringey,E01002034,Public Order Offences,7413,51.2,1.00105,1920.0
+9781,Croydon,E01001013,Public Order Offences,6555,51.2,1.00105,1920.0
+17881,Hackney,E01001830,Public Order Offences,5751,50.4,1.00103,1895.04
+11585,Croydon,E01034149,Public Order Offences,6333,70.0,1.00102,2940.0
+6596,Bromley,E01000676,Public Order Offences,6138,80.1,1.00102,3508.38
+26598,Hounslow,E01034036,Public Order Offences,5460,51.1,1.001,1946.91
+32761,Lewisham,E01003318,Public Order Offences,6228,75.3,1.00099,3260.49
+3550,Bexley,E01000362,Public Order Offences,5712,52.9,1.00098,2052.52
+13172,Ealing,E01001361,Public Order Offences,6813,73.2,1.00097,3162.24
+37766,Redbridge,E01033589,Public Order Offences,5790,49.4,1.00093,1901.9
+24736,Hillingdon,E01002514,Public Order Offences,5895,51.4,1.00093,2014.88
+9401,Camden,E01035711,Public Order Offences,7200,79.3,1.00092,3584.36
+36754,Redbridge,E01003689,Public Order Offences,6690,66.0,1.00087,2857.8
+38560,Richmond upon Thames,E01003876,Public Order Offences,5631,62.6,1.00086,2679.28
+24658,Hillingdon,E01002505,Public Order Offences,5325,51.8,1.00083,2108.26
+13903,Enfield,E01001429,Public Order Offences,6882,61.6,1.00082,2661.12
+41812,Tower Hamlets,E01004208,Public Order Offences,5931,66.0,1.00075,3003.0
+47302,Westminster,E01004735,Public Order Offences,8176,77.1,1.00072,3731.64
+26726,Islington,E01002696,Public Order Offences,5364,63.6,1.00071,2906.52
+27639,Islington,E01002794,Public Order Offences,6084,62.0,1.00069,2839.6
+18159,Hackney,E01033708,Public Order Offences,5649,73.8,1.00069,3571.92
+27856,Islington,E01033491,Public Order Offences,5775,56.1,1.00068,2496.45
+47282,Westminster,E01004733,Public Order Offences,8464,49.8,1.00067,2146.38
+45268,Wandsworth,E01004525,Public Order Offences,5799,72.8,1.00066,3567.2
+18799,Hammersmith and Fulham,E01001899,Public Order Offences,4908,60.4,1.00065,2802.56
+46649,Westminster,E01004658,Public Order Offences,4644,78.0,1.00062,3985.8
+1067,Barking and Dagenham,E01034473,Public Order Offences,5176,73.1,1.0006,3698.86
+9113,Camden,E01000947,Public Order Offences,4968,82.4,1.00059,4367.2
+17289,Hackney,E01001760,Public Order Offences,5775,64.3,1.00058,3150.7
+29389,Kingston upon Thames,E01002968,Public Order Offences,8811,119.0,1.00057,7163.8
+27401,Islington,E01002770,Public Order Offences,5682,82.9,1.00055,4501.47
+23258,Havering,E01002356,Public Order Offences,6321,103.2,1.00054,6047.52
+26538,Hounslow,E01033083,Public Order Offences,6534,81.7,1.00053,4452.65
+18789,Hammersmith and Fulham,E01001898,Public Order Offences,6300,108.3,1.00052,6552.15
+47422,Westminster,E01004750,Public Order Offences,4902,73.8,1.00051,3948.3
+19196,Hammersmith and Fulham,E01001943,Public Order Offences,6675,127.0,1.00046,8407.4
+11595,Croydon,E01034150,Public Order Offences,3936,155.1,1.00045,11027.61
+26715,Islington,E01002695,Public Order Offences,4449,87.7,1.00044,5218.15
+19176,Hammersmith and Fulham,E01001941,Public Order Offences,4638,104.3,1.00042,6654.34
+29820,Lambeth,E01003013,Public Order Offences,5802,96.4,1.00041,6044.28
+13506,Ealing,E01034030,Public Order Offences,5502,97.5,1.00041,6162.0
+18089,Hackney,E01033699,Public Order Offences,4227,102.1,1.0004,6575.24
+16529,Greenwich,E01033735,Public Order Offences,3810,81.2,1.00039,4888.24
+30148,Lambeth,E01003047,Public Order Offences,7192,134.5,1.00036,9818.5
+47098,Westminster,E01004714,Public Order Offences,5001,85.3,1.00036,5373.9
+8816,Camden,E01000914,Public Order Offences,4206,105.9,1.00036,7158.84
+35979,Newham,E01034200,Public Order Offences,4719,109.4,1.00033,7690.82
+27895,Islington,E01035652,Public Order Offences,3813,107.7,1.00033,7539.0
+11547,Croydon,E01034145,Public Order Offences,3990,86.4,1.00031,5728.32
+23582,Havering,E01032741,Public Order Offences,4452,83.4,1.0003,5529.42
+8348,Camden,E01000863,Public Order Offences,4437,188.1,1.00029,16515.18
+47580,Westminster,E01033594,Public Order Offences,4542,105.0,1.00029,7612.5
+41702,Sutton,E01034156,Public Order Offences,4059,124.1,1.00024,10114.15
+47530,Westminster,E01004763,Public Order Offences,6093,216.7,1.00022,21626.66
+8153,Bromley,E01034386,Public Order Offences,3672,140.3,1.00021,12388.49
+47678,Westminster,E01035716,Public Order Offences,6603,230.4,1.00017,25735.68
+47312,Westminster,E01004736,Public Order Offences,6188,195.5,1.00016,21270.4
+47510,Westminster,E01004761,Public Order Offences,3651,127.3,1.00015,12246.26
+47292,Westminster,E01004734,Public Order Offences,6796,364.2,1.00011,55358.4

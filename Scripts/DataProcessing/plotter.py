@@ -19,7 +19,7 @@ import imageio
 
 from crime import Crime
 from animate import Animate
-from .utils import get_time_columns
+from utils import get_time_columns
 
 
 class Plotter():

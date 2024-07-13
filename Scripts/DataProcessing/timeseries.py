@@ -6,8 +6,8 @@ import numpy as np
 
 from hgutilities import defaults, utils
 
-from .utils import (get_time_columns, get_capitalised,
-                    add_line_breaks)
+from utils import (get_time_columns, get_capitalised,
+                   add_line_breaks)
 
 plt.rcParams["font.family"] = "Times New Roman"
 
@@ -56,6 +56,10 @@ class Time():
 
     def create_figure(self):
         self.setup_figure()
+        self.create_plot()
+
+    def create_plot(self):
+        self.set_plotting_function()
         self.set_labels()
         self.plot_values()
         self.plot_peripheries()
@@ -64,7 +68,6 @@ class Time():
     def setup_figure(self):
         plt.close('all')
         self.fig, self.ax = plt.subplots(1)
-        self.set_plotting_function()
 
     def set_plotting_function(self):
         if self.log:

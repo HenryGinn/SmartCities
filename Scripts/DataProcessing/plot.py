@@ -18,8 +18,8 @@ from shapely.wkt import loads
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib.colors import LogNorm
 
-from .utils import (get_capitalised, add_line_breaks,
-                    get_time_columns, get_base_path)
+from utils import (get_capitalised, add_line_breaks,
+                   get_time_columns, get_base_path)
 
 
 plt.rcParams["font.family"] = "Times New Roman"

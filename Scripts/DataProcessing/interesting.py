@@ -12,11 +12,12 @@ from os.path import join
 from hgutilities import defaults, utils
 import numpy as np
 import pandas as pd
+from scipy.stats import linregress
 
 from crime import Crime
 from plot import Plot
 from timeseries import Time
-from .utils import get_time_columns, add_line_breaks
+from utils import get_time_columns, add_line_breaks
 
 
 class Interesting():
@@ -54,20 +55,37 @@ class Interesting():
 
     def analyse(self):
         self.add_scores_basic()
+        self.add_scores_regression()
 
     def initialise_scores_dataframe(self):
         self.time_columns = get_time_columns(self.crime)
         all_columns = self.crime.columns.values
         self.non_time_columns = [column for column in all_columns
                                  if column not in self.time_columns]
+        self.preprocess_crime()
         self.data = self.crime[self.time_columns]
         self.scores = self.crime.loc[:, self.non_time_columns].copy()
 
+    def preprocess_crime(self):
+        self.crime = self.crime.loc[self.crime[self.time_columns]
+                                    .apply(np.percentile, axis=1, args=[10]) > 3]
+        # Remove Heathrow
+        self.crime = self.crime.loc[self.crime["LSOA"] != "E01002444"]
+
     def add_scores_basic(self):
         self.scores.loc[:, "Mean"] = self.data.mean(axis=1).round(1)
-        self.scores.loc[:, "Standard Deviation"] = self.data.std(axis=1).round(1)
         self.scores.loc[:, "Normalised Deviation"] = (
-            self.scores["Mean"] / self.scores["Standard Deviation"]).round(2)
+            self.scores["Mean"] * (self.data.std(axis=1).round(1) + 1)).round(2)
+
+    def add_scores_regression(self):
+        self.y = np.arange(self.data.shape[1])
+        regression_score = self.data.apply(self.get_regression, axis=1)
+        self.scores.loc[:, "Regression"] = regression_score.round(3)
+        self.scores.loc[:, "Flat"] = 1 / regression_score
+
+    def get_regression(self, series):
+        slope, intercept, r, p, se = linregress(self.y, series)
+        return np.round(se, 3)
 
     def output(self, measure=None):
         if measure is None:

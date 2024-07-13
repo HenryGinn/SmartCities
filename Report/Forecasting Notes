@@ -1,0 +1,4 @@
+Easiest case	Small deviation, no changes in behaviour			Arson and Criminal Damage	E01004734
+Medium case		Large deviations, predictable beahviour changes		Violence Against the Person	E01000863
+Hard case		Non-stationary variance, and unexpected peak		Vehicle Offences			E01002818
+Very hard case	Unpredictable changes in behaviour					Theft						E01035716

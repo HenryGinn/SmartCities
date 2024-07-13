@@ -40,5 +40,5 @@ def get_time_columns(dataframe):
 def get_base_path(source):
     if hasattr(source, "__module__"):
         source = inspect.getfile(source.__class__)
-    path = dirname(dirname(source))
+    path = dirname(dirname(dirname(source)))
     return path

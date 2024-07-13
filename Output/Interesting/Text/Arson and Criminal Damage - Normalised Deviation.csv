@@ -1,201 +1,130 @@
-,Borough,LSOA,Major Category,Population,Mean,Standard Deviation,Normalised Deviation
-47287,Westminster,E01004734,Arson and Criminal Damage,3398,405.6,129.4,3.13
-29384,Kingston upon Thames,E01002968,Arson and Criminal Damage,5874,174.4,67.0,2.6
-47525,Westminster,E01004763,Arson and Criminal Damage,4062,201.3,81.3,2.48
-47673,Westminster,E01035716,Arson and Criminal Damage,4402,277.0,112.5,2.46
-23253,Havering,E01002356,Arson and Criminal Damage,4214,147.8,63.3,2.33
-24102,Hillingdon,E01002444,Arson and Criminal Damage,3806,178.4,84.2,2.12
-47297,Westminster,E01004735,Arson and Criminal Damage,4088,131.2,62.6,2.1
-30143,Lambeth,E01003047,Arson and Criminal Damage,3596,199.4,96.7,2.06
-9396,Camden,E01035711,Arson and Criminal Damage,4800,76.3,38.7,1.97
-11590,Croydon,E01034150,Arson and Criminal Damage,2624,196.8,100.8,1.95
-18154,Hackney,E01033708,Arson and Criminal Damage,1883,267.7,137.0,1.95
-32756,Lewisham,E01003318,Arson and Criminal Damage,4152,102.3,52.9,1.93
-19191,Hammersmith and Fulham,E01001943,Arson and Criminal Damage,4450,100.7,53.6,1.88
-41697,Sutton,E01034156,Arson and Criminal Damage,2706,179.3,95.7,1.87
-47505,Westminster,E01004761,Arson and Criminal Damage,2434,194.5,104.5,1.86
-8862,Camden,E01000919,Arson and Criminal Damage,2918,121.4,65.1,1.86
-20062,Haringey,E01002029,Arson and Criminal Damage,4276,87.4,46.9,1.86
-8811,Camden,E01000914,Arson and Criminal Damage,2804,124.8,67.4,1.85
-36749,Redbridge,E01003689,Arson and Criminal Damage,4460,87.6,47.7,1.84
-6591,Bromley,E01000676,Arson and Criminal Damage,4092,100.3,54.9,1.83
-13898,Enfield,E01001429,Arson and Criminal Damage,4588,103.7,56.8,1.83
-31511,Lambeth,E01032582,Arson and Criminal Damage,4562,84.5,47.0,1.8
-8343,Camden,E01000863,Arson and Criminal Damage,2958,151.3,84.0,1.8
-9776,Croydon,E01001013,Arson and Criminal Damage,2185,154.5,86.5,1.79
-18784,Hammersmith and Fulham,E01001898,Arson and Criminal Damage,4200,104.1,58.9,1.77
-1012,Barking and Dagenham,E01033587,Arson and Criminal Damage,4890,66.0,37.6,1.76
-47307,Westminster,E01004736,Arson and Criminal Damage,3094,290.7,167.0,1.74
-24663,Hillingdon,E01002506,Arson and Criminal Damage,4108,78.9,45.7,1.73
-40195,Southwark,E01004067,Arson and Criminal Damage,2212,154.2,90.8,1.7
-47093,Westminster,E01004714,Arson and Criminal Damage,3334,102.9,60.6,1.7
-23576,Havering,E01032741,Arson and Criminal Damage,2968,106.0,62.8,1.69
-40318,Southwark,E01032639,Arson and Criminal Damage,3820,83.2,49.2,1.69
-37761,Redbridge,E01033589,Arson and Criminal Damage,1930,161.2,95.6,1.69
-42542,Tower Hamlets,E01004309,Arson and Criminal Damage,5686,56.2,33.5,1.68
-47535,Westminster,E01004765,Arson and Criminal Damage,1862,196.2,116.9,1.68
-16389,Greenwich,E01001701,Arson and Criminal Damage,3508,97.3,58.4,1.67
-38555,Richmond upon Thames,E01003876,Arson and Criminal Damage,3754,106.4,64.0,1.66
-31676,Lewisham,E01003199,Arson and Criminal Damage,3932,75.8,45.9,1.65
-44025,Waltham Forest,E01004397,Arson and Criminal Damage,5792,69.7,42.3,1.65
-23224,Havering,E01002353,Arson and Criminal Damage,4120,83.5,51.0,1.64
-10722,Croydon,E01001118,Arson and Criminal Damage,4298,78.3,48.1,1.63
-23816,Hillingdon,E01002412,Arson and Criminal Damage,4572,71.0,43.5,1.63
-15098,Enfield,E01001558,Arson and Criminal Damage,2006,122.9,75.2,1.63
-8264,Camden,E01000855,Arson and Criminal Damage,2654,105.1,64.7,1.62
-1061,Barking and Dagenham,E01034473,Arson and Criminal Damage,1294,269.1,166.3,1.62
-13500,Ealing,E01034030,Arson and Criminal Damage,1834,227.7,141.8,1.61
-11542,Croydon,E01034145,Arson and Criminal Damage,2660,126.1,78.9,1.6
-21059,Harrow,E01002129,Arson and Criminal Damage,5382,46.2,28.9,1.6
-6274,Brent,E01033938,Arson and Criminal Damage,2554,128.5,80.2,1.6
-20112,Haringey,E01002034,Arson and Criminal Damage,4942,67.1,42.0,1.6
-13167,Ealing,E01001361,Arson and Criminal Damage,4542,87.2,54.4,1.6
-9108,Camden,E01000947,Arson and Criminal Damage,3312,106.2,66.2,1.6
-20443,Haringey,E01002069,Arson and Criminal Damage,4184,64.3,40.5,1.59
-26398,Hounslow,E01002681,Arson and Criminal Damage,4848,69.4,43.6,1.59
-26710,Islington,E01002695,Arson and Criminal Damage,1483,179.3,113.2,1.58
-5054,Brent,E01000524,Arson and Criminal Damage,4768,57.6,36.4,1.58
-35974,Newham,E01034200,Arson and Criminal Damage,3146,112.6,71.2,1.58
-15108,Enfield,E01001559,Arson and Criminal Damage,4254,67.6,43.0,1.57
-21069,Harrow,E01002130,Arson and Criminal Damage,5846,47.4,30.1,1.57
-8980,Camden,E01000931,Arson and Criminal Damage,4112,51.5,32.7,1.57
-41807,Tower Hamlets,E01004208,Arson and Criminal Damage,3954,63.1,40.5,1.56
-47575,Westminster,E01033594,Arson and Criminal Damage,1514,206.7,132.4,1.56
-43001,Tower Hamlets,E01035670,Arson and Criminal Damage,8760,36.4,23.4,1.56
-37617,Redbridge,E01003783,Arson and Criminal Damage,5098,59.3,38.2,1.55
-32529,Lewisham,E01003291,Arson and Criminal Damage,3070,94.7,61.1,1.55
-12093,Ealing,E01001247,Arson and Criminal Damage,4652,78.3,50.6,1.55
-44348,Waltham Forest,E01004430,Arson and Criminal Damage,2671,93.4,60.7,1.54
-26593,Hounslow,E01034036,Arson and Criminal Damage,3640,58.2,37.8,1.54
-38987,Southwark,E01003921,Arson and Criminal Damage,3794,71.6,46.4,1.54
-13070,Ealing,E01001351,Arson and Criminal Damage,3986,113.6,74.2,1.53
-42172,Tower Hamlets,E01004259,Arson and Criminal Damage,3504,82.1,53.7,1.53
-33187,Lewisham,E01033327,Arson and Criminal Damage,4338,83.7,54.6,1.53
-14678,Enfield,E01001513,Arson and Criminal Damage,3960,68.8,45.1,1.53
-20032,Haringey,E01002026,Arson and Criminal Damage,3560,103.4,67.9,1.52
-27396,Islington,E01002770,Arson and Criminal Damage,3788,74.1,48.6,1.52
-36023,Newham,E01034205,Arson and Criminal Damage,3130,89.1,58.8,1.52
-7443,Bromley,E01000769,Arson and Criminal Damage,2760,118.5,78.2,1.52
-26798,Islington,E01002704,Arson and Criminal Damage,4682,63.8,42.0,1.52
-3908,Bexley,E01000403,Arson and Criminal Damage,4764,64.5,42.8,1.51
-27644,Islington,E01002795,Arson and Criminal Damage,3892,65.9,43.6,1.51
-26532,Hounslow,E01033083,Arson and Criminal Damage,4356,73.1,48.5,1.51
-34841,Newham,E01003521,Arson and Criminal Damage,4374,63.9,42.4,1.51
-32638,Lewisham,E01003304,Arson and Criminal Damage,4440,51.0,33.9,1.5
-45263,Wandsworth,E01004525,Arson and Criminal Damage,3866,65.0,43.4,1.5
-30222,Lambeth,E01003055,Arson and Criminal Damage,3236,76.9,51.3,1.5
-39852,Southwark,E01004031,Arson and Criminal Damage,2610,89.0,59.6,1.49
-10536,Croydon,E01001097,Arson and Criminal Damage,4838,58.6,39.3,1.49
-29815,Lambeth,E01003013,Arson and Criminal Damage,3868,77.4,52.1,1.49
-19604,Haringey,E01001979,Arson and Criminal Damage,4530,64.8,43.7,1.48
-26049,Hounslow,E01002641,Arson and Criminal Damage,5456,43.3,29.5,1.47
-3525,Bexley,E01000360,Arson and Criminal Damage,3804,71.8,48.8,1.47
-27890,Islington,E01035652,Arson and Criminal Damage,1271,195.8,133.2,1.47
-12218,Ealing,E01001261,Arson and Criminal Damage,4588,58.2,40.0,1.46
-8851,Camden,E01000918,Arson and Criminal Damage,3610,96.0,65.8,1.46
-1370,Barnet,E01000141,Arson and Criminal Damage,3722,75.1,51.3,1.46
-35319,Newham,E01003570,Arson and Criminal Damage,3872,54.2,37.0,1.46
-5723,Brent,E01000601,Arson and Criminal Damage,2784,107.8,74.2,1.45
-44787,Wandsworth,E01004474,Arson and Criminal Damage,3984,50.6,34.9,1.45
-46644,Westminster,E01004658,Arson and Criminal Damage,3096,76.2,52.4,1.45
-9746,Croydon,E01001010,Arson and Criminal Damage,3430,82.1,56.9,1.44
-7628,Bromley,E01000790,Arson and Criminal Damage,4580,79.4,55.0,1.44
-40148,Southwark,E01004062,Arson and Criminal Damage,4356,59.8,41.8,1.43
-35728,Newham,E01003619,Arson and Criminal Damage,4946,52.1,36.5,1.43
-43235,Tower Hamlets,E01035694,Arson and Criminal Damage,4370,46.6,32.7,1.43
-11522,Croydon,E01034143,Arson and Criminal Damage,1311,156.1,108.8,1.43
-19171,Hammersmith and Fulham,E01001941,Arson and Criminal Damage,1546,157.9,110.1,1.43
-11686,Ealing,E01001202,Arson and Criminal Damage,4958,49.2,34.6,1.42
-47515,Westminster,E01004762,Arson and Criminal Damage,3158,78.8,55.5,1.42
-19525,Haringey,E01001971,Arson and Criminal Damage,1882,137.2,96.5,1.42
-10037,Croydon,E01001042,Arson and Criminal Damage,4322,69.0,48.6,1.42
-46016,Wandsworth,E01004609,Arson and Criminal Damage,4388,60.7,42.6,1.42
-34781,Newham,E01003515,Arson and Criminal Damage,4254,54.9,38.6,1.42
-9386,Camden,E01035710,Arson and Criminal Damage,5196,45.2,31.8,1.42
-24780,Hillingdon,E01002521,Arson and Criminal Damage,4110,93.0,65.3,1.42
-17963,Hackney,E01001839,Arson and Criminal Damage,4772,42.3,29.9,1.41
-16789,Greenwich,E01034188,Arson and Criminal Damage,2836,96.4,68.4,1.41
-26543,Hounslow,E01033084,Arson and Criminal Damage,3918,53.9,38.2,1.41
-7619,Bromley,E01000789,Arson and Criminal Damage,3690,66.5,47.3,1.41
-17038,Hackney,E01001731,Arson and Criminal Damage,5330,37.6,26.6,1.41
-15210,Enfield,E01032574,Arson and Criminal Damage,4194,55.7,39.5,1.41
-18144,Hackney,E01033706,Arson and Criminal Damage,1427,177.3,126.0,1.41
-23690,Hillingdon,E01002397,Arson and Criminal Damage,3908,58.7,41.5,1.41
-8234,Camden,E01000850,Arson and Criminal Damage,2822,73.4,51.9,1.41
-8148,Bromley,E01034386,Arson and Criminal Damage,2448,126.9,89.7,1.41
-20082,Haringey,E01002031,Arson and Criminal Damage,1873,159.5,112.9,1.41
-42522,Tower Hamlets,E01004307,Arson and Criminal Damage,4770,51.9,36.9,1.41
-28104,Kensington and Chelsea,E01002831,Arson and Criminal Damage,3496,59.6,42.3,1.41
-39353,Southwark,E01003969,Arson and Criminal Damage,4776,44.5,31.8,1.4
-17284,Hackney,E01001760,Arson and Criminal Damage,3850,58.5,41.9,1.4
-16544,Greenwich,E01033737,Arson and Criminal Damage,1893,128.6,92.3,1.39
-17876,Hackney,E01001830,Arson and Criminal Damage,3834,66.3,47.8,1.39
-14628,Enfield,E01001507,Arson and Criminal Damage,5170,45.4,32.6,1.39
-6982,Bromley,E01000719,Arson and Criminal Damage,2113,106.6,76.5,1.39
-39432,Southwark,E01003980,Arson and Criminal Damage,4026,40.8,29.4,1.39
-38907,Southwark,E01003913,Arson and Criminal Damage,4150,70.0,50.5,1.39
-16873,Greenwich,E01034198,Arson and Criminal Damage,4670,49.5,36.0,1.38
-15360,Greenwich,E01001578,Arson and Criminal Damage,4664,39.7,28.8,1.38
-30622,Lambeth,E01003096,Arson and Criminal Damage,4196,64.6,46.8,1.38
-26720,Islington,E01002696,Arson and Criminal Damage,1788,122.4,88.8,1.38
-12895,Ealing,E01001333,Arson and Criminal Damage,4928,41.5,30.0,1.38
-22253,Havering,E01002248,Arson and Criminal Damage,3536,63.0,45.8,1.38
-34238,Merton,E01003456,Arson and Criminal Damage,3220,77.3,55.9,1.38
-18084,Hackney,E01033699,Arson and Criminal Damage,1409,190.0,137.4,1.38
-7176,Bromley,E01000739,Arson and Criminal Damage,1702,129.3,93.6,1.38
-20553,Haringey,E01002081,Arson and Criminal Damage,3954,62.6,45.2,1.38
-2369,Barnet,E01000250,Arson and Criminal Damage,5222,36.3,26.4,1.38
-11580,Croydon,E01034149,Arson and Criminal Damage,4222,69.2,50.5,1.37
-18094,Hackney,E01033700,Arson and Criminal Damage,4994,39.2,28.7,1.37
-41493,Sutton,E01004178,Arson and Criminal Damage,2405,92.9,68.0,1.37
-6992,Bromley,E01000720,Arson and Criminal Damage,3598,74.1,53.9,1.37
-1258,Barnet,E01000129,Arson and Criminal Damage,1589,130.3,95.3,1.37
-46095,Wandsworth,E01004617,Arson and Criminal Damage,3830,64.7,47.1,1.37
-44249,Waltham Forest,E01004420,Arson and Criminal Damage,2237,98.3,71.6,1.37
-34654,Newham,E01003499,Arson and Criminal Damage,4884,51.9,38.1,1.36
-9,Barking and Dagenham,E01000007,Arson and Criminal Damage,5682,43.1,31.6,1.36
-28814,Kensington and Chelsea,E01002906,Arson and Criminal Damage,3570,68.7,50.6,1.36
-15797,Greenwich,E01001631,Arson and Criminal Damage,4156,40.5,29.7,1.36
-47417,Westminster,E01004750,Arson and Criminal Damage,1634,132.5,97.6,1.36
-27076,Islington,E01002734,Arson and Criminal Damage,2363,94.1,69.3,1.36
-41756,Tower Hamlets,E01004203,Arson and Criminal Damage,3632,54.3,39.9,1.36
-20414,Haringey,E01002066,Arson and Criminal Damage,5198,39.5,29.0,1.36
-5446,Brent,E01000568,Arson and Criminal Damage,4438,60.3,44.4,1.36
-9197,Camden,E01000958,Arson and Criminal Damage,5962,47.0,34.6,1.36
-6459,Bromley,E01000661,Arson and Criminal Damage,5668,41.8,30.9,1.35
-25767,Hounslow,E01002612,Arson and Criminal Damage,4220,52.8,39.2,1.35
-40976,Sutton,E01004123,Arson and Criminal Damage,4592,53.4,39.6,1.35
-5024,Brent,E01000521,Arson and Criminal Damage,4582,44.0,32.5,1.35
-813,Barking and Dagenham,E01000095,Arson and Criminal Damage,4458,52.9,39.3,1.35
-911,Barking and Dagenham,E01000105,Arson and Criminal Damage,4606,48.7,36.2,1.35
-7712,Bromley,E01000799,Arson and Criminal Damage,3626,71.4,53.0,1.35
-12934,Ealing,E01001337,Arson and Criminal Damage,4210,49.0,36.2,1.35
-46177,Wandsworth,E01004626,Arson and Criminal Damage,3708,66.9,49.6,1.35
-3545,Bexley,E01000362,Arson and Criminal Damage,1904,120.2,89.0,1.35
-1418,Barnet,E01000146,Arson and Criminal Damage,3718,63.4,46.9,1.35
-9356,Camden,E01035707,Arson and Criminal Damage,4926,45.9,33.9,1.35
-18704,Hammersmith and Fulham,E01001890,Arson and Criminal Damage,3364,68.5,50.9,1.35
-10702,Croydon,E01001115,Arson and Criminal Damage,3666,62.9,46.5,1.35
-11245,Croydon,E01001172,Arson and Criminal Damage,4436,52.0,38.4,1.35
-30027,Lambeth,E01003035,Arson and Criminal Damage,3342,63.5,47.3,1.34
-3299,Bexley,E01000335,Arson and Criminal Damage,5482,35.4,26.4,1.34
-22562,Havering,E01002282,Arson and Criminal Damage,3914,62.8,47.0,1.34
-46469,Wandsworth,E01035493,Arson and Criminal Damage,1654,166.4,123.9,1.34
-44574,Waltham Forest,E01004455,Arson and Criminal Damage,1799,109.2,81.6,1.34
-35202,Newham,E01003558,Arson and Criminal Damage,3420,52.1,38.8,1.34
-41559,Sutton,E01004185,Arson and Criminal Damage,4264,42.8,32.0,1.34
-29344,Kingston upon Thames,E01002964,Arson and Criminal Damage,2510,73.6,55.0,1.34
-7002,Bromley,E01000721,Arson and Criminal Damage,1602,159.7,120.1,1.33
-1831,Barnet,E01000193,Arson and Criminal Damage,3870,40.0,30.0,1.33
-30837,Lambeth,E01003120,Arson and Criminal Damage,2389,97.0,72.8,1.33
-37494,Redbridge,E01003770,Arson and Criminal Damage,5728,73.4,55.1,1.33
-21511,Harrow,E01002179,Arson and Criminal Damage,2608,76.0,57.0,1.33
-43021,Tower Hamlets,E01035672,Arson and Criminal Damage,6024,26.8,20.1,1.33
-3075,Barnet,E01033913,Arson and Criminal Damage,3050,64.8,48.9,1.33
-13734,Enfield,E01001412,Arson and Criminal Damage,3562,53.3,40.2,1.33
-6005,Brent,E01000631,Arson and Criminal Damage,4132,53.2,39.9,1.33
-25284,Hounslow,E01002559,Arson and Criminal Damage,5148,40.0,30.1,1.33
-11305,Croydon,E01001178,Arson and Criminal Damage,3226,80.8,60.8,1.33
-5225,Brent,E01000545,Arson and Criminal Damage,3828,49.5,37.4,1.32
-36170,Newham,E01034220,Arson and Criminal Damage,2376,103.0,78.2,1.32
-6144,Brent,E01033456,Arson and Criminal Damage,5272,32.6,24.7,1.32
+,Borough,Major Category,LSOA,Population,Mean,Range,Normalised Deviation,Regression
+46615,Westminster,Arson and Criminal Damage,E01004734,3398,405.6,2.6180350117257334e-06,52890.24,0.203
+46617,Westminster,Arson and Criminal Damage,E01004736,3094,290.7,3.54775828294062e-06,48837.6,0.261
+108,Barking and Dagenham,Arson and Criminal Damage,E01034473,1294,269.1,4.007184448941031e-06,45020.43,0.261
+17013,Hackney,Arson and Criminal Damage,E01033708,1883,267.7,5.410764050636917e-06,36942.6,0.211
+11817,Ealing,Arson and Criminal Damage,E01034030,1834,227.7,3.8354560070108456e-06,32515.56,0.222
+46654,Westminster,Arson and Criminal Damage,E01035716,4402,277.0,4.414360206866454e-06,31439.5,0.173
+46644,Westminster,Arson and Criminal Damage,E01033594,1514,206.7,8.138472264216739e-06,27573.78,0.204
+17006,Hackney,Arson and Criminal Damage,E01033699,1409,190.0,6.179824577151219e-06,26296.0,0.215
+26822,Islington,Arson and Criminal Damage,E01035652,1271,195.8,9.273310987188559e-06,26276.36,0.207
+46640,Westminster,Arson and Criminal Damage,E01004765,1862,196.2,9.490316029326937e-06,23131.98,0.183
+44948,Wandsworth,Arson and Criminal Damage,E01035493,1654,166.4,9.036276257543777e-06,20783.36,0.194
+46637,Westminster,Arson and Criminal Damage,E01004761,2434,194.5,8.938670609979084e-06,20519.75,0.163
+26702,Islington,Arson and Criminal Damage,E01002695,1483,179.3,1.0338817631517696e-05,20476.06,0.176
+9642,Croydon,Arson and Criminal Damage,E01034150,2624,196.8,9.523809523809523e-06,20034.24,0.155
+29849,Lambeth,Arson and Criminal Damage,E01003047,3596,199.4,1.0018945726178747e-05,19481.38,0.151
+6397,Bromley,Arson and Criminal Damage,E01000721,1602,159.7,6.269567948524138e-06,19339.67,0.188
+19510,Haringey,Arson and Criminal Damage,E01002031,1873,159.5,1.1742946754625878e-05,18167.05,0.164
+40683,Sutton,Arson and Criminal Damage,E01034156,2706,179.3,1.160924969755873e-05,17338.31,0.15
+46639,Westminster,Arson and Criminal Damage,E01004763,4062,201.3,1.3452558335573072e-05,16566.99,0.127
+36435,Redbridge,Arson and Criminal Damage,E01033589,1930,161.2,1.4965880859645583e-05,15571.92,0.148
+38903,Southwark,Arson and Criminal Damage,E01003929,1981,131.2,7.549542703814665e-06,14418.88,0.17
+39022,Southwark,Arson and Criminal Damage,E01004067,2212,154.2,1.4345006501085222e-05,14155.56,0.141
+9453,Croydon,Arson and Criminal Damage,E01001013,2185,154.5,1.5713772008630505e-05,13518.75,0.135
+8177,Camden,Arson and Criminal Damage,E01000863,2958,151.3,1.503889366198309e-05,12860.5,0.131
+28973,Kingston upon Thames,Arson and Criminal Damage,E01002968,5874,174.4,1.2954304881327168e-05,11859.2,0.099
+6521,Bromley,Arson and Criminal Damage,E01034386,2448,126.9,1.0717100024752215e-05,11509.83,0.138
+4751,Brent,Arson and Criminal Damage,E01033938,2554,128.5,1.8068623838318484e-05,10434.2,0.126
+9637,Croydon,Arson and Criminal Damage,E01034145,2660,126.1,2.3438188130554648e-05,10075.39,0.123
+22314,Havering,Arson and Criminal Damage,E01002356,4214,147.8,1.900766818754623e-05,9503.54,0.098
+6444,Bromley,Arson and Criminal Damage,E01000769,2760,118.5,1.9409282749559365e-05,9385.2,0.121
+13682,Enfield,Arson and Criminal Damage,E01001558,2006,122.9,2.0402766525368666e-05,9364.98,0.118
+11772,Ealing,Arson and Criminal Damage,E01001351,3986,113.6,2.1930017410898723e-05,8542.72,0.112
+8226,Camden,Arson and Criminal Damage,E01000914,2804,124.8,2.4964387676869255e-05,8536.32,0.105
+46616,Westminster,Arson and Criminal Damage,E01004735,4088,131.2,2.3968104780117323e-05,8344.32,0.098
+34632,Newham,Arson and Criminal Damage,E01034200,3146,112.6,2.5399644999321702e-05,8129.72,0.111
+4695,Brent,Arson and Criminal Damage,E01000601,2784,107.8,2.5825603213779383e-05,8106.56,0.114
+8231,Camden,Arson and Criminal Damage,E01000919,2918,121.4,2.4036243963838143e-05,8024.54,0.102
+8256,Camden,Arson and Criminal Damage,E01000947,3312,106.2,3.11864410585464e-05,7136.64,0.101
+19505,Haringey,Arson and Criminal Damage,E01002026,3560,103.4,1.721470008687226e-05,7124.26,0.102
+37926,Richmond upon Thames,Arson and Criminal Damage,E01003876,3754,106.4,2.7139965224476957e-05,6916.0,0.1
+8169,Camden,Arson and Criminal Damage,E01000855,2654,105.1,2.5252140731291388e-05,6905.07,0.101
+22349,Havering,Arson and Criminal Damage,E01032741,2968,106.0,3.4999999475000004e-05,6762.8,0.098
+8230,Camden,Arson and Criminal Damage,E01000918,3610,96.0,2.8926282150947924e-05,6412.8,0.102
+46595,Westminster,Arson and Criminal Damage,E01004714,3334,102.9,2.700032370688092e-05,6338.64,0.092
+18382,Hammersmith and Fulham,Arson and Criminal Damage,E01001898,4200,104.1,3.362151793286032e-05,6235.59,0.092
+23766,Hillingdon,Arson and Criminal Damage,E01002521,4110,93.0,2.3259762162884348e-05,6165.9,0.098
+13558,Enfield,Arson and Criminal Damage,E01001429,4588,103.7,3.403308417372079e-05,5993.86,0.089
+31675,Lewisham,Arson and Criminal Damage,E01003291,3070,94.7,2.947105700539403e-05,5880.87,0.095
+15402,Greenwich,Arson and Criminal Damage,E01001701,3508,97.3,3.605344302809696e-05,5779.62,0.091
+43454,Waltham Forest,Arson and Criminal Damage,E01004430,2671,93.4,4.0853471507399954e-05,5762.78,0.095
+46614,Westminster,Arson and Criminal Damage,E01004733,4232,83.0,2.3176341738681742e-05,5660.6,0.104
+6352,Bromley,Arson and Criminal Damage,E01000676,4092,100.3,3.3998005676986986e-05,5606.77,0.085
+11761,Ealing,Arson and Criminal Damage,E01001340,3126,84.1,3.717003555425411e-05,5592.65,0.103
+31698,Lewisham,Arson and Criminal Damage,E01003318,4152,102.3,3.689682772513236e-05,5513.97,0.083
+18425,Hammersmith and Fulham,Arson and Criminal Damage,E01001943,4450,100.7,3.6825554695965274e-05,5498.22,0.084
+38986,Southwark,Arson and Criminal Damage,E01004031,2610,89.0,4.189406064550704e-05,5393.4,0.093
+34637,Newham,Arson and Criminal Damage,E01034205,3130,89.1,4.3911335460954635e-05,5328.18,0.092
+31685,Lewisham,Arson and Criminal Damage,E01003303,3486,80.8,3.595296977642358e-05,5090.4,0.097
+11782,Ealing,Arson and Criminal Damage,E01001361,4542,87.2,4.735196001600496e-05,4830.88,0.076
+9450,Croydon,Arson and Criminal Damage,E01001010,3430,82.1,5.222289903099367e-05,4753.59,0.085
+31742,Lewisham,Arson and Criminal Damage,E01033327,4338,83.7,2.727787212739116e-05,4653.72,0.085
+41754,Tower Hamlets,Arson and Criminal Damage,E01004259,3504,82.1,4.742184275685175e-05,4490.87,0.084
+6464,Bromley,Arson and Criminal Damage,E01000790,4580,79.4,3.845507948722613e-05,4446.4,0.086
+22311,Havering,Arson and Criminal Damage,E01002353,4120,83.5,4.485574370396932e-05,4342.0,0.079
+36329,Redbridge,Arson and Criminal Damage,E01003689,4460,87.6,5.0913240986217986e-05,4266.12,0.074
+19508,Haringey,Arson and Criminal Damage,E01002029,4276,87.4,4.892448569235217e-05,4186.46,0.072
+39035,Southwark,Arson and Criminal Damage,E01032639,3820,83.2,5.10149578917436e-05,4176.64,0.074
+36407,Redbridge,Arson and Criminal Damage,E01003770,5728,73.4,3.716102272485726e-05,4117.74,0.079
+29815,Lambeth,Arson and Criminal Damage,E01003013,3868,77.4,4.997416086012727e-05,4109.94,0.077
+6396,Bromley,Arson and Criminal Damage,E01000720,3598,74.1,5.395111823673503e-05,4068.09,0.085
+29989,Lambeth,Arson and Criminal Damage,E01032582,4562,84.5,4.9080149651265905e-05,4056.0,0.07
+11669,Ealing,Arson and Criminal Damage,E01001247,4652,78.3,4.570193626764443e-05,4040.28,0.078
+29857,Lambeth,Arson and Criminal Damage,E01003055,3236,76.9,5.260077980656063e-05,4021.87,0.08
+1157,Barnet,Arson and Criminal Damage,E01000141,3722,75.1,4.956058593300083e-05,3927.73,0.078
+18383,Hammersmith and Fulham,Arson and Criminal Damage,E01001899,3272,70.3,3.878615470804187e-05,3873.53,0.085
+9553,Croydon,Arson and Criminal Damage,E01001118,4298,78.3,5.4891442292407147e-05,3844.53,0.075
+23754,Hillingdon,Arson and Criminal Damage,E01002506,4108,78.9,5.206590752490859e-05,3684.63,0.072
+26772,Islington,Arson and Criminal Damage,E01002770,3788,74.1,6.390013584529879e-05,3675.36,0.076
+25377,Hounslow,Arson and Criminal Damage,E01033083,4356,73.1,4.9658002851461835e-05,3618.45,0.074
+38889,Southwark,Arson and Criminal Damage,E01003913,4150,70.0,4.234693847303207e-05,3605.0,0.079
+46612,Westminster,Arson and Criminal Damage,E01004731,3992,66.2,5.025176132423442e-05,3581.42,0.083
+31588,Lewisham,Arson and Criminal Damage,E01003199,3932,75.8,6.484168869284797e-05,3555.02,0.072
+28030,Kensington and Chelsea,Arson and Criminal Damage,E01002906,3570,68.7,5.1965066795637036e-05,3544.92,0.079
+6406,Bromley,Arson and Criminal Damage,E01000730,3682,66.3,5.048676817536277e-05,3500.64,0.08
+9481,Croydon,Arson and Criminal Damage,E01001042,4322,69.0,4.1758453487367465e-05,3422.4,0.076
+38897,Southwark,Arson and Criminal Damage,E01003921,3794,71.6,5.887647321447233e-05,3393.84,0.073
+44918,Wandsworth,Arson and Criminal Damage,E01004626,3708,66.9,5.038728168576496e-05,3385.14,0.077
+16985,Hackney,Arson and Criminal Damage,E01001830,3834,66.3,6.425339482811574e-05,3235.44,0.075
+13638,Enfield,Arson and Criminal Damage,E01001513,3960,68.8,7.194767389572912e-05,3171.68,0.07
+23662,Hillingdon,Arson and Criminal Damage,E01002412,4572,71.0,7.154929553279111e-05,3159.5,0.068
+25363,Hounslow,Arson and Criminal Damage,E01002681,4848,69.4,7.761767751919621e-05,3095.24,0.066
+29898,Lambeth,Arson and Criminal Damage,E01003096,4196,64.6,5.4127966523801306e-05,3087.88,0.073
+8286,Camden,Arson and Criminal Damage,E01035711,4800,76.3,6.989951944080385e-05,3029.11,0.06
+43421,Waltham Forest,Arson and Criminal Damage,E01004397,5792,69.7,5.9356424406981834e-05,3018.01,0.062
+13683,Enfield,Arson and Criminal Damage,E01001559,4254,67.6,6.292899482383846e-05,2974.4,0.067
+26797,Islington,Arson and Criminal Damage,E01002795,3892,65.9,5.905917901008429e-05,2939.14,0.068
+19459,Haringey,Arson and Criminal Damage,E01001979,4530,64.8,6.355218991631384e-05,2896.56,0.066
+19558,Haringey,Arson and Criminal Damage,E01002081,3954,62.6,5.742085281909973e-05,2892.12,0.067
+44822,Wandsworth,Arson and Criminal Damage,E01004525,3866,65.0,7.434615346012575e-05,2886.0,0.068
+19513,Haringey,Arson and Criminal Damage,E01002034,4942,67.1,7.365126670235808e-05,2885.3,0.066
+3278,Bexley,Arson and Criminal Damage,E01000403,4764,64.5,6.714587784405599e-05,2825.1,0.066
+34516,Newham,Arson and Criminal Damage,E01003521,4374,63.9,7.605633888514185e-05,2773.26,0.066
+26711,Islington,Arson and Criminal Damage,E01002704,4682,63.8,7.338558142111913e-05,2743.4,0.066
+4666,Brent,Arson and Criminal Damage,E01000568,4438,60.3,6.133222673641041e-05,2737.62,0.069
+19547,Haringey,Arson and Criminal Damage,E01002069,4184,64.3,5.915453032604321e-05,2668.45,0.063
+44901,Wandsworth,Arson and Criminal Damage,E01004609,4388,60.7,6.5718134919331e-05,2646.52,0.067
+41717,Tower Hamlets,Arson and Criminal Damage,E01004208,3954,63.1,8.951777312722999e-05,2618.65,0.063
+39017,Southwark,Arson and Criminal Damage,E01004062,4356,59.8,6.622073622890125e-05,2559.44,0.065
+103,Barking and Dagenham,Arson and Criminal Damage,E01033587,4890,66.0,9.261363646887914e-05,2547.6,0.058
+11682,Ealing,Arson and Criminal Damage,E01001261,4588,58.2,9.853951626754385e-05,2386.2,0.062
+9533,Croydon,Arson and Criminal Damage,E01001097,4838,58.6,8.255972804165106e-05,2361.58,0.061
+36420,Redbridge,Arson and Criminal Damage,E01003783,5098,59.3,8.596964257175434e-05,2324.56,0.059
+25383,Hounslow,Arson and Criminal Damage,E01034036,3640,58.2,0.00010423825445954708,2258.16,0.059
+4625,Brent,Arson and Criminal Damage,E01000524,4768,57.6,0.00010347221719232278,2154.24,0.057
+83,Barking and Dagenham,Arson and Criminal Damage,E01000095,4458,52.9,0.000105340266970159,2131.87,0.06
+34565,Newham,Arson and Criminal Damage,E01003570,3872,54.2,0.00010205587477499231,2059.6,0.057
+41790,Tower Hamlets,Arson and Criminal Damage,E01004307,4770,51.9,0.00011488438667189466,1967.01,0.058
+34607,Newham,Arson and Criminal Damage,E01003619,4946,52.1,7.911068201477187e-05,1953.75,0.055
+41792,Tower Hamlets,Arson and Criminal Damage,E01004309,5686,56.2,0.0001264679770435328,1938.9,0.052
+9451,Croydon,Arson and Criminal Damage,E01001011,4578,48.3,0.00010531400793204044,1864.38,0.059
+11627,Ealing,Arson and Criminal Damage,E01001202,4958,49.2,0.00010077235967348143,1751.52,0.054
+8243,Camden,Arson and Criminal Damage,E01000931,4112,51.5,0.00013307444144332006,1735.55,0.051
+8265,Camden,Arson and Criminal Damage,E01000958,5962,47.0,9.757773994146702e-05,1673.2,0.054
+20883,Harrow,Arson and Criminal Damage,E01002130,5846,47.4,0.00013703704262002766,1474.14,0.047
+1,Barking and Dagenham,Arson and Criminal Damage,E01000007,5682,43.1,0.0001318329513034126,1405.06,0.049
+20882,Harrow,Arson and Criminal Damage,E01002129,5382,46.2,0.00012943722120031538,1381.38,0.045
+6338,Bromley,Arson and Criminal Damage,E01000661,5668,41.8,0.0001694976158465355,1333.42,0.048
+25327,Hounslow,Arson and Criminal Damage,E01002641,5456,43.3,0.00014000513818857152,1320.65,0.046
+41839,Tower Hamlets,Arson and Criminal Damage,E01035670,8760,36.4,0.00021878123102072821,888.16,0.036

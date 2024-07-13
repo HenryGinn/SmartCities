@@ -20,7 +20,7 @@ from hgutilities.utils import get_dict_string
 
 from plot import Plot
 from timeseries import Time
-from .utils import get_time_columns, get_base_path
+from utils import get_time_columns, get_base_path
 
 
 class Crime():
@@ -211,7 +211,7 @@ class Crime():
         self.plot_obj.plot(**kwargs)
 
     def time(self, **kwargs):
-        self.time_obj = Time(self, **kwargs)
+        self.time_obj = Time(self.crime, **kwargs)
 
     def time_plot(self, **kwargs):
         self.time_obj.kwargs.update(kwargs)

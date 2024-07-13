@@ -1,201 +1,201 @@
 ,Borough,LSOA,Major Category,Population,Mean,Standard Deviation,Normalised Deviation
-28006,Kensington and Chelsea,E01002818,Vehicle Offences,4203,373.1,253.2,1.47
-47681,Westminster,E01035716,Vehicle Offences,6603,315.0,198.5,1.59
-47513,Westminster,E01004761,Vehicle Offences,4868,356.1,174.0,2.05
-47295,Westminster,E01004734,Vehicle Offences,5097,193.2,162.6,1.19
-19110,Hammersmith and Fulham,E01001932,Vehicle Offences,4689,226.3,144.5,1.57
-5731,Brent,E01000601,Vehicle Offences,4176,242.4,134.0,1.81
-47101,Westminster,E01004714,Vehicle Offences,5001,271.7,131.8,2.06
-47523,Westminster,E01004762,Vehicle Offences,4737,193.0,127.9,1.51
-36178,Newham,E01034220,Vehicle Offences,4752,151.3,121.2,1.25
-24110,Hillingdon,E01002444,Vehicle Offences,7612,155.6,119.0,1.31
-47315,Westminster,E01004736,Vehicle Offences,4641,211.7,117.7,1.8
-28871,Kensington and Chelsea,E01002911,Vehicle Offences,3813,171.2,114.3,1.5
-28016,Kensington and Chelsea,E01002819,Vehicle Offences,3318,139.3,107.0,1.3
-8860,Camden,E01000918,Vehicle Offences,7220,151.3,105.9,1.43
-8819,Camden,E01000914,Vehicle Offences,4206,169.9,105.4,1.61
-1860,Barnet,E01000195,Vehicle Offences,6012,78.9,98.6,0.8
-44582,Waltham Forest,E01004455,Vehicle Offences,5397,169.9,97.5,1.74
-2104,Barnet,E01000221,Vehicle Offences,4176,160.4,96.0,1.67
-28201,Kensington and Chelsea,E01002841,Vehicle Offences,3636,130.2,95.1,1.37
-16797,Greenwich,E01034188,Vehicle Offences,5672,139.4,94.5,1.48
-46888,Westminster,E01004691,Vehicle Offences,4828,143.0,94.5,1.51
-6282,Brent,E01033938,Vehicle Offences,3831,180.6,94.0,1.92
-8870,Camden,E01000919,Vehicle Offences,4377,121.0,92.9,1.3
-46642,Westminster,E01004657,Vehicle Offences,3693,143.7,90.3,1.59
-46898,Westminster,E01004692,Vehicle Offences,3162,93.0,89.6,1.04
-47701,Westminster,E01035718,Vehicle Offences,7977,122.6,88.7,1.38
-46927,Westminster,E01004695,Vehicle Offences,4224,76.3,88.0,0.87
-46458,Wandsworth,E01035491,Vehicle Offences,3633,116.3,87.2,1.33
-46691,Westminster,E01004662,Vehicle Offences,3966,71.6,86.9,0.82
-15116,Enfield,E01001559,Vehicle Offences,8508,173.5,86.0,2.02
-31567,Lambeth,E01033865,Vehicle Offences,3034,81.0,84.6,0.96
-28152,Kensington and Chelsea,E01002835,Vehicle Offences,4212,101.9,83.2,1.22
-8272,Camden,E01000855,Vehicle Offences,5308,113.4,83.1,1.36
-20040,Haringey,E01002026,Vehicle Offences,5340,99.3,81.7,1.22
-47543,Westminster,E01004765,Vehicle Offences,5586,172.8,80.7,2.14
-26995,Islington,E01002724,Vehicle Offences,5829,82.1,79.7,1.03
-24100,Hillingdon,E01002443,Vehicle Offences,6045,111.4,79.2,1.41
-34642,Newham,E01003497,Vehicle Offences,5049,129.3,79.1,1.63
-12390,Ealing,E01001278,Vehicle Offences,6294,97.1,79.0,1.23
-36071,Newham,E01034209,Vehicle Offences,4329,89.1,78.3,1.14
-34545,Newham,E01003486,Vehicle Offences,4840,108.2,77.9,1.39
-40307,Southwark,E01032637,Vehicle Offences,1024,46.5,77.5,0.6
-38563,Richmond upon Thames,E01003876,Vehicle Offences,7508,86.4,77.3,1.12
-18752,Hammersmith and Fulham,E01001894,Vehicle Offences,4041,101.8,76.8,1.33
-36031,Newham,E01034205,Vehicle Offences,6260,168.3,76.4,2.2
-46652,Westminster,E01004658,Vehicle Offences,4644,97.5,75.9,1.28
-19006,Hammersmith and Fulham,E01001921,Vehicle Offences,4332,103.3,74.1,1.39
-47091,Westminster,E01004713,Vehicle Offences,3921,142.1,73.7,1.93
-2897,Barnet,E01000307,Vehicle Offences,4935,117.4,73.3,1.6
-24788,Hillingdon,E01002521,Vehicle Offences,6165,63.6,70.7,0.9
-12370,Ealing,E01001276,Vehicle Offences,5319,113.4,70.6,1.61
-26481,Hounslow,E01002693,Vehicle Offences,5466,84.9,70.5,1.2
-12101,Ealing,E01001247,Vehicle Offences,9304,171.0,70.2,2.44
-26806,Islington,E01002704,Vehicle Offences,7023,111.4,69.6,1.6
-26491,Hounslow,E01032573,Vehicle Offences,5406,90.6,69.0,1.31
-40549,Southwark,E01033884,Vehicle Offences,3249,65.9,66.7,0.99
-14686,Enfield,E01001513,Vehicle Offences,5940,110.8,66.6,1.66
-1378,Barnet,E01000141,Vehicle Offences,5583,105.6,65.0,1.62
-28230,Kensington and Chelsea,E01002844,Vehicle Offences,3441,86.0,64.3,1.34
-11984,Ealing,E01001234,Vehicle Offences,3984,80.6,64.2,1.26
-13886,Enfield,E01001427,Vehicle Offences,6920,118.9,63.9,1.86
-9036,Camden,E01000937,Vehicle Offences,3339,48.4,63.7,0.76
-28669,Kensington and Chelsea,E01002889,Vehicle Offences,4698,85.6,62.7,1.37
-47305,Westminster,E01004735,Vehicle Offences,6132,124.2,62.3,1.99
-18742,Hammersmith and Fulham,E01001893,Vehicle Offences,4449,64.7,62.2,1.04
-23688,Hillingdon,E01002396,Vehicle Offences,5583,72.6,61.8,1.17
-28792,Kensington and Chelsea,E01002903,Vehicle Offences,3855,83.8,61.6,1.36
-46810,Westminster,E01004680,Vehicle Offences,3705,70.8,61.2,1.16
-47111,Westminster,E01004715,Vehicle Offences,5562,80.9,61.0,1.33
-18802,Hammersmith and Fulham,E01001899,Vehicle Offences,6544,61.5,61.0,1.01
-21492,Harrow,E01002176,Vehicle Offences,4971,58.0,60.6,0.96
-15287,Enfield,E01033928,Vehicle Offences,3918,35.9,59.9,0.6
-8809,Camden,E01000913,Vehicle Offences,4887,102.4,59.8,1.71
-9076,Camden,E01000942,Vehicle Offences,2991,69.2,59.8,1.16
-26661,Hounslow,E01034042,Vehicle Offences,3807,72.0,59.1,1.22
-11598,Croydon,E01034150,Vehicle Offences,3936,69.8,58.7,1.19
-1965,Barnet,E01000206,Vehicle Offences,4461,101.7,58.6,1.74
-8671,Camden,E01000899,Vehicle Offences,4749,88.2,58.5,1.51
-20580,Haringey,E01002083,Vehicle Offences,2846,58.7,58.4,1.01
-19100,Hammersmith and Fulham,E01001931,Vehicle Offences,2596,67.3,57.8,1.16
-28415,Kensington and Chelsea,E01002863,Vehicle Offences,3327,83.5,57.5,1.45
-8156,Bromley,E01034386,Vehicle Offences,2448,53.3,56.9,0.94
-25379,Hounslow,E01002570,Vehicle Offences,4893,70.3,56.9,1.24
-42610,Tower Hamlets,E01004316,Vehicle Offences,3030,67.6,56.7,1.19
-43708,Waltham Forest,E01004363,Vehicle Offences,5064,83.9,56.7,1.48
-34769,Newham,E01003513,Vehicle Offences,6240,70.0,56.4,1.24
-46830,Westminster,E01004682,Vehicle Offences,2584,61.0,56.3,1.08
-25203,Hillingdon,E01034613,Vehicle Offences,2964,59.1,56.1,1.05
-9754,Croydon,E01001010,Vehicle Offences,6860,86.9,55.9,1.55
-18499,Hammersmith and Fulham,E01001867,Vehicle Offences,3525,52.9,55.8,0.95
-14419,Enfield,E01001483,Vehicle Offences,3555,73.5,55.8,1.32
-28026,Kensington and Chelsea,E01002821,Vehicle Offences,3396,76.7,55.6,1.38
-43312,Tower Hamlets,E01035702,Vehicle Offences,4425,59.2,55.3,1.07
-26018,Hounslow,E01002637,Vehicle Offences,5820,102.0,55.2,1.85
-31539,Lambeth,E01033862,Vehicle Offences,2844,67.0,55.2,1.21
-27898,Islington,E01035652,Vehicle Offences,3813,64.8,55.1,1.18
-26471,Hounslow,E01002692,Vehicle Offences,6366,75.0,55.1,1.36
-47651,Westminster,E01033604,Vehicle Offences,3576,56.4,55.0,1.03
-24524,Hillingdon,E01002489,Vehicle Offences,5823,64.7,55.0,1.18
-47121,Westminster,E01004716,Vehicle Offences,3147,74.4,54.9,1.36
-46859,Westminster,E01004686,Vehicle Offences,4203,75.0,54.9,1.37
-8242,Camden,E01000850,Vehicle Offences,4233,82.8,54.7,1.51
-20130,Haringey,E01002036,Vehicle Offences,5583,70.0,54.6,1.28
-8839,Camden,E01000916,Vehicle Offences,5616,84.9,54.5,1.56
-13040,Ealing,E01001347,Vehicle Offences,6000,80.5,54.2,1.49
-27661,Islington,E01002796,Vehicle Offences,2224,51.0,53.8,0.95
-23604,Havering,E01033784,Vehicle Offences,4710,95.8,53.6,1.79
-42959,Tower Hamlets,E01035665,Vehicle Offences,4308,63.4,53.6,1.18
-37875,Richmond upon Thames,E01003799,Vehicle Offences,4833,90.1,53.5,1.68
-28911,Kensington and Chelsea,E01035713,Vehicle Offences,6117,80.0,53.4,1.5
-28386,Kensington and Chelsea,E01002860,Vehicle Offences,4476,71.9,53.1,1.35
-9046,Camden,E01000938,Vehicle Offences,4149,58.0,53.1,1.09
-6272,Brent,E01033937,Vehicle Offences,2320,42.6,53.0,0.8
-20511,Haringey,E01002075,Vehicle Offences,3964,61.7,52.9,1.17
-6192,Brent,E01033929,Vehicle Offences,5212,48.5,52.7,0.92
-25398,Hounslow,E01002572,Vehicle Offences,4776,78.9,52.7,1.5
-27812,Islington,E01033486,Vehicle Offences,2046,49.5,52.6,0.94
-19881,Haringey,E01002008,Vehicle Offences,4158,88.7,52.4,1.69
-20070,Haringey,E01002029,Vehicle Offences,6414,73.3,52.3,1.4
-9185,Camden,E01000956,Vehicle Offences,3030,58.8,52.2,1.13
-26376,Hounslow,E01002678,Vehicle Offences,6021,88.2,52.2,1.69
-2028,Barnet,E01000213,Vehicle Offences,4191,57.4,51.7,1.11
-25153,Hillingdon,E01034608,Vehicle Offences,7188,67.8,51.6,1.31
-47130,Westminster,E01004717,Vehicle Offences,3822,73.1,51.5,1.42
-7078,Bromley,E01000728,Vehicle Offences,6484,60.1,51.5,1.17
-15218,Enfield,E01032574,Vehicle Offences,8388,78.4,51.5,1.52
-28171,Kensington and Chelsea,E01002837,Vehicle Offences,3120,57.9,51.4,1.13
-8622,Camden,E01000894,Vehicle Offences,3819,64.5,51.0,1.26
-751,Barking and Dagenham,E01000087,Vehicle Offences,6540,64.5,50.9,1.27
-36757,Redbridge,E01003689,Vehicle Offences,6690,82.4,50.8,1.62
-19120,Hammersmith and Fulham,E01001933,Vehicle Offences,4569,81.1,50.6,1.6
-19411,Hammersmith and Fulham,E01035484,Vehicle Offences,5058,71.2,50.6,1.41
-1070,Barking and Dagenham,E01034473,Vehicle Offences,3882,68.5,50.3,1.36
-18792,Hammersmith and Fulham,E01001898,Vehicle Offences,8400,73.1,50.3,1.45
-39450,Southwark,E01003981,Vehicle Offences,6056,64.0,50.1,1.28
-38418,Richmond upon Thames,E01003860,Vehicle Offences,5184,68.2,50.1,1.36
-38336,Richmond upon Thames,E01003851,Vehicle Offences,4758,69.4,50.0,1.39
-34672,Newham,E01003500,Vehicle Offences,6093,74.5,49.9,1.49
-46014,Wandsworth,E01004608,Vehicle Offences,4944,80.9,49.9,1.62
-8164,Camden,E01000842,Vehicle Offences,2952,59.2,49.9,1.19
-28161,Kensington and Chelsea,E01002836,Vehicle Offences,3891,78.6,49.8,1.58
-46497,Wandsworth,E01035495,Vehicle Offences,3996,44.8,49.8,0.9
-18952,Hammersmith and Fulham,E01001915,Vehicle Offences,4323,75.9,49.6,1.53
-24661,Hillingdon,E01002505,Vehicle Offences,5325,84.6,49.2,1.72
-14517,Enfield,E01001494,Vehicle Offences,4473,44.2,49.2,0.9
-18092,Hackney,E01033699,Vehicle Offences,4227,69.0,49.1,1.41
-47533,Westminster,E01004763,Vehicle Offences,6093,90.4,49.1,1.84
-19016,Hammersmith and Fulham,E01001922,Vehicle Offences,4851,81.6,49.0,1.67
-831,Barking and Dagenham,E01000096,Vehicle Offences,5016,76.5,48.9,1.56
-18041,Hackney,E01001846,Vehicle Offences,3759,60.9,48.9,1.25
-24139,Hillingdon,E01002447,Vehicle Offences,8192,58.6,48.6,1.21
-46120,Wandsworth,E01004619,Vehicle Offences,4017,54.8,48.6,1.13
-12013,Ealing,E01001237,Vehicle Offences,4659,62.8,48.6,1.29
-34477,Merton,E01034581,Vehicle Offences,4497,53.4,48.5,1.1
-28494,Kensington and Chelsea,E01002871,Vehicle Offences,4362,72.7,48.5,1.5
-8779,Camden,E01000910,Vehicle Offences,3978,62.0,48.3,1.28
-13050,Ealing,E01001348,Vehicle Offences,5040,70.5,48.3,1.46
-18162,Hackney,E01033708,Vehicle Offences,7532,107.9,48.3,2.23
-44592,Waltham Forest,E01004456,Vehicle Offences,6800,69.0,48.2,1.43
-27968,Kensington and Chelsea,E01002814,Vehicle Offences,6765,53.2,48.1,1.11
-30689,Lambeth,E01003102,Vehicle Offences,5313,51.6,48.1,1.07
-45704,Wandsworth,E01004572,Vehicle Offences,5193,52.9,48.0,1.1
-13353,Ealing,E01001381,Vehicle Offences,5625,82.0,47.8,1.72
-24019,Hillingdon,E01002434,Vehicle Offences,2656,47.8,47.7,1.0
-8351,Camden,E01000863,Vehicle Offences,4437,56.5,47.7,1.18
-34487,Newham,E01003479,Vehicle Offences,3114,45.0,47.6,0.95
-15884,Greenwich,E01001641,Vehicle Offences,5568,52.6,47.4,1.11
-20531,Haringey,E01002077,Vehicle Offences,6786,53.8,47.3,1.14
-2878,Barnet,E01000305,Vehicle Offences,6540,50.2,47.3,1.06
-12091,Ealing,E01001246,Vehicle Offences,7332,81.7,47.2,1.73
-13605,Enfield,E01001398,Vehicle Offences,4032,50.0,47.2,1.06
-15278,Enfield,E01033927,Vehicle Offences,4941,48.5,47.2,1.03
-14547,Enfield,E01001497,Vehicle Offences,2956,49.0,47.1,1.04
-32017,Lewisham,E01003235,Vehicle Offences,2924,50.3,47.1,1.07
-20790,Haringey,E01002104,Vehicle Offences,4341,41.1,47.0,0.87
-42892,Tower Hamlets,E01035658,Vehicle Offences,3891,55.8,47.0,1.19
-445,Barking and Dagenham,E01000056,Vehicle Offences,5031,61.2,47.0,1.3
-5129,Brent,E01000532,Vehicle Offences,3094,45.4,47.0,0.97
-27742,Islington,E01002805,Vehicle Offences,2926,49.5,47.0,1.05
-34789,Newham,E01003515,Vehicle Offences,8508,82.8,47.0,1.76
-29862,Lambeth,E01003017,Vehicle Offences,3348,41.8,46.9,0.89
-4563,Bexley,E01033791,Vehicle Offences,4158,53.3,46.8,1.14
-36653,Redbridge,E01003677,Vehicle Offences,5424,71.9,46.8,1.54
-25113,Hillingdon,E01034604,Vehicle Offences,4212,47.1,46.7,1.01
-37710,Redbridge,E01003792,Vehicle Offences,4224,57.4,46.7,1.23
-18812,Hammersmith and Fulham,E01001900,Vehicle Offences,5196,54.0,46.7,1.16
-36187,Newham,E01034221,Vehicle Offences,5352,61.9,46.6,1.33
-28862,Kensington and Chelsea,E01002910,Vehicle Offences,4089,50.4,46.5,1.08
-1445,Barnet,E01000150,Vehicle Offences,8984,54.6,46.3,1.18
-13742,Enfield,E01001412,Vehicle Offences,5343,72.8,46.2,1.58
-26520,Hounslow,E01033081,Vehicle Offences,4725,49.2,46.2,1.06
-24980,Hillingdon,E01002544,Vehicle Offences,5004,62.4,46.2,1.35
-28377,Kensington and Chelsea,E01002859,Vehicle Offences,4956,86.5,46.2,1.87
-46907,Westminster,E01004693,Vehicle Offences,3618,62.1,46.2,1.34
-46849,Westminster,E01004684,Vehicle Offences,4140,49.2,46.1,1.07
-32176,Lewisham,E01003253,Vehicle Offences,4332,47.1,45.9,1.03
-35982,Newham,E01034200,Vehicle Offences,4719,70.8,45.8,1.55
-13410,Ealing,E01001387,Vehicle Offences,4548,61.0,45.7,1.33
-20471,Haringey,E01002071,Vehicle Offences,5337,47.5,45.7,1.04
-1955,Barnet,E01000205,Vehicle Offences,4518,67.8,45.6,1.49
+43009,Tower Hamlets,E01035670,Vehicle Offences,17520,13.6,1.01607,142.8
+43565,Waltham Forest,E01004348,Vehicle Offences,11716,24.5,1.00691,396.9
+17047,Hackney,E01001731,Vehicle Offences,10660,26.3,1.00606,454.99
+37221,Redbridge,E01003739,Vehicle Offences,9544,25.5,1.00475,471.75
+485,Barking and Dagenham,E01000060,Vehicle Offences,8676,26.4,1.00461,498.96
+5052,Brent,E01000523,Vehicle Offences,9184,28.9,1.0045,566.44
+29392,Kingston upon Thames,E01002968,Vehicle Offences,11748,25.8,1.00449,487.62
+25292,Hounslow,E01002559,Vehicle Offences,10296,27.9,1.00441,544.05
+37502,Redbridge,E01003770,Vehicle Offences,11456,26.7,1.0042,520.65
+10690,Croydon,E01001113,Vehicle Offences,8064,28.7,1.00406,579.74
+42120,Tower Hamlets,E01004249,Vehicle Offences,9808,30.3,1.00396,627.21
+35014,Newham,E01003538,Vehicle Offences,8576,28.1,1.00388,570.43
+23384,Havering,E01002370,Vehicle Offences,9868,40.2,1.00379,924.6
+23374,Havering,E01002369,Vehicle Offences,8268,28.0,1.00376,574.0
+34702,Newham,E01003503,Vehicle Offences,11540,30.5,1.00374,643.55
+37033,Redbridge,E01003719,Vehicle Offences,9584,31.1,1.00355,671.76
+44073,Waltham Forest,E01004401,Vehicle Offences,9340,26.5,1.00336,553.85
+35647,Newham,E01003603,Vehicle Offences,7756,35.6,1.00335,818.8
+42680,Tower Hamlets,E01032764,Vehicle Offences,9544,39.0,1.00324,932.1
+41893,Tower Hamlets,E01004219,Vehicle Offences,11056,32.8,1.0032,744.56
+13175,Ealing,E01001361,Vehicle Offences,9084,30.6,1.00319,679.32
+44277,Waltham Forest,E01004422,Vehicle Offences,10512,47.8,1.00316,1228.46
+214,Barking and Dagenham,E01000030,Vehicle Offences,10352,34.3,1.00313,795.76
+14636,Enfield,E01001507,Vehicle Offences,10340,31.8,1.00313,718.68
+23261,Havering,E01002356,Vehicle Offences,8428,34.7,1.00309,811.98
+15268,Enfield,E01033926,Vehicle Offences,10468,43.2,1.00308,1084.32
+14439,Enfield,E01001485,Vehicle Offences,7564,33.1,1.00301,767.92
+43029,Tower Hamlets,E01035672,Vehicle Offences,9036,30.7,1.00298,699.96
+4640,Brent,E01000477,Vehicle Offences,6954,36.9,1.00298,889.29
+11204,Croydon,E01001167,Vehicle Offences,9324,31.2,1.00293,717.6
+27652,Islington,E01002795,Vehicle Offences,7784,30.8,1.00292,705.32
+3307,Bexley,E01000335,Vehicle Offences,10964,36.4,1.00289,884.52
+34721,Newham,E01003507,Vehicle Offences,9108,35.4,1.00286,853.14
+4813,Brent,E01000497,Vehicle Offences,8260,42.1,1.00285,1073.55
+43986,Waltham Forest,E01004392,Vehicle Offences,7719,37.4,1.0028,923.78
+45113,Wandsworth,E01004508,Vehicle Offences,8060,33.3,1.00276,795.87
+36356,Redbridge,E01003645,Vehicle Offences,8286,35.3,1.00276,861.32
+37231,Redbridge,E01003740,Vehicle Offences,6708,45.8,1.00276,1213.7
+29872,Lambeth,E01003018,Vehicle Offences,6018,34.4,1.00273,835.92
+12061,Ealing,E01001243,Vehicle Offences,7101,31.8,1.00272,753.66
+9364,Camden,E01035707,Vehicle Offences,9852,41.2,1.00269,1062.96
+23154,Havering,E01002345,Vehicle Offences,7720,44.7,1.00268,1189.02
+35220,Newham,E01003559,Vehicle Offences,7095,33.7,1.00266,818.91
+5622,Brent,E01000586,Vehicle Offences,7110,34.5,1.00264,848.7
+44473,Waltham Forest,E01004444,Vehicle Offences,8355,33.9,1.00264,827.16
+36474,Redbridge,E01003657,Vehicle Offences,8616,31.9,1.00261,765.6
+37342,Redbridge,E01003752,Vehicle Offences,8343,34.0,1.0026,836.4
+19248,Hammersmith and Fulham,E01001948,Vehicle Offences,7556,35.4,1.00259,881.46
+16881,Greenwich,E01034198,Vehicle Offences,9340,50.8,1.00255,1427.48
+42100,Tower Hamlets,E01004247,Vehicle Offences,8076,37.2,1.00254,948.6
+34682,Newham,E01003501,Vehicle Offences,9476,33.3,1.00254,819.18
+12226,Ealing,E01001261,Vehicle Offences,6882,41.3,1.00252,1090.32
+10447,Croydon,E01001087,Vehicle Offences,8490,34.3,1.00251,854.07
+20431,Haringey,E01002067,Vehicle Offences,6940,39.7,1.00248,1040.14
+19553,Haringey,E01001973,Vehicle Offences,10056,34.6,1.00248,868.46
+39860,Southwark,E01004031,Vehicle Offences,10440,38.9,1.00247,1015.29
+42950,Tower Hamlets,E01035664,Vehicle Offences,7701,35.1,1.00246,888.03
+3760,Bexley,E01000385,Vehicle Offences,8032,30.8,1.00246,745.36
+2011,Barnet,E01000211,Vehicle Offences,6366,36.5,1.00246,934.4
+27592,Islington,E01002789,Vehicle Offences,7448,36.3,1.00246,925.65
+603,Barking and Dagenham,E01000072,Vehicle Offences,6426,35.1,1.00246,884.52
+30064,Lambeth,E01003038,Vehicle Offences,6852,36.3,1.00245,929.28
+20461,Haringey,E01002070,Vehicle Offences,7722,40.1,1.00243,1058.64
+37541,Redbridge,E01003774,Vehicle Offences,5883,39.3,1.00241,1037.52
+5855,Brent,E01000615,Vehicle Offences,12800,29.3,1.0024,703.2
+44257,Waltham Forest,E01004420,Vehicle Offences,8948,40.7,1.00238,1086.69
+40203,Southwark,E01004067,Vehicle Offences,6636,37.3,1.00236,973.53
+36767,Redbridge,E01003690,Vehicle Offences,8648,32.6,1.00235,815.0
+43508,Waltham Forest,E01004342,Vehicle Offences,6279,42.8,1.00233,1172.72
+39469,Southwark,E01003984,Vehicle Offences,6942,30.5,1.00232,750.3
+24149,Hillingdon,E01002448,Vehicle Offences,8648,34.9,1.00229,900.42
+584,Barking and Dagenham,E01000070,Vehicle Offences,6219,38.7,1.00227,1033.29
+45560,Wandsworth,E01004555,Vehicle Offences,6860,40.2,1.00225,1089.42
+13261,Ealing,E01001370,Vehicle Offences,6483,38.1,1.00222,1021.08
+23297,Havering,E01002361,Vehicle Offences,7896,40.3,1.00219,1104.22
+28073,Kensington and Chelsea,E01002827,Vehicle Offences,6804,39.7,1.00217,1087.78
+35200,Newham,E01003557,Vehicle Offences,7900,34.0,1.00217,884.0
+34731,Newham,E01003508,Vehicle Offences,7542,42.0,1.00216,1171.8
+31330,Lambeth,E01003170,Vehicle Offences,7688,36.2,1.00216,962.92
+47671,Westminster,E01035715,Vehicle Offences,8364,36.4,1.00215,971.88
+20199,Haringey,E01002043,Vehicle Offences,7292,34.2,1.00214,896.04
+1935,Barnet,E01000203,Vehicle Offences,7364,36.3,1.00211,972.84
+42490,Tower Hamlets,E01004303,Vehicle Offences,8745,34.5,1.00209,910.8
+35726,Newham,E01003618,Vehicle Offences,6708,42.2,1.00209,1190.04
+20830,Haringey,E01033943,Vehicle Offences,7569,35.5,1.00208,951.4
+18071,Hackney,E01001849,Vehicle Offences,7353,51.1,1.00205,1543.22
+27553,Islington,E01002785,Vehicle Offences,7464,41.7,1.00204,1180.11
+979,Barking and Dagenham,E01000112,Vehicle Offences,7976,36.4,1.00202,990.08
+46622,Westminster,E01004654,Vehicle Offences,7425,40.2,1.00201,1133.64
+13936,Enfield,E01001432,Vehicle Offences,7516,35.0,1.00198,945.0
+5595,Brent,E01000583,Vehicle Offences,6084,40.9,1.00196,1165.65
+34759,Newham,E01003512,Vehicle Offences,5895,36.6,1.00195,1010.16
+18694,Hammersmith and Fulham,E01001888,Vehicle Offences,6320,39.8,1.00193,1130.32
+14499,Enfield,E01001492,Vehicle Offences,6102,40.9,1.0019,1177.92
+46563,Westminster,E01004648,Vehicle Offences,6996,40.5,1.00188,1166.4
+36579,Redbridge,E01003669,Vehicle Offences,6212,46.1,1.00188,1383.0
+406,Barking and Dagenham,E01000052,Vehicle Offences,7101,35.5,1.00186,983.35
+17252,Hackney,E01001756,Vehicle Offences,8176,42.2,1.00186,1236.46
+37102,Redbridge,E01003726,Vehicle Offences,7518,37.3,1.00185,1051.86
+13010,Ealing,E01001344,Vehicle Offences,6828,42.0,1.00183,1234.8
+8988,Camden,E01000931,Vehicle Offences,6168,43.2,1.00183,1283.04
+929,Barking and Dagenham,E01000106,Vehicle Offences,6702,37.3,1.00182,1059.32
+42630,Tower Hamlets,E01004321,Vehicle Offences,8988,44.0,1.00181,1320.0
+8978,Camden,E01000930,Vehicle Offences,8424,34.6,1.00181,961.88
+20219,Haringey,E01002045,Vehicle Offences,8484,34.7,1.0018,964.66
+821,Barking and Dagenham,E01000095,Vehicle Offences,8916,68.2,1.00179,2359.72
+15983,Greenwich,E01001652,Vehicle Offences,6876,36.4,1.00178,1030.12
+25805,Hounslow,E01002615,Vehicle Offences,6452,39.8,1.00178,1162.16
+18132,Hackney,E01033704,Vehicle Offences,7017,48.8,1.00177,1522.56
+23364,Havering,E01002368,Vehicle Offences,7536,50.5,1.00175,1600.85
+17577,Hackney,E01001794,Vehicle Offences,5841,48.6,1.00174,1521.18
+3769,Bexley,E01000386,Vehicle Offences,6040,45.2,1.00173,1387.64
+2926,Barnet,E01000310,Vehicle Offences,6582,38.3,1.00172,1118.36
+19796,Haringey,E01001999,Vehicle Offences,7269,37.8,1.00172,1096.2
+42130,Tower Hamlets,E01004251,Vehicle Offences,7758,34.3,1.00171,967.26
+35519,Newham,E01003590,Vehicle Offences,6396,44.2,1.00171,1352.52
+37645,Redbridge,E01003785,Vehicle Offences,8220,33.6,1.00171,940.8
+39361,Southwark,E01003969,Vehicle Offences,7164,35.8,1.00168,1027.46
+2124,Barnet,E01000223,Vehicle Offences,8148,40.6,1.00167,1218.0
+44416,Waltham Forest,E01004438,Vehicle Offences,6351,41.5,1.00167,1253.3
+5566,Brent,E01000580,Vehicle Offences,8360,39.5,1.00165,1177.1
+12799,Ealing,E01001322,Vehicle Offences,6129,48.7,1.00164,1558.4
+46024,Wandsworth,E01004609,Vehicle Offences,6582,42.3,1.00164,1290.15
+20422,Haringey,E01002066,Vehicle Offences,10396,31.2,1.00164,864.24
+18021,Hackney,E01001844,Vehicle Offences,5838,47.0,1.00163,1489.9
+14735,Enfield,E01001518,Vehicle Offences,6760,46.9,1.00159,1496.11
+44034,Waltham Forest,E01004397,Vehicle Offences,8688,42.2,1.00158,1303.98
+2330,Barnet,E01000245,Vehicle Offences,8260,32.6,1.00158,925.84
+15076,Enfield,E01001555,Vehicle Offences,6687,51.1,1.00156,1686.3
+3916,Bexley,E01000403,Vehicle Offences,9528,41.6,1.00153,1293.76
+44356,Waltham Forest,E01004430,Vehicle Offences,10684,60.2,1.00153,2107.0
+5233,Brent,E01000545,Vehicle Offences,5742,42.3,1.00152,1323.99
+20561,Haringey,E01002081,Vehicle Offences,7908,37.6,1.00151,1135.52
+34622,Newham,E01003495,Vehicle Offences,6270,44.8,1.00151,1433.6
+5313,Brent,E01000553,Vehicle Offences,6114,41.3,1.00151,1288.56
+11955,Ealing,E01001231,Vehicle Offences,6252,48.7,1.0015,1602.23
+43527,Waltham Forest,E01004344,Vehicle Offences,5727,55.1,1.00149,1889.93
+19612,Haringey,E01001979,Vehicle Offences,6795,46.0,1.00149,1485.8
+4833,Brent,E01000499,Vehicle Offences,7516,38.3,1.00148,1171.98
+10907,Croydon,E01001137,Vehicle Offences,6489,46.1,1.00148,1498.25
+42080,Tower Hamlets,E01004244,Vehicle Offences,6312,45.2,1.00148,1459.96
+7636,Bromley,E01000790,Vehicle Offences,6870,34.2,1.00148,1008.9
+1090,Barking and Dagenham,E01034475,Vehicle Offences,5496,58.1,1.00148,2033.5
+4311,Bexley,E01000447,Vehicle Offences,7816,46.1,1.00147,1498.25
+37578,Redbridge,E01003778,Vehicle Offences,5832,54.2,1.00146,1864.48
+17223,Hackney,E01001751,Vehicle Offences,4533,46.3,1.00146,1509.38
+35063,Newham,E01003543,Vehicle Offences,7014,45.1,1.00146,1461.24
+24603,Hillingdon,E01002497,Vehicle Offences,9900,51.0,1.00146,1718.7
+25369,Hounslow,E01002569,Vehicle Offences,6315,44.9,1.00145,1454.76
+17322,Hackney,E01001763,Vehicle Offences,5340,39.9,1.00144,1248.87
+20005,Haringey,E01002022,Vehicle Offences,6534,46.2,1.00143,1519.98
+9116,Camden,E01000947,Vehicle Offences,6624,44.6,1.00142,1449.5
+46194,Wandsworth,E01004627,Vehicle Offences,6336,44.2,1.00141,1436.5
+45841,Wandsworth,E01004587,Vehicle Offences,5520,45.7,1.00139,1508.1
+23144,Havering,E01002344,Vehicle Offences,7904,86.3,1.00138,3512.41
+47691,Westminster,E01035717,Vehicle Offences,5706,47.6,1.00137,1599.36
+2984,Barnet,E01000316,Vehicle Offences,9120,50.4,1.00136,1728.72
+22261,Havering,E01002248,Vehicle Offences,5304,54.6,1.00136,1927.38
+42346,Tower Hamlets,E01004286,Vehicle Offences,7647,41.0,1.00135,1320.2
+6990,Bromley,E01000719,Vehicle Offences,6339,49.7,1.00135,1699.74
+358,Barking and Dagenham,E01000045,Vehicle Offences,5187,50.7,1.00135,1749.15
+13509,Ealing,E01034030,Vehicle Offences,5502,60.4,1.00134,2210.64
+37673,Redbridge,E01003788,Vehicle Offences,5562,53.3,1.00134,1870.83
+33477,Merton,E01003375,Vehicle Offences,7120,43.0,1.00133,1414.7
+31596,Lewisham,E01003190,Vehicle Offences,6909,55.7,1.00132,1994.06
+20700,Haringey,E01002095,Vehicle Offences,6264,46.4,1.00132,1568.32
+35657,Newham,E01003604,Vehicle Offences,6858,53.3,1.00131,1886.82
+17558,Hackney,E01001792,Vehicle Offences,6012,45.4,1.0013,1529.98
+20481,Haringey,E01002072,Vehicle Offences,7612,45.8,1.00129,1548.04
+17067,Hackney,E01001733,Vehicle Offences,5670,46.4,1.00129,1577.6
+43846,Waltham Forest,E01004377,Vehicle Offences,7488,47.8,1.00128,1644.32
+11303,Croydon,E01001177,Vehicle Offences,6500,40.9,1.00127,1341.52
+25351,Hounslow,E01002565,Vehicle Offences,7620,47.3,1.00127,1627.12
+25590,Hounslow,E01002592,Vehicle Offences,6489,48.9,1.00127,1696.83
+24495,Hillingdon,E01002486,Vehicle Offences,8844,39.6,1.00126,1290.96
+2001,Barnet,E01000210,Vehicle Offences,4635,49.9,1.00126,1751.49
+45851,Wandsworth,E01004588,Vehicle Offences,6090,46.7,1.00126,1601.81
+39191,Southwark,E01003945,Vehicle Offences,5361,49.4,1.00125,1733.94
+25979,Hounslow,E01002633,Vehicle Offences,6618,59.0,1.00125,2194.8
+39498,Southwark,E01003988,Vehicle Offences,6156,55.8,1.00124,2042.28
+19199,Hammersmith and Fulham,E01001943,Vehicle Offences,6675,71.2,1.00122,2833.76
+31810,Lewisham,E01003213,Vehicle Offences,5880,45.6,1.00122,1573.2
+1020,Barking and Dagenham,E01033587,Vehicle Offences,9780,56.6,1.00121,2094.2
+24671,Hillingdon,E01002506,Vehicle Offences,6162,54.0,1.00121,1971.0
+24593,Hillingdon,E01002496,Vehicle Offences,5847,59.0,1.0012,2218.4
+37625,Redbridge,E01003783,Vehicle Offences,7647,50.9,1.00118,1837.49
+14054,Enfield,E01001445,Vehicle Offences,11188,54.9,1.00117,2036.79
+10545,Croydon,E01001097,Vehicle Offences,7257,54.1,1.00117,1996.29
+20140,Haringey,E01002037,Vehicle Offences,6744,91.5,1.00117,3998.55
+15156,Enfield,E01001564,Vehicle Offences,4998,49.2,1.00116,1766.28
+1573,Barnet,E01000164,Vehicle Offences,6864,72.7,1.00116,2958.89
+17077,Hackney,E01001734,Vehicle Offences,5565,50.6,1.00116,1831.72
+14587,Enfield,E01001501,Vehicle Offences,6585,60.2,1.00115,2311.68
+46103,Wandsworth,E01004617,Vehicle Offences,5745,48.2,1.00115,1725.56
+47032,Westminster,E01004707,Vehicle Offences,5649,54.3,1.00115,2014.53
+19458,Haringey,E01001963,Vehicle Offences,5370,54.6,1.00114,2036.58
+29891,Lambeth,E01003020,Vehicle Offences,5361,44.8,1.00113,1572.48
+15707,Greenwich,E01001615,Vehicle Offences,8196,39.4,1.00112,1331.72
+12380,Ealing,E01001277,Vehicle Offences,6051,68.7,1.00109,2802.96
+30319,Lambeth,E01003064,Vehicle Offences,4305,50.7,1.00109,1875.9

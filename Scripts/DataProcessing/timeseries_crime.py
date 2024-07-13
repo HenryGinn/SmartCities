@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from hgutilities import defaults, utils
 
-from .utils import (get_time_columns, get_capitalised,
-                    add_line_breaks)
+from utils import (get_time_columns, get_capitalised,
+                   add_line_breaks)
 
 
 plt.rcParams["font.family"] = "Times New Roman"
