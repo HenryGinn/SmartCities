@@ -14,13 +14,12 @@ The information is organised in a dictionary according to the following:
 import os
 from math import ceil, floor
 
-from hgutilities import defaults
-from hgutilities import utils
+from hgutilities import defaults, utils
 import imageio
 
 from crime import Crime
 from animate import Animate
-from utils import get_time_columns
+from .utils import get_time_columns
 
 
 class Plotter():

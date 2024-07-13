@@ -20,7 +20,7 @@ from hgutilities.utils import get_dict_string
 
 from plot import Plot
 from timeseries import Time
-from utils import get_time_columns
+from .utils import get_time_columns, get_base_path
 
 
 class Crime():
@@ -36,8 +36,7 @@ class Crime():
         self.crime = pd.read_csv(self.path_crime, index_col="index")
 
     def set_paths(self):
-        self.path_cwd = os.getcwd()
-        self.path_base = os.path.dirname(self.path_cwd)
+        self.path_base = get_base_path(self)
         self.path_output_base = os.path.join(self.path_base, "Output")
         self.path_data = os.path.join(self.path_base, "Data")
         self.path_crime = os.path.join(self.path_data, "Crime.csv")

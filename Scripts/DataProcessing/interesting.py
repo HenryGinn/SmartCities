@@ -9,16 +9,14 @@ metric are then output. This is done both overall and for each crime category.
 
 from os.path import join
 
-from hgutilities import utils
-from hgutilities import defaults
+from hgutilities import defaults, utils
 import numpy as np
 import pandas as pd
 
 from crime import Crime
 from plot import Plot
 from timeseries import Time
-from utils import get_time_columns
-from utils import add_line_breaks
+from .utils import get_time_columns, add_line_breaks
 
 
 class Interesting():

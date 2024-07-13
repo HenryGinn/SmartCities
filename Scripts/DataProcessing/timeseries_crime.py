@@ -2,13 +2,10 @@ import os
 
 import matplotlib.pyplot as plt
 import pandas as pd
-from hgutilities import defaults
-from hgutilities import utils
-from hgutilities.utils import get_dict_string
+from hgutilities import defaults, utils
 
-from utils import get_time_columns
-from utils import get_capitalised
-from utils import add_line_breaks
+from .utils import (get_time_columns, get_capitalised,
+                    add_line_breaks)
 
 
 plt.rcParams["font.family"] = "Times New Roman"

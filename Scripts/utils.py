@@ -1,3 +1,7 @@
+from os.path import dirname
+import inspect
+
+
 title_case_exceptions = [
     "and", "as", "but", "for", "if", "nor", "or", "so", "yet", "a", "an", "the",
     "as", "at", "by", "for", "in", "of", "off", "on", "per", "to", "up", "via"]
@@ -32,3 +36,9 @@ def get_time_columns(dataframe):
         "LSOA", "Borough", "Minor Category", "Major Category", "Population"])
     time_columns = sorted(list(columns - non_time_columns))
     return time_columns
+
+def get_base_path(source):
+    if hasattr(source, "__module__"):
+        source = inspect.getfile(source.__class__)
+    path = dirname(dirname(source))
+    return path

@@ -10,8 +10,7 @@ contains data about each borough then it will not draw in the LSOA regions.
 import os
 from copy import deepcopy
 
-from hgutilities import defaults
-from hgutilities import utils
+from hgutilities import defaults, utils
 import matplotlib.pyplot as plt
 import geopandas as gpd
 import pandas as pd
@@ -19,9 +18,8 @@ from shapely.wkt import loads
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib.colors import LogNorm
 
-from utils import get_capitalised
-from utils import add_line_breaks
-from utils import get_time_columns
+from .utils import (get_capitalised, add_line_breaks,
+                    get_time_columns, get_base_path)
 
 
 plt.rcParams["font.family"] = "Times New Roman"
@@ -392,8 +390,7 @@ class Plot():
 
 defaults.load(Plot)
 
-path_cwd = os.getcwd()
-path_base = os.path.dirname(path_cwd)
+path_base = get_base_path(__file__)
 path_output_base = os.path.join(path_base, "Output")
 path_data = os.path.join(path_base, "Data")
 path_city = os.path.join(path_data, "City.csv")
