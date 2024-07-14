@@ -1,5 +1,23 @@
 Motivations for project plan. Writing up the paper will be very fast, and most of the time will be spend exploring, finding out what is interesting to write about, and then producing the figures. I want to look at the literature to get an idea of things to look at, but I will hold off on writing the literature review until later in the exploration phase where I have narrowed down the exact ideas I want to look at in detail. 
 
+Week 6:  Identify interesting time series case studies to look at and start developing ARIMA and LSTM toolkits
+Week 7:  Finish developing ARIMA and LSTM for time series, and start exploring with these toolkits
+Week 8:  Create more detailed structure of the results part of the paper, and preparing figures from experiments. Start writing
+Week 9:  Finish main writing of results
+Week 10: Conclusions, introduction, abstract, formatting
+Week 11: Tidying up and starting work on presentation materials
+Week 12: Slack week
+
+If I have more time:
+- Look into LSTM that uses surrounding spatial data
+- Test for non-stationary variance and explore GARCH models
+- Do annoying formatting for two columns
+
+
+OLD PLAN
+
+I started diverging from this plan around week 3, but now I have taken things differently enough that I need to revise it
+
 Week 1: Research into time series analysis and forecasting, exploration of software options, initial look at trends in data and geographic plots
 Week 2: Finish initial research into time series analysis and forecasting methods, build data analysis machinery, dip toes into literature
 Week 3: Explore the literature and use it as inspiration of things to look at, use previously built data analysis tools to explore the data

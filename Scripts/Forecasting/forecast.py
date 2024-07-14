@@ -1,4 +1,5 @@
 from os.path import join
+from os.path import dirname
 import warnings
 
 import pandas as pd
@@ -83,7 +84,7 @@ class Forecast():
 
     def create_forecast(self):
         self.modelled = (np.ones(self.length_forecast)*self.data.mean() +
-            (np.random.rand(self.length_forecast)-0.5)*2*self.data.std())
+            (np.random.rand(self.length_forecast)-0.5)*1*self.data.std())
         
 
     # Plotting
@@ -113,7 +114,6 @@ class Forecast():
     def add_data_to_plot(self):
         self.add_original_to_plot()
         self.add_modelled_to_plot()
-        self.add_interval_lines_to_plot()
 
     def add_original_to_plot(self):
         self.ax.plot(self.time_series["Original"],
@@ -124,20 +124,23 @@ class Forecast():
         self.ax.plot(self.time_series["Modelled"],
                      label=self.label_modelled,
                      color=self.color_modelled)
-
-    def add_interval_lines_to_plot(self):
-        data = self.time_series[["Original", "Modelled"]].values.reshape(-1)
-        maximum = np.nanmax(data)
-        index_train = self.time_series.index[self.index_train]
-        index_validate = self.time_series.index[self.index_train]
-        index_ = self.time_series.index[self.index_train]
-        self.ax.plot([index, index], [0, maximum], color=self.color_divider,)
+        
 
     def plot_peripherals(self):
-        self.set_axis_labels()
-        self.set_ticks()
+        self.plot_peripherals_axes()
         self.set_title()
         self.add_legend()
+        self.add_interval_annotations_to_plot()
+
+    def plot_peripherals_axes(self):
+        self.extend_axes()
+        self.set_axis_labels()
+        self.set_ticks()
+
+    def extend_axes(self):
+        data = self.time_series[["Original", "Modelled"]].values.reshape(-1)
+        self.data_max = np.nanmax(data)
+        self.ax.set_ylim(0, 1.1*self.data_max)
 
     def set_axis_labels(self):
         self.ax.set_xlabel("Date", fontsize=self.fontsize_labels)
@@ -152,7 +155,36 @@ class Forecast():
                           fontsize=self.fontsize_title)
 
     def add_legend(self):
-        self.ax.legend(loc=self.loc, fontsize=self.fontsize_legend)
+        self.ax.legend(loc=self.loc, fontsize=self.fontsize_legend,
+                       bbox_to_anchor=self.legend_bbox_to_anchor)
+
+    def add_interval_annotations_to_plot(self):
+        self.line_limit = self.data_max
+        self.text_height = self.line_limit * 1.03
+        self.add_interval_lines_to_plot()
+        self.add_interval_labels_to_plot()
+
+    def add_interval_lines_to_plot(self):
+        self.add_interval_line_to_plot(self.index_train)
+        self.add_interval_line_to_plot(self.index_validate)
+        self.add_interval_line_to_plot(self.length)
+
+    def add_interval_line_to_plot(self, index):
+        indices = np.array([self.time_series.index[index] for i in range(25)])
+        points = np.linspace(0, self.line_limit+1, 25)
+        self.ax.plot(indices, points, color=self.color_divider,
+                dashes=(3, 3), markersize=self.markersize, linestyle="--")
+
+    def add_interval_labels_to_plot(self):
+        self.add_interval_label_to_plot("Training", 0, self.index_train)
+        self.add_interval_label_to_plot("Validation", self.index_train, self.index_validate)
+        self.add_interval_label_to_plot("Testing", self.index_validate, self.length)
+        self.add_interval_label_to_plot("Forecast", self.length, self.length_forecast)
+
+    def add_interval_label_to_plot(self, label, start, end):
+        index = self.time_series.index[int((start + end)/2)]
+        self.ax.text(index, self.text_height, label, ha="center",
+                     fontsize=self.fontsize_interval_label)
 
     def output_figure(self):
         self.set_figure_name()
@@ -174,8 +206,9 @@ class Forecast():
         plt.savefig(self.path_output, format=self.format)
 
     def set_path_output(self):
-        self.path_output = join(path_output_base, "Case {self.case}",
-                                f"{self.figure_name}.{self.format}")
+        self.path_output = join(self.path_output_base, "Forecasting",
+                f"Case {self.case}", f"{self.figure_name}.{self.format}")
+        utils.make_folder(dirname(self.path_output))
 
 defaults.load(Forecast)
 
