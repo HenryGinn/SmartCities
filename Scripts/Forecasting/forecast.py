@@ -19,8 +19,7 @@ class Forecast():
     def __init__(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.load_time_series()
-        self.set_splits()
-        self.extend_dataframe()
+        self.length = len(self.data)
 
     def load_time_series(self):
         self.set_main_paths()
@@ -59,7 +58,6 @@ class Forecast():
 
     # Defining the train, validate, and test data
     def set_splits(self):
-        self.length = len(self.data)
         self.set_split_index_points()
         self.set_split_indices()
         self.set_data_splits()

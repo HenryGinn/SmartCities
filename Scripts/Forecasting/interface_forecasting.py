@@ -6,11 +6,22 @@ sys.path.append(dirname(dirname(__file__)))
 import matplotlib.pyplot as plt
 
 from forecast import Forecast
+from lstm import LSTM
+from arima import ARIMA
 
-forecast = Forecast()
-forecast.create_forecast()
+lstm = LSTM()
+
+lstm.preprocess_data()
+print(lstm.inputs)
+
+"""
+lstm.set_splits()
+lstm.extend_dataframe()
+
+lstm.create_forecast()
 
 fig = plt.figure(figsize=(8, 6))
 ax = fig.add_axes([0.12, 0.12, 0.8, 0.72])
-forecast.create_plot(fig, ax, output="save", legend_bbox_to_anchor=(0.13, 0.8), loc=10,
-                     title="Modelling Arson and Criminal\nDamage in E01004734")
+lstm.create_plot(fig, ax, output="save", legend_bbox_to_anchor=(0.13, 0.8), loc=10,
+                 title="Modelling Arson and Criminal\nDamage in E01004734 with LSTM")
+"""

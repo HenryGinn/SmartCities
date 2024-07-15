@@ -1,4 +1,9 @@
+Cases of interest:
+
 Easiest case	Small deviation, no changes in behaviour			Arson and Criminal Damage	E01004734
 Medium case		Large deviations, predictable beahviour changes		Violence Against the Person	E01000863
 Hard case		Non-stationary variance, and unexpected peak		Vehicle Offences			E01002818
 Very hard case	Unpredictable changes in behaviour					Theft						E01035716
+
+
+I cannot reasonably expect to get good results for some of these where there is an external factor with a large influence, i.e. the pandemic. One of the things I want to explore is incorporating data about the pandemic into the input data to help it train. Determining the sizes of the training, validation, and testing sets will be a topic of discussion.
