@@ -29,5 +29,10 @@ class LSTM(Forecast):
         end = self.length + look_back - self.look_back + 1
         look_backed[:, look_back] = self.inputs[start : end].reshape(-1)
 
+    def set_splits(self):
+        super().set_split_points()
+        self.set_iterable_splits("labels", look_back=True)
+        self.set_iterable_splits("inputs", look_back=True)
+
 
 defaults.load(LSTM)

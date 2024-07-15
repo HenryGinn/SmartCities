@@ -1,7 +1,7 @@
 import sys
-import os
 from os.path import dirname
 sys.path.append(dirname(dirname(__file__)))
+import os
 
 import matplotlib.pyplot as plt
 
@@ -12,7 +12,8 @@ from arima import ARIMA
 lstm = LSTM()
 
 lstm.preprocess_data()
-print(lstm.inputs)
+lstm.set_splits()
+lstm.set_iterable_splits("data")
 
 """
 lstm.set_splits()

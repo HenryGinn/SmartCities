@@ -57,10 +57,9 @@ class Forecast():
 
 
     # Defining the train, validate, and test data
-    def set_splits(self):
+    def set_split_points(self):
         self.set_split_index_points()
         self.set_split_indices()
-        self.set_data_splits()
 
     def set_split_index_points(self):
         self.index_train    = int(self.length * self.train)
@@ -69,15 +68,37 @@ class Forecast():
         self.forecast_length = self.length_forecast - self.length
 
     def set_split_indices(self):
-        self.indices_train    = np.arange(0, self.index_train)
-        self.indices_validate = np.arange(self.index_train, self.index_validate)
-        self.indices_test     = np.arange(self.index_validate, self.length)
-        self.indices_forecast = np.arange(self.length, self.length_forecast)
+        self.slice_train    = slice(0, self.index_train)
+        self.slice_validate = slice(self.index_train, self.index_validate)
+        self.slice_test     = slice(self.index_validate, self.length)
+        self.slice_forecast = slice(self.length, self.length_forecast)
 
-    def set_data_splits(self):
-        self.data_train    = self.data[self.indices_train]
-        self.data_validate = self.data[self.indices_validate]
-        self.data_test     = self.data[self.indices_test]
+    def set_iterable_splits(self, attribute, look_back=False):
+        self.set_iterable_split(attribute, "train", look_back)
+        self.set_iterable_split(attribute, "validate", look_back)
+        self.set_iterable_split(attribute, "test", look_back)
+
+    def set_iterable_split(self, attribute, split, look_back):
+        iterable = getattr(self, attribute)
+        other_dimensions = ((len(iterable.shape) - 1) * [slice(None)])
+        slice_first = self.get_slice_first(split, look_back)
+        slice_all = [slice_first, *other_dimensions]
+        setattr(self, f"{attribute}_{split}", iterable[*slice_all])
+
+    def get_slice_first(self, split, look_back):
+        base_slice = getattr(self, f"slice_{split}")
+        if look_back:
+            return self.get_slice_first_look_back(base_slice, split)
+        else:
+            return base_slice
+
+    def get_slice_first_look_back(self, base_slice, split):
+        if split == "train":
+            return slice(base_slice.start,
+                         base_slice.stop - self.look_back + 1)
+        else:
+            return slice(base_slice.start - self.look_back + 1,
+                         base_slice.stop - self.look_back + 1)
 
 
     def create_forecast(self):
