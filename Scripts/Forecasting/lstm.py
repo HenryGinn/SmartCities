@@ -92,5 +92,26 @@ class LSTM(Forecast):
         self.model.fit(self.inputs_train, self.labels_train, epochs=self.epochs,
                        batch_size=self.batch_size, verbose=self.verbose)
 
+    def predict(self):
+        inputs = self.prepare_prediction()
+        for index in range(self.length_forecast - self.look_back):
+            inputs = self.predict_one_step(inputs, index)
+        self.postprocess_prediction()
+
+    def initialise_prediction(self):
+        inputs = self.inputs_train[0, :, :].reshape(1, 1, self.look_back)
+        self.modelled = np.zeros(self.length_forecast)
+        self.modelled[:self.look_back] = inputs.reshape(-1)
+        return inputs
+
+    def predict_one_step(self, inputs, index):
+        forecast = self.model.predict(inputs, verbose=0).reshape(1, 1, 1)
+        inputs = np.concatenate((inputs[:, :, 1:], forecast), axis=2)
+        self.modelled[self.look_back + index] = forecast
+
+    def postprocess_prediction(self):
+        self.modelled = self.scaler.inverse_transform(
+            self.modelled.reshape(-1, 1)).reshape(-1)
+
 
 defaults.load(LSTM)

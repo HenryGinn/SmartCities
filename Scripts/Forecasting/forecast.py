@@ -34,7 +34,7 @@ class Forecast():
 
     def read_data(self, path):
         self.time_series = pd.read_csv(
-            path, skiprows=3, index_col="Time",
+            path, skiprows=3, index_col="Time", dtype=np.float32,
             date_format="%Y-%m-%d", parse_dates=True)
         self.data = self.time_series["Original"].values
 
@@ -124,10 +124,10 @@ class Forecast():
 
     def get_purpose_indicator(self):
         purpose_indicator = np.array(["ABCDEFGH"] * self.length_forecast)
-        purpose_indicator[self.indices_train]    = "Train"
-        purpose_indicator[self.indices_validate] = "Validate"
-        purpose_indicator[self.indices_test]     = "Test"
-        purpose_indicator[self.indices_forecast] = "Forecast"
+        purpose_indicator[self.slice_train]    = "Train"
+        purpose_indicator[self.slice_validate] = "Validate"
+        purpose_indicator[self.slice_test]     = "Test"
+        purpose_indicator[self.slice_forecast] = "Forecast"
         return purpose_indicator
 
     def add_data_to_plot(self):
