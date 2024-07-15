@@ -1,7 +1,12 @@
-from sklearn.preprocessing import MinMaxScaler
+from os.path import join, dirname
 
-from hgutilities import defaults
+from sklearn.preprocessing import MinMaxScaler
+from hgutilities import defaults, utils
 import numpy as np
+from keras.models import Sequential
+from keras.layers import LSTM as LSTM_Layer
+from keras.layers import Dense as Dense_Layer
+from keras.models import model_from_json
 
 from forecast import Forecast
 
@@ -11,10 +16,19 @@ class LSTM(Forecast):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         defaults.kwargs(self, kwargs)
+        self.set_lstm_paths()
+
+    def set_lstm_paths(self):
+        self.path_model = join(
+            self.path_output_base, "Models", f"Case_{self.case}")
+        utils.make_folder(self.path_model)
+        self.path_model_config = join(self.path_model, "Config.json")
+        self.path_model_weights = join(self.path_model, f"Case_{self.case}.weights.h5")
 
     def preprocess_data(self):
         self.labels = self.data[self.look_back :]
-        self.inputs = MinMaxScaler().fit_transform(self.data.reshape(-1, 1))
+        self.scaler = MinMaxScaler()
+        self.inputs = self.scaler.fit_transform(self.data.reshape(-1, 1))
         self.set_look_back()
 
     def set_look_back(self):
@@ -33,6 +47,50 @@ class LSTM(Forecast):
         super().set_split_points()
         self.set_iterable_splits("labels", look_back=True)
         self.set_iterable_splits("inputs", look_back=True)
+        self.inputs_train = self.reshape_training_data(self.inputs_train)
+
+    def reshape_training_data(self, iterable):
+        x, y = iterable.shape
+        iterable = iterable.reshape(x, 1, y)
+        return iterable
+
+    def create_model(self, **kwargs):
+        defaults.kwargs(self, kwargs)
+        self.model = Sequential()
+        self.model.add(LSTM_Layer(self.units))
+        self.model.add(Dense_Layer(1))
+        self.model.compile(loss=self.loss, optimizer=self.optimizer)
+
+    def load(self):
+        self.load_model()
+        self.load_weights()
+
+    def load_model(self):
+        with open(self.path_model_config, "r") as file:
+            file_contents = file.read()
+        self.model = model_from_json(file_contents)
+
+    def load_weights(self):
+        self.model.load_weights(self.path_model_weights)
+
+    def save(self):
+        self.save_model()
+        self.save_weights()
+
+    def save_model(self):
+        file_contents = self.model.to_json(indent=4)
+        with open(self.path_model_config, "w+") as file:
+            file.write(file_contents)
+            
+
+    def save_weights(self):
+        self.model.save_weights(self.path_model_weights)
+
+    def fit_model(self, **kwargs):
+        defaults.kwargs(self, kwargs)
+        self.model_fitted = True
+        self.model.fit(self.inputs_train, self.labels_train, epochs=self.epochs,
+                       batch_size=self.batch_size, verbose=self.verbose)
 
 
 defaults.load(LSTM)

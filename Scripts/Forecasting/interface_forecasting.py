@@ -13,7 +13,11 @@ lstm = LSTM()
 
 lstm.preprocess_data()
 lstm.set_splits()
-lstm.set_iterable_splits("data")
+lstm.create_model()
+
+lstm.load()
+#lstm.fit_model(epochs=1, verbose=2)
+#lstm.save()
 
 """
 lstm.set_splits()

@@ -1,3 +1,9 @@
 {
-	"look_back": 3
+	"look_back": 3,
+	"units": 4,
+	"loss": "mean_squared_error",
+	"optimizer": "adam",
+	"epochs": 100,
+	"batch_size": 1,
+	"verbose": 2
 }
