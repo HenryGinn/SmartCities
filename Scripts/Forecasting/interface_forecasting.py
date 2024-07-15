@@ -9,29 +9,32 @@ from forecast import Forecast
 from lstm import LSTM
 from arima import ARIMA
 
-lstm = LSTM()
+
+plt.close("all")
+
+lstm = LSTM(name="Linear", case=1)
 
 lstm.preprocess_data()
 lstm.set_splits()
 lstm.create_model()
 
 load = True
-#load = False
+load = False
 
 if load:
     lstm.load()
 else:
-    lstm.fit_model(epochs=2500, verbose=2)
+    lstm.fit(epochs=100, verbose=2)
     lstm.save()
 
-lstm.predict()
+lstm.output_results(title="Modelling Test Data with LSTM")
 
+"""
 lstm.set_splits()
 lstm.extend_dataframe()
 
-lstm.create_forecast()
-
 fig = plt.figure(figsize=(8, 6))
 ax = fig.add_axes([0.12, 0.12, 0.8, 0.72])
-lstm.create_plot(fig, ax, output="save", legend_bbox_to_anchor=(0.13, 0.8), loc=10,
+lstm.create_plot(fig, ax, output="show", legend_bbox_to_anchor=(0.13, 0.8), loc=10,
                  title="Modelling Test Data with LSTM")
+"""

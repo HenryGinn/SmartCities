@@ -31,6 +31,7 @@ class Forecast():
         self.path_base = get_base_path(self)
         self.path_data = join(self.path_base, "Data", "Forecast")
         self.path_output_base = join(self.path_base, "Output")
+        self.path_output_forecast = join(self.path_output_base, "Forecasting")
 
     def read_data(self, path):
         self.time_series = pd.read_csv(
@@ -48,12 +49,13 @@ class Forecast():
         metadata = file.readline().strip("\n").split(",")[1]
 
     def extend_dataframe(self):
-        original_end = self.time_series.index[self.length - 1]
-        forecast_dates = pd.date_range(start=original_end, freq='MS',
-                                       periods=self.forecast_length + 1)[1:]
-        new_data = {"Original": np.array([None] * self.forecast_length)}
-        extended = pd.DataFrame(new_data, index=forecast_dates)
-        self.time_series = pd.concat([self.time_series, extended])
+        if len(self.time_series) == self.length:
+            original_end = self.time_series.index[self.length - 1]
+            forecast_dates = pd.date_range(start=original_end, freq='MS',
+                                           periods=self.forecast_length + 1)[1:]
+            new_data = {"Original": np.array([None] * self.forecast_length)}
+            extended = pd.DataFrame(new_data, index=forecast_dates)
+            self.time_series = pd.concat([self.time_series, extended])
 
 
     # Defining the train, validate, and test data
@@ -198,11 +200,13 @@ class Forecast():
         self.add_interval_label_to_plot("Training", 0, self.index_train)
         self.add_interval_label_to_plot("Validation", self.index_train, self.index_validate)
         self.add_interval_label_to_plot("Testing", self.index_validate, self.length)
-        self.add_interval_label_to_plot("Forecast", self.length, self.length_forecast)
+        self.add_interval_label_to_plot("Forecast", self.length, self.length_forecast-1)
 
     def add_interval_label_to_plot(self, label, start, end):
-        index = self.time_series.index[int((start + end)/2)]
-        self.ax.text(index, self.text_height, label, ha="center",
+        time_start = self.time_series.index[start]
+        time_end = self.time_series.index[end]
+        time = time_start + (time_end - time_start) / 2
+        self.ax.text(time, self.text_height, label, ha="center",
                      fontsize=self.fontsize_interval_label)
 
     def output_figure(self):
@@ -225,8 +229,8 @@ class Forecast():
         plt.savefig(self.path_output, format=self.format)
 
     def set_path_output(self):
-        self.path_output = join(self.path_output_base, "Forecasting",
-                f"Case {self.case}", f"{self.figure_name}.{self.format}")
+        self.path_output = join(self.path_output_forecast, f"Case {self.case}",
+                self.name, f"{self.figure_name}.{self.format}")
         utils.make_folder(dirname(self.path_output))
 
 defaults.load(Forecast)

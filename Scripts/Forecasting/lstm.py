@@ -2,10 +2,12 @@ from os.path import join, dirname
 
 from sklearn.preprocessing import MinMaxScaler
 from hgutilities import defaults, utils
+import matplotlib.pyplot as plt
 import numpy as np
 from keras.models import Sequential
 from keras.layers import LSTM as LSTM_Layer
-from keras.layers import Dense as Dense_Layer
+from keras.layers import Dense as Dense
+from keras.layers import Lambda as Lambda
 from keras.models import model_from_json
 
 from forecast import Forecast
@@ -20,7 +22,7 @@ class LSTM(Forecast):
 
     def set_lstm_paths(self):
         self.path_model = join(
-            self.path_output_base, "Models", f"Case_{self.case}")
+            self.path_output_base, "Models", f"Case_{self.case}", self.name)
         utils.make_folder(self.path_model)
         self.path_model_config = join(self.path_model, "Config.json")
         self.path_model_weights = join(self.path_model, f"Case_{self.case}.weights.h5")
@@ -58,7 +60,8 @@ class LSTM(Forecast):
         defaults.kwargs(self, kwargs)
         self.model = Sequential()
         self.model.add(LSTM_Layer(self.units))
-        self.model.add(Dense_Layer(1))
+        self.model.add(Dense(1))
+        #self.model.add(Lambda(lambda x : 1 - x[:, :, 0]))
         self.model.compile(loss=self.loss, optimizer=self.optimizer)
 
     def load(self):
@@ -86,14 +89,21 @@ class LSTM(Forecast):
     def save_weights(self):
         self.model.save_weights(self.path_model_weights)
 
-    def fit_model(self, **kwargs):
+    def fit(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.model_fitted = True
         self.model.fit(self.inputs_train, self.labels_train, epochs=self.epochs,
                        batch_size=self.batch_size, verbose=self.verbose)
 
+    def output_results(self, **kwargs):
+        defaults.kwargs(self, kwargs)
+        self.predict()
+        self.set_splits()
+        self.extend_dataframe()
+        self.create_figure()
+
     def predict(self):
-        inputs = self.prepare_prediction()
+        inputs = self.initialise_prediction()
         for index in range(self.length_forecast - self.look_back):
             inputs = self.predict_one_step(inputs, index)
         self.postprocess_prediction()
@@ -108,10 +118,18 @@ class LSTM(Forecast):
         forecast = self.model.predict(inputs, verbose=0).reshape(1, 1, 1)
         inputs = np.concatenate((inputs[:, :, 1:], forecast), axis=2)
         self.modelled[self.look_back + index] = forecast
+        return inputs
 
     def postprocess_prediction(self):
+        print(self.modelled)
         self.modelled = self.scaler.inverse_transform(
             self.modelled.reshape(-1, 1)).reshape(-1)
+
+    def create_figure(self):
+        fig = plt.figure(figsize=(8, 6))
+        ax = fig.add_axes([0.12, 0.12, 0.8, 0.72])
+        self.create_plot(fig, ax, loc=0, title=self.title, output="show")
+
 
 
 defaults.load(LSTM)
