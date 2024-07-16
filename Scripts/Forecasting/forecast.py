@@ -20,6 +20,7 @@ class Forecast():
         defaults.kwargs(self, kwargs)
         self.load_time_series()
         self.length = len(self.data)
+        self.set_split_points()
 
     def load_time_series(self):
         self.set_main_paths()
@@ -102,18 +103,27 @@ class Forecast():
             return slice(base_slice.start - self.look_back + 1,
                          base_slice.stop - self.look_back + 1)
 
-
-    def create_forecast(self):
-        self.modelled = (np.ones(self.length_forecast)*self.data.mean() +
-            (np.random.rand(self.length_forecast)-0.5)*1*self.data.std())
+    def predict(self):
+        self.modelled = np.zeros((self.length_forecast))
         
 
     # Plotting
+    def output_results(self, **kwargs):
+        defaults.kwargs(self, kwargs)
+        self.predict()
+        self.extend_dataframe()
+        self.create_figure()
+
+    def create_figure(self):
+        self.fig = plt.figure(figsize=(8, 6))
+        self.ax = self.fig.add_axes([0.12, 0.12, 0.8, 0.72])
+        self.create_plot(self.fig, self.ax, loc=0, title=self.title)
+        self.output_figure()
+    
     def create_plot(self, fig, ax, **kwargs):
         self.initiate_plot(fig, ax, **kwargs)
         self.add_data_to_plot()
         self.plot_peripherals()
-        self.output_figure()
 
     def initiate_plot(self, fig, ax, **kwargs):
         self.fig, self.ax = fig, ax

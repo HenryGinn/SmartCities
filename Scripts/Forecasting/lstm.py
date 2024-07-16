@@ -95,13 +95,6 @@ class LSTM(Forecast):
         self.model.fit(self.inputs_train, self.labels_train, epochs=self.epochs,
                        batch_size=self.batch_size, verbose=self.verbose)
 
-    def output_results(self, **kwargs):
-        defaults.kwargs(self, kwargs)
-        self.predict()
-        self.set_splits()
-        self.extend_dataframe()
-        self.create_figure()
-
     def predict(self):
         inputs = self.initialise_prediction()
         for index in range(self.length_forecast - self.look_back):
@@ -124,12 +117,6 @@ class LSTM(Forecast):
         print(self.modelled)
         self.modelled = self.scaler.inverse_transform(
             self.modelled.reshape(-1, 1)).reshape(-1)
-
-    def create_figure(self):
-        fig = plt.figure(figsize=(8, 6))
-        ax = fig.add_axes([0.12, 0.12, 0.8, 0.72])
-        self.create_plot(fig, ax, loc=0, title=self.title, output="show")
-
 
 
 defaults.load(LSTM)

@@ -12,6 +12,10 @@ from arima import ARIMA
 
 plt.close("all")
 
+arima = ARIMA(case=5)
+arima.output_results(title="Modelling Airline Passengers Using ARIMA")
+
+"""
 lstm = LSTM(name="Linear", case=1)
 
 lstm.preprocess_data()
@@ -28,6 +32,7 @@ else:
     lstm.save()
 
 lstm.output_results(title="Modelling Test Data with LSTM")
+"""
 
 """
 lstm.set_splits()
