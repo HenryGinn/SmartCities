@@ -6,14 +6,26 @@ import os
 import matplotlib.pyplot as plt
 
 from forecast import Forecast
-from lstm import LSTM
+#from lstm import LSTM
 from arima import ARIMA
 
 
 plt.close("all")
 
-arima = ARIMA(case=5)
-arima.output_results(title="Modelling Airline Passengers Using ARIMA")
+arima = ARIMA(case=5, output="save")
+arima.plot_linear_approximation()
+arima.generate_figure_name()
+arima.output_figure()
+
+arima.plot_residuals_linear_raw()
+arima.generate_figure_name()
+arima.output_figure()
+
+arima.plot_residuals_linear()
+arima.generate_figure_name()
+arima.output_figure()
+
+# title="Modelling Airline Passengers Using ARIMA"
 
 """
 lstm = LSTM(name="Linear", case=1)

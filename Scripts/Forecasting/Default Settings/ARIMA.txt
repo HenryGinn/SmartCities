@@ -1,0 +1,6 @@
+{
+	"log": true,
+	"title_linear_approximation": "Linear Approximation",
+	"title_residuals_linear_raw": "Unnormalised Linear Residuals",
+	"title_residuals_linear": "Normalised Linear Residuals"
+}

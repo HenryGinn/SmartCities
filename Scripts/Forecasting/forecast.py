@@ -32,7 +32,9 @@ class Forecast():
         self.path_base = get_base_path(self)
         self.path_data = join(self.path_base, "Data", "Forecast")
         self.path_output_base = join(self.path_base, "Output")
-        self.path_output_forecast = join(self.path_output_base, "Forecasting")
+        self.path_output_forecast = join(
+            self.path_output_base, "Forecasting", f"Case_{self.case}")
+        utils.make_folder(self.path_output_forecast)
 
     def read_data(self, path):
         self.time_series = pd.read_csv(
@@ -115,20 +117,23 @@ class Forecast():
         self.create_figure()
 
     def create_figure(self):
-        self.fig = plt.figure(figsize=(8, 6))
-        self.ax = self.fig.add_axes([0.12, 0.12, 0.8, 0.72])
+        self.initiate_figure()
         self.create_plot(self.fig, self.ax, loc=0, title=self.title)
         self.output_figure()
     
     def create_plot(self, fig, ax, **kwargs):
-        self.initiate_plot(fig, ax, **kwargs)
         self.add_data_to_plot()
         self.plot_peripherals()
 
-    def initiate_plot(self, fig, ax, **kwargs):
-        self.fig, self.ax = fig, ax
+    def initiate_figure(self, **kwargs):
         defaults.kwargs(self, kwargs)
+        self.fig = plt.figure(figsize=(8, 6))
+        self.ax = self.fig.add_axes(self.axis_size)
+
+    def add_modelled_data_to_plot(self):
         self.construct_dataframe()
+        self.add_original_to_plot()
+        self.add_modelled_to_plot()
         
     def construct_dataframe(self):
         self.time_series.loc[:, "Modelled"] = self.modelled
@@ -142,10 +147,6 @@ class Forecast():
         purpose_indicator[self.slice_forecast] = "Forecast"
         return purpose_indicator
 
-    def add_data_to_plot(self):
-        self.add_original_to_plot()
-        self.add_modelled_to_plot()
-
     def add_original_to_plot(self):
         self.ax.plot(self.time_series["Original"],
                      label=self.label_original,
@@ -155,16 +156,23 @@ class Forecast():
         self.ax.plot(self.time_series["Modelled"],
                      label=self.label_modelled,
                      color=self.color_modelled)
+
+    def plot_array(self, array, label, color=None):
+        self.time_series.loc[:, label] = array
+        self.ax.plot(self.time_series[label], label=label, color=color)
         
 
     def plot_peripherals(self):
+        self.plot_peripherals_base()
+        self.add_interval_annotations_to_plot()
+        self.extend_axes()
+
+    def plot_peripherals_base(self):
         self.plot_peripherals_axes()
         self.set_title()
         self.add_legend()
-        self.add_interval_annotations_to_plot()
 
     def plot_peripherals_axes(self):
-        self.extend_axes()
         self.set_axis_labels()
         self.set_ticks()
 
@@ -186,8 +194,9 @@ class Forecast():
                           fontsize=self.fontsize_title)
 
     def add_legend(self):
-        self.ax.legend(loc=self.loc, fontsize=self.fontsize_legend,
-                       bbox_to_anchor=self.legend_bbox_to_anchor)
+        if not self.ax.get_legend_handles_labels() == ([], []):
+            self.ax.legend(loc=self.loc, fontsize=self.fontsize_legend,
+                           bbox_to_anchor=self.legend_bbox_to_anchor)
 
     def add_interval_annotations_to_plot(self):
         self.line_limit = self.data_max
@@ -232,15 +241,16 @@ class Forecast():
         self.fig.canvas.manager.set_window_title(self.figure_name)
 
     def generate_figure_name(self):
-        self.figure_name = utils.get_file_name({"Case": self.case}, timestamp=False)
+        self.figure_name = utils.get_file_name(
+            {"Case": self.case, "Title": self.title}, timestamp=False)
 
     def save_figure(self):
         self.set_path_output()
         plt.savefig(self.path_output, format=self.format)
 
     def set_path_output(self):
-        self.path_output = join(self.path_output_forecast, f"Case {self.case}",
-                self.name, f"{self.figure_name}.{self.format}")
+        self.path_output = join(self.path_output_forecast,
+                                f"{self.figure_name}.{self.format}")
         utils.make_folder(dirname(self.path_output))
 
 defaults.load(Forecast)
