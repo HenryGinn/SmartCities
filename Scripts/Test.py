@@ -1,15 +1,14 @@
-import pandas as pd
 import numpy as np
+import statsmodels.api as sm
 import matplotlib.pyplot as plt
-    
 
-data = {"Value": 3*np.sin(np.arange(48)*2*np.pi/(12)) + np.random.rand(48)}
-dates = pd.date_range(start='2020-01-01', periods=len(data["Value"]), freq='ME')
-df = pd.DataFrame(data, index=dates)
-df.index = pd.to_datetime(df.index)
+# Example time series data
+time_series = np.random.randn(100)
 
-monthly_avg = df["Value"].groupby(df.index.month).mean()
-#monthly_avg = df.groupby(df.index.month).mean()
-monthly_avg.index.name = "Month"
-df["Monthly Avg"] = df.index.month.map(monthly_avg)
+# Compute autocorrelation
+acf_values = sm.tsa.acf(time_series, nlags=20)
+acf_values = sm.tsa.pacf(time_series, nlags=20)
 
+# Plot autocorrelation
+sm.graphics.tsa.plot_pacf(time_series, lags=20)
+plt.show()

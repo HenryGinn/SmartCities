@@ -15,13 +15,11 @@ plt.close("all")
 
 arima = ARIMA(case=5, output="save")
 arima.preprocess()
+arima.set_correlations()
+arima.plot_acf()
 
-arima.plot_residuals(title="Residuals After Transformations")
-arima.generate_figure_name()
-arima.output_figure()
-
-arima.extend_dataframe()
-arima.modelled = np.zeros(arima.length_forecast)
+#arima.extend_dataframe()
+#arima.modelled = np.zeros(arima.length_forecast)
 
 #arima.postprocess()
 #arima.output_results(title="Modelling Via Simple Determinative Processes")

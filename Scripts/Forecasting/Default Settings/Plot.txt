@@ -1,0 +1,12 @@
+{
+	"loc": null,
+	"legend_bbox_to_anchor": null,
+	"output": "show",
+	"figure_name": null,
+	"axis_size": [0.12, 0.12, 0.8, 0.72],
+	"format": "pdf"
+	"y_label": "Crimes per 100,000 People",
+	"label_original": "Original",
+	"label_modelled": "Modelled",
+	"markersize": 3
+}
