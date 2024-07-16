@@ -4,6 +4,7 @@ sys.path.append(dirname(dirname(__file__)))
 import os
 
 import matplotlib.pyplot as plt
+import numpy as np
 
 from forecast import Forecast
 #from lstm import LSTM
@@ -13,8 +14,19 @@ from arima import ARIMA
 plt.close("all")
 
 arima = ARIMA(case=5, output="save")
-arima.subtract_seasonal()
+arima.preprocess()
 
+arima.plot_residuals(title="Residuals After Transformations")
+arima.generate_figure_name()
+arima.output_figure()
+
+arima.extend_dataframe()
+arima.modelled = np.zeros(arima.length_forecast)
+
+#arima.postprocess()
+#arima.output_results(title="Modelling Via Simple Determinative Processes")
+
+"""
 arima.plot_residuals(title="Residuals After Subtracting\nMonthly Averages")
 arima.generate_figure_name()
 arima.output_figure()
@@ -24,6 +36,7 @@ arima.normalise_residuals()
 arima.plot_residuals(title="Normalised Residuals After\nSubtracting Monthly Averages")
 arima.generate_figure_name()
 arima.output_figure()
+"""
 
 """
 lstm = LSTM(name="Linear", case=1)

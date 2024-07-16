@@ -11,12 +11,13 @@ class ARIMA(Forecast):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.indices = np.arange(self.length)
-        self.preprocess_data()
 
-    def preprocess_data(self):
+    # Preprocessing transformations
+    def preprocess(self):
         self.preprocess_logs()
         self.subtract_trend()
+        self.subtract_seasonal()
+        self.normalise_residuals()
 
     def preprocess_logs(self):
         if self.log:
@@ -34,22 +35,61 @@ class ARIMA(Forecast):
 
     def subtract_trend(self):
         (self.slope, self.intercept, self.r_value, self.p_value,
-         self.standard_error) = linregress(self.indices, self.processed_log)
-        self.linear_approximation = self.indices*self.slope + self.intercept
-        self.residuals = self.processed_log - self.linear_approximation
+         self.standard_error) = linregress(np.arange(self.length),
+                                           self.processed_log)
+        self.set_linear_approximation(self.length)
+        self.residuals = self.processed_log - self.time_series["Linear"].values
+
+    def set_linear_approximation(self, length):
+        self.time_series.loc[:, "Linear"] = (
+            np.arange(length)*self.slope + self.intercept)
 
     def subtract_seasonal(self):
-        dataframe = pd.DataFrame({"Data": self.residuals},
-                                 index=self.time_series.index)
-        self.monthly_averages = dataframe.groupby(dataframe.index.month).mean()
-        self.residuals = (dataframe["Data"] - dataframe.index.month.map(
-                self.monthly_averages["Data"])).values
+        if self.seasonal:
+            self.time_series.loc[:, "Residuals Preseasonal"] = self.residuals
+            self.set_monthly_averages()
+            self.add_monthly_averages_to_time_series()
+            self.residuals -= self.time_series["Monthly Average"].values
+
+    def set_monthly_averages(self):
+        self.monthly_averages = (
+            self.time_series["Residuals Preseasonal"].groupby(
+            self.time_series.index.month).mean())
+
+    def add_monthly_averages_to_time_series(self):
+        self.time_series.loc[:, "Monthly Average"] = (
+            self.time_series.index.month.map(
+            self.monthly_averages))
 
     def normalise_residuals(self):
-        self.scaler_linear = MinMaxScaler(feature_range=(-1, 1))
-        self.residuals = (self.scaler_linear.fit_transform(
+        self.scaler = MinMaxScaler(feature_range=(-1, 1))
+        self.residuals = (self.scaler.fit_transform(
             self.residuals.reshape(-1, 1)))
 
+
+    # Reversing transformations
+    def postprocess(self):
+        self.unnormalise_residuals()
+        self.add_seasonal()
+        self.add_trend()
+        self.postprocess_logs()
+        
+    def unnormalise_residuals(self):
+        self.modelled = (self.scaler.inverse_transform(
+            self.modelled.reshape(-1, 1))).reshape(-1)
+        
+    def add_seasonal(self):
+        if self.seasonal:
+            self.add_monthly_averages_to_time_series()
+            self.modelled += self.time_series["Monthly Average"].values
+
+    def add_trend(self):
+        self.set_linear_approximation(self.length_forecast)
+        self.modelled += self.time_series["Linear"].values
+
+    def postprocess_logs(self):
+        if self.log:
+            self.modelled = np.exp(self.modelled)
 
     # Plotting
     def plot_linear_approximation(self, **kwargs):

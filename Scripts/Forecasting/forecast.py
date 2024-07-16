@@ -53,12 +53,16 @@ class Forecast():
 
     def extend_dataframe(self):
         if len(self.time_series) == self.length:
-            original_end = self.time_series.index[self.length - 1]
-            forecast_dates = pd.date_range(start=original_end, freq='MS',
-                                           periods=self.forecast_length + 1)[1:]
+            forecast_dates = self.get_forecast_dates()
             new_data = {"Original": np.array([None] * self.forecast_length)}
             extended = pd.DataFrame(new_data, index=forecast_dates)
             self.time_series = pd.concat([self.time_series, extended])
+
+    def get_forecast_dates(self):
+        original_end = self.time_series.index[self.length - 1]
+        forecast_dates = pd.date_range(start=original_end, freq='MS',
+                                       periods=self.forecast_length + 1)[1:]
+        return forecast_dates
 
 
     # Defining the train, validate, and test data
@@ -110,9 +114,14 @@ class Forecast():
         
 
     # Plotting
-    def output_results(self, **kwargs):
+    def update_figure(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.predict()
+        self.extend_dataframe()
+        self.create_figure()
+        
+    def output_results(self, **kwargs):
+        defaults.kwargs(self, kwargs)
         self.extend_dataframe()
         self.create_figure()
 
@@ -122,7 +131,7 @@ class Forecast():
         self.output_figure()
     
     def create_plot(self, fig, ax, **kwargs):
-        self.add_data_to_plot()
+        self.add_modelled_results_to_plot()
         self.plot_peripherals()
 
     def initiate_figure(self, **kwargs):
@@ -130,8 +139,9 @@ class Forecast():
         self.fig = plt.figure(figsize=(8, 6))
         self.ax = self.fig.add_axes(self.axis_size)
 
-    def add_modelled_data_to_plot(self):
+    def add_modelled_results_to_plot(self):
         self.construct_dataframe()
+        self.extend_axes()
         self.add_original_to_plot()
         self.add_modelled_to_plot()
         
