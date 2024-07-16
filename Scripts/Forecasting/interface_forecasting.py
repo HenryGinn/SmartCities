@@ -13,19 +13,17 @@ from arima import ARIMA
 plt.close("all")
 
 arima = ARIMA(case=5, output="save")
-arima.plot_linear_approximation()
+arima.subtract_seasonal()
+
+arima.plot_residuals(title="Residuals After Subtracting\nMonthly Averages")
 arima.generate_figure_name()
 arima.output_figure()
 
-arima.plot_residuals_linear_raw()
+arima.normalise_residuals()
+
+arima.plot_residuals(title="Normalised Residuals After\nSubtracting Monthly Averages")
 arima.generate_figure_name()
 arima.output_figure()
-
-arima.plot_residuals_linear()
-arima.generate_figure_name()
-arima.output_figure()
-
-# title="Modelling Airline Passengers Using ARIMA"
 
 """
 lstm = LSTM(name="Linear", case=1)
