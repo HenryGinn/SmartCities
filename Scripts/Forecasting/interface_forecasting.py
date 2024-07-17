@@ -12,17 +12,12 @@ from arima import ARIMA
 
 plt.close("all")
 
-arima = ARIMA(case=5, output="save")
+arima = ARIMA(case=5, output="show")
 arima.preprocess()
-arima.set_correlations()
-arima.create_acf()
-arima.create_pacf()
-
-#arima.extend_dataframe()
-#arima.modelled = np.zeros(arima.length_forecast)
-
-#arima.postprocess()
-#arima.output_results(title="Modelling Via Simple Determinative Processes")
+arima.determine_hyperparameters()
+arima.fit()
+arima.postprocess()
+arima.output_results(title="Modelling Via Simple Determinative Processes")
 
 """
 arima.plot_residuals(title="Residuals After Subtracting\nMonthly Averages")
@@ -39,7 +34,7 @@ arima.output_figure()
 """
 lstm = LSTM(name="Linear", case=1)
 
-lstm.preprocess_data()
+lstm.preprocess()
 lstm.set_splits()
 lstm.create_model()
 

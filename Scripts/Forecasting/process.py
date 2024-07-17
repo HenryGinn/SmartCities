@@ -106,27 +106,5 @@ class Process(Series):
         self.cf_confidence = -const**2 + 2*np.array([-const, const])
         self.cf_confidence = np.tile(self.cf_confidence, (2, 1))
     
+
 defaults.load(Process)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        

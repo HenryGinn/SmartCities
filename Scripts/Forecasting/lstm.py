@@ -18,16 +18,14 @@ class LSTM(Model):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         defaults.kwargs(self, kwargs)
-        self.set_lstm_paths()
 
-    def set_lstm_paths(self):
-        self.path_model = join(
-            self.path_output_base, "Models", f"Case_{self.case}", self.name)
-        utils.make_folder(self.path_model)
-        self.path_model_config = join(self.path_model, "Config.json")
-        self.path_model_weights = join(self.path_model, f"Case_{self.case}.weights.h5")
+    def set_model_files_paths(self):
+        self.path_model_config = join(
+            self.path_model, "LSTM Config.json")
+        self.path_model_weights = join(
+            self.path_model, f"Case_{self.case}.weights.h5")
 
-    def preprocess_data(self):
+    def preprocess(self):
         self.labels = self.data[self.look_back :]
         self.scaler = MinMaxScaler()
         self.inputs = self.scaler.fit_transform(self.data.reshape(-1, 1))
@@ -99,7 +97,7 @@ class LSTM(Model):
         inputs = self.initialise_prediction()
         for index in range(self.length_forecast - self.look_back):
             inputs = self.predict_one_step(inputs, index)
-        self.postprocess_prediction()
+        self.postprocess()
 
     def initialise_prediction(self):
         inputs = self.inputs_train[0, :, :].reshape(1, 1, self.look_back)
@@ -113,8 +111,7 @@ class LSTM(Model):
         self.modelled[self.look_back + index] = forecast
         return inputs
 
-    def postprocess_prediction(self):
-        print(self.modelled)
+    def postprocess(self):
         self.modelled = self.scaler.inverse_transform(
             self.modelled.reshape(-1, 1)).reshape(-1)
 
