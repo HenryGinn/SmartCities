@@ -6,7 +6,6 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 
-from forecast import Forecast
 #from lstm import LSTM
 from arima import ARIMA
 
@@ -16,7 +15,8 @@ plt.close("all")
 arima = ARIMA(case=5, output="save")
 arima.preprocess()
 arima.set_correlations()
-arima.plot_acf()
+arima.create_acf()
+arima.create_pacf()
 
 #arima.extend_dataframe()
 #arima.modelled = np.zeros(arima.length_forecast)

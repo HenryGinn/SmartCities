@@ -1,6 +1,4 @@
 {
 	"log": true,
-	"seasonal": true,
-	"title_linear_approximation": "Linear Approximation",
-	"bar_width": 0.1 
+	"seasonal": true 
 }

@@ -7,17 +7,18 @@ import numpy as np
 from hgutilities import defaults, utils
 import matplotlib.pyplot as plt
 
-from forecast import Forecast
+from series import Series
 
 
 plt.rcParams["font.family"] = "Times New Roman"
 
 
-class Plot(Forecast):
+class Plot(Series):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        
+
+    # Plot creation commands
     def update_figure(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.predict()
@@ -43,11 +44,13 @@ class Plot(Forecast):
         self.fig = plt.figure(figsize=self.figsize, dpi=self.dpi)
         self.ax = self.fig.add_axes(self.axis_size)
 
+
+    # Plotting modelled data
     def add_modelled_results_to_plot(self):
         self.construct_dataframe()
-        self.extend_axes()
         self.add_original_to_plot()
         self.add_modelled_to_plot()
+        self.add_interval_annotations_to_plot()
         
     def construct_dataframe(self):
         self.time_series.loc[:, "Modelled"] = self.modelled
@@ -76,12 +79,9 @@ class Plot(Forecast):
         self.ax.plot(self.time_series[label], label=label, color=color)
         
 
-    def plot_peripherals(self):
-        self.plot_peripherals_base()
-        self.add_interval_annotations_to_plot()
-        self.extend_axes()
-
-    def plot_peripherals_base(self):
+    # Peripherals
+    def plot_peripherals(self, **kwargs):
+        defaults.kwargs(self, kwargs)
         self.plot_peripherals_axes()
         self.set_title()
         self.add_legend()
@@ -90,14 +90,15 @@ class Plot(Forecast):
         self.set_axis_labels()
         self.set_ticks()
 
-    def extend_axes(self):
-        data = self.time_series[["Original", "Modelled"]].values.reshape(-1)
-        self.data_max = np.nanmax(data)
-        self.ax.set_ylim(0, 1.1*self.data_max)
-
     def set_axis_labels(self):
-        self.ax.set_xlabel("Date", fontsize=self.fontsize_labels)
-        self.ax.set_ylabel(self.y_label, fontsize=self.fontsize_labels)
+        match self.plot_type:
+            case "Crime": self.do_set_axis_labels("Date", self.y_label_crime)
+            case "ACF"  : self.do_set_axis_labels("Lag (Months)", self.y_label_acf)
+            case "PACF" : self.do_set_axis_labels("Lag (Months)", self.y_label_pacf)
+
+    def do_set_axis_labels(self, x_axis_label, y_axis_label):
+        self.ax.set_xlabel(x_axis_label, fontsize=self.fontsize_labels)
+        self.ax.set_ylabel(y_axis_label, fontsize=self.fontsize_labels)
 
     def set_ticks(self):
         self.ax.xaxis.set_tick_params(labelsize=self.fontsize_ticks)
@@ -112,11 +113,20 @@ class Plot(Forecast):
             self.ax.legend(loc=self.loc, fontsize=self.fontsize_legend,
                            bbox_to_anchor=self.legend_bbox_to_anchor)
 
+
+    # Annotating different data zones
+
     def add_interval_annotations_to_plot(self):
+        self.extend_axes()
         self.line_limit = self.data_max
         self.text_height = self.line_limit * 1.03
         self.add_interval_lines_to_plot()
         self.add_interval_labels_to_plot()
+
+    def extend_axes(self):
+        data = self.time_series[["Original", "Modelled"]].values.reshape(-1)
+        self.data_max = np.nanmax(data)
+        self.ax.set_ylim(0, 1.1*self.data_max)
 
     def add_interval_lines_to_plot(self):
         self.add_interval_line_to_plot(self.index_train)
@@ -127,7 +137,7 @@ class Plot(Forecast):
         indices = np.array([self.time_series.index[index] for i in range(25)])
         points = np.linspace(0, self.line_limit+1, 25)
         self.ax.plot(indices, points, color=self.grey,
-                dashes=(3, 3), markersize=self.markersize, linestyle="--")
+                dashes=self.dashes, markersize=self.markersize)
 
     def add_interval_labels_to_plot(self):
         self.add_interval_label_to_plot("Training", 0, self.index_train)
@@ -142,6 +152,8 @@ class Plot(Forecast):
         self.ax.text(time, self.text_height, label, ha="center",
                      fontsize=self.fontsize_interval_label)
 
+
+    # Output
     def output_figure(self):
         self.set_figure_name()
         match self.output:
@@ -161,8 +173,11 @@ class Plot(Forecast):
     def save_figure(self):
         self.set_path_output()
         plt.savefig(self.path_output, format=self.format)
+        self.figure_name = None
 
     def set_path_output(self):
         self.path_output = join(self.path_output_forecast,
                                 f"{self.figure_name}.{self.format}")
         utils.make_folder(dirname(self.path_output))
+
+defaults.load(Plot)

@@ -1,0 +1,6 @@
+{
+	"case": 0,
+	"train": 0.6,
+	"validate": 0.2,
+	"forecast": 0.2
+}

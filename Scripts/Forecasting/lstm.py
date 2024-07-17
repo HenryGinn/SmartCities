@@ -10,10 +10,10 @@ from keras.layers import Dense as Dense
 from keras.layers import Lambda as Lambda
 from keras.models import model_from_json
 
-from forecast import Forecast
+from model import Model
 
 
-class LSTM(Forecast):
+class LSTM(Model):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

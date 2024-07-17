@@ -12,7 +12,7 @@ from utils import get_base_path
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
-class Forecast():
+class Series():
 
     def __init__(self, **kwargs):
         defaults.kwargs(self, kwargs)
@@ -111,7 +111,7 @@ class Forecast():
         self.modelled = np.zeros((self.length_forecast))
 
         
-defaults.load(Forecast)
+defaults.load(Series)
 
 
 

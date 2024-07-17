@@ -6,10 +6,10 @@ from scipy.stats import linregress
 from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
 
-from forecast import Forecast
+from series import Series
 
 
-class Process(Forecast):
+class Process(Series):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -97,17 +97,15 @@ class Process(Forecast):
 
     # Analysis
     def set_correlations(self):
-        self.acf, self.acf_confidence = sm.tsa.acf(self.residuals, nlags=24, alpha=0.05)
-        self.pacf, self.pacf_confidence = sm.tsa.pacf(self.residuals, nlags=24, alpha=0.05)
+        self.acf = sm.tsa.acf(self.residuals, nlags=24)
+        self.pacf = sm.tsa.pacf(self.residuals, nlags=24)
+        self.set_confidence_intervals()
 
-    def plot_acf(self):
-        self.fig, self.ax = plt.subplots(1, figsize=self.figsize, dpi=self.dpi)
-        x_axis = np.arange(self.acf.size)
-        self.ax.bar(x_axis, self.acf, width=self.bar_width, color=self.purple)
-        self.ax.plot(x_axis, self.acf_confidence[0, :])
-        self.ax.plot(x_axis, self.acf_confidence[1, :])
-        plt.show()
-
+    def set_confidence_intervals(self):
+        const = -1/np.sqrt(self.residuals.size)
+        self.cf_confidence = -const**2 + 2*np.array([-const, const])
+        self.cf_confidence = np.tile(self.cf_confidence, (2, 1))
+    
 defaults.load(Process)
 
 

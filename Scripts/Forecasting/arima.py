@@ -1,10 +1,9 @@
 from hgutilities import defaults
 
-from plot import Plot
-from process import Process
+from model import Model
 
 
-class ARIMA(Plot, Process):
+class ARIMA(Model):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

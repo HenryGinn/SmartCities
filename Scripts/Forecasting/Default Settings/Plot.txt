@@ -4,9 +4,25 @@
 	"output": "show",
 	"figure_name": null,
 	"axis_size": [0.12, 0.12, 0.8, 0.72],
-	"format": "pdf"
-	"y_label": "Crimes per 100,000 People",
+	"format": "pdf",
+	"y_label_crime": "Crimes per 100,000 People",
+	"y_label_acf": "Autocorrelation",
+	"y_label_pacf": "Partial Autocorrelation",
 	"label_original": "Original",
 	"label_modelled": "Modelled",
-	"markersize": 3
+	"markersize": 3,
+	"dashes": [3, 3],
+	"plot_type": "Crime",
+	"purple": "#6c17b9",
+	"blue": "#1db8f7",
+	"grey": "#6d6d6d",
+	"title": null,
+	"fontsize_title": 24,
+	"fontsize_labels": 18,
+	"fontsize_ticks": 14,
+	"fontsize_legend": 14,
+	"fontsize_interval_label": 14,
+	"title_pad": 14,
+	"dpi": 300,
+	"figsize": [8, 6]
 }
