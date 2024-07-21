@@ -23,6 +23,6 @@
 	"fontsize_legend": 14,
 	"fontsize_interval_label": 14,
 	"title_pad": 14,
-	"dpi": 300,
+	"dpi": 150,
 	"figsize": [8, 6]
 }

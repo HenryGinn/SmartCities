@@ -11,6 +11,7 @@ from series import Series
 
 
 plt.rcParams["font.family"] = "Times New Roman"
+#plt.rcParams["font.family"] = "Wensleydale"
 
 
 class Plot(Series):
@@ -67,12 +68,12 @@ class Plot(Series):
     def add_original_to_plot(self):
         self.ax.plot(self.time_series["Original"],
                      label=self.label_original,
-                     color=self.color_purple)
+                     color=self.purple)
     
     def add_modelled_to_plot(self):
         self.ax.plot(self.time_series["Modelled"],
                      label=self.label_modelled,
-                     color=self.color_blue)
+                     color=self.blue)
 
     def plot_array(self, array, label, color=None):
         self.time_series.loc[:, label] = array

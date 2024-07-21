@@ -1,8 +1,9 @@
 from os.path import join
 
 from hgutilities import defaults
+import numpy as np
 from pmdarima.arima import auto_arima
-from statsmodels.tsa.arima.model import ARIMA
+from statsmodels.tsa.arima.model import ARIMA as Arima
 
 from model import Model
 
@@ -34,15 +35,34 @@ class ARIMA(Model):
         pass
 
     def fit(self):
-        self.forecaster = ARIMA(self.residuals.reshape(-1), order=self.order, seasonal_order=self.seasonal_order)
+        self.forecaster = Arima(self.residuals,
+                                order=self.order,
+                                seasonal_order=self.seasonal_order)
         self.forecaster = self.forecaster.fit()
 
     def predict(self):
         start = self.order[2]
         self.modelled = np.zeros(self.length_forecast)
         self.modelled[:start] = self.residuals[:start]
-        self.modelled[start:] = self.forecaster.predict(start=start, end=self.length_forecast)
-        self.postprocess()
+        self.modelled[start:] = self.forecaster.predict(
+                start=start, end=self.length_forecast-1)
+        self.predict_process()
+
+    def predict_process(self):
+        self.extend_dataframe()
+        self.add_column(self.residuals, "Residuals Processed")
+        self.residuals = self.modelled[:self.length] - self.residuals
+        self.add_column(self.residuals, "Residuals ARIMA")
+
+    def compare_residuals(self):
+        self.initiate_figure()
+        self.ax.plot(self.time_series["Residuals ARIMA"], label="ARIMA", color=self.purple)
+        self.ax.plot(self.time_series["Residuals Processed"], label="Original", color=self.blue)
+        self.plot_peripherals_residuals_comparison()
+
+    def plot_peripherals_residuals_comparison(self):
+        self.plot_peripherals(title="Comparing Residuals After Modelling With ARIMA",
+                              plot_type="Crime")
 
 
 defaults.load(ARIMA)

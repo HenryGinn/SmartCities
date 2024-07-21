@@ -20,6 +20,7 @@ class Series():
         self.length = len(self.data)
         self.set_split_points()
 
+    # Loading time series data
     def load_time_series(self):
         self.set_main_paths()
         path = join(self.path_data, f"Case_{self.case}.csv")
@@ -49,6 +50,8 @@ class Series():
     def extract_from_line(self, file):
         metadata = file.readline().strip("\n").split(",")[1]
 
+
+    # Processing time series data
     def extend_dataframe(self):
         if len(self.time_series) == self.length:
             forecast_dates = self.get_forecast_dates()
@@ -61,6 +64,11 @@ class Series():
         forecast_dates = pd.date_range(start=original_end, freq='MS',
                                        periods=self.forecast_length + 1)[1:]
         return forecast_dates
+
+    def add_column(self, values, name):
+        extension = np.empty(self.length_forecast - values.size)*np.nan
+        column = np.concatenate([values.reshape(-1), extension], axis=0)
+        self.time_series.loc[:, name] = column
 
 
     # Defining the train, validate, and test data

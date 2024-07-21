@@ -67,7 +67,7 @@ class Process(Series):
     def normalise_residuals(self):
         self.scaler = MinMaxScaler(feature_range=(-1, 1))
         self.residuals = (self.scaler.fit_transform(
-            self.residuals.reshape(-1, 1)))
+            self.residuals.reshape(-1, 1))).reshape(-1)
 
 
     # Reversing transformations

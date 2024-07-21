@@ -16,8 +16,11 @@ arima = ARIMA(case=5, output="show")
 arima.preprocess()
 arima.determine_hyperparameters()
 arima.fit()
-arima.postprocess()
-arima.output_results(title="Modelling Via Simple Determinative Processes")
+arima.predict()
+#arima.create_correlograms()
+#arima.compare_residuals()
+#arima.postprocess()
+#arima.output_results(title="Modelling Via Simple Determinative Processes")
 
 """
 arima.plot_residuals(title="Residuals After Subtracting\nMonthly Averages")
