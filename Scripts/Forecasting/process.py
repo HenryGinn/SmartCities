@@ -65,9 +65,21 @@ class Process(Series):
             self.monthly_averages))
 
     def normalise_residuals(self):
-        self.scaler = MinMaxScaler(feature_range=(-1, 1))
-        self.residuals = (self.scaler.fit_transform(
-            self.residuals.reshape(-1, 1))).reshape(-1)
+        self.residuals, self.transform_data = (
+            self.transform_forward(self.residuals))
+
+    def transform_forward(self, data, **kwargs):
+        defaults.kwargs(self, kwargs)
+        a, b = self.feature_range
+        c, d = np.min(data[:]), np.max(data[:])
+        scale, offset = (b - a) / (d - c), (a*d - b*c) / (d - c)
+        transformed = data * scale + offset
+        return transformed, (offset, scale)
+
+    def transform_backward(transformed, transform_data):
+        offset, scale = transform_data
+        data = (transformed - offset) / scale
+        return data
 
 
     # Reversing transformations
@@ -78,8 +90,8 @@ class Process(Series):
         self.postprocess_logs()
         
     def unnormalise_residuals(self):
-        self.modelled = (self.scaler.inverse_transform(
-            self.modelled.reshape(-1, 1))).reshape(-1)
+        self.modelled = self.transform_backward(
+            self.residuals, self.transform_data)
         
     def add_seasonal(self):
         if self.seasonal:

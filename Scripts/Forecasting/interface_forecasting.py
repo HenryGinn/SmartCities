@@ -6,12 +6,13 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 
-#from lstm import LSTM
+from lstm import LSTM
 from arima import ARIMA
 
 
 plt.close("all")
 
+"""
 arima = ARIMA(case=5, output="show")
 arima.preprocess()
 arima.determine_hyperparameters()
@@ -21,6 +22,8 @@ arima.predict()
 #arima.compare_residuals()
 #arima.postprocess()
 #arima.output_results(title="Modelling Via Simple Determinative Processes")
+"""
+
 
 """
 arima.plot_residuals(title="Residuals After Subtracting\nMonthly Averages")
@@ -34,15 +37,15 @@ arima.generate_figure_name()
 arima.output_figure()
 """
 
-"""
-lstm = LSTM(name="Linear", case=1)
+
+lstm = LSTM(name="Linear", case=5, lookback=1)
 
 lstm.preprocess()
 lstm.set_splits()
 lstm.create_model()
 
 load = True
-load = False
+#load = False
 
 if load:
     lstm.load()
@@ -50,8 +53,9 @@ else:
     lstm.fit(epochs=100, verbose=2)
     lstm.save()
 
+lstm.predict()
 lstm.output_results(title="Modelling Test Data with LSTM")
-"""
+
 
 """
 lstm.set_splits()

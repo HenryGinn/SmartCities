@@ -40,7 +40,6 @@ look_back = 1
 trainX, trainY = create_dataset(train, look_back)
 testX, testY = create_dataset(test, look_back)
 
-
 # reshape input to be [samples, time steps, features]
 trainX = np.reshape(trainX, (trainX.shape[0], 1, trainX.shape[1]))
 testX = np.reshape(testX, (testX.shape[0], 1, testX.shape[1]))
