@@ -1,9 +1,11 @@
 from os.path import join, dirname
+import random
 
 from sklearn.preprocessing import MinMaxScaler
 from hgutilities import defaults, utils
 import matplotlib.pyplot as plt
 import numpy as np
+import tensorflow as tf
 from keras.models import Sequential
 from keras.layers import LSTM as LSTM_Layer
 from keras.layers import Dense as Dense
@@ -11,6 +13,11 @@ from keras.layers import Lambda as Lambda
 from keras.models import model_from_json
 
 from model import Model
+
+
+random.seed(42)
+np.random.seed(42)
+tf.random.set_seed(42)
 
 
 class LSTM(Model):
@@ -26,9 +33,8 @@ class LSTM(Model):
             self.path_model, f"Case_{self.case}.weights.h5")
 
     def preprocess(self):
-        self.labels = self.data[self.look_back :]
-        self.scaler = MinMaxScaler()
-        self.inputs = self.scaler.fit_transform(self.data.reshape(-1, 1))
+        self.inputs, self.transform_data = self.transform_forward(self.data)
+        self.labels = self.inputs[self.look_back :]
         self.set_look_back()
 
     def set_look_back(self):
@@ -44,7 +50,12 @@ class LSTM(Model):
         look_backed[:, look_back] = self.inputs[start : end].reshape(-1)
 
     def set_splits(self):
-        super().set_split_points()
+        #self.set_split_points()
+        # For testing only to match with online script
+        self.set_split_index_points()
+        self.index_train -= 2
+        self.set_split_indices()
+        
         self.set_iterable_splits("labels", look_back=True)
         self.set_iterable_splits("inputs", look_back=True)
         self.inputs_train = self.reshape_training_data(self.inputs_train)
@@ -59,7 +70,6 @@ class LSTM(Model):
         self.model = Sequential()
         self.model.add(LSTM_Layer(self.units))
         self.model.add(Dense(1))
-        #self.model.add(Lambda(lambda x : 1 - x[:, :, 0]))
         self.model.compile(loss=self.loss, optimizer=self.optimizer)
 
     def load(self):
@@ -92,6 +102,11 @@ class LSTM(Model):
         self.model_fitted = True
         self.model.fit(self.inputs_train, self.labels_train, epochs=self.epochs,
                        batch_size=self.batch_size, verbose=self.verbose)
+        import json
+        for layer in self.model.layers:
+            print(json.dumps(layer.get_config(), indent=2))
+            print(layer.get_weights())
+            print("")
 
     def predict(self):
         inputs = self.initialise_prediction()
@@ -112,8 +127,7 @@ class LSTM(Model):
         return inputs
 
     def postprocess(self):
-        self.modelled = self.scaler.inverse_transform(
-            self.modelled.reshape(-1, 1)).reshape(-1)
+        self.modelled = self.transform_backward(self.modelled, self.transform_data)
 
 
 defaults.load(LSTM)

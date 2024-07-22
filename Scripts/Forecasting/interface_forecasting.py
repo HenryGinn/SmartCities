@@ -14,11 +14,14 @@ plt.close("all")
 
 """
 arima = ARIMA(case=5, output="show")
+arima.residuals = arima.data
+arima.create_correlograms()
 arima.preprocess()
+arima.create_correlograms()
 arima.determine_hyperparameters()
 arima.fit()
 arima.predict()
-#arima.create_correlograms()
+arima.create_correlograms()
 #arima.compare_residuals()
 #arima.postprocess()
 #arima.output_results(title="Modelling Via Simple Determinative Processes")
@@ -38,19 +41,19 @@ arima.output_figure()
 """
 
 
-lstm = LSTM(name="Linear", case=5, lookback=1)
+lstm = LSTM(name="Linear", case=5, look_back=1)
 
 lstm.preprocess()
 lstm.set_splits()
 lstm.create_model()
 
 load = True
-#load = False
+load = False
 
 if load:
     lstm.load()
 else:
-    lstm.fit(epochs=100, verbose=2)
+    lstm.fit(epochs=100, verbose=0)
     lstm.save()
 
 lstm.predict()

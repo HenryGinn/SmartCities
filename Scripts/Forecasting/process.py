@@ -76,7 +76,7 @@ class Process(Series):
         transformed = data * scale + offset
         return transformed, (offset, scale)
 
-    def transform_backward(transformed, transform_data):
+    def transform_backward(self, transformed, transform_data):
         offset, scale = transform_data
         data = (transformed - offset) / scale
         return data
