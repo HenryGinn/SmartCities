@@ -47,7 +47,7 @@ class Plot(Series):
     def add_lines_to_plot(self):
         match self.plot_type:
             case "Data"     : self.add_modelled_results_to_plot()
-            case "Residuals": self.add_residuals_to_plot()
+            case "Residuals": self.add_residuals_results_to_plot()
             case _: pass
 
     def initiate_figure(self, **kwargs):
@@ -60,6 +60,12 @@ class Plot(Series):
     def add_modelled_results_to_plot(self):
         self.add_original_to_plot()
         self.add_modelled_to_plot()
+
+    def add_residuals_results_to_plot(self):
+        self.add_residuals_to_plot()
+        zeros = np.zeros(self.length_forecast)
+        zeros[self.length:self.length_forecast] = np.nan
+        self.plot_array(zeros, label=None, color=self.blue)
 
     def set_purpose_indicator(self):
         purpose_indicator = np.array(["ABCDEFGH"] * self.length_forecast)
@@ -84,9 +90,10 @@ class Plot(Series):
                      label=self.label_original,
                      color=self.purple)
 
-    def plot_array(self, array, label, color=None):
+    def plot_array(self, array, label, color=None, **kwargs):
         self.time_series.loc[:, label] = array
-        self.ax.plot(self.time_series[label], label=label, color=color)
+        self.ax.plot(self.time_series[label], label=label,
+                     color=color, **kwargs)
         
 
     # Peripherals
@@ -171,7 +178,7 @@ class Plot(Series):
         self.add_interval_label_to_plot("Training", 0, self.index_train)
         self.add_interval_label_to_plot("Validation", self.index_train, self.index_validate)
         self.add_interval_label_to_plot("Testing", self.index_validate, self.length)
-        self.add_interval_label_to_plot("Forecast", self.length, self.length_forecast-1)
+        self.add_interval_labels_to_plot_forecast()
 
     def add_interval_label_to_plot(self, label, start, end):
         time_start = self.time_series.index[start]
@@ -180,6 +187,10 @@ class Plot(Series):
         self.ax.text(time, self.text_height, label, ha="center",
                      fontsize=self.fontsize_interval_label)
 
+    def add_interval_labels_to_plot_forecast(self):
+        if self.plot_type == "Data":
+            self.add_interval_label_to_plot(
+                "Forecast", self.length, self.length_forecast-1)
 
     # Output
     def output_figure(self):
