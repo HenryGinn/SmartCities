@@ -127,7 +127,7 @@ class Plot(Series):
     def extend_axes(self):
         data = self.time_series[["Original", "Modelled"]].values.reshape(-1)
         self.data_max = np.nanmax(data)
-        self.ax.set_ylim(0, 1.1*self.data_max)
+        self.ax.set_ylim(np.nanmin(data), 1.1*self.data_max)
 
     def add_interval_lines_to_plot(self):
         self.add_interval_line_to_plot(self.index_train)

@@ -49,24 +49,25 @@ class Process(Series):
 
     def subtract_seasonal(self):
         if self.seasonal:
-            self.time_series.loc[:, "Residuals Preseasonal"] = self.residuals
+            self.time_series.loc[:, "ResidualsPreseasonal"] = self.residuals
             self.set_monthly_averages()
             self.add_monthly_averages_to_time_series()
-            self.residuals -= self.time_series["Monthly Average"].values
+            self.residuals -= self.time_series["MonthlyAverage"].values
 
     def set_monthly_averages(self):
         self.monthly_averages = (
-            self.time_series["Residuals Preseasonal"].groupby(
+            self.time_series["ResidualsPreseasonal"].groupby(
             self.time_series.index.month).mean())
 
     def add_monthly_averages_to_time_series(self):
-        self.time_series.loc[:, "Monthly Average"] = (
+        self.time_series.loc[:, "MonthlyAverage"] = (
             self.time_series.index.month.map(
             self.monthly_averages))
 
     def normalise_residuals(self):
         self.residuals, self.transform_data = (
             self.transform_forward(self.residuals))
+        self.time_series["ResidualsPostprocessing"] = self.residuals
 
     def transform_forward(self, data, **kwargs):
         defaults.kwargs(self, kwargs)
@@ -84,22 +85,23 @@ class Process(Series):
 
     # Reversing transformations
     def postprocess(self):
-        self.unnormalise_residuals()
-        self.add_seasonal()
-        self.add_trend()
-        self.postprocess_logs()
+        pass
+        #self.unnormalise_modelled()
+        #self.add_seasonal()
+        #self.add_trend()
+        #self.postprocess_logs()
         
-    def unnormalise_residuals(self):
+    def unnormalise_modelled(self):
         self.modelled = self.transform_backward(
-            self.residuals, self.transform_data)
+            self.modelled, self.transform_data)
         
     def add_seasonal(self):
         if self.seasonal:
             self.add_monthly_averages_to_time_series()
-            self.modelled += self.time_series["Monthly Average"].values
+            self.modelled += self.time_series["MonthlyAverage"].values
 
     def add_trend(self):
-        self.set_linear_approximation(self.length_forecast)
+        self.set_linear_approximation(self.modelled.size)
         self.modelled += self.time_series["Linear"].values
 
     def postprocess_logs(self):

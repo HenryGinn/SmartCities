@@ -55,7 +55,8 @@ class Series():
     def extend_dataframe(self):
         if len(self.time_series) == self.length:
             forecast_dates = self.get_forecast_dates()
-            new_data = {"Original": np.array([None] * self.forecast_length)}
+            array_extension = np.array([None] * self.forecast_length)
+            new_data = {column: array_extension.copy() for column in self.time_series.columns.values}
             extended = pd.DataFrame(new_data, index=forecast_dates)
             self.time_series = pd.concat([self.time_series, extended])
 

@@ -61,5 +61,8 @@ class Model(Plot, Process):
             raise AttributeError("Residuals has not been set.\n"
                 "Either assign this manually or call the 'preprocess' method")
 
+    def predict(self):
+        self.modelled = np.zeros(self.length_forecast)
+
 
 defaults.load(Model)

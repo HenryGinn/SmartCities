@@ -32,9 +32,8 @@ class LSTM(Model):
         self.path_model_weights = join(
             self.path_model, f"Case_{self.case}.weights.h5")
 
-    def preprocess(self):
-        self.inputs, self.transform_data = self.transform_forward(self.data)
-        self.labels = self.inputs[self.look_back :]
+    def set_inputs_and_labels(self):
+        self.labels = self.residuals[self.look_back :]
         self.set_look_back()
 
     def set_look_back(self):
@@ -47,15 +46,10 @@ class LSTM(Model):
     def add_to_look_backed(self, look_backed, look_back):
         start = look_back
         end = self.length + look_back - self.look_back + 1
-        look_backed[:, look_back] = self.inputs[start : end].reshape(-1)
+        look_backed[:, look_back] = self.residuals[start : end].reshape(-1)
 
     def set_splits(self):
-        #self.set_split_points()
-        # For testing only to match with online script
-        self.set_split_index_points()
-        self.index_train -= 2
-        self.set_split_indices()
-        
+        self.set_split_points()
         self.set_iterable_splits("labels", look_back=True)
         self.set_iterable_splits("inputs", look_back=True)
         self.inputs_train = self.reshape_training_data(self.inputs_train)
@@ -125,9 +119,6 @@ class LSTM(Model):
         inputs = np.concatenate((inputs[:, :, 1:], forecast), axis=2)
         self.modelled[self.look_back + index] = forecast
         return inputs
-
-    def postprocess(self):
-        self.modelled = self.transform_backward(self.modelled, self.transform_data)
 
 
 defaults.load(LSTM)

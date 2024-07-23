@@ -46,9 +46,9 @@ class ARIMA(Model):
         self.modelled[:start] = self.residuals[:start]
         self.modelled[start:] = self.forecaster.predict(
                 start=start, end=self.length_forecast-1)
-        self.predict_process()
+        self.set_arima_residuals()
 
-    def predict_process(self):
+    def set_arima_residuals(self):
         self.extend_dataframe()
         self.add_column(self.residuals, "Residuals Processed")
         self.residuals = self.modelled[:self.length] - self.residuals

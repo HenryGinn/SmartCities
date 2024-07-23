@@ -20,7 +20,7 @@
                     "batch_shape": [
                         1,
                         1,
-                        1
+                        5
                     ],
                     "dtype": "float32",
                     "sparse": false,
@@ -92,7 +92,7 @@
                     "input_shape": [
                         1,
                         1,
-                        1
+                        5
                     ]
                 }
             },
@@ -144,7 +144,7 @@
         "build_input_shape": [
             1,
             1,
-            1
+            5
         ]
     },
     "registered_name": null,
@@ -152,7 +152,7 @@
         "input_shape": [
             1,
             1,
-            1
+            5
         ]
     },
     "compile_config": {

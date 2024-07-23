@@ -40,7 +40,7 @@ test_size = len(dataset) - train_size
 train, test = dataset[0:train_size,:], dataset[train_size:len(dataset),:]
 
 # reshape into X=t and Y=t+1
-look_back = 1
+look_back = 5
 trainX, trainY = create_dataset(train, look_back)
 testX, testY = create_dataset(test, look_back)
 
@@ -74,15 +74,23 @@ def load():
 #save()
 model = load()
 
-time_steps = 30
+time_steps = 10
 last_sequence = trainX[:time_steps]
+print("Last sequence")
+print(last_sequence)
 predictions = list(last_sequence[:, :, 0].reshape(-1))
 
 for _ in range(30):
-    input_sequence = last_sequence.reshape((1, -1, 1))
+    input_sequence = last_sequence.reshape((-1, 1, look_back))
+    print("Input sequence")
+    print(input_sequence)
     predicted_value = model.predict(input_sequence, verbose=0)
+    print("Predicted value")
+    print(predicted_value)
     predictions.append(predicted_value[0, 0])
     last_sequence = np.append(last_sequence[:], predicted_value)
+    print("Last sequence")
+    print(last_sequence)
 
 # invert predictions
 predictions = scaler.inverse_transform([predictions]).reshape(-1)
