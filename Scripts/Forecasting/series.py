@@ -1,3 +1,12 @@
+"""
+Anything data before modelling is referred to as 'residuals'
+Anything data after modelling is referred to as 'modelled'
+All intermediate steps are stored in the time_series dataframe
+In the dataframe all data will be labelled as 'Residuals{Label}'
+or 'Modelled{Label}'
+"""
+
+
 from os.path import join
 from os.path import dirname
 import warnings
@@ -17,7 +26,7 @@ class Series():
     def __init__(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.load_time_series()
-        self.length = len(self.data)
+        self.length = len(self.residuals)
         self.set_split_points()
 
     # Loading time series data
@@ -39,7 +48,7 @@ class Series():
         self.time_series = pd.read_csv(
             path, skiprows=3, index_col="Time", dtype=np.float32,
             date_format="%Y-%m-%d", parse_dates=True)
-        self.data = self.time_series["Original"].values
+        self.residuals = self.time_series["ResidualsOriginal"].values
 
     def read_metadata(self, path):
         with open(path) as file:
@@ -54,17 +63,25 @@ class Series():
     # Processing time series data
     def extend_dataframe(self):
         if len(self.time_series) == self.length:
-            forecast_dates = self.get_forecast_dates()
-            array_extension = np.array([None] * self.forecast_length)
-            new_data = {column: array_extension.copy() for column in self.time_series.columns.values}
-            extended = pd.DataFrame(new_data, index=forecast_dates)
-            self.time_series = pd.concat([self.time_series, extended])
+            self.do_extend_dataframe()
+
+    def do_extend_dataframe(self):
+        forecast_dates = self.get_forecast_dates()
+        extended_data = self.get_extended_data()
+        extended = pd.DataFrame(extended_data, index=forecast_dates)
+        self.time_series = pd.concat([self.time_series, extended])
 
     def get_forecast_dates(self):
         original_end = self.time_series.index[self.length - 1]
         forecast_dates = pd.date_range(start=original_end, freq='MS',
                                        periods=self.forecast_length + 1)[1:]
         return forecast_dates
+
+    def get_extended_data(self):
+        array_extension = np.array([None] * self.forecast_length)
+        extended_data = {column: array_extension.copy()
+                         for column in self.time_series.columns.values}
+        return extended_data
 
     def add_column(self, values, name):
         extension = np.empty(self.length_forecast - values.size)*np.nan
@@ -121,30 +138,3 @@ class Series():
 
         
 defaults.load(Series)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

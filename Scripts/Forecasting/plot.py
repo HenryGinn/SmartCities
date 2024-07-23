@@ -48,30 +48,26 @@ class Plot(Series):
 
     # Plotting modelled data
     def add_modelled_results_to_plot(self):
-        self.construct_dataframe()
+        self.set_purpose_indicator()
         self.add_original_to_plot()
         self.add_modelled_to_plot()
         self.add_interval_annotations_to_plot()
-        
-    def construct_dataframe(self):
-        self.time_series.loc[:, "Modelled"] = self.modelled
-        self.time_series.loc[:, "Purpose"] = self.get_purpose_indicator()
 
-    def get_purpose_indicator(self):
+    def set_purpose_indicator(self):
         purpose_indicator = np.array(["ABCDEFGH"] * self.length_forecast)
         purpose_indicator[self.slice_train]    = "Train"
         purpose_indicator[self.slice_validate] = "Validate"
         purpose_indicator[self.slice_test]     = "Test"
         purpose_indicator[self.slice_forecast] = "Forecast"
-        return purpose_indicator
+        self.time_series["Purpose"] = purpose_indicator
 
     def add_original_to_plot(self):
-        self.ax.plot(self.time_series["Original"],
+        self.ax.plot(self.time_series[f"Residuals{self.stage}"],
                      label=self.label_original,
                      color=self.purple)
     
     def add_modelled_to_plot(self):
-        self.ax.plot(self.time_series["Modelled"],
+        self.ax.plot(self.time_series[f"Modelled{self.stage}"],
                      label=self.label_modelled,
                      color=self.blue)
 
@@ -125,7 +121,8 @@ class Plot(Series):
         self.add_interval_labels_to_plot()
 
     def extend_axes(self):
-        data = self.time_series[["Original", "Modelled"]].values.reshape(-1)
+        columns = [f"Residuals{self.stage}", f"Modelled{self.stage}"]
+        data = self.time_series[columns].values.reshape(-1)
         self.data_max = np.nanmax(data)
         self.ax.set_ylim(np.nanmin(data), 1.1*self.data_max)
 

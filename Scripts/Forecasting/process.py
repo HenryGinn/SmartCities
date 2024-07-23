@@ -27,21 +27,21 @@ class Process(Series):
             self.preprocess_logs_true()
         else:
             self.preprocess_logs_false()
+        self.time_series["ResidualsLog"] = self.residuals.copy()
 
     def preprocess_logs_true(self):
-        self.processed_log = np.log(self.data)
+        self.residuals = np.log(self.residuals)
         self.y_label_processed = "Log(Crimes per Person per 100,000 People)"
 
     def preprocess_logs_false(self):
-        self.processed_log = self.data.copy()
         self.y_label_processed = "Crimes per 100,000 People"
 
     def subtract_trend(self):
         (self.slope, self.intercept, self.r_value, self.p_value,
-         self.standard_error) = linregress(np.arange(self.length),
-                                           self.processed_log)
+         self.standard_error) = linregress(np.arange(self.length), self.residuals)
         self.set_linear_approximation(self.length)
-        self.residuals = self.processed_log - self.time_series["Linear"].values
+        self.residuals = self.residuals - self.time_series["Linear"].values
+        self.time_series["ResidualsLinear"] = self.residuals.copy()
 
     def set_linear_approximation(self, length):
         self.time_series.loc[:, "Linear"] = (
@@ -49,14 +49,14 @@ class Process(Series):
 
     def subtract_seasonal(self):
         if self.seasonal:
-            self.time_series.loc[:, "ResidualsPreseasonal"] = self.residuals
             self.set_monthly_averages()
             self.add_monthly_averages_to_time_series()
             self.residuals -= self.time_series["MonthlyAverage"].values
+            self.time_series["ResidualsSeasons"] = self.residuals.copy()
 
     def set_monthly_averages(self):
         self.monthly_averages = (
-            self.time_series["ResidualsPreseasonal"].groupby(
+            self.time_series["ResidualsLinear"].groupby(
             self.time_series.index.month).mean())
 
     def add_monthly_averages_to_time_series(self):
@@ -67,7 +67,7 @@ class Process(Series):
     def normalise_residuals(self):
         self.residuals, self.transform_data = (
             self.transform_forward(self.residuals))
-        self.time_series["ResidualsPostprocessing"] = self.residuals
+        self.time_series["ResidualsNormalised"] = self.residuals.copy()
 
     def transform_forward(self, data, **kwargs):
         defaults.kwargs(self, kwargs)
@@ -77,36 +77,39 @@ class Process(Series):
         transformed = data * scale + offset
         return transformed, (offset, scale)
 
-    def transform_backward(self, transformed, transform_data):
-        offset, scale = transform_data
+    def transform_backward(self, transformed):
+        offset, scale = self.transform_data
         data = (transformed - offset) / scale
         return data
 
 
     # Reversing transformations
     def postprocess(self):
-        pass
-        #self.unnormalise_modelled()
-        #self.add_seasonal()
-        #self.add_trend()
-        #self.postprocess_logs()
+        self.time_series["ModelledNormalised"] = self.modelled.copy()
+        self.unnormalise_modelled()
+        self.add_seasonal()
+        self.add_trend()
+        self.postprocess_logs()
         
     def unnormalise_modelled(self):
-        self.modelled = self.transform_backward(
-            self.modelled, self.transform_data)
+        self.modelled = self.transform_backward(self.modelled)
+        self.time_series["ModelledSeasonal"] = self.modelled.copy()
         
     def add_seasonal(self):
         if self.seasonal:
             self.add_monthly_averages_to_time_series()
             self.modelled += self.time_series["MonthlyAverage"].values
+        self.time_series["ModelledLinear"] = self.modelled.copy()
 
     def add_trend(self):
         self.set_linear_approximation(self.modelled.size)
         self.modelled += self.time_series["Linear"].values
+        self.time_series["ModelledLog"] = self.modelled.copy()
 
     def postprocess_logs(self):
         if self.log:
             self.modelled = np.exp(self.modelled)
+        self.time_series["ModelledOriginal"] = self.modelled.copy()
 
 
     # Analysis

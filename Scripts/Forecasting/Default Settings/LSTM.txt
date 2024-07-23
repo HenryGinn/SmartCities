@@ -5,6 +5,5 @@
 	"optimizer": "adam",
 	"epochs": 100,
 	"batch_size": 1,
-	"verbose": 2,
-	"feature_range": [0, 1]
+	"verbose": 2
 }
