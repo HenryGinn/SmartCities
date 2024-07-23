@@ -1,5 +1,4 @@
 {
 	"log": true,
-	"seasonal": true,
-	"feature_range": [-1, 1]
+	"seasonal": true
 }

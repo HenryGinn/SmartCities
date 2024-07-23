@@ -20,17 +20,17 @@ class Process(Series):
         self.preprocess_logs()
         self.subtract_trend()
         self.subtract_seasonal()
-        self.normalise_residuals()
+        self.normalise_data()
 
     def preprocess_logs(self):
         if self.log:
             self.preprocess_logs_true()
         else:
             self.preprocess_logs_false()
-        self.time_series["ResidualsLog"] = self.residuals.copy()
+        self.time_series["DataLog"] = self.data.copy()
 
     def preprocess_logs_true(self):
-        self.residuals = np.log(self.residuals)
+        self.data = np.log(self.data)
         self.y_label_processed = "Log(Crimes per Person per 100,000 People)"
 
     def preprocess_logs_false(self):
@@ -38,10 +38,10 @@ class Process(Series):
 
     def subtract_trend(self):
         (self.slope, self.intercept, self.r_value, self.p_value,
-         self.standard_error) = linregress(np.arange(self.length), self.residuals)
+         self.standard_error) = linregress(np.arange(self.length), self.data)
         self.set_linear_approximation(self.length)
-        self.residuals = self.residuals - self.time_series["Linear"].values
-        self.time_series["ResidualsLinear"] = self.residuals.copy()
+        self.data = self.data - self.time_series["Linear"].values
+        self.time_series["DataLinear"] = self.data.copy()
 
     def set_linear_approximation(self, length):
         self.time_series.loc[:, "Linear"] = (
@@ -51,12 +51,12 @@ class Process(Series):
         if self.seasonal:
             self.set_monthly_averages()
             self.add_monthly_averages_to_time_series()
-            self.residuals -= self.time_series["MonthlyAverage"].values
-            self.time_series["ResidualsSeasons"] = self.residuals.copy()
+            self.data -= self.time_series["MonthlyAverage"].values
+            self.time_series["DataSeasons"] = self.data.copy()
 
     def set_monthly_averages(self):
         self.monthly_averages = (
-            self.time_series["ResidualsLinear"].groupby(
+            self.time_series["DataLinear"].groupby(
             self.time_series.index.month).mean())
 
     def add_monthly_averages_to_time_series(self):
@@ -64,32 +64,33 @@ class Process(Series):
             self.time_series.index.month.map(
             self.monthly_averages))
 
-    def normalise_residuals(self):
-        self.residuals, self.transform_data = (
-            self.transform_forward(self.residuals))
-        self.time_series["ResidualsNormalised"] = self.residuals.copy()
+    def normalise_data(self):
+        self.data, self.transform_data = (
+            self.transform_forward(self.data))
+        self.time_series["DataNormalised"] = self.data.copy()
 
-    def transform_forward(self, data, **kwargs):
-        defaults.kwargs(self, kwargs)
-        a, b = self.feature_range
-        c, d = np.min(data[:]), np.max(data[:])
-        scale, offset = (b - a) / (d - c), (a*d - b*c) / (d - c)
-        transformed = data * scale + offset
-        return transformed, (offset, scale)
+    def transform_forward(self, data):
+        mean, std = np.mean(data[:]), np.std(data[:])
+        transformed = (data - mean) / std 
+        return transformed, (mean, std)
 
     def transform_backward(self, transformed):
-        offset, scale = self.transform_data
-        data = (transformed - offset) / scale
+        mean, std = self.transform_data
+        data = transformed * std + mean
         return data
 
 
     # Reversing transformations
     def postprocess(self):
-        self.time_series["ModelledNormalised"] = self.modelled.copy()
+        self.correct_log_bias()
         self.unnormalise_modelled()
         self.add_seasonal()
         self.add_trend()
         self.postprocess_logs()
+
+    def correct_log_bias(self):
+        self.time_series["ModelledBias"] = self.modelled.copy()
+        self.time_series["ModelledNormalised"] = self.modelled.copy()
         
     def unnormalise_modelled(self):
         self.modelled = self.transform_backward(self.modelled)

@@ -52,14 +52,14 @@ class Model(Plot, Process):
 
     def plot_residuals(self, **kwargs):
         defaults.kwargs(self, kwargs)
-        self.initiate_figure(y_label=self.y_label_processed)
-        self.plot_array(self.residuals, None, color=self.color_original)
-        self.plot_peripherals_base()
+        self.set_residuals()
+        self.create_figure(plot_type="Residuals")
 
-    def ensure_residuals(self):
-        if not hasattr(self, "residuals"):
-            raise AttributeError("Residuals has not been set.\n"
-                "Either assign this manually or call the 'preprocess' method")
+    def set_residuals(self, **kwargs):
+        defaults.kwargs(self, kwargs)
+        self.residuals = (self.time_series[f"Data{self.stage}"]
+                          - self.time_series[f"Modelled{self.stage}"])
+        self.time_series[f"Residuals{self.stage}"] = self.residuals.copy()
 
     def predict(self):
         self.modelled = np.zeros(self.length_forecast)

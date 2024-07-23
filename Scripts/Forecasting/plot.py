@@ -31,14 +31,24 @@ class Plot(Series):
         self.extend_dataframe()
         self.create_figure()
 
-    def create_figure(self):
+    def create_figure(self, **kwargs):
+        defaults.kwargs(self, kwargs)
         self.initiate_figure()
         self.create_plot(self.fig, self.ax, loc=0, title=self.title)
         self.output_figure()
     
     def create_plot(self, fig, ax, **kwargs):
-        self.add_modelled_results_to_plot()
+        defaults.kwargs(self, kwargs)
+        self.set_purpose_indicator()
+        self.add_interval_annotations_to_plot()
+        self.add_lines_to_plot()
         self.plot_peripherals()
+
+    def add_lines_to_plot(self):
+        match self.plot_type:
+            case "Data"     : self.add_modelled_results_to_plot()
+            case "Residuals": self.add_residuals_to_plot()
+            case _: pass
 
     def initiate_figure(self, **kwargs):
         defaults.kwargs(self, kwargs)
@@ -48,10 +58,8 @@ class Plot(Series):
 
     # Plotting modelled data
     def add_modelled_results_to_plot(self):
-        self.set_purpose_indicator()
         self.add_original_to_plot()
         self.add_modelled_to_plot()
-        self.add_interval_annotations_to_plot()
 
     def set_purpose_indicator(self):
         purpose_indicator = np.array(["ABCDEFGH"] * self.length_forecast)
@@ -62,7 +70,7 @@ class Plot(Series):
         self.time_series["Purpose"] = purpose_indicator
 
     def add_original_to_plot(self):
-        self.ax.plot(self.time_series[f"Residuals{self.stage}"],
+        self.ax.plot(self.time_series[f"Data{self.stage}"],
                      label=self.label_original,
                      color=self.purple)
     
@@ -70,6 +78,11 @@ class Plot(Series):
         self.ax.plot(self.time_series[f"Modelled{self.stage}"],
                      label=self.label_modelled,
                      color=self.blue)
+
+    def add_residuals_to_plot(self):
+        self.ax.plot(self.time_series[f"Residuals{self.stage}"],
+                     label=self.label_original,
+                     color=self.purple)
 
     def plot_array(self, array, label, color=None):
         self.time_series.loc[:, label] = array
@@ -89,9 +102,10 @@ class Plot(Series):
 
     def set_axis_labels(self):
         match self.plot_type:
-            case "Crime": self.do_set_axis_labels("Date", self.y_label_crime)
-            case "ACF"  : self.do_set_axis_labels("Lag (Months)", self.y_label_acf)
-            case "PACF" : self.do_set_axis_labels("Lag (Months)", self.y_label_pacf)
+            case "Data"     : self.do_set_axis_labels("Date", self.y_label_crime)
+            case "Residuals": self.do_set_axis_labels("Date", self.y_label_residuals)
+            case "ACF"      : self.do_set_axis_labels("Lag (Months)", self.y_label_acf)
+            case "PACF"     : self.do_set_axis_labels("Lag (Months)", self.y_label_pacf)
 
     def do_set_axis_labels(self, x_axis_label, y_axis_label):
         self.ax.set_xlabel(x_axis_label, fontsize=self.fontsize_labels)
@@ -115,16 +129,32 @@ class Plot(Series):
 
     def add_interval_annotations_to_plot(self):
         self.extend_axes()
-        self.line_limit = self.data_max
-        self.text_height = self.line_limit * 1.03
+        self.text_height = self.values_max + 0.05*self.values_range
         self.add_interval_lines_to_plot()
         self.add_interval_labels_to_plot()
 
     def extend_axes(self):
-        columns = [f"Residuals{self.stage}", f"Modelled{self.stage}"]
+        values = self.get_plotted_values()
+        self.values_min = np.nanmin(values)
+        self.values_max = np.nanmax(values)
+        self.values_range = self.values_max - self.values_min
+        upper_limit = self.values_max + 0.15*self.values_range
+        self.ax.set_ylim(self.values_min, upper_limit)
+
+    def get_plotted_values(self):
+        match self.plot_type:
+            case "Data"     : data = self.get_plotted_values_data()
+            case "Residuals": data = self.get_plotted_values_residuals()
+        return data
+
+    def get_plotted_values_data(self):
+        columns = [f"Data{self.stage}", f"Modelled{self.stage}"]
         data = self.time_series[columns].values.reshape(-1)
-        self.data_max = np.nanmax(data)
-        self.ax.set_ylim(np.nanmin(data), 1.1*self.data_max)
+        return data
+
+    def get_plotted_values_residuals(self):
+        data = self.time_series[f"Residuals{self.stage}"].values
+        return data
 
     def add_interval_lines_to_plot(self):
         self.add_interval_line_to_plot(self.index_train)
@@ -133,7 +163,7 @@ class Plot(Series):
 
     def add_interval_line_to_plot(self, index):
         indices = np.array([self.time_series.index[index] for i in range(25)])
-        points = np.linspace(0, self.line_limit+1, 25)
+        points = np.linspace(self.values_min, self.values_max, 25)
         self.ax.plot(indices, points, color=self.grey,
                 dashes=self.dashes, markersize=self.markersize)
 

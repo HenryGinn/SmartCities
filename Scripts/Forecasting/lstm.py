@@ -33,7 +33,7 @@ class LSTM(Model):
             self.path_model, f"Case_{self.case}.weights.h5")
 
     def set_inputs_and_labels(self):
-        self.labels = self.residuals[self.look_back :]
+        self.labels = self.data[self.look_back :]
         self.set_look_back()
 
     def set_look_back(self):
@@ -46,7 +46,7 @@ class LSTM(Model):
     def add_to_look_backed(self, look_backed, look_back):
         start = look_back
         end = self.length + look_back - self.look_back + 1
-        look_backed[:, look_back] = self.residuals[start : end].reshape(-1)
+        look_backed[:, look_back] = self.data[start : end].reshape(-1)
 
     def set_splits(self):
         self.set_split_points()

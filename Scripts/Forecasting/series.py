@@ -1,5 +1,5 @@
 """
-Anything data before modelling is referred to as 'residuals'
+Anything data before modelling is referred to as 'data'
 Anything data after modelling is referred to as 'modelled'
 All intermediate steps are stored in the time_series dataframe
 In the dataframe all data will be labelled as 'Residuals{Label}'
@@ -26,7 +26,7 @@ class Series():
     def __init__(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.load_time_series()
-        self.length = len(self.residuals)
+        self.length = len(self.data)
         self.set_split_points()
 
     # Loading time series data
@@ -48,7 +48,7 @@ class Series():
         self.time_series = pd.read_csv(
             path, skiprows=3, index_col="Time", dtype=np.float32,
             date_format="%Y-%m-%d", parse_dates=True)
-        self.residuals = self.time_series["ResidualsOriginal"].values
+        self.data = self.time_series["DataOriginal"].values
 
     def read_metadata(self, path):
         with open(path) as file:

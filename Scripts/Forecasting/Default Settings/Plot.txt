@@ -6,6 +6,7 @@
 	"axis_size": [0.12, 0.12, 0.8, 0.72],
 	"format": "pdf",
 	"y_label_crime": "Crimes per 100,000 People",
+	"y_label_residuals": "Residual",
 	"y_label_acf": "Autocorrelation",
 	"y_label_pacf": "Partial Autocorrelation",
 	"label_original": "Original",
