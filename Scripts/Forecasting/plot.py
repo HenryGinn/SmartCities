@@ -2,8 +2,8 @@ from os.path import join
 from os.path import dirname
 import warnings
 
-from hgutilities import defaults
 import numpy as np
+from scipy.stats import norm
 from hgutilities import defaults, utils
 import matplotlib.pyplot as plt
 
@@ -20,6 +20,7 @@ class Plot(Series):
         super().__init__(**kwargs)
 
     # Plot creation commands
+    
     def update_figure(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.predict()
@@ -34,10 +35,15 @@ class Plot(Series):
     def create_figure(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.initiate_figure()
-        self.create_plot(self.fig, self.ax, loc=0, title=self.title)
+        self.create_plot(loc=0, title=self.title)
         self.output_figure()
+
+    def initiate_figure(self, **kwargs):
+        defaults.kwargs(self, kwargs)
+        self.fig = plt.figure(figsize=self.figsize, dpi=self.dpi)
+        self.ax = self.fig.add_axes(self.axis_size)
     
-    def create_plot(self, fig, ax, **kwargs):
+    def create_plot(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.set_purpose_indicator()
         self.add_interval_annotations_to_plot()
@@ -50,13 +56,16 @@ class Plot(Series):
             case "Residuals": self.add_residuals_results_to_plot()
             case _: pass
 
-    def initiate_figure(self, **kwargs):
+    def create_histogram(self, **kwargs):
         defaults.kwargs(self, kwargs)
-        self.fig = plt.figure(figsize=self.figsize, dpi=self.dpi)
-        self.ax = self.fig.add_axes(self.axis_size)
+        self.initiate_figure()
+        self.plot_histogram()
+        self.plot_histogram_features()
+        self.output_figure()
 
 
-    # Plotting modelled data
+    # Plotting data
+    
     def add_modelled_results_to_plot(self):
         self.add_original_to_plot()
         self.add_modelled_to_plot()
@@ -95,8 +104,31 @@ class Plot(Series):
         self.ax.plot(self.time_series[label], label=label,
                      color=color, **kwargs)
         
+    def plot_histogram(self, **kwargs):
+        defaults.kwargs(self, kwargs)
+        self.histogram = self.ax.hist(self.no_nan("Residuals"), bins=self.bins,
+                                      color=self.purple, density=True)
+        self.plot_peripherals(plot_type="Histogram")
+
+    def plot_histogram_features(self):
+        self.plot_histogram_centreline()
+        if self.draw_normal_dist:
+            self.plot_histogram_normal()
+
+    def plot_histogram_centreline(self):
+        maximum_height = np.max(self.histogram[0])
+        values = ([0, 0], [0, maximum_height*1.1])
+        self.ax.plot(*values, linewidth=2, color=self.blue, dashes=self.dashes)
+
+    def plot_histogram_normal(self):
+        mean, std_dev = norm.fit(self.no_nan("Residuals"))
+        x_values = np.linspace(*plt.xlim(), 100)
+        y_values = norm.pdf(x_values, mean, std_dev)
+        self.ax.plot(x_values, y_values, color=self.blue)
+        
 
     # Peripherals
+    
     def plot_peripherals(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.plot_peripherals_axes()
@@ -111,6 +143,7 @@ class Plot(Series):
         match self.plot_type:
             case "Data"     : self.do_set_axis_labels("Date", self.y_label_crime)
             case "Residuals": self.do_set_axis_labels("Date", self.y_label_residuals)
+            case "Histogram": self.do_set_axis_labels("Residuals", self.y_label_histogram)
             case "ACF"      : self.do_set_axis_labels("Lag (Months)", self.y_label_acf)
             case "PACF"     : self.do_set_axis_labels("Lag (Months)", self.y_label_pacf)
 
@@ -127,12 +160,14 @@ class Plot(Series):
                           fontsize=self.fontsize_title)
 
     def add_legend(self):
-        if not self.ax.get_legend_handles_labels() == ([], []):
+        if self.legend_non_trivial():
             self.ax.legend(loc=self.loc, fontsize=self.fontsize_legend,
                            bbox_to_anchor=self.legend_bbox_to_anchor)
 
-    def legend_not_trivial(self):
-        pass
+    def legend_non_trivial(self):
+        handles, labels = self.ax.get_legend_handles_labels()
+        non_trivial = (len(labels) > 1)
+        return non_trivial
 
 
     # Annotating different data zones

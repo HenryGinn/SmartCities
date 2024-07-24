@@ -136,5 +136,12 @@ class Series():
     def predict(self):
         self.modelled = np.zeros((self.length_forecast))
 
+    def no_nan(self, value_type, stage=None):
+        if stage is None:
+            stage = self.stage
+        values = self.time_series[f"{value_type}{stage}"]
+        values = values[~np.isnan(values)]
+        return values
+
         
 defaults.load(Series)

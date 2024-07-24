@@ -50,7 +50,9 @@ lstm.modelled = np.random.normal(size=lstm.length_forecast)*3
 lstm.extend_dataframe()
 lstm.postprocess()
 #lstm.output_results(stage="Original")
-lstm.plot_residuals(stage="Original")
+#lstm.plot_residuals(stage="Original")
+lstm.create_histogram(stage="Log", title="Residuals Distribution for Logged Data")
+lstm.create_histogram(stage="Original", title="Residuals Distribution for Original Data\nNo Correction Factor")
 
 """
 load = True

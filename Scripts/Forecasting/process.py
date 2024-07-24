@@ -89,27 +89,30 @@ class Process(Series):
         
     def unnormalise_modelled(self):
         self.modelled = self.transform_backward(self.modelled)
-        self.time_series["ModelledSeasonal"] = self.modelled.copy()
+        self.time_series["ModelledSeasons"] = self.modelled.copy()
+        self.set_residuals(stage="Seasons")
         
     def add_seasonal(self):
         if self.seasonal:
             self.add_monthly_averages_to_time_series()
             self.modelled += self.time_series["MonthlyAverage"].values
         self.time_series["ModelledLinear"] = self.modelled.copy()
+        self.set_residuals(stage="Linear")
 
     def add_trend(self):
         self.set_linear_approximation(self.modelled.size)
         self.modelled += self.time_series["Linear"].values
         self.time_series["ModelledLog"] = self.modelled.copy()
+        self.set_residuals(stage="Log")
 
     def postprocess_logs(self):
         if self.log:
             self.set_correction_faction()
             self.modelled = np.exp(self.modelled) * self.correction_factor
         self.time_series["ModelledOriginal"] = self.modelled.copy()
+        self.set_residuals(stage="Original")
 
     def set_correction_faction(self):
-        self.set_residuals(stage="Log")
         residuals = self.time_series["ResidualsLog"][
             ~np.isnan(self.time_series["ResidualsLog"])]
         self.correction_factor = np.mean(np.exp(residuals))
