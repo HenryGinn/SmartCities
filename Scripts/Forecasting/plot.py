@@ -131,6 +131,9 @@ class Plot(Series):
             self.ax.legend(loc=self.loc, fontsize=self.fontsize_legend,
                            bbox_to_anchor=self.legend_bbox_to_anchor)
 
+    def legend_not_trivial(self):
+        pass
+
 
     # Annotating different data zones
 
@@ -152,6 +155,7 @@ class Plot(Series):
         match self.plot_type:
             case "Data"     : data = self.get_plotted_values_data()
             case "Residuals": data = self.get_plotted_values_residuals()
+            case _          : data = None
         return data
 
     def get_plotted_values_data(self):

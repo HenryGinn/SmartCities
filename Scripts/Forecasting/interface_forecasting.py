@@ -46,11 +46,11 @@ lstm = LSTM(name="Linear", case=5, look_back=1)
 lstm.preprocess()
 lstm.set_inputs_and_labels()
 lstm.set_splits()
-lstm.modelled = np.random.normal(size=lstm.length_forecast)*10
+lstm.modelled = np.random.normal(size=lstm.length_forecast)*3
 lstm.extend_dataframe()
 lstm.postprocess()
-#lstm.output_results(stage="Log")
-lstm.plot_residuals()
+#lstm.output_results(stage="Original")
+lstm.plot_residuals(stage="Original")
 
 """
 load = True

@@ -13,7 +13,7 @@
 	"label_modelled": "Modelled",
 	"markersize": 3,
 	"dashes": [3, 3],
-	"plot_type": "Crime",
+	"plot_type": "Data",
 	"purple": "#6c17b9",
 	"blue": "#1db8f7",
 	"grey": "#6d6d6d",

@@ -82,15 +82,10 @@ class Process(Series):
 
     # Reversing transformations
     def postprocess(self):
-        self.correct_log_bias()
         self.unnormalise_modelled()
         self.add_seasonal()
         self.add_trend()
         self.postprocess_logs()
-
-    def correct_log_bias(self):
-        self.time_series["ModelledBias"] = self.modelled.copy()
-        self.time_series["ModelledNormalised"] = self.modelled.copy()
         
     def unnormalise_modelled(self):
         self.modelled = self.transform_backward(self.modelled)
@@ -109,8 +104,15 @@ class Process(Series):
 
     def postprocess_logs(self):
         if self.log:
-            self.modelled = np.exp(self.modelled)
+            self.set_correction_faction()
+            self.modelled = np.exp(self.modelled) * self.correction_factor
         self.time_series["ModelledOriginal"] = self.modelled.copy()
+
+    def set_correction_faction(self):
+        self.set_residuals(stage="Log")
+        residuals = self.time_series["ResidualsLog"][
+            ~np.isnan(self.time_series["ResidualsLog"])]
+        self.correction_factor = np.mean(np.exp(residuals))
 
 
     # Analysis
