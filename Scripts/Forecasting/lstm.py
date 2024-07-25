@@ -15,9 +15,9 @@ from keras.models import model_from_json
 from model import Model
 
 
-random.seed(6)
-np.random.seed(8)
-tf.random.set_seed(6)
+random.seed(9)
+np.random.seed(9)
+tf.random.set_seed(9)
 
 
 class LSTM(Model):

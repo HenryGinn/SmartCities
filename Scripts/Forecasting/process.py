@@ -113,8 +113,7 @@ class Process(Series):
         self.set_residuals(stage="Original")
 
     def set_correction_faction(self):
-        residuals = self.time_series["ResidualsLog"][
-            ~np.isnan(self.time_series["ResidualsLog"])]
+        residuals = self.no_nan("Residuals", stage="Log")
         self.correction_factor = np.mean(np.exp(residuals))
 
 

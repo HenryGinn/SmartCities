@@ -11,7 +11,6 @@ from series import Series
 
 
 plt.rcParams["font.family"] = "Times New Roman"
-#plt.rcParams["font.family"] = "Wensleydale"
 
 
 class Plot(Series):
