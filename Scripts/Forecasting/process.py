@@ -89,42 +89,44 @@ class Process(Series):
         
     def unnormalise_modelled(self):
         self.modelled = self.transform_backward(self.modelled)
-        self.time_series["ModelledSeasons"] = self.modelled.copy()
-        self.set_residuals(stage="Seasons")
+        self.add_modelled_to_time_series("Seasons")
         
     def add_seasonal(self):
         if self.seasonal:
             self.add_monthly_averages_to_time_series()
             self.modelled += self.time_series["MonthlyAverage"].values
-        self.time_series["ModelledLinear"] = self.modelled.copy()
-        self.set_residuals(stage="Linear")
+        self.add_modelled_to_time_series("Linear")
 
     def add_trend(self):
         self.set_linear_approximation(self.modelled.size)
         self.modelled += self.time_series["Linear"].values
-        self.time_series["ModelledLog"] = self.modelled.copy()
-        self.set_residuals(stage="Log")
+        self.add_modelled_to_time_series("Log")
 
     def postprocess_logs(self):
         if self.log:
             self.set_correction_faction()
             self.modelled = np.exp(self.modelled) * self.correction_factor
-        self.time_series["ModelledOriginal"] = self.modelled.copy()
-        self.set_residuals(stage="Original")
+        self.add_modelled_to_time_series("Original")
 
     def set_correction_faction(self):
         residuals = self.no_nan("Residuals", stage="Log")
         self.correction_factor = np.mean(np.exp(residuals))
 
+    def add_modelled_to_time_series(self, stage):
+        self.time_series[f"Modelled{stage}"] = self.modelled.copy()
+        self.set_residuals(stage=stage)
+
 
     # Analysis
-    def set_correlations(self):
-        self.acf = sm.tsa.acf(self.residuals, nlags=24)
-        self.pacf = sm.tsa.pacf(self.residuals, nlags=24)
-        self.set_confidence_intervals()
+    def set_correlations(self, **kwargs):
+        defaults.kwargs(self, kwargs)
+        residuals = self.no_nan("Residuals")
+        self.acf = sm.tsa.acf(residuals, nlags=24)
+        self.pacf = sm.tsa.pacf(residuals, nlags=24)
+        self.set_confidence_intervals(residuals)
 
-    def set_confidence_intervals(self):
-        const = -1/np.sqrt(self.residuals.size)
+    def set_confidence_intervals(self, residuals):
+        const = -1/np.sqrt(residuals.size)
         self.cf_confidence = -const**2 + 2*np.array([-const, const])
         self.cf_confidence = np.tile(self.cf_confidence, (2, 1))
     

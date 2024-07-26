@@ -97,16 +97,11 @@ class LSTM(Model):
         self.model.fit(self.inputs_train, self.labels_train, epochs=self.epochs,
                        batch_size=self.batch_size, verbose=self.verbose)
         import json
-        for layer in self.model.layers:
-            print(json.dumps(layer.get_config(), indent=2))
-            print(layer.get_weights())
-            print("")
 
     def predict(self):
         inputs = self.initialise_prediction()
         for index in range(self.length_forecast - self.look_back):
             inputs = self.predict_one_step(inputs, index)
-        self.postprocess()
 
     def initialise_prediction(self):
         inputs = self.inputs_train[0, :, :].reshape(1, 1, self.look_back)

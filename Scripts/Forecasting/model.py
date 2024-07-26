@@ -21,7 +21,8 @@ class Model(Plot, Process):
     
 
     # Correlograms
-    def create_correlograms(self):
+    def create_correlograms(self, **kwargs):
+        defaults.kwargs(self, kwargs)
         self.set_correlations()
         self.create_acf()
         self.create_pacf()
@@ -63,6 +64,18 @@ class Model(Plot, Process):
 
     def predict(self):
         self.modelled = np.zeros(self.length_forecast)
+
+    def post_predict(self):
+        self.extend_dataframe()
+        self.add_modelled_to_time_series("Normalised")
+
+    def print_time_series(self):
+        columns = self.time_series.columns.values
+        for column in columns:
+            print(column)
+            print(self.time_series[column].values)
+        print("")
+        print(columns)
 
 
 defaults.load(Model)
