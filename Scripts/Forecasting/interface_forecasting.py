@@ -20,6 +20,7 @@ model = "ARIMA"
 
 
 def run_default():
+    global default
     default = Model(case=case)
     default.preprocess()
     default.predict()
@@ -30,10 +31,11 @@ def run_default():
     default.create_correlograms()
 
 def run_arima():
+    global arima
     arima = ARIMA(case=case)
     arima.preprocess()
     arima.determine_hyperparameters()
-    arima.fit()
+    arima.fit("train")
     arima.save()
     #arima.load()
     arima.predict()
@@ -47,6 +49,7 @@ def run_arima():
     arima.create_histogram()
 
 def run_lstm():
+    global lstm
     lstm = LSTM(name="Linear", case=5, look_back=1)
 
     lstm.preprocess()
@@ -70,13 +73,12 @@ def run_lstm():
     else:
         lstm.modelled = np.zeros(lstm.length_forecast)
 
-    lstm.extend_dataframe()
     lstm.postprocess()
     lstm.output_results(stage="Normalised")
     lstm.output_results(title="Modelling Test Data with LSTM")
 
 
 match model:
-    case "Default": self.run_default()
-    case "ARIMA"  : self.run_arima()
-    case "LSTM"   : self.run_lstm()
+    case "Default": run_default()
+    case "ARIMA"  : run_arima()
+    case "LSTM"   : run_lstm()

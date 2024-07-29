@@ -24,7 +24,7 @@ class ARIMA(Model):
     def set_path_model_weights(self, fit_category):
         attribute = f"path_model_arima_{fit_category}"
         name = f"ARIMA_{fit_category}.pkl"
-        setattr(self, attribute = join(self.path_model, name))
+        setattr(self, attribute, join(self.path_model, name))
 
     def plot_linear_approximation(self, **kwargs):
         self.title = self.title_linear_approximation
@@ -35,7 +35,7 @@ class ARIMA(Model):
         self.plot_peripherals_base()
 
     def determine_hyperparameters(self, **kwargs):
-        self.hyperparameter_obj = auto_arima(self.data)
+        self.hyperparameter_obj = auto_arima(self.data[self.i(stop="test")])
         self.order = self.hyperparameter_obj.order
         self.seasonal_order = self.hyperparameter_obj.seasonal_order
         self.order = (4, 3, 4)
@@ -53,8 +53,8 @@ class ARIMA(Model):
         with open(path, "wb") as file:
             pickle.dump(self.forecaster, file)
 
-    def fit(self):
-        fitting_data = self.get_fitting_data("data")
+    def fit(self, stop):
+        fitting_data = self.data[self.i("start", stop)]
         self.forecaster = Arima(fitting_data, order=self.order,
                                 seasonal_order=self.seasonal_order)
         self.forecaster = self.forecaster.fit()
@@ -65,16 +65,12 @@ class ARIMA(Model):
             case "validate": self.predict_validate()
             case "test"    : self.predict_test()
 
-    def predict_train()
+    def predict_train(self):
         start = self.order[2]
         self.modelled = np.zeros(self.length_forecast)
         self.modelled[:start] = self.data[:start]
         self.modelled[start:] = self.forecaster.predict(
                 start=start, end=self.length_forecast-1)
-
-    def plot_peripherals_residuals_comparison(self):
-        self.plot_peripherals(title="Comparing Residuals",
-                              plot_type="Crime")
 
 
 defaults.load(ARIMA)

@@ -25,25 +25,26 @@ class Process(Series):
     def preprocess_logs(self):
         self.data[self.data == 0] += 1
         self.data = np.log(self.data)
-        self.time_series["DataLog"] = self.data.copy()
+        self.add_column(self.data, "DataLog")
 
     def subtract_trend(self):
         (self.slope, self.intercept, self.r_value, self.p_value,
-         self.standard_error) = linregress(np.arange(self.length), self.data)
-        self.set_linear_approximation(self.length)
+         self.standard_error) = linregress(np.arange(self.index_test),
+                                           self.data[self.i(stop="test")])
+        self.set_linear_approximation()
         self.data = self.data - self.time_series["Linear"].values
-        self.time_series["DataLinear"] = self.data.copy()
+        self.add_column(self.data, "DataLinear")
 
-    def set_linear_approximation(self, length):
+    def set_linear_approximation(self):
         self.time_series.loc[:, "Linear"] = (
-            np.arange(length)*self.slope + self.intercept)
+            np.arange(self.index_forecast)*self.slope + self.intercept)
 
     def subtract_seasonal(self):
         if self.seasonal:
             self.set_monthly_averages()
             self.add_monthly_averages_to_time_series()
             self.data -= self.time_series["MonthlyAverage"].values
-            self.time_series["DataSeasons"] = self.data.copy()
+            self.add_column(self.data, "DataSeasons")
 
     def set_monthly_averages(self):
         self.monthly_averages = (
@@ -51,17 +52,18 @@ class Process(Series):
             self.time_series.index.month).mean())
 
     def add_monthly_averages_to_time_series(self):
-        self.time_series.loc[:, "MonthlyAverage"] = (
+        monthly_averages = (
             self.time_series.index.month.map(
-            self.monthly_averages))
+            self.monthly_averages)).values
+        self.add_column(monthly_averages, "MonthlyAverage")
 
     def normalise_data(self):
         self.data, self.transform_data = (
             self.transform_forward(self.data))
-        self.time_series["DataNormalised"] = self.data.copy()
+        self.add_column(self.data, "DataNormalised")
 
     def transform_forward(self, data):
-        mean, std = np.mean(data[:]), np.std(data[:])
+        mean, std = np.mean(self.np_nan(data)), np.std(self.np_nan(data[:]))
         transformed = (data - mean) / std 
         return transformed, (mean, std)
 
@@ -104,7 +106,7 @@ class Process(Series):
         self.correction_factor = np.mean(np.exp(residuals))
 
     def add_modelled_to_time_series(self, stage):
-        self.time_series[f"Modelled{stage}"] = self.modelled.copy()
+        self.add_column(self.modelled, f"Modelled{stage}")
         self.set_residuals(stage=stage)
 
 

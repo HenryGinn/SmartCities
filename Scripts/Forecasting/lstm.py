@@ -4,7 +4,7 @@ from random import seed as random_seed
 from hgutilities import defaults
 import matplotlib.pyplot as plt
 import numpy as np
-from tensorflow import tf.random.set_seed as tf_seed
+from tensorflow.random import set_seed as tf_seed
 from keras.models import Sequential
 from keras.layers import LSTM as LSTM_Layer
 from keras.layers import Dense as Dense
