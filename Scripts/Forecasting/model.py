@@ -9,6 +9,8 @@ from process import Process
 
 class Model(Plot, Process):
 
+    model_type = "Curve Fitting"
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.set_model_paths()
@@ -18,6 +20,9 @@ class Model(Plot, Process):
             self.path_output_base, "Models", f"Case_{self.case}")
         utils.make_folder(self.path_model)
         self.set_model_files_paths()
+
+    def set_model_files_paths(self):
+        pass
     
 
     # Correlograms
@@ -28,12 +33,10 @@ class Model(Plot, Process):
         self.create_pacf()
 
     def create_acf(self, **kwargs):
-        self.title = f"Autocorrelation Function for Case {self.case}"
         defaults.kwargs(self, kwargs)
         self.create_cf(self.acf, "ACF")
 
     def create_pacf(self, **kwargs):
-        self.title = f"Partial Autocorrelation Function for Case {self.case}"
         defaults.kwargs(self, kwargs)
         self.create_cf(self.pacf, "PACF")
 
@@ -72,10 +75,8 @@ class Model(Plot, Process):
     def print_time_series(self):
         columns = self.time_series.columns.values
         for column in columns:
-            print(column)
-            print(self.time_series[column].values)
-        print("")
-        print(columns)
+            print(f"{column}\n{self.time_series[column].values}")
+        print(f"\n{columns}")
 
 
 defaults.load(Model)

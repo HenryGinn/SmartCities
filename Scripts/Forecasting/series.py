@@ -2,8 +2,8 @@
 Anything data before modelling is referred to as 'data'
 Anything data after modelling is referred to as 'modelled'
 All intermediate steps are stored in the time_series dataframe
-In the dataframe all data will be labelled as 'Residuals{Label}'
-or 'Modelled{Label}'
+In the dataframe all data will be labelled as 'Data{Label}',
+'Modelled{Label}', or 'Residuals{Label}'.
 """
 
 
@@ -58,7 +58,7 @@ class Series():
 
     def extract_from_line(self, file):
         metadata = file.readline().strip("\n").split(",")[1]
-
+        return metadata
 
     # Processing time series data
     def extend_dataframe(self):
@@ -132,6 +132,29 @@ class Series():
         else:
             return slice(base_slice.start - self.look_back + 1,
                          base_slice.stop - self.look_back + 1)
+
+    def get_fitting_data(self, attribute):
+        match self.fit_category:
+            case "train"   : return self.get_fitting_data_train(attribute)
+            case "validate": return self.get_fitting_data_validate(attribute)
+            case "test"    : return self.get_fitting_data_test(attribute)
+
+    def get_fitting_data_train(self, attribute):
+        fitting_data = getattr(self, f"{attribute}_train")
+        return fitting_data
+
+    def get_fitting_data_validate(self, attribute):
+        fitting_data = np.concatenate((
+            getattr(self, f"{attribute}_train"),
+            getattr(self, f"{attribute}_validate")))
+        return fitting_data
+
+    def get_fitting_data_test(self, attribute):
+        fitting_data = np.concatenate((
+            getattr(self, f"{attribute}_train"),
+            getattr(self, f"{attribute}_validate"),
+            getattr(self, f"{attribute}_test")))
+        return fitting_data
 
     def predict(self):
         self.modelled = np.zeros((self.length_forecast))

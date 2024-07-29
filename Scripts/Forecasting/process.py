@@ -23,18 +23,9 @@ class Process(Series):
         self.normalise_data()
 
     def preprocess_logs(self):
-        if self.log:
-            self.preprocess_logs_true()
-        else:
-            self.preprocess_logs_false()
-        self.time_series["DataLog"] = self.data.copy()
-
-    def preprocess_logs_true(self):
+        self.data[self.data == 0] += 1
         self.data = np.log(self.data)
-        self.y_label_processed = "Log(Crimes per Person per 100,000 People)"
-
-    def preprocess_logs_false(self):
-        self.y_label_processed = "Crimes per 100,000 People"
+        self.time_series["DataLog"] = self.data.copy()
 
     def subtract_trend(self):
         (self.slope, self.intercept, self.r_value, self.p_value,

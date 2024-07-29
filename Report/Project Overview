@@ -13,6 +13,9 @@ If I have more time:
 - Test for non-stationary variance and explore GARCH models
 - Do annoying formatting for two columns
 
+To do list:
+- Implement moving averages as a processing step for LSTM
+- Change prediction scheme to make one day predictions based on true values
 
 OLD PLAN
 

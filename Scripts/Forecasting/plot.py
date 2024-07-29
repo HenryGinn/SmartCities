@@ -8,6 +8,7 @@ from hgutilities import defaults, utils
 import matplotlib.pyplot as plt
 
 from series import Series
+from utils import add_line_breaks
 
 
 plt.rcParams["font.family"] = "Times New Roman"
@@ -27,6 +28,7 @@ class Plot(Series):
         self.create_figure()
         
     def output_results(self, **kwargs):
+        self.plot_type = "Data"
         defaults.kwargs(self, kwargs)
         self.extend_dataframe()
         self.create_figure()
@@ -155,8 +157,10 @@ class Plot(Series):
         self.ax.yaxis.set_tick_params(labelsize=self.fontsize_ticks)
 
     def set_title(self):
+        self.generate_title()
         self.ax.set_title(self.title, pad=self.title_pad,
                           fontsize=self.fontsize_title)
+        self.title = None
 
     def add_legend(self):
         if self.legend_non_trivial():
@@ -167,6 +171,12 @@ class Plot(Series):
         handles, labels = self.ax.get_legend_handles_labels()
         non_trivial = (len(labels) > 1)
         return non_trivial
+
+    def generate_title(self):
+        if self.title is None:
+            self.title = add_line_breaks(
+                f"{self.plot_type} for {self.major} in {self.lsoa}, "
+                f"{self.borough} Using {self.model_type}", length=50)
 
 
     # Annotating different data zones
@@ -230,7 +240,9 @@ class Plot(Series):
             self.add_interval_label_to_plot(
                 "Forecast", self.length, self.length_forecast-1)
 
+
     # Output
+    
     def output_figure(self):
         self.set_figure_name()
         match self.output:

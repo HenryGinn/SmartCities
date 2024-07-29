@@ -1,11 +1,10 @@
 from os.path import join, dirname
-import random
+from random import seed as random_seed
 
-from sklearn.preprocessing import MinMaxScaler
-from hgutilities import defaults, utils
+from hgutilities import defaults
 import matplotlib.pyplot as plt
 import numpy as np
-import tensorflow as tf
+from tensorflow import tf.random.set_seed as tf_seed
 from keras.models import Sequential
 from keras.layers import LSTM as LSTM_Layer
 from keras.layers import Dense as Dense
@@ -15,12 +14,14 @@ from keras.models import model_from_json
 from model import Model
 
 
-random.seed(9)
+random_seed(9)
+tf_seed(9)
 np.random.seed(9)
-tf.random.set_seed(9)
 
 
 class LSTM(Model):
+
+    model_type = "LSTM"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -29,8 +30,18 @@ class LSTM(Model):
     def set_model_files_paths(self):
         self.path_model_config = join(
             self.path_model, "LSTM Config.json")
-        self.path_model_weights = join(
-            self.path_model, f"Case_{self.case}.weights.h5")
+        self.set_path_model_weights_all()
+
+    def set_path_model_weights_all(self):
+        self.set_path_model_weights("train")
+        self.set_path_model_weights("validate")
+        self.set_path_model_weights("test")
+
+    def set_path_model_weights(self, fit_category):
+        name = f"Case_{self.case}_{fit_category}.weights.h5"
+        attribute = f"path_model_weights_{fit_category}"
+        setattr(self, attribute, join(self.path_model, name))
+        
 
     def set_inputs_and_labels(self):
         self.labels = self.data[self.look_back :]
@@ -52,7 +63,12 @@ class LSTM(Model):
         self.set_split_points()
         self.set_iterable_splits("labels", look_back=True)
         self.set_iterable_splits("inputs", look_back=True)
-        self.inputs_train = self.reshape_training_data(self.inputs_train)
+        self.reshape_inputs()
+
+    def reshape_inputs(self):
+        self.inputs_train    = self.reshape_training_data(self.inputs_train)
+        self.inputs_validate = self.reshape_training_data(self.inputs_validate)
+        self.inputs_test     = self.reshape_training_data(self.inputs_test)
 
     def reshape_training_data(self, iterable):
         x, y = iterable.shape
@@ -76,7 +92,8 @@ class LSTM(Model):
         self.model = model_from_json(file_contents)
 
     def load_weights(self):
-        self.model.load_weights(self.path_model_weights)
+        path = getattr(self, f"path_model_weights_{self.fit_category}")
+        self.model.load_weights(path)
 
     def save(self):
         self.save_model()
@@ -86,17 +103,17 @@ class LSTM(Model):
         file_contents = self.model.to_json(indent=4)
         with open(self.path_model_config, "w+") as file:
             file.write(file_contents)
-            
 
     def save_weights(self):
-        self.model.save_weights(self.path_model_weights)
+        path = getattr(self, f"path_model_weights_{self.fit_category}")
+        self.model.save_weights(path)
 
     def fit(self, **kwargs):
         defaults.kwargs(self, kwargs)
-        self.model_fitted = True
-        self.model.fit(self.inputs_train, self.labels_train, epochs=self.epochs,
+        inputs = self.get_fitting_data("inputs")
+        labels = self.get_fitting_data("labels")
+        self.model.fit(inputs, labels, epochs=self.epochs,
                        batch_size=self.batch_size, verbose=self.verbose)
-        import json
 
     def predict(self):
         inputs = self.initialise_prediction()

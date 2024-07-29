@@ -11,12 +11,20 @@ from model import Model
 
 class ARIMA(Model):
 
+    model_type = "ARIMA"
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
     def set_model_files_paths(self):
-        self.path_model_arima = join(
-            self.path_model, f"ARIMA.pkl")
+        self.set_path_model_weights("train")
+        self.set_path_model_weights("validate")
+        self.set_path_model_weights("test")
+
+    def set_path_model_weights(self, fit_category):
+        attribute = f"path_model_arima_{fit_category}"
+        name = f"ARIMA_{fit_category}.pkl"
+        setattr(self, attribute = join(self.path_model, name))
 
     def plot_linear_approximation(self, **kwargs):
         self.title = self.title_linear_approximation
@@ -27,27 +35,37 @@ class ARIMA(Model):
         self.plot_peripherals_base()
 
     def determine_hyperparameters(self, **kwargs):
-        hyperparameter_obj = auto_arima(self.data)
-        self.order = hyperparameter_obj.order
-        self.seasonal_order = hyperparameter_obj.seasonal_order
+        self.hyperparameter_obj = auto_arima(self.data)
+        self.order = self.hyperparameter_obj.order
+        self.seasonal_order = self.hyperparameter_obj.seasonal_order
+        self.order = (4, 3, 4)
+        self.seasonal_order = (2, 0, 0, 12)
 
     def load(self):
-        with open(self.path_model_arima, "rb") as file:
+        path = getattr(self, f"path_model_arima_{self.fit_category}")
+        with open(path, "rb") as file:
             self.forecaster = pickle.load(file)
         self.order = self.forecaster.specification["order"]
         self.seasonal_order = self.forecaster.specification["seasonal_order"]
 
     def save(self):
-        with open(self.path_model_arima, "wb") as file:
+        path = getattr(self, f"path_model_arima_{self.fit_category}")
+        with open(path, "wb") as file:
             pickle.dump(self.forecaster, file)
 
     def fit(self):
-        self.forecaster = Arima(self.data,
-                                order=self.order,
+        fitting_data = self.get_fitting_data("data")
+        self.forecaster = Arima(fitting_data, order=self.order,
                                 seasonal_order=self.seasonal_order)
         self.forecaster = self.forecaster.fit()
 
     def predict(self):
+        match self.fit_category:
+            case "train"   : self.predict_train()
+            case "validate": self.predict_validate()
+            case "test"    : self.predict_test()
+
+    def predict_train()
         start = self.order[2]
         self.modelled = np.zeros(self.length_forecast)
         self.modelled[:start] = self.data[:start]
