@@ -27,6 +27,7 @@ class Series():
         defaults.kwargs(self, kwargs)
         self.load_time_series()
         self.set_split_indices()
+        self.set_fit_category(self.fit_category)
         self.extend_dataframe()
 
     # Loading time series data
@@ -132,6 +133,18 @@ class Series():
     def np_nan(self, values):
         values = values[~np.isnan(values)]
         return values
+
+    def set_fit_category(self, fit_category):
+        self.fit_category = fit_category
+        self.set_forecast_category()
+        self.slice = self.i("start", self.fit_category)
+        self.slice_plot = self.i("start", self.forecast_category)
+
+    def set_forecast_category(self):
+        match self.fit_category:
+            case "train"   : self.forecast_category = "validate"
+            case "validate": self.forecast_category = "test"
+            case "test"    : self.forecast_category = "forecast"
 
         
 defaults.load(Series)

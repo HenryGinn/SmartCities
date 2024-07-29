@@ -16,7 +16,7 @@ plt.close("all")
 case = 1
 model = "Default"
 model = "ARIMA"
-model = "LSTM"
+#model = "LSTM"
 
 
 def run_default():
@@ -49,7 +49,7 @@ def run_arima():
 
 def run_lstm():
     global lstm
-    lstm = LSTM(name="Linear", case=5, look_back=1)
+    lstm = LSTM(name="Linear", case=case, look_back=1)
     lstm.preprocess()
     lstm.set_inputs_and_labels()
     model = True

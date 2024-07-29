@@ -36,7 +36,7 @@ class LSTM(Model):
         self.set_path_model_weights("train")
         self.set_path_model_weights("validate")
         self.set_path_model_weights("test")
-
+    
     def set_path_model_weights(self, fit_category):
         name = f"Case_{self.case}_{fit_category}.weights.h5"
         attribute = f"path_model_weights_{fit_category}"
@@ -85,7 +85,6 @@ class LSTM(Model):
         self.model.load_weights(path)
 
     def save(self):
-        print("Lol")
         self.save_model()
         self.save_weights()
 
@@ -100,9 +99,8 @@ class LSTM(Model):
 
     def fit(self, **kwargs):
         defaults.kwargs(self, kwargs)
-        i = self.i(stop=self.fit_category)
-        self.model.fit(self.inputs[i], self.labels[i], epochs=self.epochs,
-                       batch_size=self.batch_size, verbose=self.verbose)
+        self.model.fit(self.inputs[self.slice], self.labels[self.slice],
+                       epochs=self.epochs, verbose=self.verbose)
 
     def predict_train(self):
         inputs = self.initialise_prediction()

@@ -19,6 +19,7 @@ class Plot(Series):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
+
     # Plot creation commands
     
     def update_figure(self, **kwargs):
@@ -46,7 +47,7 @@ class Plot(Series):
     def create_plot(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.set_purpose_indicator()
-        self.add_interval_annotations_to_plot()
+        self.add_interval_annotations()
         self.add_lines_to_plot()
         self.plot_peripherals()
 
@@ -72,8 +73,8 @@ class Plot(Series):
 
     def add_residuals_results_to_plot(self):
         self.add_residuals_to_plot()
-        zeros = np.zeros(self.length)
-        zeros[self.length:self.length] = np.nan
+        zeros = np.zeros(self.length) * np.nan
+        zeros[self.i(stop=self.fit_category)] = 0
         self.plot_array(zeros, label=None, color=self.blue)
 
     def set_purpose_indicator(self):
@@ -85,17 +86,17 @@ class Plot(Series):
         self.time_series["Purpose"] = purpose_indicator
 
     def add_original_to_plot(self):
-        self.ax.plot(self.time_series[f"Data{self.stage}"],
+        self.ax.plot(self.time_series[f"Data{self.stage}"][self.slice_plot],
                      label=self.label_original,
                      color=self.purple)
     
     def add_modelled_to_plot(self):
-        self.ax.plot(self.time_series[f"Modelled{self.stage}"],
+        self.ax.plot(self.time_series[f"Modelled{self.stage}"][self.slice_plot],
                      label=self.label_modelled,
                      color=self.blue)
 
     def add_residuals_to_plot(self):
-        self.ax.plot(self.time_series[f"Residuals{self.stage}"],
+        self.ax.plot(self.time_series[f"Residuals{self.stage}"][self.slice],
                      label=self.label_original,
                      color=self.purple)
 
@@ -106,8 +107,9 @@ class Plot(Series):
         
     def plot_histogram(self, **kwargs):
         defaults.kwargs(self, kwargs)
-        self.histogram = self.ax.hist(self.no_nan("Residuals"), bins=self.bins,
-                                      color=self.purple, density=True)
+        self.histogram = self.ax.hist(
+            self.no_nan("Residuals")[self.slice], bins=self.bins,
+            color=self.purple, density=True)
         self.plot_peripherals(plot_type="Histogram")
 
     def plot_histogram_features(self):
@@ -121,7 +123,7 @@ class Plot(Series):
         self.ax.plot(*values, linewidth=2, color=self.blue, dashes=self.dashes)
 
     def plot_histogram_normal(self):
-        mean, std_dev = norm.fit(self.no_nan("Residuals"))
+        mean, std_dev = norm.fit(self.no_nan("Residuals")[self.slice])
         x_values = np.linspace(*plt.xlim(), 100)
         y_values = norm.pdf(x_values, mean, std_dev)
         self.ax.plot(x_values, y_values, color=self.blue)
@@ -180,11 +182,11 @@ class Plot(Series):
 
     # Annotating different data zones
 
-    def add_interval_annotations_to_plot(self):
+    def add_interval_annotations(self):
         self.extend_axes()
         self.text_height = self.values_max + 0.05*self.values_range
-        self.add_interval_lines_to_plot()
-        self.add_interval_labels_to_plot()
+        annotation_type = self.get_annotation_type()
+        self.add_interval_annotations_to_plot(annotation_type)
 
     def extend_axes(self):
         values = self.get_plotted_values()
@@ -210,10 +212,43 @@ class Plot(Series):
         data = self.time_series[f"Residuals{self.stage}"].values
         return data
 
-    def add_interval_lines_to_plot(self):
+    def get_annotation_type(self):
+        match self.plot_type:
+            case "Data"     : return self.forecast_category
+            case _          : return None
+
+    def add_interval_annotations_to_plot(self, annotation_type):
+        match annotation_type:
+            case "train"   : self.add_interval_annotations_to_plot_train()
+            case "validate": self.add_interval_annotations_to_plot_validate()
+            case "test"    : self.add_interval_annotations_to_plot_test()
+            case "forecast": self.add_interval_annotations_to_plot_forecast()
+            case _         : pass
+
+    def add_interval_annotations_to_plot_train(self):
+        self.add_interval_label_to_plot(
+            "Train", self.index_start, self.index_train)
+
+    def add_interval_annotations_to_plot_validate(self):
         self.add_interval_line_to_plot(self.index_train)
+        self.add_interval_label_to_plot(
+            "Train", self.index_start, self.index_train)
+        self.add_interval_label_to_plot(
+            "Validation", self.index_train, self.index_validate)
+
+    def add_interval_annotations_to_plot_test(self):
         self.add_interval_line_to_plot(self.index_validate)
+        self.add_interval_label_to_plot(
+            "Train", self.index_start, self.index_validate)
+        self.add_interval_label_to_plot(
+            "Test", self.index_validate, self.index_test)
+
+    def add_interval_annotations_to_plot_forecast(self):
         self.add_interval_line_to_plot(self.index_test)
+        self.add_interval_label_to_plot(
+            "Train", self.index_start, self.index_test)
+        self.add_interval_label_to_plot(
+            "Forecast", self.index_test, self.index_forecast)
 
     def add_interval_line_to_plot(self, index):
         indices = np.array([self.time_series.index[index] for i in range(25)])
@@ -221,23 +256,12 @@ class Plot(Series):
         self.ax.plot(indices, points, color=self.grey,
                 dashes=self.dashes, markersize=self.markersize)
 
-    def add_interval_labels_to_plot(self):
-        self.add_interval_label_to_plot("Training", 0, self.index_train)
-        self.add_interval_label_to_plot("Validation", self.index_train, self.index_validate)
-        self.add_interval_label_to_plot("Testing", self.index_validate, self.index_test)
-        self.add_interval_labels_to_plot_forecast()
-
     def add_interval_label_to_plot(self, label, start, end):
         time_start = self.time_series.index[start]
         time_end = self.time_series.index[end]
         time = time_start + (time_end - time_start) / 2
         self.ax.text(time, self.text_height, label, ha="center",
                      fontsize=self.fontsize_interval_label)
-
-    def add_interval_labels_to_plot_forecast(self):
-        if self.plot_type == "Data":
-            self.add_interval_label_to_plot(
-                "Forecast", self.index_test, self.index_forecast)
 
 
     # Output
@@ -267,5 +291,6 @@ class Plot(Series):
         self.path_output = join(self.path_output_forecast,
                                 f"{self.figure_name}.{self.format}")
         utils.make_folder(dirname(self.path_output))
+
 
 defaults.load(Plot)

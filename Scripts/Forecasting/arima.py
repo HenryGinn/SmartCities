@@ -42,7 +42,7 @@ class ARIMA(Model):
         self.seasonal_order = (2, 0, 0, 12)
 
     def fit(self):
-        fitting_data = self.data[self.i("start", self.fit_category)]
+        fitting_data = self.data[self.slice]
         self.forecaster = Arima(fitting_data, order=self.order,
                                 seasonal_order=self.seasonal_order)
         self.forecaster = self.forecaster.fit()
