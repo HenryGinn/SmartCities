@@ -66,10 +66,10 @@ class Model(Plot, Process):
         self.time_series[f"Residuals{self.stage}"] = self.residuals.copy()
 
     def predict(self):
-        self.modelled = np.zeros(self.length_forecast)
-
-    def post_predict(self):
-        self.extend_dataframe()
+        match self.fit_category:
+            case "train"   : self.predict_train()
+            case "validate": self.predict_validate()
+            case "test"    : self.predict_test()
         self.add_modelled_to_time_series("Normalised")
 
     def print_time_series(self):

@@ -41,6 +41,12 @@ class ARIMA(Model):
         self.order = (4, 3, 4)
         self.seasonal_order = (2, 0, 0, 12)
 
+    def fit(self):
+        fitting_data = self.data[self.i("start", self.fit_category)]
+        self.forecaster = Arima(fitting_data, order=self.order,
+                                seasonal_order=self.seasonal_order)
+        self.forecaster = self.forecaster.fit()
+
     def load(self):
         path = getattr(self, f"path_model_arima_{self.fit_category}")
         with open(path, "rb") as file:
@@ -53,24 +59,12 @@ class ARIMA(Model):
         with open(path, "wb") as file:
             pickle.dump(self.forecaster, file)
 
-    def fit(self, stop):
-        fitting_data = self.data[self.i("start", stop)]
-        self.forecaster = Arima(fitting_data, order=self.order,
-                                seasonal_order=self.seasonal_order)
-        self.forecaster = self.forecaster.fit()
-
-    def predict(self):
-        match self.fit_category:
-            case "train"   : self.predict_train()
-            case "validate": self.predict_validate()
-            case "test"    : self.predict_test()
-
     def predict_train(self):
         start = self.order[2]
-        self.modelled = np.zeros(self.length_forecast)
+        self.modelled = np.zeros(self.length)
         self.modelled[:start] = self.data[:start]
         self.modelled[start:] = self.forecaster.predict(
-                start=start, end=self.length_forecast-1)
+                start=start, end=self.index_forecast)
 
 
 defaults.load(ARIMA)

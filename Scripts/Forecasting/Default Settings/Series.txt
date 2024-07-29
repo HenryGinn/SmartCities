@@ -3,5 +3,7 @@
 	"train": 0.6,
 	"validate": 0.2,
 	"forecast": 0.2,
-	"stage": "Original"
+	"stage": "Original",
+	"look_back": 1,
+	"fit_category": "train"
 }

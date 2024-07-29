@@ -16,7 +16,7 @@ plt.close("all")
 case = 1
 model = "Default"
 model = "ARIMA"
-#model = "LSTM"
+model = "LSTM"
 
 
 def run_default():
@@ -35,11 +35,10 @@ def run_arima():
     arima = ARIMA(case=case)
     arima.preprocess()
     arima.determine_hyperparameters()
-    arima.fit("train")
-    arima.save()
-    #arima.load()
+    #arima.fit()
+    #arima.save()
+    arima.load()
     arima.predict()
-    arima.post_predict()
     arima.postprocess()
     #arima.create_correlograms()
     #arima.compare_residuals()
@@ -51,23 +50,18 @@ def run_arima():
 def run_lstm():
     global lstm
     lstm = LSTM(name="Linear", case=5, look_back=1)
-
     lstm.preprocess()
     lstm.set_inputs_and_labels()
-    lstm.set_splits()
-
     model = True
     #model = False
-
     if model:
         load = True
-        load = False
-
+        #load = False
         if load:
             lstm.load()
         else:
             lstm.create_model()
-            lstm.fit("train", epochs=100, verbose=2)
+            lstm.fit(epochs=1, verbose=2)
             lstm.save()
         lstm.predict()
     else:

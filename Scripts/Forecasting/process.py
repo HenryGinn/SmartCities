@@ -37,7 +37,7 @@ class Process(Series):
 
     def set_linear_approximation(self):
         self.time_series.loc[:, "Linear"] = (
-            np.arange(self.index_forecast)*self.slope + self.intercept)
+            np.arange(self.length)*self.slope + self.intercept)
 
     def subtract_seasonal(self):
         if self.seasonal:
@@ -91,7 +91,6 @@ class Process(Series):
         self.add_modelled_to_time_series("Linear")
 
     def add_trend(self):
-        self.set_linear_approximation(self.modelled.size)
         self.modelled += self.time_series["Linear"].values
         self.add_modelled_to_time_series("Log")
 

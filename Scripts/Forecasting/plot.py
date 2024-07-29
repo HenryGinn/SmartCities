@@ -30,7 +30,6 @@ class Plot(Series):
     def output_results(self, **kwargs):
         self.plot_type = "Data"
         defaults.kwargs(self, kwargs)
-        self.extend_dataframe()
         self.create_figure()
 
     def create_figure(self, **kwargs):
@@ -73,16 +72,16 @@ class Plot(Series):
 
     def add_residuals_results_to_plot(self):
         self.add_residuals_to_plot()
-        zeros = np.zeros(self.length_forecast)
-        zeros[self.length:self.length_forecast] = np.nan
+        zeros = np.zeros(self.length)
+        zeros[self.length:self.length] = np.nan
         self.plot_array(zeros, label=None, color=self.blue)
 
     def set_purpose_indicator(self):
-        purpose_indicator = np.array(["ABCDEFGH"] * self.length_forecast)
-        purpose_indicator[self.slice_train]    = "Train"
-        purpose_indicator[self.slice_validate] = "Validate"
-        purpose_indicator[self.slice_test]     = "Test"
-        purpose_indicator[self.slice_forecast] = "Forecast"
+        purpose_indicator = np.array(["ABCDEFGH"] * self.length)
+        purpose_indicator[self.index_start:self.index_train]    = "Train"
+        purpose_indicator[self.index_train:self.index_validate] = "Validate"
+        purpose_indicator[self.index_validate:self.index_test]  = "Test"
+        purpose_indicator[self.index_test:self.index_forecast]  = "Forecast"
         self.time_series["Purpose"] = purpose_indicator
 
     def add_original_to_plot(self):
@@ -214,7 +213,7 @@ class Plot(Series):
     def add_interval_lines_to_plot(self):
         self.add_interval_line_to_plot(self.index_train)
         self.add_interval_line_to_plot(self.index_validate)
-        self.add_interval_line_to_plot(self.length)
+        self.add_interval_line_to_plot(self.index_test)
 
     def add_interval_line_to_plot(self, index):
         indices = np.array([self.time_series.index[index] for i in range(25)])
@@ -225,7 +224,7 @@ class Plot(Series):
     def add_interval_labels_to_plot(self):
         self.add_interval_label_to_plot("Training", 0, self.index_train)
         self.add_interval_label_to_plot("Validation", self.index_train, self.index_validate)
-        self.add_interval_label_to_plot("Testing", self.index_validate, self.length)
+        self.add_interval_label_to_plot("Testing", self.index_validate, self.index_test)
         self.add_interval_labels_to_plot_forecast()
 
     def add_interval_label_to_plot(self, label, start, end):
@@ -238,7 +237,7 @@ class Plot(Series):
     def add_interval_labels_to_plot_forecast(self):
         if self.plot_type == "Data":
             self.add_interval_label_to_plot(
-                "Forecast", self.length, self.length_forecast-1)
+                "Forecast", self.index_test, self.index_forecast)
 
 
     # Output

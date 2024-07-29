@@ -52,23 +52,12 @@ class LSTM(Model):
             (self.length - self.look_back + 1, self.look_back))
         for look_back in range(self.look_back):
             self.add_to_look_backed(look_backed, look_back)
-        self.inputs = look_backed
+        self.inputs = self.reshape_training_data(look_backed)
 
     def add_to_look_backed(self, look_backed, look_back):
         start = look_back
         end = self.length + look_back - self.look_back + 1
         look_backed[:, look_back] = self.data[start : end].reshape(-1)
-
-    def set_splits(self):
-        self.set_split_points()
-        self.set_iterable_splits("labels", look_back=True)
-        self.set_iterable_splits("inputs", look_back=True)
-        self.reshape_inputs()
-
-    def reshape_inputs(self):
-        self.inputs_train    = self.reshape_training_data(self.inputs_train)
-        self.inputs_validate = self.reshape_training_data(self.inputs_validate)
-        self.inputs_test     = self.reshape_training_data(self.inputs_test)
 
     def reshape_training_data(self, iterable):
         x, y = iterable.shape
@@ -96,6 +85,7 @@ class LSTM(Model):
         self.model.load_weights(path)
 
     def save(self):
+        print("Lol")
         self.save_model()
         self.save_weights()
 
@@ -110,19 +100,18 @@ class LSTM(Model):
 
     def fit(self, **kwargs):
         defaults.kwargs(self, kwargs)
-        inputs = self.get_fitting_data("inputs")
-        labels = self.get_fitting_data("labels")
-        self.model.fit(inputs, labels, epochs=self.epochs,
+        i = self.i(stop=self.fit_category)
+        self.model.fit(self.inputs[i], self.labels[i], epochs=self.epochs,
                        batch_size=self.batch_size, verbose=self.verbose)
 
-    def predict(self):
+    def predict_train(self):
         inputs = self.initialise_prediction()
-        for index in range(self.length_forecast - self.look_back):
+        for index in range(self.length - self.look_back):
             inputs = self.predict_one_step(inputs, index)
 
     def initialise_prediction(self):
-        inputs = self.inputs_train[0, :, :].reshape(1, 1, self.look_back)
-        self.modelled = np.zeros(self.length_forecast)
+        inputs = self.inputs[0, :, :].reshape(1, 1, self.look_back)
+        self.modelled = np.zeros(self.length)
         self.modelled[:self.look_back] = inputs.reshape(-1)
         return inputs
 

@@ -67,8 +67,9 @@ class Series():
         self.index_start    = 0
         self.index_train    = int(length * self.train)
         self.index_validate = int(length * self.validate) + self.index_train
-        self.index_test     = length
+        self.index_test     = length - 1
         self.index_forecast = int(length * self.forecast) + self.index_test
+        self.length = self.index_forecast + 1
 
     def i(self, start="start", stop="forecast", look_back=False):
         start_index = self.get_start_index(start, look_back)
@@ -100,13 +101,13 @@ class Series():
 
     def get_forecast_dates(self):
         original_end = self.time_series.index[len(self.time_series) - 1]
-        additional_periods = self.index_forecast - self.index_test + 1
+        additional_periods = self.length - self.index_test
         forecast_dates = pd.date_range(start=original_end, freq='MS',
                                        periods=additional_periods)[1:]
         return forecast_dates
 
     def get_extended_data(self):
-        additional_rows = self.index_forecast - self.index_test
+        additional_rows = self.length - self.index_test - 1
         array_extension = np.array([None] * additional_rows)
         extended_data = {column: array_extension.copy()
                          for column in self.time_series.columns.values}
@@ -114,12 +115,12 @@ class Series():
     
 
     def add_column(self, values, name):
-        extension = np.empty(self.index_forecast - values.size)*np.nan
+        extension = np.empty(self.length - values.size)*np.nan
         column = np.concatenate([values.reshape(-1), extension], axis=0)
         self.time_series.loc[:, name] = column.copy()
 
     def predict(self):
-        self.modelled = np.zeros((self.index_forecast))
+        self.modelled = np.zeros((self.self.length))
 
     def no_nan(self, value_type, stage=None):
         if stage is None:
