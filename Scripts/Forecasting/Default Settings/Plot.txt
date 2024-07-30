@@ -1,5 +1,5 @@
 {
-	"loc": null,
+	"loc": 2,
 	"legend_bbox_to_anchor": null,
 	"output": "show",
 	"figure_name": null,

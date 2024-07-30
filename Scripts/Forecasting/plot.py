@@ -78,12 +78,12 @@ class Plot(Series):
         self.plot_array(zeros, label=None, color=self.blue)
 
     def set_purpose_indicator(self):
-        purpose_indicator = np.array(["ABCDEFGH"] * self.length)
-        purpose_indicator[self.index_start:self.index_train]    = "Train"
-        purpose_indicator[self.index_train:self.index_validate] = "Validate"
-        purpose_indicator[self.index_validate:self.index_test]  = "Test"
-        purpose_indicator[self.index_test:self.index_forecast]  = "Forecast"
-        self.time_series["Purpose"] = purpose_indicator
+        purpose = np.array(["ABCDEFGH"] * self.length)
+        purpose[self.index_start:self.index_train]     = "Train"
+        purpose[self.index_train:self.index_validate]  = "Validate"
+        purpose[self.index_validate:self.index_test]   = "Test"
+        purpose[self.index_test:self.index_forecast+1] = "Forecast"
+        self.time_series["Purpose"] = purpose
 
     def add_original_to_plot(self):
         self.ax.plot(self.time_series[f"Data{self.stage}"][self.slice_plot],

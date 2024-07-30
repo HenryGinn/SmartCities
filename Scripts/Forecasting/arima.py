@@ -1,4 +1,5 @@
 from os.path import join
+from warnings import filterwarnings
 import pickle
 
 from hgutilities import defaults
@@ -7,6 +8,9 @@ from pmdarima.arima import auto_arima
 from statsmodels.tsa.arima.model import ARIMA as Arima
 
 from model import Model
+
+
+filterwarnings("ignore", module="statsmodels")
 
 
 class ARIMA(Model):
@@ -35,11 +39,10 @@ class ARIMA(Model):
         self.plot_peripherals_base()
 
     def determine_hyperparameters(self, **kwargs):
-        self.hyperparameter_obj = auto_arima(self.data[self.i(stop="test")])
+        fitting_data = self.data[self.i(stop=self.fit_category)]
+        self.hyperparameter_obj = auto_arima(fitting_data)
         self.order = self.hyperparameter_obj.order
         self.seasonal_order = self.hyperparameter_obj.seasonal_order
-        self.order = (4, 3, 4)
-        self.seasonal_order = (2, 0, 0, 12)
 
     def fit(self):
         fitting_data = self.data[self.slice]
@@ -59,12 +62,12 @@ class ARIMA(Model):
         with open(path, "wb") as file:
             pickle.dump(self.forecaster, file)
 
-    def predict_train(self):
+    def predict_values(self, index):
         start = self.order[2]
         self.modelled = np.zeros(self.length)
         self.modelled[:start] = self.data[:start]
-        self.modelled[start:] = self.forecaster.predict(
-                start=start, end=self.index_forecast)
+        self.modelled[start:index + 1] = self.forecaster.predict(
+            start=start, end=index, information_set="predicted")
 
 
 defaults.load(ARIMA)

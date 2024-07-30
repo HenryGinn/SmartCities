@@ -14,65 +14,55 @@ from model import Model
 plt.close("all")
 
 case = 1
-model = "Default"
-model = "ARIMA"
-#model = "LSTM"
+model_type = "Default"
+model_type = "ARIMA"
+#model_type = "LSTM"
+
+match model_type:
+    case "Default": model = Model(case=case)
+    case "ARIMA"  : model = ARIMA(case=case)
+    case "LSTM"   : model = LSTM(case=case)
+
+# Setup
+
+model.preprocess()
+model.order = (6, 0, 4)
+model.seasonal_order = (3, 0, 3, 12)
 
 
-def run_default():
-    global default
-    default = Model(case=case)
-    default.preprocess()
-    default.predict()
-    default.post_predict()
-    default.postprocess()
-    default.output_results(plot_type="Data")
-    default.output_results(plot_type="Residuals")
-    default.create_correlograms()
+# Validating
 
-def run_arima():
-    global arima
-    arima = ARIMA(case=case)
-    arima.preprocess()
-    arima.determine_hyperparameters()
-    #arima.fit()
-    #arima.save()
-    arima.load()
-    arima.predict()
-    arima.postprocess()
-    #arima.create_correlograms()
-    #arima.compare_residuals()
-    arima.output_results(plot_type="Data")
-    arima.output_results(plot_type="Residuals")
-    arima.create_correlograms()
-    arima.create_histogram()
-
-def run_lstm():
-    global lstm
-    lstm = LSTM(name="Linear", case=case, look_back=1)
-    lstm.preprocess()
-    lstm.set_inputs_and_labels()
-    model = True
-    #model = False
-    if model:
-        load = True
-        #load = False
-        if load:
-            lstm.load()
-        else:
-            lstm.create_model()
-            lstm.fit(epochs=1, verbose=2)
-            lstm.save()
-        lstm.predict()
-    else:
-        lstm.modelled = np.zeros(lstm.length_forecast)
-
-    lstm.postprocess()
-    lstm.output_results(stage="Normalised")
-    lstm.output_results(title="Modelling Test Data with LSTM")
+model.set_fit_category("train")
+#model.load()
+model.fit()
+model.save()
+model.predict()
+model.postprocess()
+model.output_results(plot_type="Data")
 
 
-match model:
-    case "Default": run_default()
-    case "ARIMA"  : run_arima()
-    case "LSTM"   : run_lstm()
+# Testing
+
+model.set_fit_category("validate")
+#model.load()
+model.fit()
+model.save()
+model.predict()
+model.postprocess()
+model.output_results(plot_type="Data")
+
+
+# Forecasting
+
+model.set_fit_category("test")
+#model.load()
+model.fit()
+model.save()
+model.predict()
+model.postprocess()
+model.output_results(plot_type="Data")
+
+#model.create_correlograms()
+#model.compare_residuals()
+#model.create_correlograms()
+#model.create_histogram()

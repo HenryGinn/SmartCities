@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 from scipy.stats import linregress
-from sklearn.preprocessing import MinMaxScaler
+from statsmodels.tsa.stattools import adfuller
 import matplotlib.pyplot as plt
 
 from series import Series
