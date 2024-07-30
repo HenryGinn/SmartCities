@@ -67,9 +67,9 @@ class Model(Plot, Process):
 
     def predict(self):
         match self.fit_category:
-            case "train"   : self.predict_values(self.index_validate)
-            case "validate": self.predict_values(self.index_test)
-            case "test"    : self.predict_values(self.index_forecast)
+            case "train"   : self.predict_values(self.index_train, self.index_validate)
+            case "validate": self.predict_values(self.index_validate, self.index_test)
+            case "test"    : self.predict_values(self.index_test, self.index_forecast)
         self.add_modelled_to_time_series("Normalised")
 
     def print_time_series(self):

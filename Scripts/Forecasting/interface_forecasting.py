@@ -16,7 +16,7 @@ plt.close("all")
 case = 1
 model_type = "Default"
 model_type = "ARIMA"
-#model_type = "LSTM"
+model_type = "LSTM"
 
 match model_type:
     case "Default": model = Model(case=case)
@@ -26,7 +26,7 @@ match model_type:
 # Setup
 
 model.preprocess()
-model.order = (6, 0, 4)
+model.order = (6, 1, 4)
 model.seasonal_order = (3, 0, 3, 12)
 
 

@@ -110,6 +110,7 @@ class Process(Series):
 
 
     # Analysis
+    
     def set_correlations(self, **kwargs):
         defaults.kwargs(self, kwargs)
         residuals = self.no_nan("Residuals")

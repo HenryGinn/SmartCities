@@ -41,7 +41,10 @@ class LSTM(Model):
         name = f"Case_{self.case}_{fit_category}.weights.h5"
         attribute = f"path_model_weights_{fit_category}"
         setattr(self, attribute, join(self.path_model, name))
-        
+
+    def preprocess(self):
+        super().preprocess()
+        self.set_inputs_and_labels()
 
     def set_inputs_and_labels(self):
         self.labels = self.data[self.look_back :]
@@ -98,19 +101,20 @@ class LSTM(Model):
         self.model.save_weights(path)
 
     def fit(self, **kwargs):
+        self.create_model()
         defaults.kwargs(self, kwargs)
         self.model.fit(self.inputs[self.slice], self.labels[self.slice],
                        epochs=self.epochs, verbose=self.verbose)
 
-    def predict_train(self):
-        inputs = self.initialise_prediction()
-        for index in range(self.length - self.look_back):
+    def predict_values(self, index_train, index_forecast):
+        inputs = self.initialise_prediction(index_train)
+        for index in range():
             inputs = self.predict_one_step(inputs, index)
 
-    def initialise_prediction(self):
+    def initialise_prediction(self, index_train):
         inputs = self.inputs[0, :, :].reshape(1, 1, self.look_back)
         self.modelled = np.zeros(self.length)
-        self.modelled[:self.look_back] = inputs.reshape(-1)
+        self.modelled[:self.index] = self.model.predict(self.index)
         return inputs
 
     def predict_one_step(self, inputs, index):

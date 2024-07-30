@@ -62,7 +62,7 @@ class ARIMA(Model):
         with open(path, "wb") as file:
             pickle.dump(self.forecaster, file)
 
-    def predict_values(self, index):
+    def predict_values(self, _, index):
         start = self.order[2]
         self.modelled = np.zeros(self.length)
         self.modelled[:start] = self.data[:start]
