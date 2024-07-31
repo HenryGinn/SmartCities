@@ -64,12 +64,13 @@ class LSTM(Model):
 
     def reshape_training_data(self, iterable):
         x, y = iterable.shape
-        iterable = iterable.reshape(x, 1, y)
+        iterable = iterable.reshape(x, y, 1)
         return iterable
 
     def create_model(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.model = Sequential()
+        self.model.add(LSTM_Layer(self.units, return_sequences=True))
         self.model.add(LSTM_Layer(self.units))
         self.model.add(Dense(1))
         self.model.compile(loss=self.loss, optimizer=self.optimizer)
@@ -101,26 +102,30 @@ class LSTM(Model):
         self.model.save_weights(path)
 
     def fit(self, **kwargs):
-        self.create_model()
         defaults.kwargs(self, kwargs)
-        self.model.fit(self.inputs[self.slice], self.labels[self.slice],
-                       epochs=self.epochs, verbose=self.verbose)
+        self.history = self.model.fit(
+            self.inputs[self.slice], self.labels[self.slice],
+            epochs=self.epochs, verbose=self.verbose)
 
     def predict_values(self, index_train, index_forecast):
         inputs = self.initialise_prediction(index_train)
-        for index in range():
-            inputs = self.predict_one_step(inputs, index)
+        for timestep in range(index_forecast - index_train):
+            inputs = self.predict_one_step(inputs, timestep)
 
     def initialise_prediction(self, index_train):
-        inputs = self.inputs[0, :, :].reshape(1, 1, self.look_back)
+        inputs = self.inputs[0, :, :].reshape(1, self.look_back, 1)
         self.modelled = np.zeros(self.length)
-        self.modelled[:self.index] = self.model.predict(self.index)
+        self.modelled[:index_train] = self.model.predict(inputs)
         return inputs
 
-    def predict_one_step(self, inputs, index):
-        forecast = self.model.predict(inputs, verbose=0).reshape(1, 1, 1)
-        inputs = np.concatenate((inputs[:, :, 1:], forecast), axis=2)
-        self.modelled[self.look_back + index] = forecast
+    def predict_one_step(self, inputs, timestep):
+        forecast = self.model(inputs).numpy().reshape(1, 1, 1)
+        print(inputs)
+        print(forecast)
+        print(inputs.shape)
+        print(forecast.shape)
+        inputs = np.concatenate((inputs[:, 1:, :], forecast), axis=1)
+        self.modelled[self.look_back + timestep] = forecast
         return inputs
 
 

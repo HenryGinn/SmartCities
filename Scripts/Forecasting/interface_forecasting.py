@@ -13,7 +13,25 @@ from model import Model
 
 plt.close("all")
 
-case = 1
+def load(model, fit_category):
+    model.set_fit_category("train")
+    model.load()
+    model.predict()
+    model.postprocess()
+    model.output_results(plot_type="Data")
+
+def fit(model, fit_category):
+    model.set_fit_category("train")
+    model.create_model()
+    model.fit(verbose=0, epochs=90)
+    model.save()
+    model.plot_history()
+    model.save()
+    model.predict()
+    #model.postprocess()
+    model.output_results(plot_type="Data")
+
+case = 0
 model_type = "Default"
 model_type = "ARIMA"
 model_type = "LSTM"
@@ -21,46 +39,18 @@ model_type = "LSTM"
 match model_type:
     case "Default": model = Model(case=case)
     case "ARIMA"  : model = ARIMA(case=case)
-    case "LSTM"   : model = LSTM(case=case)
+    case "LSTM"   : model = LSTM(case=case, look_back=3)
 
-# Setup
-
-model.preprocess()
+model.stage="Normalised"
+#model.preprocess()
+model.set_inputs_and_labels()
 model.order = (6, 1, 4)
 model.seasonal_order = (3, 0, 3, 12)
 
+#fit(model, "train")
+fit(model, "validate")
+#fit(model, "test")
 
-# Validating
-
-model.set_fit_category("train")
-#model.load()
-model.fit()
-model.save()
-model.predict()
-model.postprocess()
-model.output_results(plot_type="Data")
-
-
-# Testing
-
-model.set_fit_category("validate")
-#model.load()
-model.fit()
-model.save()
-model.predict()
-model.postprocess()
-model.output_results(plot_type="Data")
-
-
-# Forecasting
-
-model.set_fit_category("test")
-#model.load()
-model.fit()
-model.save()
-model.predict()
-model.postprocess()
-model.output_results(plot_type="Data")
 
 #model.create_correlograms()
 #model.compare_residuals()

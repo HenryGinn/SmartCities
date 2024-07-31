@@ -25,7 +25,6 @@ class Plot(Series):
     def update_figure(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.predict()
-        self.extend_dataframe()
         self.create_figure()
         
     def output_results(self, **kwargs):
@@ -36,7 +35,7 @@ class Plot(Series):
     def create_figure(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.initiate_figure()
-        self.create_plot(loc=0, title=self.title)
+        self.create_plot(loc=self.loc, title=self.title)
         self.output_figure()
 
     def initiate_figure(self, **kwargs):
@@ -51,18 +50,23 @@ class Plot(Series):
         self.add_lines_to_plot()
         self.plot_peripherals()
 
-    def add_lines_to_plot(self):
-        match self.plot_type:
-            case "Data"     : self.add_modelled_results_to_plot()
-            case "Residuals": self.add_residuals_results_to_plot()
-            case _: pass
-
     def create_histogram(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.initiate_figure()
         self.plot_histogram()
         self.plot_histogram_features()
         self.output_figure()
+
+    def plot_history(self, **kwargs):
+        defaults.kwargs(self, kwargs)
+        self.create_figure(plot_type="History")
+
+    def add_lines_to_plot(self):
+        match self.plot_type:
+            case "Data"     : self.add_modelled_results_to_plot()
+            case "Residuals": self.add_residuals_results_to_plot()
+            case "History"  : self.add_history_to_plot()
+            case _: pass
 
 
     # Plotting data
@@ -97,8 +101,10 @@ class Plot(Series):
 
     def add_residuals_to_plot(self):
         self.ax.plot(self.time_series[f"Residuals{self.stage}"][self.slice],
-                     label=self.label_original,
                      color=self.purple)
+
+    def add_history_to_plot(self):
+        self.ax.plot(self.history.history["loss"], color=self.purple)
 
     def plot_array(self, array, label, color=None, **kwargs):
         self.time_series.loc[:, label] = array
@@ -146,6 +152,7 @@ class Plot(Series):
             case "Data"     : self.do_set_axis_labels("Date", self.y_label_crime)
             case "Residuals": self.do_set_axis_labels("Date", self.y_label_residuals)
             case "Histogram": self.do_set_axis_labels("Residuals", self.y_label_histogram)
+            case "History"  : self.do_set_axis_labels("Epoch", self.y_label_history)
             case "ACF"      : self.do_set_axis_labels("Lag (Months)", self.y_label_acf)
             case "PACF"     : self.do_set_axis_labels("Lag (Months)", self.y_label_pacf)
 
@@ -183,10 +190,11 @@ class Plot(Series):
     # Annotating different data zones
 
     def add_interval_annotations(self):
-        self.extend_axes()
-        self.text_height = self.values_max + 0.05*self.values_range
         annotation_type = self.get_annotation_type()
-        self.add_interval_annotations_to_plot(annotation_type)
+        if annotation_type is not None:
+            self.extend_axes()
+            self.text_height = self.values_max + 0.05*self.values_range
+            self.add_interval_annotations_to_plot(annotation_type)
 
     def extend_axes(self):
         values = self.get_plotted_values()

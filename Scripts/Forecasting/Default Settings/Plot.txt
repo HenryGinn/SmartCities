@@ -8,6 +8,7 @@
 	"y_label_crime": "Crimes per 100,000 People",
 	"y_label_residuals": "Residual",
 	"y_label_histogram": "Frequency Density",
+	"y_label_history": "Loss Function",
 	"y_label_acf": "Autocorrelation",
 	"y_label_pacf": "Partial Autocorrelation",
 	"label_original": "Original",

@@ -1,6 +1,6 @@
 {
 	"look_back": 3,
-	"units": 4,
+	"units": 40,
 	"loss": "mean_squared_error",
 	"optimizer": "adam",
 	"epochs": 100,
