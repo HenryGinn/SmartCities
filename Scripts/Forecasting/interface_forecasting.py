@@ -23,13 +23,16 @@ def load(model, fit_category):
 def fit(model, fit_category):
     model.set_fit_category("train")
     model.create_model()
-    model.fit(verbose=0, epochs=90)
+    model.fit(verbose=0, epochs=20)
     model.save()
     model.plot_history()
     model.save()
+    model.add_column(model.data, "DataNormalised")
     model.predict()
+    model.add_column(model.modelled, "ModelledNormalised")
     #model.postprocess()
     model.output_results(plot_type="Data")
+
 
 case = 0
 model_type = "Default"
@@ -39,7 +42,7 @@ model_type = "LSTM"
 match model_type:
     case "Default": model = Model(case=case)
     case "ARIMA"  : model = ARIMA(case=case)
-    case "LSTM"   : model = LSTM(case=case, look_back=3)
+    case "LSTM"   : model = LSTM(case=case, look_back=3, train=0.8, units=20)
 
 model.stage="Normalised"
 #model.preprocess()

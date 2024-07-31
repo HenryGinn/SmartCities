@@ -1,4 +1,5 @@
 from os.path import join, dirname
+from os import environ
 from random import seed as random_seed
 
 from hgutilities import defaults
@@ -17,6 +18,8 @@ from model import Model
 random_seed(9)
 tf_seed(9)
 np.random.seed(9)
+environ['PYTHONHASHSEED'] = '0'
+environ['TF_DETERMINISTIC_OPS'] = '1'
 
 
 class LSTM(Model):
@@ -70,8 +73,8 @@ class LSTM(Model):
     def create_model(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.model = Sequential()
-        self.model.add(LSTM_Layer(self.units, return_sequences=True))
-        self.model.add(LSTM_Layer(self.units))
+        self.model.add(LSTM_Layer(20, input_shape=(3, 1), return_sequences=True))
+        self.model.add(LSTM_Layer(20))
         self.model.add(Dense(1))
         self.model.compile(loss=self.loss, optimizer=self.optimizer)
 
@@ -105,7 +108,7 @@ class LSTM(Model):
         defaults.kwargs(self, kwargs)
         self.history = self.model.fit(
             self.inputs[self.slice], self.labels[self.slice],
-            epochs=self.epochs, verbose=self.verbose)
+            epochs=self.epochs, verbose=self.verbose, batch_size=1)
 
     def predict_values(self, index_train, index_forecast):
         inputs = self.initialise_prediction(index_train)
@@ -120,10 +123,6 @@ class LSTM(Model):
 
     def predict_one_step(self, inputs, timestep):
         forecast = self.model(inputs).numpy().reshape(1, 1, 1)
-        print(inputs)
-        print(forecast)
-        print(inputs.shape)
-        print(forecast.shape)
         inputs = np.concatenate((inputs[:, 1:, :], forecast), axis=1)
         self.modelled[self.look_back + timestep] = forecast
         return inputs

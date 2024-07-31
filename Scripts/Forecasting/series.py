@@ -49,6 +49,7 @@ class Series():
         self.time_series = pd.read_csv(
             path, skiprows=3, index_col="Time", dtype=np.float32,
             date_format="%Y-%m-%d", parse_dates=True)
+        self.time_series["DataOriginal"] = np.sin(np.linspace(0, 20, 30))
 
     def read_metadata(self, path):
         with open(path) as file:
@@ -66,7 +67,7 @@ class Series():
     def set_split_indices(self):
         length = len(self.time_series)
         self.index_start    = 0
-        self.index_train    = int(length * self.train)
+        self.index_train    = int(length * self.train) - 1
         self.index_validate = int(length * self.validate) + self.index_train
         self.index_test     = length - 1
         self.index_forecast = int(length * self.forecast) + self.index_test

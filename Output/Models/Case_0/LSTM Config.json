@@ -48,7 +48,7 @@
                     "stateful": false,
                     "unroll": false,
                     "zero_output_for_mask": false,
-                    "units": 40,
+                    "units": 20,
                     "activation": "tanh",
                     "recurrent_activation": "sigmoid",
                     "use_bias": true,
@@ -116,7 +116,7 @@
                     "stateful": false,
                     "unroll": false,
                     "zero_output_for_mask": false,
-                    "units": 40,
+                    "units": 20,
                     "activation": "tanh",
                     "recurrent_activation": "sigmoid",
                     "use_bias": true,
@@ -160,7 +160,7 @@
                     "input_shape": [
                         null,
                         3,
-                        40
+                        20
                     ]
                 }
             },
@@ -204,7 +204,7 @@
                 "build_config": {
                     "input_shape": [
                         null,
-                        40
+                        20
                     ]
                 }
             }
