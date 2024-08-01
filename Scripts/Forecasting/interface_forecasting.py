@@ -23,9 +23,9 @@ def load(model, fit_category):
 def fit(model, fit_category):
     model.set_fit_category("train")
     model.create_model()
-    model.fit(verbose=0, epochs=20)
+    model.fit(verbose=0, epochs=50)
     model.save()
-    model.plot_history()
+    #model.plot_history()
     model.save()
     model.add_column(model.data, "DataNormalised")
     model.predict()

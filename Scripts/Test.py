@@ -45,10 +45,12 @@ model.add(Dense(1))
 model.compile(optimizer='adam', loss='mean_squared_error')
 
 history = model.fit(X_train, y_train, epochs=20, batch_size=1, verbose=0)
-predictions = model.predict(X_test)
+predictions = model.predict(X_train)
 
+"""
 plt.figure(figsize=(14, 5))
 plt.plot(range(len(data)), data, label='True Data')
 plt.plot(np.arange(train_size, train_size + len(predictions)) + seq_length, predictions, label='Predictions')
 plt.legend()
 plt.show()
+"""

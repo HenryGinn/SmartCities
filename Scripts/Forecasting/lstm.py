@@ -111,20 +111,21 @@ class LSTM(Model):
             epochs=self.epochs, verbose=self.verbose, batch_size=1)
 
     def predict_values(self, index_train, index_forecast):
-        inputs = self.initialise_prediction(index_train)
-        for timestep in range(index_forecast - index_train):
-            inputs = self.predict_one_step(inputs, timestep)
+        self.initialise_prediction(index_train)
+        inputs = self.inputs[self.slice.stop, :, :].reshape(1, -1, 1)
+        for index in range(index_forecast - index_train):
+            inputs = self.predict_one_step(inputs, index)
 
     def initialise_prediction(self, index_train):
-        inputs = self.inputs[0, :, :].reshape(1, self.look_back, 1)
         self.modelled = np.zeros(self.length)
-        self.modelled[:index_train] = self.model.predict(inputs)
-        return inputs
+        self.modelled[:self.look_back] = self.data[:self.look_back]
+        self.modelled[self.look_back:index_train+1] = (
+            self.model.predict(self.inputs[self.slice, :, :]).reshape(-1))
 
-    def predict_one_step(self, inputs, timestep):
+    def predict_one_step(self, inputs, index):
         forecast = self.model(inputs).numpy().reshape(1, 1, 1)
         inputs = np.concatenate((inputs[:, 1:, :], forecast), axis=1)
-        self.modelled[self.look_back + timestep] = forecast
+        self.modelled[self.slice.stop + self.look_back + index] = forecast
         return inputs
 
 
