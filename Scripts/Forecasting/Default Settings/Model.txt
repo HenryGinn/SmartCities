@@ -1,3 +1,4 @@
 {
-	"cf_bar_width": 0.1 
+	"cf_bar_width": 0.1,
+	"folder_name": "Testing Folder"
 }

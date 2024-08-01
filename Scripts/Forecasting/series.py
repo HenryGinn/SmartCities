@@ -41,15 +41,11 @@ class Series():
         self.path_base = get_base_path(self)
         self.path_data = join(self.path_base, "Data", "Forecast")
         self.path_output_base = join(self.path_base, "Output")
-        self.path_output_forecast = join(
-            self.path_output_base, "Forecasting", f"Case_{self.case}")
-        utils.make_folder(self.path_output_forecast)
 
     def read_data(self, path):
         self.time_series = pd.read_csv(
             path, skiprows=3, index_col="Time", dtype=np.float32,
             date_format="%Y-%m-%d", parse_dates=True)
-        self.time_series["DataOriginal"] = np.sin(np.linspace(0, 20, 30))
 
     def read_metadata(self, path):
         with open(path) as file:

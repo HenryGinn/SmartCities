@@ -1,6 +1,7 @@
 from os.path import join, dirname
 from os import environ
 from random import seed as random_seed
+from time import time
 
 from hgutilities import defaults
 import matplotlib.pyplot as plt
@@ -8,8 +9,8 @@ import numpy as np
 from tensorflow.random import set_seed as tf_seed
 from keras.models import Sequential
 from keras.layers import LSTM as LSTM_Layer
-from keras.layers import Dense as Dense
-from keras.layers import Lambda as Lambda
+from keras.layers import Dense
+from keras.layers import Input
 from keras.models import model_from_json
 
 from model import Model
@@ -73,8 +74,9 @@ class LSTM(Model):
     def create_model(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.model = Sequential()
-        self.model.add(LSTM_Layer(20, input_shape=(3, 1), return_sequences=True))
-        self.model.add(LSTM_Layer(20))
+        self.model.add(Input(shape=(self.look_back, 1)))
+        self.model.add(LSTM_Layer(self.units, return_sequences=True))
+        self.model.add(LSTM_Layer(self.units))
         self.model.add(Dense(1))
         self.model.compile(loss=self.loss, optimizer=self.optimizer)
 
@@ -106,9 +108,11 @@ class LSTM(Model):
 
     def fit(self, **kwargs):
         defaults.kwargs(self, kwargs)
+        start = time()
         self.history = self.model.fit(
             self.inputs[self.slice], self.labels[self.slice],
             epochs=self.epochs, verbose=self.verbose, batch_size=1)
+        self.training_time = time() - start
 
     def predict_values(self, index_train, index_forecast):
         self.initialise_prediction(index_train)

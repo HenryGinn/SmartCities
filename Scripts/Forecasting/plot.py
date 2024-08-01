@@ -288,7 +288,9 @@ class Plot(Series):
 
     def generate_figure_name(self):
         self.figure_name = utils.get_file_name(
-            {"Case": self.case, "Title": self.title}, timestamp=False)
+            {"Case": self.case,"Epochs": self.epochs,
+             "Fit Category": self.fit_category,
+             "Plot Type": self.plot_type}, timestamp=False)
 
     def save_figure(self):
         self.set_path_output()
@@ -296,8 +298,8 @@ class Plot(Series):
         self.figure_name = None
 
     def set_path_output(self):
-        self.path_output = join(self.path_output_forecast,
-                                f"{self.figure_name}.{self.format}")
+        self.path_output = join(
+            self.path_model, f"{self.figure_name}.{self.format}")
         utils.make_folder(dirname(self.path_output))
 
 

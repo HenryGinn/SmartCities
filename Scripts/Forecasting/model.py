@@ -1,4 +1,5 @@
 from os.path import join
+from json import dump
 
 from hgutilities import defaults, utils
 import numpy as np
@@ -9,15 +10,15 @@ from process import Process
 
 class Model(Plot, Process):
 
-    model_type = "Curve Fitting"
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.set_model_paths()
+        self.results_summary = []
 
     def set_model_paths(self):
-        self.path_model = join(
-            self.path_output_base, "Models", f"Case_{self.case}")
+        self.path_model = join(self.path_output_base,
+                               "Forecasting", f"Case_{self.case}",
+                               self.folder_name)
         utils.make_folder(self.path_model)
         self.set_model_files_paths()
 
@@ -77,6 +78,16 @@ class Model(Plot, Process):
         for column in columns:
             print(f"{column}\n{self.time_series[column].values}")
         print(f"\n{columns}")
+
+    def add_to_results_summary(self):
+        self.results_summary.append({"Fit Category": self.fit_category,
+                                     "Training Time": self.training_time,
+                                     "MSE": np.mean(self.no_nan("Residuals")**2)})
+
+    def save_results_summary(self):
+        path = join(self.path_model, "Summary.json")
+        with open(path, "w+") as file:
+            dump(self.results_summary, file, indent=2)
 
 
 defaults.load(Model)

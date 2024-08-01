@@ -16,25 +16,23 @@ plt.close("all")
 def load(model, fit_category):
     model.set_fit_category("train")
     model.load()
-    model.predict()
-    model.postprocess()
-    model.output_results(plot_type="Data")
+    output(model)
 
 def fit(model, fit_category):
     model.set_fit_category("train")
     model.create_model()
-    model.fit(verbose=0, epochs=50)
+    model.fit(verbose=0, epochs=2)
     model.save()
-    #model.plot_history()
-    model.save()
-    model.add_column(model.data, "DataNormalised")
+    model.plot_history()
+    output(model)
+
+def output(model):
     model.predict()
-    model.add_column(model.modelled, "ModelledNormalised")
-    #model.postprocess()
-    model.output_results(plot_type="Data")
+    model.postprocess()
+    model.output_results(plot_type="Data", stage="Normalised")
 
 
-case = 0
+case = 1
 model_type = "Default"
 model_type = "ARIMA"
 model_type = "LSTM"
@@ -42,20 +40,24 @@ model_type = "LSTM"
 match model_type:
     case "Default": model = Model(case=case)
     case "ARIMA"  : model = ARIMA(case=case)
-    case "LSTM"   : model = LSTM(case=case, look_back=3, train=0.8, units=20)
+    case "LSTM"   : model = LSTM(case=case, look_back=10, output="save")
 
-model.stage="Normalised"
-#model.preprocess()
-model.set_inputs_and_labels()
-model.order = (6, 1, 4)
-model.seasonal_order = (3, 0, 3, 12)
+#model.order = (6, 1, 4)
+#model.seasonal_order = (3, 0, 3, 12)
 
-#fit(model, "train")
-fit(model, "validate")
-#fit(model, "test")
+model.preprocess()
 
-
-#model.create_correlograms()
-#model.compare_residuals()
+fit(model, "train")
+model.create_correlograms()
+model.create_histogram()
+model.add_to_results_summary()
+#fit(model, "validate")
 #model.create_correlograms()
 #model.create_histogram()
+#model.results_summary()
+model.save_results_summary()
+#fit(model, "test")
+
+#load(model, "train")
+#load(model, "validate")
+#load(model, "test")
