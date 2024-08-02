@@ -76,14 +76,11 @@ class Series():
         return slice_obj
 
     def get_start_index(self, start, look_back):
-        offset = 0
-        if (start, look_back) == ("train", True):
-            offset = self.look_back - 1
-        return getattr(self, f"index_{start}") - offset
+        return getattr(self, f"index_{start}")
 
     def get_stop_index(self, stop, look_back):
         offset = 0
-        if stop == "train":
+        if look_back:
             offset = self.look_back - 1
         return getattr(self, f"index_{stop}") - offset
 
@@ -134,7 +131,7 @@ class Series():
     def set_fit_category(self, fit_category):
         self.fit_category = fit_category
         self.set_forecast_category()
-        self.slice = self.i("start", self.fit_category)
+        self.slice = self.i("start", self.fit_category, look_back=True)
         self.slice_plot = self.i("start", self.forecast_category)
 
     def set_forecast_category(self):

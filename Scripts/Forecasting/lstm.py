@@ -124,10 +124,11 @@ class LSTM(Model):
         self.modelled = np.zeros(self.length)
         self.modelled[:self.look_back] = self.data[:self.look_back]
         self.modelled[self.look_back:index_train+1] = (
-            self.model.predict(self.inputs[self.slice, :, :]).reshape(-1))
+            self.model.predict(self.inputs[self.slice, :, :],
+                               verbose=0)[:, 0, 0])
 
     def predict_one_step(self, inputs, index):
-        forecast = self.model(inputs).numpy().reshape(1, 1, 1)
+        forecast = self.model(inputs).numpy().reshape(1, self.look_back, 1)
         inputs = np.concatenate((inputs[:, 1:, :], forecast), axis=1)
         self.modelled[self.slice.stop + self.look_back + index] = forecast
         return inputs

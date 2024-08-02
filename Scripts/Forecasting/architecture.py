@@ -14,17 +14,24 @@ class Architecture():
         self.lstm_2 = lstm_2
         self.dense_1 = dense_1
 
+    def reset_model(self):
+        self.set_name()
+        self.model.set_model_paths()
+        self.model.results_summary = []
+        self.create_model()
+
     def set_name(self):
-        self.name = (f"D0_{self.dense_0}__L0_{self.lstm_0}"
-                     f"__L1_{self.lstm_1}__L2_{self.lstm_2}"
-                     f"__D1_{self.dense_1}")
+        self.model.folder_name = (
+            f"D0_{self.dense_0}__L0_{self.lstm_0}"
+            f"__L1_{self.lstm_1}__L2_{self.lstm_2}"
+            f"__D1_{self.dense_1}")
 
     def create_model(self):
-        self.model = Sequential()
+        self.model.model = Sequential()
         self.set_architecture()
-        self.model.add(Dense(1))
-        self.model.compile(loss=self.loss,
-                           optimizer=self.optimizer)
+        self.model.model.add(Dense(1))
+        self.model.model.compile(loss=self.model.loss,
+                                 optimizer=self.model.optimizer)
 
     def set_architecture(self):
         self.add_layer_dense(0)
@@ -35,11 +42,11 @@ class Architecture():
 
     def add_layer_dense(self, number):
         units = getattr(self, f"dense_{number}")
-        if units is not None:
-            self.model.add(Dense(units))
+        if units is not False:
+            self.model.model.add(Dense(units))
 
     def add_layer_lstm(self, number):
         units = getattr(self, f"lstm_{number}")
-        if units is not None::
-            self.model.add(LSTM(units, return_sequences=(number != 2)))
+        if units is not False:
+            self.model.model.add(LSTM(units, return_sequences=(number != 2)))
         

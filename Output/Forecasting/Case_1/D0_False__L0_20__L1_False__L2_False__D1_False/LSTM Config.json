@@ -2,7 +2,7 @@
     "module": "keras",
     "class_name": "Sequential",
     "config": {
-        "name": "sequential_1",
+        "name": "sequential",
         "trainable": true,
         "dtype": {
             "module": "keras",
@@ -18,13 +18,13 @@
                 "class_name": "InputLayer",
                 "config": {
                     "batch_shape": [
-                        null,
+                        1,
                         10,
                         1
                     ],
                     "dtype": "float32",
                     "sparse": false,
-                    "name": "input_layer_1"
+                    "name": "input_layer"
                 },
                 "registered_name": null
             },
@@ -32,7 +32,7 @@
                 "module": "keras.layers",
                 "class_name": "LSTM",
                 "config": {
-                    "name": "lstm_2",
+                    "name": "lstm",
                     "trainable": true,
                     "dtype": {
                         "module": "keras",
@@ -48,7 +48,7 @@
                     "stateful": false,
                     "unroll": false,
                     "zero_output_for_mask": false,
-                    "units": 40,
+                    "units": 20,
                     "activation": "tanh",
                     "recurrent_activation": "sigmoid",
                     "use_bias": true,
@@ -90,7 +90,7 @@
                 "registered_name": null,
                 "build_config": {
                     "input_shape": [
-                        null,
+                        1,
                         10,
                         1
                     ]
@@ -98,77 +98,9 @@
             },
             {
                 "module": "keras.layers",
-                "class_name": "LSTM",
-                "config": {
-                    "name": "lstm_3",
-                    "trainable": true,
-                    "dtype": {
-                        "module": "keras",
-                        "class_name": "DTypePolicy",
-                        "config": {
-                            "name": "float32"
-                        },
-                        "registered_name": null
-                    },
-                    "return_sequences": false,
-                    "return_state": false,
-                    "go_backwards": false,
-                    "stateful": false,
-                    "unroll": false,
-                    "zero_output_for_mask": false,
-                    "units": 40,
-                    "activation": "tanh",
-                    "recurrent_activation": "sigmoid",
-                    "use_bias": true,
-                    "kernel_initializer": {
-                        "module": "keras.initializers",
-                        "class_name": "GlorotUniform",
-                        "config": {
-                            "seed": null
-                        },
-                        "registered_name": null
-                    },
-                    "recurrent_initializer": {
-                        "module": "keras.initializers",
-                        "class_name": "OrthogonalInitializer",
-                        "config": {
-                            "gain": 1.0,
-                            "seed": null
-                        },
-                        "registered_name": null
-                    },
-                    "bias_initializer": {
-                        "module": "keras.initializers",
-                        "class_name": "Zeros",
-                        "config": {},
-                        "registered_name": null
-                    },
-                    "unit_forget_bias": true,
-                    "kernel_regularizer": null,
-                    "recurrent_regularizer": null,
-                    "bias_regularizer": null,
-                    "activity_regularizer": null,
-                    "kernel_constraint": null,
-                    "recurrent_constraint": null,
-                    "bias_constraint": null,
-                    "dropout": 0.0,
-                    "recurrent_dropout": 0.0,
-                    "seed": null
-                },
-                "registered_name": null,
-                "build_config": {
-                    "input_shape": [
-                        null,
-                        10,
-                        40
-                    ]
-                }
-            },
-            {
-                "module": "keras.layers",
                 "class_name": "Dense",
                 "config": {
-                    "name": "dense_1",
+                    "name": "dense",
                     "trainable": true,
                     "dtype": {
                         "module": "keras",
@@ -203,14 +135,15 @@
                 "registered_name": null,
                 "build_config": {
                     "input_shape": [
-                        null,
-                        40
+                        1,
+                        10,
+                        20
                     ]
                 }
             }
         ],
         "build_input_shape": [
-            null,
+            1,
             10,
             1
         ]
@@ -218,7 +151,7 @@
     "registered_name": null,
     "build_config": {
         "input_shape": [
-            null,
+            1,
             10,
             1
         ]
