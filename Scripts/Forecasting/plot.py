@@ -28,7 +28,7 @@ class Plot(Series):
         self.create_figure()
         
     def output_results(self, **kwargs):
-        self.plot_type = "Data"
+        self.plot_type = "Crime Count"
         defaults.kwargs(self, kwargs)
         self.create_figure()
 
@@ -64,9 +64,9 @@ class Plot(Series):
 
     def add_lines_to_plot(self):
         match self.plot_type:
-            case "Data"     : self.add_modelled_results_to_plot()
-            case "Residuals": self.add_residuals_results_to_plot()
-            case "History"  : self.add_history_to_plot()
+            case "Crime Count": self.add_modelled_results_to_plot()
+            case "Residuals"  : self.add_residuals_results_to_plot()
+            case "History"    : self.add_history_to_plot()
             case _: pass
 
 
