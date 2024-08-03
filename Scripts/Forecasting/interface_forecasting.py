@@ -38,10 +38,10 @@ def output(model):
     model.plot_history()
     model.predict()
     model.postprocess()
-    model.output_results(plot_type="Data", stage="Normalised")
+    model.output_results(plot_type="Crime Count", stage="Normalised")
     model.create_correlograms()
     model.create_histogram()
-    model.output_results(plot_type="Data", stage="Original")
+    model.output_results(plot_type="Crime Count", stage="Original")
     model.add_to_results_summary()
 
 
@@ -130,12 +130,13 @@ architectures = [
     Architecture(32,    16,    32,    32, 32   ),
     Architecture(32,    32,    32,    32, 32   )]
 
-for case in range(1, 5):
-    model = LSTM(case=case, look_back=10, verbose=0, epochs=300, output="save")
+for case_number in range(1, 5):
+    model = LSTM(case=case_number, look_back=10, verbose=0, epochs=300, output="save")
     model.preprocess()
     for architecture in architectures:
         architecture.model = model
         architecture.reset_model()
+        print(case_number, model.folder_name)
         fit_manual_model(model, "train")
         fit_manual_model(model, "validate")
         fit_manual_model(model, "test")
