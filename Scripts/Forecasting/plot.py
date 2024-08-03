@@ -40,6 +40,7 @@ class Plot(Series):
 
     def initiate_figure(self, **kwargs):
         defaults.kwargs(self, kwargs)
+        plt.close("all")
         self.fig = plt.figure(figsize=self.figsize, dpi=self.dpi)
         self.ax = self.fig.add_axes(self.axis_size)
     
@@ -149,12 +150,12 @@ class Plot(Series):
 
     def set_axis_labels(self):
         match self.plot_type:
-            case "Data"     : self.do_set_axis_labels("Date", self.y_label_crime)
-            case "Residuals": self.do_set_axis_labels("Date", self.y_label_residuals)
-            case "Histogram": self.do_set_axis_labels("Residuals", self.y_label_histogram)
-            case "History"  : self.do_set_axis_labels("Epoch", self.y_label_history)
-            case "ACF"      : self.do_set_axis_labels("Lag (Months)", self.y_label_acf)
-            case "PACF"     : self.do_set_axis_labels("Lag (Months)", self.y_label_pacf)
+            case "Crime Count": self.do_set_axis_labels("Date", self.y_label_crime)
+            case "Residuals"  : self.do_set_axis_labels("Date", self.y_label_residuals)
+            case "Histogram"  : self.do_set_axis_labels("Residuals", self.y_label_histogram)
+            case "History"    : self.do_set_axis_labels("Epoch", self.y_label_history)
+            case "ACF"        : self.do_set_axis_labels("Lag (Months)", self.y_label_acf)
+            case "PACF"       : self.do_set_axis_labels("Lag (Months)", self.y_label_pacf)
 
     def do_set_axis_labels(self, x_axis_label, y_axis_label):
         self.ax.set_xlabel(x_axis_label, fontsize=self.fontsize_labels)
@@ -206,9 +207,9 @@ class Plot(Series):
 
     def get_plotted_values(self):
         match self.plot_type:
-            case "Data"     : data = self.get_plotted_values_data()
-            case "Residuals": data = self.get_plotted_values_residuals()
-            case _          : data = None
+            case "Crime Count": data = self.get_plotted_values_data()
+            case "Residuals"  : data = self.get_plotted_values_residuals()
+            case _            : data = None
         return data
 
     def get_plotted_values_data(self):
@@ -222,8 +223,8 @@ class Plot(Series):
 
     def get_annotation_type(self):
         match self.plot_type:
-            case "Data"     : return self.forecast_category
-            case _          : return None
+            case "Crime Count": return self.forecast_category
+            case _            : return None
 
     def add_interval_annotations_to_plot(self, annotation_type):
         match annotation_type:

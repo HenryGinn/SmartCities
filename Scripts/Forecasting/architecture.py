@@ -6,8 +6,7 @@ from keras.layers import Input
 
 class Architecture():
 
-    def __init__(self, model, dense_0, lstm_0, lstm_1, lstm_2, dense_1):
-        self.model = model
+    def __init__(self, dense_0, lstm_0, lstm_1, lstm_2, dense_1):
         self.dense_0 = dense_0
         self.lstm_0 = lstm_0
         self.lstm_1 = lstm_1
