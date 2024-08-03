@@ -6,7 +6,7 @@ from time import time
 from hgutilities import defaults
 import matplotlib.pyplot as plt
 import numpy as np
-from tensorflow.random import set_seed as tf_seed
+import tensorflow as tf
 from keras.models import Sequential
 from keras.layers import LSTM as LSTM_Layer
 from keras.layers import Dense
@@ -17,7 +17,7 @@ from model import Model
 
 
 random_seed(9)
-tf_seed(9)
+tf.random.set_seed(9)
 np.random.seed(9)
 environ['PYTHONHASHSEED'] = '0'
 environ['TF_DETERMINISTIC_OPS'] = '1'
@@ -128,10 +128,18 @@ class LSTM(Model):
                                verbose=0).reshape(-1))
 
     def predict_one_step(self, inputs, index):
-        forecast = self.model(inputs).numpy().reshape(1, 1, 1)
+        forecast = self.model(inputs)
+        forecast = forecast.numpy().reshape(1, 1, 1)
         inputs = np.concatenate((inputs[:, 1:, :], forecast), axis=1)
         self.modelled[self.slice.stop + self.look_back + index] = forecast
         return inputs
+
+    #def predict_one_step(self, inputs, index):
+    #    forecast = self.model(inputs)
+    #    forecast = tf.reshape(forecast, (1, 1, 1))
+    #    inputs = tf.concat([inputs[:, 1:, :], forecast], axis=1)
+    #    self.modelled[self.slice.stop + self.look_back + index].assign(forecast.numpy().flatten())
+    #    return inputs
 
 
 defaults.load(LSTM)

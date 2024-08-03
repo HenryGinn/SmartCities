@@ -131,13 +131,14 @@ architectures = [
     Architecture(32,    32,    32,    32, 32   )]
 
 for case_number in range(1, 5):
-    model = LSTM(case=case_number, look_back=10, verbose=0, epochs=300, output="save")
+    model = LSTM(case=case_number, look_back=10, verbose=0, epochs=3, output="save")
     model.preprocess()
     for architecture in architectures:
         architecture.model = model
         architecture.reset_model()
         print(case_number, model.folder_name)
         fit_manual_model(model, "train")
+        input()
         fit_manual_model(model, "validate")
         fit_manual_model(model, "test")
         model.save_results_summary()
