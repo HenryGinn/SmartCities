@@ -1,6 +1,5 @@
 from os.path import join
 from os.path import dirname
-import warnings
 
 import numpy as np
 from scipy.stats import norm
@@ -8,7 +7,7 @@ from hgutilities import defaults, utils
 import matplotlib.pyplot as plt
 
 from series import Series
-from utils import add_line_breaks
+from utils import add_line_breaks, get_capitalised
 
 
 plt.rcParams["font.family"] = "Times New Roman"
@@ -105,7 +104,10 @@ class Plot(Series):
                      color=self.purple)
 
     def add_history_to_plot(self):
-        self.ax.plot(self.history.history["loss"], color=self.purple)
+        self.ax.semilogy(self.history_train, color=self.purple, label="Train")
+        if hasattr(self, "history_validate"):
+            val_label = get_capitalised(self.forecast_category)
+            self.ax.semilogy(self.history_validate, color=self.blue, label=val_label)
 
     def plot_array(self, array, label, color=None, **kwargs):
         self.time_series.loc[:, label] = array
@@ -290,7 +292,7 @@ class Plot(Series):
     def generate_figure_name(self):
         self.figure_name = utils.get_file_name(
             {"Case": self.case,"Epochs": self.epochs,
-             "Fit Category": self.fit_category,
+             "Fit Category": self.fit_category, "Stage": self.stage,
              "Plot Type": self.plot_type}, timestamp=False)
 
     def save_figure(self):

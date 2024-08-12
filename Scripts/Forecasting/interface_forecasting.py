@@ -2,6 +2,7 @@ import sys
 from os.path import dirname
 sys.path.append(dirname(dirname(__file__)))
 import os
+import datetime
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -22,7 +23,7 @@ def load(model, fit_category):
 def fit(model, fit_category):
     model.set_fit_category(fit_category)
     model.create_model()
-    model.fit(verbose=0, epochs=2)
+    model.fit(verbose=0)
     model.save()
     model.plot_history()
     output(model)
@@ -50,16 +51,21 @@ model_type = "Default"
 model_type = "ARIMA"
 model_type = "LSTM"
 
-"""
+case_number = 4
 match model_type:
-    case "Default": model = Model(case=case)
-    case "ARIMA"  : model = ARIMA(case=case)
-    case "LSTM"   : model = LSTM(case=case, look_back=10,
-                                 verbose=0, epochs=300, output="save")
-"""
+    case "Default": model = Model(case=case_number)
+    case "ARIMA"  : model = ARIMA(case=case_number)
+    case "LSTM"   : model = LSTM(case=case_number, look_back=10,
+                                 verbose=0, epochs=50, output="save")
 
-#model.order = (6, 1, 4)
-#model.seasonal_order = (3, 0, 3, 12)
+model.preprocess()
+fit(model, "train")
+#fit(model, "validate")
+#fit(model, "test")
+
+#load(model, "train")
+#load(model, "validate")
+#load(model, "test")
 
 architectures = [
     Architecture(False, False, False, 8,  False),
@@ -130,24 +136,18 @@ architectures = [
     Architecture(32,    16,    32,    32, 32   ),
     Architecture(32,    32,    32,    32, 32   )]
 
-for case_number in range(1, 5):
+for case_number in range(5, 5):
     model = LSTM(case=case_number, look_back=10, verbose=0, epochs=300, output="save")
     model.preprocess()
-    for architecture in architectures:
+    for architecture in architectures[6:7]:
         architecture.model = model
         architecture.reset_model()
+        print("")
         print(case_number, model.folder_name)
+        print("     Train", datetime.datetime.now())
         fit_manual_model(model, "train")
+        print("     Validate", datetime.datetime.now())
         fit_manual_model(model, "validate")
+        print("     Test", datetime.datetime.now())
         fit_manual_model(model, "test")
         model.save_results_summary()
-
-
-#fit(model, "train")
-#fit(model, "validate")
-#fit(model, "test")
-#model.save_results_summary()
-
-#load(model, "train")
-#load(model, "validate")
-#load(model, "test")

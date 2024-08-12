@@ -133,6 +133,7 @@ class Series():
         self.set_forecast_category()
         self.slice = self.i("start", self.fit_category, look_back=True)
         self.slice_plot = self.i("start", self.forecast_category)
+        self.slice_forecast = self.i(self.fit_category, self.forecast_category, look_back=True)
 
     def set_forecast_category(self):
         match self.fit_category:
