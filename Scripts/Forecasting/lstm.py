@@ -142,9 +142,9 @@ class LSTM(Model):
     
     def fit_dependinging_on_validation(self):
         if self.fit_category != "forecast":
-            self.fit_with_validation()
+            return self.fit_with_validation()
         else:
-            self.fit_without_validation()
+            return self.fit_without_validation()
     
     def fit_with_validation(self):
         history = self.model.fit(

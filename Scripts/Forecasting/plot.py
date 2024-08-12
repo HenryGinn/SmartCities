@@ -10,7 +10,12 @@ from series import Series
 from utils import add_line_breaks, get_capitalised
 
 
-plt.rcParams["font.family"] = "Times New Roman"
+plt.rcParams.update({
+    "pgf.texsystem": "pdflatex",
+    "font.family": "Times New Roman",
+    "text.usetex": True,
+    "pgf.rcfonts": False,
+})
 
 
 class Plot(Series):
