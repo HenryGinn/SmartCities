@@ -92,7 +92,6 @@ class Series():
         extended_data = self.get_extended_data()
         extended = pd.DataFrame(extended_data, index=forecast_dates)
         self.time_series = pd.concat([self.time_series, extended])
-        self.data = self.time_series["DataOriginal"].values.copy()
 
     def get_forecast_dates(self):
         original_end = self.time_series.index[len(self.time_series) - 1]
@@ -132,8 +131,11 @@ class Series():
         self.fit_category = fit_category
         self.set_forecast_category()
         self.slice = self.i("start", self.fit_category, look_back=True)
+        self.slice_data = self.i("start", self.fit_category)
         self.slice_plot = self.i("start", self.forecast_category)
         self.slice_forecast = self.i(self.fit_category, self.forecast_category, look_back=True)
+        if hasattr(self, "history_validate"):
+            delattr(self, "history_validate")
 
     def set_forecast_category(self):
         match self.fit_category:

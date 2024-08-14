@@ -47,12 +47,12 @@ class LSTM(Model):
         self.set_path_model_history(fit_category)
     
     def set_path_model_weights(self, fit_category):
-        name = f"Case_{self.case}_{fit_category}.weights.h5"
+        name = f"Case_{self.case}_{fit_category}_weights.weights.h5"
         attribute = f"path_model_weights_{fit_category}"
         setattr(self, attribute, join(self.path_model, name))
     
     def set_path_model_history(self, fit_category):
-        name = f"Case_{self.case}_{fit_category}.json"
+        name = f"Case_{self.case}_{fit_category}_history.json"
         attribute = f"path_model_history_{fit_category}"
         setattr(self, attribute, join(self.path_model, name))
 
@@ -104,9 +104,10 @@ class LSTM(Model):
         self.model.load_weights(path)
     
     def load_history(self):
-        path = getattr(self, f"path_model_weights_{self.fit_category}")
+        path = getattr(self, f"path_model_history_{self.fit_category}")
         with open(path, "r") as file:
-            history = json.load(path)
+            history = json.load(file)
+        self.training_time = history["Training Time"]
         self.history_train = history["Train"]
         if "Validate" in history:
             self.history_validate = history["Validate"]
@@ -127,7 +128,8 @@ class LSTM(Model):
     
     def save_history(self):
         path = getattr(self, f"path_model_history_{self.fit_category}")
-        history = {"Train": list(self.history_train)}
+        history = {"Train": list(self.history_train),
+                   "Training Time": self.training_time}
         if hasattr(self, "history_validate"):
             history.update({"Validate": list(self.history_validate)})
         with open(path, "w+") as file:
@@ -175,7 +177,7 @@ class LSTM(Model):
         self.modelled = np.zeros(self.length)
         self.modelled[:self.look_back] = self.data[:self.look_back]
         self.modelled[self.look_back:index_train+1] = (
-            self.model.predict(self.inputs[self.slice, :, :],
+            self.model.predict(self.inputs[:index_train+1-self.look_back, :, :],
                                verbose=0).reshape(-1))
 
     def predict_one_step(self, inputs, index):
@@ -184,13 +186,6 @@ class LSTM(Model):
         inputs = np.concatenate((inputs[:, 1:, :], forecast), axis=1)
         self.modelled[self.slice.stop + self.look_back + index] = forecast
         return inputs
-
-    #def predict_one_step(self, inputs, index):
-    #    forecast = self.model(inputs)
-    #    forecast = tf.reshape(forecast, (1, 1, 1))
-    #    inputs = tf.concat([inputs[:, 1:, :], forecast], axis=1)
-    #    self.modelled[self.slice.stop + self.look_back + index].assign(forecast.numpy().flatten())
-    #    return inputs
 
 
 defaults.load(LSTM)

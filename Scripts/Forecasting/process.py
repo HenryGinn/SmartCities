@@ -16,6 +16,7 @@ class Process(Series):
 
     # Preprocessing transformations
     def preprocess(self):
+        self.data = self.time_series["DataOriginal"].values.copy()
         self.preprocess_logs()
         self.subtract_trend()
         self.subtract_seasonal()
@@ -46,8 +47,8 @@ class Process(Series):
 
     def set_monthly_averages(self):
         self.monthly_averages = (
-            self.time_series["DataLinear"].iloc[self.slice].groupby(
-            self.time_series.index[self.slice].month).mean())
+            self.time_series["DataLinear"].iloc[self.slice_data].groupby(
+            self.time_series.index[self.slice_data].month).mean())
 
     def add_monthly_averages_to_time_series(self):
         monthly_averages = (
@@ -61,9 +62,9 @@ class Process(Series):
         self.add_column(self.data, "DataNormalised")
 
     def transform_forward(self, data):
-        mean = np.mean(self.np_nan(data[self.slice]))
-        std = np.std(self.np_nan(data[self.slice]))
-        transformed = (data - mean) / std 
+        mean = np.mean(self.np_nan(data[self.slice_data]))
+        std = np.std(self.np_nan(data[self.slice_data]))
+        transformed = (data - mean) / std
         return transformed, (mean, std)
 
     def transform_backward(self, transformed):
@@ -100,7 +101,7 @@ class Process(Series):
         self.add_modelled_to_time_series("Original")
 
     def set_correction_faction(self):
-        residuals = self.no_nan("Residuals", stage="Log")
+        residuals = self.no_nan("Residuals", stage="Log")[self.slice]
         self.correction_factor = np.mean(np.exp(residuals))
 
     def add_modelled_to_time_series(self, stage):

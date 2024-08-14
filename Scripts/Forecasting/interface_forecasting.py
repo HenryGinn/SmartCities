@@ -16,12 +16,14 @@ from architecture import Architecture
 plt.close("all")
 
 def load(model, fit_category):
+    print(f"     {fit_category}", datetime.datetime.now())
     model.set_fit_category(fit_category)
     model.preprocess()
     model.load()
     output(model)
 
 def fit(model, fit_category):
+    print(f"     {fit_category}", datetime.datetime.now())
     model.set_fit_category(fit_category)
     model.preprocess()
     model.create_model()
@@ -31,6 +33,7 @@ def fit(model, fit_category):
     output(model)
 
 def fit_manual_model(model, fit_category):
+    print(f"     {fit_category}", datetime.datetime.now())
     model.set_fit_category(fit_category)
     model.preprocess()
     model.fit()
@@ -55,15 +58,14 @@ model_type = "Default"
 model_type = "ARIMA"
 model_type = "LSTM"
 
-case_number = 4
-match model_type:
-    case "Default": model = Model(case=case_number)
-    case "ARIMA"  : model = ARIMA(case=case_number)
-    case "LSTM"   : model = LSTM(case=case_number, look_back=24,
-                                 verbose=0, epochs=50, output="save")
+#case_number = 4
+#match model_type:
+#    case "Default": model = Model(case=case_number)
+#    case "ARIMA"  : model = ARIMA(case=case_number)
+#    case "LSTM"   : model = LSTM(case=case_number, look_back=24,
+#                                 verbose=0, epochs=50, output="save")
 
-fit(model, "train")
-output(model)
+#fit(model, "train")
 #fit(model, "validate")
 #fit(model, "test")
 
@@ -140,17 +142,14 @@ architectures = [
     Architecture(32,    16,    32,    32, 32   ),
     Architecture(32,    32,    32,    32, 32   )]
 
-for case_number in range(5, 5):
-    model = LSTM(case=case_number, look_back=24, verbose=0, epochs=200, output="save")
+for case_number in range(1, 5):
+    model = LSTM(case=case_number, look_back=24, verbose=0, epochs=50, output="save")
     for architecture in architectures:
         architecture.model = model
         architecture.reset_model()
         print("")
         print(case_number, model.folder_name)
-        print("     Train", datetime.datetime.now())
         fit_manual_model(model, "train")
-        print("     Validate", datetime.datetime.now())
         fit_manual_model(model, "validate")
-        print("     Test", datetime.datetime.now())
         fit_manual_model(model, "test")
         model.save_results_summary()

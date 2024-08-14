@@ -3,6 +3,7 @@ from json import dump
 
 from hgutilities import defaults, utils
 import numpy as np
+from statsmodels.tsa.stattools import adfuller
 
 from plot import Plot
 from process import Process
@@ -68,8 +69,8 @@ class Model(Plot, Process):
 
     def predict(self):
         match self.fit_category:
-            case "train"   : self.predict_values(self.index_train, self.index_validate)
-            case "validate": self.predict_values(self.index_validate, self.index_test)
+            case "train"   : self.predict_values(self.index_validate, self.index_validate)
+            case "validate": self.predict_values(self.index_test, self.index_test)
             case "test"    : self.predict_values(self.index_test, self.index_forecast)
         self.add_modelled_to_time_series("Normalised")
 
@@ -80,9 +81,11 @@ class Model(Plot, Process):
         print(f"\n{columns}")
 
     def add_to_results_summary(self):
+        dick = adfuller(self.no_nan("Residuals", stage="Normalised")[self.slice_data])
         self.results_summary.append({"Fit Category": self.fit_category,
                                      "Training Time": self.training_time,
-                                     "MSE": np.mean(self.no_nan("Residuals")**2)})
+                                     "MSE": np.mean(self.no_nan("Residuals")[self.slice_data]**2),
+                                     "Dickey Fuller": dick})
 
     def save_results_summary(self):
         path = join(self.path_model, "Summary.json")
@@ -90,7 +93,7 @@ class Model(Plot, Process):
             dump(self.results_summary, file, indent=2)
     
     def save_time_series(self):
-        path = join(self.path_model, f"TimeSeries_{self.fit_category}")
+        path = join(self.path_model, f"TimeSeries_{self.fit_category}.csv")
         self.time_series.to_csv(path)
 
 
