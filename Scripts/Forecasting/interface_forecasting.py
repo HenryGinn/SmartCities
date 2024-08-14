@@ -17,11 +17,13 @@ plt.close("all")
 
 def load(model, fit_category):
     model.set_fit_category(fit_category)
+    model.preprocess()
     model.load()
     output(model)
 
 def fit(model, fit_category):
     model.set_fit_category(fit_category)
+    model.preprocess()
     model.create_model()
     model.fit(verbose=0)
     model.save()
@@ -30,6 +32,7 @@ def fit(model, fit_category):
 
 def fit_manual_model(model, fit_category):
     model.set_fit_category(fit_category)
+    model.preprocess()
     model.fit()
     model.save()
     model.plot_history()
@@ -44,6 +47,7 @@ def output(model):
     model.create_histogram()
     model.output_results(plot_type="Crime Count", stage="Original")
     model.add_to_results_summary()
+    model.save_time_series()
 
 
 #case = 1
@@ -55,11 +59,11 @@ case_number = 4
 match model_type:
     case "Default": model = Model(case=case_number)
     case "ARIMA"  : model = ARIMA(case=case_number)
-    case "LSTM"   : model = LSTM(case=case_number, look_back=10,
+    case "LSTM"   : model = LSTM(case=case_number, look_back=24,
                                  verbose=0, epochs=50, output="save")
 
-model.preprocess()
 fit(model, "train")
+output(model)
 #fit(model, "validate")
 #fit(model, "test")
 
@@ -137,9 +141,8 @@ architectures = [
     Architecture(32,    32,    32,    32, 32   )]
 
 for case_number in range(5, 5):
-    model = LSTM(case=case_number, look_back=10, verbose=0, epochs=300, output="save")
-    model.preprocess()
-    for architecture in architectures[6:7]:
+    model = LSTM(case=case_number, look_back=24, verbose=0, epochs=200, output="save")
+    for architecture in architectures:
         architecture.model = model
         architecture.reset_model()
         print("")

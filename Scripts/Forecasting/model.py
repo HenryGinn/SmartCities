@@ -88,6 +88,10 @@ class Model(Plot, Process):
         path = join(self.path_model, "Summary.json")
         with open(path, "w+") as file:
             dump(self.results_summary, file, indent=2)
+    
+    def save_time_series(self):
+        path = join(self.path_model, f"TimeSeries_{self.fit_category}")
+        self.time_series.to_csv(path)
 
 
 defaults.load(Model)

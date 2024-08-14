@@ -11,10 +11,7 @@ from utils import add_line_breaks, get_capitalised
 
 
 plt.rcParams.update({
-    "pgf.texsystem": "pdflatex",
-    "font.family": "Times New Roman",
-    "text.usetex": True,
-    "pgf.rcfonts": False,
+    "font.family": "Times New Roman"
 })
 
 
@@ -296,8 +293,8 @@ class Plot(Series):
 
     def generate_figure_name(self):
         self.figure_name = utils.get_file_name(
-            {"Case": self.case,"Epochs": self.epochs,
-             "Fit Category": self.fit_category, "Stage": self.stage,
+            {"Case": self.case, "Stage": self.stage,
+             "Fit Category": self.fit_category,
              "Plot Type": self.plot_type}, timestamp=False)
 
     def save_figure(self):

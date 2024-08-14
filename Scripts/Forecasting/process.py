@@ -4,7 +4,6 @@ import pandas as pd
 import statsmodels.api as sm
 from scipy.stats import linregress
 from statsmodels.tsa.stattools import adfuller
-import matplotlib.pyplot as plt
 
 from series import Series
 
@@ -23,14 +22,13 @@ class Process(Series):
         self.normalise_data()
 
     def preprocess_logs(self):
-        self.data[self.data == 0] += 1
+        self.data += 1
         self.data = np.log(self.data)
         self.add_column(self.data, "DataLog")
 
     def subtract_trend(self):
         (self.slope, self.intercept, self.r_value, self.p_value,
-         self.standard_error) = linregress(np.arange(self.index_test),
-                                           self.data[self.i(stop="test")])
+         self.standard_error) = linregress(np.arange(self.slice.stop), self.data[self.slice])
         self.set_linear_approximation()
         self.data = self.data - self.time_series["Linear"].values
         self.add_column(self.data, "DataLinear")
@@ -48,8 +46,8 @@ class Process(Series):
 
     def set_monthly_averages(self):
         self.monthly_averages = (
-            self.time_series["DataLinear"].groupby(
-            self.time_series.index.month).mean())
+            self.time_series["DataLinear"].iloc[self.slice].groupby(
+            self.time_series.index[self.slice].month).mean())
 
     def add_monthly_averages_to_time_series(self):
         monthly_averages = (
@@ -63,7 +61,8 @@ class Process(Series):
         self.add_column(self.data, "DataNormalised")
 
     def transform_forward(self, data):
-        mean, std = np.mean(self.np_nan(data)), np.std(self.np_nan(data[:]))
+        mean = np.mean(self.np_nan(data[self.slice]))
+        std = np.std(self.np_nan(data[self.slice]))
         transformed = (data - mean) / std 
         return transformed, (mean, std)
 
@@ -97,7 +96,7 @@ class Process(Series):
     def postprocess_logs(self):
         if self.log:
             self.set_correction_faction()
-            self.modelled = np.exp(self.modelled) * self.correction_factor
+            self.modelled = np.exp(self.modelled) * self.correction_factor - 1
         self.add_modelled_to_time_series("Original")
 
     def set_correction_faction(self):
