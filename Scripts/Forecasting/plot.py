@@ -119,7 +119,7 @@ class Plot(Series):
     def plot_histogram(self, **kwargs):
         defaults.kwargs(self, kwargs)
         self.histogram = self.ax.hist(
-            self.no_nan("Residuals")[self.slice], bins=self.bins,
+            self.no_nan("Residuals")[self.slice_forecast], bins=self.bins,
             color=self.purple, density=True)
         self.plot_peripherals(plot_type="Histogram")
 

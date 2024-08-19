@@ -26,10 +26,8 @@ def fit(model, fit_category):
     print(f"     {fit_category}", datetime.datetime.now())
     model.set_fit_category(fit_category)
     model.preprocess()
-    model.create_model()
-    model.fit(verbose=0)
+    model.fit()
     model.save()
-    model.plot_history()
     output(model)
 
 def fit_manual_model(model, fit_category):
@@ -42,7 +40,6 @@ def fit_manual_model(model, fit_category):
     output(model)
 
 def output(model):
-    model.plot_history()
     model.predict()
     model.postprocess()
     model.output_results(plot_type="Crime Count", stage="Normalised")
@@ -142,8 +139,13 @@ architectures = [
     Architecture(32,    16,    32,    32, 32   ),
     Architecture(32,    32,    32,    32, 32   )]
 
-for case_number in range(1, 5):
-    model = LSTM(case=case_number, look_back=24, verbose=0, epochs=50, output="save")
+orders = [(p, d, q) for p in range(7) for d in range(3) for q in range(7)]
+seasonals = [(0, 0, 0, 12), (2, 1, 2, 12)]
+
+"""
+# LSTM
+for case_number in range(3, 5):
+    model = LSTM(case=case_number, look_back=24, verbose=0, epochs=10, output="save")
     for architecture in architectures:
         architecture.model = model
         architecture.reset_model()
@@ -153,3 +155,19 @@ for case_number in range(1, 5):
         fit_manual_model(model, "validate")
         fit_manual_model(model, "test")
         model.save_results_summary()
+"""
+
+for case_number in range(1, 5):
+    for seasonal in seasonals:
+        for order in orders:      
+            try:
+                model = ARIMA(case=case_number, order=order, 
+                              seasonal_order=seasonal, output="save")
+                print("")
+                print(case_number, model.folder_name)
+                fit(model, "train")
+                fit(model, "validate")
+                fit(model, "test")
+                model.save_results_summary()
+            except:
+                print("Fail")

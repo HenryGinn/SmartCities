@@ -1,10 +1,10 @@
 from os.path import join
 from warnings import filterwarnings
+from time import time
 import pickle
 
 from hgutilities import defaults
 import numpy as np
-from pmdarima.arima import auto_arima
 from statsmodels.tsa.arima.model import ARIMA as Arima
 
 from model import Model
@@ -18,7 +18,14 @@ class ARIMA(Model):
     model_type = "ARIMA"
 
     def __init__(self, **kwargs):
+        defaults.kwargs(self, kwargs)
+        self.set_folder_name()
         super().__init__(**kwargs)
+    
+    def set_folder_name(self):
+        p, d, q = self.order
+        P, D, Q, _ = self.seasonal_order
+        self.folder_name = (f"{p}_{d}_{q}__{P}_{D}_{Q}")
 
     def set_model_files_paths(self):
         self.set_path_model_weights("train")
@@ -38,17 +45,13 @@ class ARIMA(Model):
         self.plot_array(self.linear_approximation, "Trend", color=self.color_modelled)
         self.plot_peripherals_base()
 
-    def determine_hyperparameters(self, **kwargs):
-        fitting_data = self.data[self.i(stop=self.fit_category)]
-        self.hyperparameter_obj = auto_arima(fitting_data)
-        self.order = self.hyperparameter_obj.order
-        self.seasonal_order = self.hyperparameter_obj.seasonal_order
-
     def fit(self):
-        fitting_data = self.data[self.slice]
+        fitting_data = self.data[self.slice_data]
         self.forecaster = Arima(fitting_data, order=self.order,
                                 seasonal_order=self.seasonal_order)
+        start = time()
         self.forecaster = self.forecaster.fit()
+        self.training_time = time() - start
 
     def load(self):
         path = getattr(self, f"path_model_arima_{self.fit_category}")
