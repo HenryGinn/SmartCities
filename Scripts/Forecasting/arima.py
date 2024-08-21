@@ -3,7 +3,7 @@ from warnings import filterwarnings
 from time import time
 import pickle
 
-from hgutilities import defaults
+from hgutilities import defaults, utils
 import numpy as np
 from statsmodels.tsa.arima.model import ARIMA as Arima
 
@@ -21,6 +21,13 @@ class ARIMA(Model):
         defaults.kwargs(self, kwargs)
         self.set_folder_name()
         super().__init__(**kwargs)
+
+    def set_model_paths(self):
+        self.path_model = join(self.path_output_base,
+                               "Forecasting ARIMA", f"Case_{self.case}",
+                               self.folder_name)
+        utils.make_folder(self.path_model)
+        self.set_model_files_paths()
     
     def set_folder_name(self):
         p, d, q = self.order
@@ -66,10 +73,10 @@ class ARIMA(Model):
             pickle.dump(self.forecaster, file)
 
     def predict_values(self, _, index):
-        start = self.order[2]
+        start = self.order[2] + 1
         self.modelled = np.zeros(self.length)
         self.modelled[:start] = self.data[:start]
-        self.modelled[start:index + 1] = self.forecaster.predict(
+        self.modelled[start - 1:index] = self.forecaster.predict(
             start=start, end=index, information_set="predicted")
 
 

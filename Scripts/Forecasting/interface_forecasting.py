@@ -20,7 +20,7 @@ def load(model, fit_category):
     model.set_fit_category(fit_category)
     model.preprocess()
     model.load()
-    output(model)
+    #output(model)
 
 def fit(model, fit_category):
     print(f"     {fit_category}", datetime.datetime.now())
@@ -50,15 +50,15 @@ def output(model):
     model.save_time_series()
 
 
-#case = 1
-model_type = "Default"
-model_type = "ARIMA"
-model_type = "LSTM"
+#model_type = "Default"
+#model_type = "ARIMA"
+#model_type = "LSTM"
 
-#case_number = 4
+#case_number = 1
 #match model_type:
 #    case "Default": model = Model(case=case_number)
-#    case "ARIMA"  : model = ARIMA(case=case_number)
+#    case "ARIMA"  : model = ARIMA(case=case_number, order=(3, 1, 3),
+#                                  seasonal_order=(2, 1, 2, 12), ouput="save")
 #    case "LSTM"   : model = LSTM(case=case_number, look_back=24,
 #                                 verbose=0, epochs=50, output="save")
 
@@ -139,8 +139,9 @@ architectures = [
     Architecture(32,    16,    32,    32, 32   ),
     Architecture(32,    32,    32,    32, 32   )]
 
-orders = [(p, d, q) for p in range(7) for d in range(3) for q in range(7)]
+orders = [(p, d, q) for p in range(9) for d in range(2) for q in range(4)]
 seasonals = [(0, 0, 0, 12), (2, 1, 2, 12)]
+orders = [(p, 1, q) for p in range(15, 20) for q in range(3)]
 
 """
 # LSTM
@@ -157,12 +158,14 @@ for case_number in range(3, 5):
         model.save_results_summary()
 """
 
+
+# ARIMA
 for case_number in range(1, 5):
-    for seasonal in seasonals:
+    for seasonal in seasonals[:1]:
         for order in orders:      
             try:
                 model = ARIMA(case=case_number, order=order, 
-                              seasonal_order=seasonal, output="save")
+                              seasonal_order=(0, 0, 0, 0), output="save")
                 print("")
                 print(case_number, model.folder_name)
                 fit(model, "train")
@@ -171,3 +174,4 @@ for case_number in range(1, 5):
                 model.save_results_summary()
             except:
                 print("Fail")
+

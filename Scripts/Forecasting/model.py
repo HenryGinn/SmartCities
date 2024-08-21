@@ -82,9 +82,12 @@ class Model(Plot, Process):
 
     def add_to_results_summary(self):
         dick = adfuller(self.no_nan("Residuals", stage="Normalised")[self.slice_data])
+        self.stage = "Normalised"
         self.results_summary.append({"Fit Category": self.fit_category,
                                      "Training Time": self.training_time,
                                      "MSE": np.mean(self.no_nan("Residuals")[self.slice_data]**2),
+                                     "MSE Train": np.mean(self.no_nan("Residuals")[self.slice]**2),
+                                     "MSE Forecast": np.mean(self.no_nan("Residuals")[self.slice_forecast]**2),
                                      "Dickey Fuller": dick})
 
     def save_results_summary(self):
