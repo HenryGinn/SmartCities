@@ -5,6 +5,7 @@ import pickle
 
 from hgutilities import defaults, utils
 import numpy as np
+from pandas import Series
 from statsmodels.tsa.arima.model import ARIMA as Arima
 
 from model import Model
@@ -74,10 +75,38 @@ class ARIMA(Model):
 
     def predict_values(self, _, index):
         start = self.order[2] + 1
+        self.forecaster = self.forecaster.apply(self.data, refit=False)
         self.modelled = np.zeros(self.length)
+        self.conf_lower = np.zeros(self.length)
+        self.conf_upper = np.zeros(self.length)
         self.modelled[:start] = self.data[:start]
-        self.modelled[start - 1:index] = self.forecaster.predict(
+        self.prediction = self.forecaster.get_prediction(
             start=start, end=index, information_set="predicted")
+        self.extract_prediction(start, index)
+
+    def extract_prediction(self, start, index):
+        self.modelled[start:index] = self.prediction.predicted_mean[1:]
+        self.set_conf_lower(start, index)
+        self.set_conf_upper(start, index)
+
+    def set_conf_lower(self, start, index):
+        self.conf_lower[start:index] = self.prediction.conf_int()[1:, 0]
+        #self.conf_lower = (Series(self.conf_lower)
+        #                   .rolling(window=4, min_periods=1, center=True)
+        #                   .mean().values)
+        self.add_column(self.conf_lower, "ConfLowerNormalised")
+
+    def set_conf_upper(self, start, index):
+        self.conf_upper[start:index] = self.prediction.conf_int()[1:, 1]
+        #self.conf_upper = (Series(self.conf_upper)
+        #                   .rolling(window=4, min_periods=1, center=True)
+        #                   .mean().values)
+        self.add_column(self.conf_upper, "ConfUpperNormalised")
+        
+
+    def postprocess(self):
+        super().postprocess()
+        self.postprocess_conf_ints()
 
 
 defaults.load(ARIMA)

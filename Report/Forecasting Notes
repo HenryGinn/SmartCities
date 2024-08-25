@@ -5,5 +5,14 @@ Medium case		Large deviations, predictable beahviour changes		Violence Against t
 Hard case		Non-stationary variance, and unexpected peak		Vehicle Offences			E01002818
 Very hard case	Unpredictable changes in behaviour					Theft						E01035716
 
+LSTM
+Case 1	D0_False__L0_False__L1_32__L2_64__D1_False
+Case 2	D0_32__L0_False__L1_False__L2_64__D1_False
+Case 3	D0_32__L0_False__L1_False__L2_32__D1_False
+Case 4	D0_32__L0_False__L1_False__L2_32__D1_False
 
-I cannot reasonably expect to get good results for some of these where there is an external factor with a large influence, i.e. the pandemic. One of the things I want to explore is incorporating data about the pandemic into the input data to help it train. Determining the sizes of the training, validation, and testing sets will be a topic of discussion.
+SARIMA
+Case 1	5_1_1__0_0_0
+Case 2	2_0_1__2_1_2
+Case 3	5_0_1__0_0_0
+Case 4	7_0_3__2_1_2

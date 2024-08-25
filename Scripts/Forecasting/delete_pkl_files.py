@@ -1,6 +1,6 @@
 import os
 
-path = "/home/henry/Documents/Python/SmartCities/Output/Forecasting_ARIMA"
+path = "/home/henry/Documents/Python/SmartCities/Output/SARIMA"
 
 for case_name in os.listdir(path):
     case_path = os.path.join(path, case_name)

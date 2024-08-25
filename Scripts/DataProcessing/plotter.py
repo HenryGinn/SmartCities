@@ -19,7 +19,7 @@ import imageio
 
 from crime import Crime
 from animate import Animate
-from utils import get_time_columns
+from utils import get_time_columns, get_base_path
 
 
 class Plotter():
@@ -28,8 +28,7 @@ class Plotter():
         self.set_paths()
 
     def set_paths(self):
-        self.path_cwd = os.getcwd()
-        self.path_base = os.path.dirname(self.path_cwd)
+        self.path_base = get_base_path(self)
         self.path_output_base = os.path.join(self.path_base, "Output")
 
     def generate(self, **kwargs):
@@ -192,7 +191,7 @@ class Plotter():
     def process_time_total(self):
         utils.make_folder(self.path_time)
         self.path_output = self.path_time
-        self.plot()
+        self.plot(year=None, month=None)
         self.crime.read_data()
 
     def process_time_non_total(self):

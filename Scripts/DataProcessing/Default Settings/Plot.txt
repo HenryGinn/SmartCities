@@ -22,5 +22,6 @@
 	"no_title": false,
 	"figsize": null,
 	"vmin": null,
-	"vmax": null
+	"vmax": null,
+	"animate": false
 }

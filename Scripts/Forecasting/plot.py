@@ -10,9 +10,7 @@ from series import Series
 from utils import add_line_breaks, get_capitalised
 
 
-plt.rcParams.update({
-    "font.family": "Times New Roman"
-})
+plt.rcParams.update({"font.family": "Times New Roman"})
 
 
 class Plot(Series):
@@ -76,6 +74,8 @@ class Plot(Series):
     def add_modelled_results_to_plot(self):
         self.add_original_to_plot()
         self.add_modelled_to_plot()
+        if hasattr(self, "conf_lower") and self.stage == "Normalised":
+            self.add_confidence_intervals_to_plot()
 
     def add_residuals_results_to_plot(self):
         self.add_residuals_to_plot()
@@ -100,6 +100,12 @@ class Plot(Series):
         self.ax.plot(self.time_series[f"Modelled{self.stage}"][self.slice_plot],
                      label=self.label_modelled,
                      color=self.blue)
+
+    def add_confidence_intervals_to_plot(self):
+        plt.fill_between(self.time_series.index[self.slice_plot], 
+                 self.time_series[f"ConfLower{self.stage}"][self.slice_plot], 
+                 self.time_series[f"ConfUpper{self.stage}"][self.slice_plot], 
+                 color=self.blue, alpha=0.3, label='95% Confidence Interval')
 
     def add_residuals_to_plot(self):
         self.ax.plot(self.time_series[f"Residuals{self.stage}"][self.slice],

@@ -23,7 +23,11 @@ from timeseries import Time
 #crime = Crime(agg_time="Total", agg_crime="Total", title="Total Crime in London by LSOA Region")
 #crime = Crime(agg_crime="Total", agg_spatial="Borough", borough="Westminster")
 
-#plotter = Plotter()
+plotter = Plotter()
+plotter.generate(crime_type="Major", region="Borough", resolution="LSOA", time="Total")
+plotter.generate(crime_type="Major", region="City", resolution="LSOA", time="Total")
+plotter.generate(crime_type="Total", region="Borough", resolution="LSOA", time="Total")
+plotter.generate(crime_type="Total", region="City", resolution="LSOA", time="Total")
 #plotter.generate(boroughs=["Westminster"], categories_major=["Theft"], animate=True, time="Full", start=2024, region="Borough")
 #plotter.generate(animate=True, time="Month", region="Borough", crime_type="Total")
 #plotter.generate(animate=True, time="Year", region="Borough", crime_type="Total")
@@ -40,6 +44,7 @@ from timeseries import Time
 #interesting.output(measure="Flat")
 #interesting.output_category(measure="Mean", category="Theft")
 
+"""
 crime_1 = Crime(agg_crime="Major", major="Arson and Criminal Damage", lsoa="E01004734", population_weighted=False)
 crime_2 = Crime(agg_crime="Major", major="Violence Against the Person", lsoa="E01000863", population_weighted=False)
 crime_3 = Crime(agg_crime="Major", major="Vehicle Offences", lsoa="E01002818", population_weighted=False)
@@ -59,3 +64,4 @@ for index, (crime, ax) in enumerate(zip(crimes, axes)):
 
 fig.subplots_adjust(left=0.05, right=0.95, bottom=0.08, top=0.95, wspace=0.15, hspace=0.3)
 plt.show()
+"""

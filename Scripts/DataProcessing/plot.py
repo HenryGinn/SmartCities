@@ -375,7 +375,8 @@ class Plot():
         self.figure_name = utils.get_file_name({
             "Region": self.crime.region, "Crime": self.crime.crime_type,
             "Year": self.year, "Month": self.month,
-            "Resolution": self.crime.agg_spatial, "Log": self.log})
+            "Resolution": self.crime.agg_spatial, "Log": self.log},
+            timestamp=False)
 
     def save_figure(self):
         self.set_path_output()
@@ -385,6 +386,7 @@ class Plot():
     def set_path_output(self):
         if not hasattr(self, "path_output"):
             self.path_output = path_output_base
+            print("Lol", self.path_output)
         self.path_output = os.path.join(
             self.path_output, f"{self.figure_name}.{self.format}")
 

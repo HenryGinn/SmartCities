@@ -20,6 +20,7 @@ class Process(Series):
         self.preprocess_logs()
         self.subtract_trend()
         self.subtract_seasonal()
+        self.moving_average()
         self.normalise_data()
 
     def preprocess_logs(self):
@@ -55,6 +56,12 @@ class Process(Series):
             self.time_series.index.month.map(
             self.monthly_averages)).values
         self.add_column(monthly_averages, "MonthlyAverage")
+
+    def moving_average(self):
+        self.data = (self.time_series["DataSeasons"]
+                     .rolling(window=12, min_periods=1, center=True)
+                     .mean().values)
+        self.add_column(self.data, "DataRolled")
 
     def normalise_data(self):
         self.data, self.transform_data = (
@@ -108,6 +115,38 @@ class Process(Series):
         self.add_column(self.modelled, f"Modelled{stage}")
         self.set_residuals(stage=stage)
 
+
+    # Confidence intervals
+    
+    def postprocess_conf_ints(self):
+        self.unnormalise_conf_int()
+        self.add_seasonal_conf_int()
+        self.add_trend_conf_int()
+        self.postprocess_logs_conf_int()
+
+    def unnormalise_conf_int(self):
+        self.conf_lower = self.transform_backward(self.conf_lower)
+        self.conf_upper = self.transform_backward(self.conf_upper)
+        self.add_column(self.conf_lower, f"ConfLowerSeasons")
+        self.add_column(self.conf_upper, f"ConfUpperSeasons")
+
+    def add_seasonal_conf_int(self):
+        self.conf_lower += self.time_series["MonthlyAverage"].values
+        self.conf_upper += self.time_series["MonthlyAverage"].values
+        self.add_column(self.conf_lower, f"ConfLowerLinear")
+        self.add_column(self.conf_upper, f"ConfUpperLinear")
+
+    def add_trend_conf_int(self):
+        self.conf_lower += self.time_series["Linear"].values
+        self.conf_upper += self.time_series["Linear"].values
+        self.add_column(self.conf_lower, f"ConfLowerLog")
+        self.add_column(self.conf_upper, f"ConfUpperLog")
+
+    def postprocess_logs_conf_int(self):
+        self.conf_lower = np.exp(self.conf_lower) * self.correction_factor - 1
+        self.conf_upper = np.exp(self.conf_upper) * self.correction_factor - 1
+        self.add_column(self.conf_lower, f"ConfLowerOriginal")
+        self.add_column(self.conf_upper, f"ConfUpperOriginal")
 
     # Analysis
     

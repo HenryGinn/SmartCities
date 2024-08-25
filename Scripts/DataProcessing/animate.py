@@ -42,7 +42,8 @@ class Animate():
         return image
 
     def get_buffer(self, time, index):
-        self.plotter.create_plot_time(time, format="png", output=None)
+        self.plotter.create_plot_time(
+            time, format="png", output=None, animate=True)
         buffer = io.BytesIO()
         return buffer
 

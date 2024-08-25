@@ -70,6 +70,9 @@ def output(model):
 #load(model, "validate")
 #load(model, "test")
 
+"""
+# Defining different architectures for validation
+
 architectures = [
     Architecture(False, False, False, 8,  False),
     Architecture(False, False, False, 16, False),
@@ -141,9 +144,11 @@ architectures = [
 
 orders = [(p, d, q) for p in range(9) for d in range(2) for q in range(4)]
 seasonals = [(0, 0, 0, 12), (2, 1, 2, 12)]
-orders = [(p, 1, q) for p in range(15, 20) for q in range(3)]
 
-"""
+
+# Testing a range of architectures
+
+
 # LSTM
 for case_number in range(3, 5):
     model = LSTM(case=case_number, look_back=24, verbose=0, epochs=10, output="save")
@@ -156,16 +161,16 @@ for case_number in range(3, 5):
         fit_manual_model(model, "validate")
         fit_manual_model(model, "test")
         model.save_results_summary()
-"""
+
 
 
 # ARIMA
-for case_number in range(1, 5):
-    for seasonal in seasonals[:1]:
+for case_number in [4, 3]:
+    for seasonal in seasonals:
         for order in orders:      
             try:
                 model = ARIMA(case=case_number, order=order, 
-                              seasonal_order=(0, 0, 0, 0), output="save")
+                              seasonal_order=seasonal, output="save")
                 print("")
                 print(case_number, model.folder_name)
                 fit(model, "train")
@@ -174,4 +179,4 @@ for case_number in range(1, 5):
                 model.save_results_summary()
             except:
                 print("Fail")
-
+"""
