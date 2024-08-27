@@ -192,8 +192,11 @@ class Plot():
 
     def setup_figure(self):
         plt.close('all')
-        self.fig = plt.figure(figsize=self.figsize)
-        self.ax = self.fig.add_axes(self.axis_size)
+        if self.axis_size is None:
+            self.fig, self.ax = plt.subplots(1, figsize=self.figsize)
+        else:
+            self.fig = plt.figure(figsize=self.figsize)
+            self.ax = self.fig.add_axes(self.axis_size)
         self.set_colorbar_kwargs()
         
     def plot_peripheries(self):

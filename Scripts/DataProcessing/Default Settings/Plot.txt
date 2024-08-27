@@ -9,7 +9,7 @@
 	"edgecolor_lower": "face",
 	"linewidth_upper": 1.5,
 	"linewidth_middle": 0.5,
-	"linewidth_lower": 0.5,
+	"linewidth_lower": 0.01,
 	"cmap": "Purples",
 	"fontsize_title": 24,
 	"fontsize_colorbar_label": 16,

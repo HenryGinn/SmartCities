@@ -4,15 +4,14 @@ from os.path import dirname
 sys.path.append(dirname(dirname(__file__)))
 
 
-
 import matplotlib.pyplot as plt
 import numpy as np
 
 import utils
-from crime import Crime
-from plotter import Plotter
-from interesting import Interesting
-from timeseries import Time
+from DataProcessing.crime import Crime
+from DataProcessing.plotter import Plotter
+from DataProcessing.interesting import Interesting
+from DataProcessing.timeseries import Time
 
 
 #crime = Crime(agg_time="Total", agg_spatial="Borough", agg_crime="Total", title="Total Crime in London")
@@ -21,7 +20,10 @@ from timeseries import Time
 #crime = Crime(agg_time="Total", agg_crime="Total", borough="Westminster", title="Total Crime in Westminster")
 #crime = Crime(agg_time="Total", lsoa="E01035716", title="Total Crime around Regents Street")
 #crime = Crime(agg_time="Total", agg_crime="Total", title="Total Crime in London by LSOA Region")
+crime = Crime(agg_time="Total", agg_crime="Total", population_weighted=True)
 #crime = Crime(agg_crime="Total", agg_spatial="Borough", borough="Westminster")
+crime.process()
+#crime.plot(year=None, month=None)
 
 #plotter = Plotter()
 #plotter.generate(crime_type="Major", region="Borough", resolution="LSOA", time="Total")

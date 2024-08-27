@@ -18,8 +18,8 @@ import matplotlib.pyplot as plt
 from hgutilities import defaults
 from hgutilities.utils import get_dict_string
 
-from .plot import Plot
-from .timeseries import Time
+from DataProcessing.plot import Plot
+from DataProcessing.timeseries import Time
 from utils import get_time_columns, get_base_path
 
 
@@ -78,15 +78,17 @@ class Crime():
             case "City":    self.aggregate_spatial_city()
 
     def aggregate_spatial_borough(self):
-        agg_functions = {"LSOA": "first",
-                         "Population": "sum"}
-        group_columns = ["Borough", "Major Category", "Minor Category"]
+        agg_functions = {"LSOA": "first", "Borough": "first", "Population": "sum"}
+        group_columns = ["Major Category", "Minor Category"]
+        self.aggregate_and_group(agg_functions, group_columns)
+        agg_functions = {"Crime": "sum", "Population": "first"}
+        group_columns = ["Borough"]
         self.aggregate_and_group(agg_functions, group_columns)
 
     def aggregate_spatial_city(self):
         agg_functions = {"LSOA": "first",
                          "Borough": "first",
-                         "Population": "sum"}
+                         "Population": "first"}
         group_columns = ["Major Category", "Minor Category"]
         self.aggregate_and_group(agg_functions, group_columns)
 
@@ -136,15 +138,14 @@ class Crime():
             case "Total": self.aggregate_crime_total()
 
     def aggregate_crime_major(self):
-        agg_functions = {"Minor Category": "first",
-                         "Population": "sum"}
+        agg_functions = {"Minor Category": "first", "Population": "first"}
         group_columns = ["LSOA", "Borough", "Major Category"]
         self.aggregate_and_group(agg_functions, group_columns)
 
     def aggregate_crime_total(self):
         agg_functions = {"Major Category": "first",
                          "Minor Category": "first",
-                         "Population": "sum"}
+                         "Population": "first"}
         group_columns = ["LSOA", "Borough"]
         self.aggregate_and_group(agg_functions, group_columns)
 
@@ -160,7 +161,8 @@ class Crime():
         self.crime = self.crime.groupby(group_by_columns)
         self.crime = self.crime.aggregate(agg_functions).reset_index()
         columns_to_drop = [column for column in agg_functions
-                           if agg_functions[column] == "first"]
+                           if agg_functions[column] == "first"
+                           and column != "Population"]
         self.crime = self.crime.drop(columns_to_drop, axis=1)
 
     def aggregating_weighted_data_warning(self):
@@ -172,6 +174,12 @@ class Crime():
         months = get_time_columns(self.crime)
         agg_functions_time = {month: "sum" for month in months}
         return agg_functions_time
+
+    def agg_population(self, x):
+        if len(x) > 1:
+            return x.sum()
+        else:
+            return x.iloc[0]
 
     def get_groupby_columns(self, group_columns):
         all_columns = set(self.crime.columns.values)
@@ -186,8 +194,8 @@ class Crime():
 
     def filter_property(self, attribute, property_name):
         if hasattr(self, attribute) and getattr(self, attribute) is not None:
-            self.crime = self.crime.loc[self.crime[property_name] ==
-                                        getattr(self, attribute)]
+            self.crime = self.crime.loc[
+                self.crime[property_name] == getattr(self, attribute)]
 
     def population_weight_data(self):
         if self.population_weighted:
