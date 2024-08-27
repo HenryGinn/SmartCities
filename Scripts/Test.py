@@ -1,20 +1,18 @@
-import os
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
-def count_files(directory, extensions):
-    png_count = 0
-    pdf_count = 0
+# Example data
+data = {'values': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]}
+df = pd.DataFrame(data)
 
-    for root, dirs, files in os.walk(directory):
-        for file in files:
-            if file.lower().endswith('.png'):
-                png_count += 1
-            elif file.lower().endswith('.pdf'):
-                pdf_count += 1
+window_size = 11
 
-    return png_count, pdf_count
+# Apply the weighted moving average
+df['centred_moving_average'] = df['values'].rolling(window=window_size, center=True, min_periods=1).mean()
+a = df['values'].rolling(window=window_size, center=True, min_periods=1).mean()
 
-directory = '/home/henry/Documents/Python/SmartCities'
-png_count, pdf_count = count_files(directory, ['.png', '.pdf'])
-
-print(f"Number of PNG files: {png_count}")
-print(f"Number of PDF files: {pdf_count}")
+print(len(df))
+print(len(a))
+df.plot()
+plt.show()

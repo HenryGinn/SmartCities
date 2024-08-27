@@ -17,9 +17,9 @@ class Model(Plot, Process):
         self.results_summary = []
 
     def set_model_paths(self):
-        self.path_model = join(self.path_output_base,
-                               "Forecasting", f"Case_{self.case}",
-                               self.folder_name)
+        self.path_model = join(
+            self.path_output_base, self.output_folder,
+            f"Case_{self.case}", self.folder_name)
         utils.make_folder(self.path_model)
         self.set_model_files_paths()
 
@@ -71,6 +71,13 @@ class Model(Plot, Process):
         match self.fit_category:
             case "train"   : self.predict_values(self.index_validate, self.index_validate)
             case "validate": self.predict_values(self.index_test, self.index_test)
+            case "test"    : self.predict_values(self.index_test, self.index_forecast)
+        self.add_modelled_to_time_series("Normalised")
+
+    def predict_test(self):
+        match self.fit_category:
+            case "train"   : self.predict_values(self.index_train, self.index_validate)
+            case "validate": self.predict_values(self.index_validate, self.index_test)
             case "test"    : self.predict_values(self.index_test, self.index_forecast)
         self.add_modelled_to_time_series("Normalised")
 

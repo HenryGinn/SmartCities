@@ -58,9 +58,10 @@ class Process(Series):
         self.add_column(monthly_averages, "MonthlyAverage")
 
     def moving_average(self):
-        self.data = (self.time_series["DataSeasons"]
-                     .rolling(window=12, min_periods=1, center=True)
-                     .mean().values)
+        self.data[:self.index_test+1] = (
+            self.time_series["DataSeasons"].iloc[:self.index_test+1]
+            .rolling(window=11, center=True, min_periods=1)
+            .mean().values)
         self.add_column(self.data, "DataRolled")
 
     def normalise_data(self):

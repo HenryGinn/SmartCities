@@ -1,0 +1,35 @@
+Burglary is consistently uniform, although
+
+Barking and Dagenham
+6 times more crime occurs in the LSOA just south of the station than the median LSOA, and 5% of total crime. They are particularly concentrated here for public order offences and violence against the person.
+Almost all crime for all categories occurs around Barking station in the town centre, but there are some exceptions to this 
+	The north side of Dagenham Heathway station has the second most drug offences (first being the centre of Barking). The crimes are very concentrated in this area, where interestingly the south side has significantly fewer crimes.
+	A more industrial area in the south of the borough has a significant number of vehicle offences
+	
+The theft rate in Barnet is around ten times higher in the town centre as other LSOAs
+There are three theft hotspots in Barnet: the main high street, Erith, and a retail park called Crayford
+In Brent the places, where people lived was not that good an indicator of where vehicle theft occured. The top area was around some big box stores and the other was in a large business park. They had 1721 and 1176 offences, and everything else was a few hundred, the third highest being 638.
+
+I want to look at the correlation between theft and violence against the person in Camden and Westiminster. In Westminster they correlate very strongly, but in camden there is an area of high theft, but with lower crime
+
+
+
+
+Cases of interest for forecasting:
+
+Easiest case	Small deviation, no changes in behaviour			Arson and Criminal Damage	E01004734
+Medium case		Large deviations, predictable behaviour changes		Violence Against the Person	E01000863
+Hard case		Non-stationary variance, and unexpected peak		Vehicle Offences			E01002818
+Very hard case	Unpredictable changes in behaviour					Theft						E01035716
+
+LSTM
+Case 1	D0_False__L0_False__L1_32__L2_64__D1_False
+Case 2	D0_32__L0_False__L1_False__L2_64__D1_False
+Case 3	D0_32__L0_False__L1_False__L2_32__D1_False
+Case 4	D0_32__L0_False__L1_False__L2_32__D1_False
+
+SARIMA
+Case 1	5_1_1__0_0_0
+Case 2	2_0_1__2_1_2
+Case 3	5_0_1__0_0_0
+Case 4	7_0_3__2_1_2

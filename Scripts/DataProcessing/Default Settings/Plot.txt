@@ -23,5 +23,7 @@
 	"figsize": null,
 	"vmin": null,
 	"vmax": null,
-	"animate": false
+	"animate": false,
+	"other_cb_kwargs": {},
+	"axis_size": null
 }

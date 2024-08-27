@@ -42,3 +42,8 @@ def get_base_path(source):
         source = inspect.getfile(source.__class__)
     path = dirname(dirname(dirname(source)))
     return path
+
+
+purple = "#6c17b9"
+blue   = "#1db8f7"
+grey   = "#6d6d6d"

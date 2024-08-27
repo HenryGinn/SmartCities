@@ -15,32 +15,32 @@ from architecture import Architecture
 
 plt.close("all")
 
-def load(model, fit_category):
+def load(model, fit_category, predict_function="predict"):
     print(f"     {fit_category}", datetime.datetime.now())
     model.set_fit_category(fit_category)
     model.preprocess()
     model.load()
-    #output(model)
+    #output(model, predict_function)
 
-def fit(model, fit_category):
+def fit(model, fit_category, predict_function="predict"):
     print(f"     {fit_category}", datetime.datetime.now())
     model.set_fit_category(fit_category)
     model.preprocess()
     model.fit()
     model.save()
-    output(model)
+    output(model, predict_function)
 
-def fit_manual_model(model, fit_category):
+def fit_manual_model(model, fit_category, predict_function="predict"):
     print(f"     {fit_category}", datetime.datetime.now())
     model.set_fit_category(fit_category)
     model.preprocess()
     model.fit()
     model.save()
     model.plot_history()
-    output(model)
+    output(model, predict_function)
 
-def output(model):
-    model.predict()
+def output(model, predict_function="predict"):
+    getattr(model, predict_function)()
     model.postprocess()
     model.output_results(plot_type="Crime Count", stage="Normalised")
     model.create_correlograms()
@@ -50,25 +50,48 @@ def output(model):
     model.save_time_series()
 
 
-#model_type = "Default"
-#model_type = "ARIMA"
-#model_type = "LSTM"
+def run():
+    match method:
+        case "LSTM"  : model = run_LSTM()
+        case "SARIMA": model = run_SARIMA()
 
-#case_number = 1
-#match model_type:
-#    case "Default": model = Model(case=case_number)
-#    case "ARIMA"  : model = ARIMA(case=case_number, order=(3, 1, 3),
-#                                  seasonal_order=(2, 1, 2, 12), ouput="save")
-#    case "LSTM"   : model = LSTM(case=case_number, look_back=24,
-#                                 verbose=0, epochs=50, output="save")
+def run_LSTM():
+    model = LSTM(case=case_number, look_back=24, output_folder="Results",
+                 verbose=0, epochs=25, output="save", folder_name="LSTM")
+    architecture = architectures[case_number]
+    architecture.model = model
+    architecture.create_model()
+    fit_manual_model(model, "validate", "predict_test")
+    fit_manual_model(model, "test", "predict_test")
+    return model
 
-#fit(model, "train")
-#fit(model, "validate")
-#fit(model, "test")
+def run_SARIMA():
+    order, seasonal = orders[case_number]
+    model = ARIMA(case=case_number, order=order, output_folder="Results",
+                  seasonal_order=seasonal, output="save", folder_name="SARIMA")
+    fit(model, "validate", "predict_test")
+    fit(model, "test", "predict_test")
+    return model
 
-#load(model, "train")
-#load(model, "validate")
-#load(model, "test")
+
+architectures = {
+    1: Architecture(False, False, 32,    64, False),
+    2: Architecture(32   , False, False, 64, False),
+    3: Architecture(32   , False, False, 32, False),
+    4: Architecture(32   , False, False, 32, False),}
+
+orders = {
+    1: ((5, 1, 1), (0, 0, 0, 0)),
+    2: ((2, 0, 1), (2, 1, 2, 12)),
+    3: ((5, 0, 1), (0, 0, 0, 0)),
+    4: ((7, 0, 3), (2, 1, 2, 12))}
+
+
+methods = ["LSTM", "SARIMA"]
+for method in methods[1:]:
+    for case_number in range(1, 5):
+        print(method, case_number)
+        run()
 
 """
 # Defining different architectures for validation
@@ -151,7 +174,7 @@ seasonals = [(0, 0, 0, 12), (2, 1, 2, 12)]
 
 # LSTM
 for case_number in range(3, 5):
-    model = LSTM(case=case_number, look_back=24, verbose=0, epochs=10, output="save")
+    model = LSTM(case=case_number, look_back=24, verbose=0, epochs=25, output="save")
     for architecture in architectures:
         architecture.model = model
         architecture.reset_model()

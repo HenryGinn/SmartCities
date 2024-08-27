@@ -192,20 +192,22 @@ class Plot():
 
     def setup_figure(self):
         plt.close('all')
-        self.fig, self.ax = plt.subplots(1, figsize=self.figsize)
+        self.fig = plt.figure(figsize=self.figsize)
+        self.ax = self.fig.add_axes(self.axis_size)
         self.set_colorbar_kwargs()
         
     def plot_peripheries(self):
         self.ax.set_axis_off()
-        self.adjust_colorbar()
         self.set_title()
+        if self.legend:
+            self.adjust_colorbar()
 
     def adjust_colorbar(self):
-        cbar_fig = self.fig.axes[1]
-        cbar_fig.tick_params(labelsize=self.fontsize_colorbar_ticks)
-        cbar_fig.set_ylabel(cbar_fig.get_ylabel(),
-                            fontsize=self.fontsize_colorbar_label,
-                            labelpad=self.colorbar_label_pad)
+        self.cbar_fig = self.fig.axes[1]
+        self.cbar_fig.tick_params(labelsize=self.fontsize_colorbar_ticks)
+        self.cbar_fig.set_ylabel(self.cbar_fig.get_ylabel(),
+                                 fontsize=self.fontsize_colorbar_label,
+                                 labelpad=self.colorbar_label_pad)
 
     def set_title(self):
         self.generate_title()
@@ -251,11 +253,14 @@ class Plot():
             return f"in {self.month} {self.year}"
 
     def set_colorbar_kwargs(self):
-        self.setup_colorbar()
-        self.colorbar_kwargs = {
-            "cax": self.cax, "cmap": self.cmap, "norm": self.norm,
-            "vmin": self.vmin, "vmax": self.vmax,
-            "legend_kwds": {"label": self.colorbar_label}}
+        if self.legend:
+            self.setup_colorbar()
+            self.colorbar_kwargs = {
+                "cax": self.cax, "cmap": self.cmap, "norm": self.norm,
+                "vmin": self.vmin, "vmax": self.vmax,
+                "legend_kwds": {"label": self.colorbar_label, **self.other_cb_kwargs}}
+        else:
+            self.colorbar_kwargs = {}
 
     def setup_colorbar(self):
         divider = make_axes_locatable(self.ax)
@@ -386,7 +391,6 @@ class Plot():
     def set_path_output(self):
         if not hasattr(self, "path_output"):
             self.path_output = path_output_base
-            print("Lol", self.path_output)
         self.path_output = os.path.join(
             self.path_output, f"{self.figure_name}.{self.format}")
 

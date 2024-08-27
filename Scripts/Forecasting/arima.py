@@ -22,13 +22,6 @@ class ARIMA(Model):
         defaults.kwargs(self, kwargs)
         self.set_folder_name()
         super().__init__(**kwargs)
-
-    def set_model_paths(self):
-        self.path_model = join(self.path_output_base,
-                               "Forecasting ARIMA", f"Case_{self.case}",
-                               self.folder_name)
-        utils.make_folder(self.path_model)
-        self.set_model_files_paths()
     
     def set_folder_name(self):
         p, d, q = self.order
@@ -69,17 +62,18 @@ class ARIMA(Model):
         self.seasonal_order = self.forecaster.specification["seasonal_order"]
 
     def save(self):
-        path = getattr(self, f"path_model_arima_{self.fit_category}")
-        with open(path, "wb") as file:
-            pickle.dump(self.forecaster, file)
+        pass
+        #path = getattr(self, f"path_model_arima_{self.fit_category}")
+        #with open(path, "wb") as file:
+        #    pickle.dump(self.forecaster, file)
 
-    def predict_values(self, _, index):
+    def predict_values(self, data_end, index):
         start = self.order[2] + 1
-        self.forecaster = self.forecaster.apply(self.data, refit=False)
+        self.forecaster = self.forecaster.apply(self.data[:data_end], refit=False)
         self.modelled = np.zeros(self.length)
         self.conf_lower = np.zeros(self.length)
         self.conf_upper = np.zeros(self.length)
-        self.modelled[:start] = self.data[:start]
+        self.modelled[:start+1] = self.data[:start+1]
         self.prediction = self.forecaster.get_prediction(
             start=start, end=index, information_set="predicted")
         self.extract_prediction(start, index)
@@ -91,16 +85,14 @@ class ARIMA(Model):
 
     def set_conf_lower(self, start, index):
         self.conf_lower[start:index] = self.prediction.conf_int()[1:, 0]
-        #self.conf_lower = (Series(self.conf_lower)
-        #                   .rolling(window=4, min_periods=1, center=True)
-        #                   .mean().values)
+        self.conf_lower[self.conf_lower > 100] = self.modelled[self.conf_lower > 100] + 0.3
+        self.conf_lower[self.conf_lower < -100] = self.modelled[self.conf_lower < -100] - 0.3
         self.add_column(self.conf_lower, "ConfLowerNormalised")
 
     def set_conf_upper(self, start, index):
         self.conf_upper[start:index] = self.prediction.conf_int()[1:, 1]
-        #self.conf_upper = (Series(self.conf_upper)
-        #                   .rolling(window=4, min_periods=1, center=True)
-        #                   .mean().values)
+        self.conf_upper[self.conf_upper > 100] = self.modelled[self.conf_upper > 100] + 0.3
+        self.conf_upper[self.conf_upper < -100] = self.modelled[self.conf_upper < -100] - 0.3
         self.add_column(self.conf_upper, "ConfUpperNormalised")
         
 

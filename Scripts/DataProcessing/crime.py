@@ -18,8 +18,8 @@ import matplotlib.pyplot as plt
 from hgutilities import defaults
 from hgutilities.utils import get_dict_string
 
-from plot import Plot
-from timeseries import Time
+from .plot import Plot
+from .timeseries import Time
 from utils import get_time_columns, get_base_path
 
 
@@ -46,6 +46,7 @@ class Crime():
         self.filter()
         self.aggregate()
         self.population_weight_data()
+        self.sort()
 
     def set_property_values(self):
         self.region = self.get_region()
@@ -202,6 +203,10 @@ class Crime():
         time_columns = get_time_columns(self.crime)
         self.crime[time_columns] = (self.per_n_people_int
             * self.crime[time_columns].values / self.crime["Population"].values[:, None])
+
+    def sort(self):
+            self.crime = self.crime.sort_values(
+                self.crime.columns[-1], ascending=False)
 
     def remove_major(self, category="Fraud and Forgery"):
         self.crime = self.crime.loc[self.crime["Major Category"] != category]

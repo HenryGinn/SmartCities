@@ -1,9 +1,10 @@
 {
-	"look_back": 3,
-	"units": 40,
+	"look_back": 24,
+	"units": 32,
 	"loss": "mean_squared_error",
 	"optimizer": "adam",
 	"epochs": 100,
 	"batch_size": 1,
-	"verbose": 2
+	"verbose": 0,
+	"output_folder": "Results"
 }
