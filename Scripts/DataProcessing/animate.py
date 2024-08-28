@@ -24,7 +24,7 @@ class Animate():
         self.gif_name = utils.get_file_name({
             "Region": split(self.plotter.path_region)[1],
             "Crime": split(self.plotter.path_crime)[1],
-            "Time": self.plotter.time})
+            "Time": self.plotter.time}, timestamp=False)
     
     def create_animation(self):
         frames = self.get_frames()
@@ -42,8 +42,9 @@ class Animate():
         return image
 
     def get_buffer(self, time, index):
+        self.plotter.kwargs["animate"] = True
         self.plotter.create_plot_time(
-            time, format="png", output=None, animate=True)
+            time, format="png", output=None)
         buffer = io.BytesIO()
         return buffer
 

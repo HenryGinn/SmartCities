@@ -12,5 +12,6 @@
 	"boroughs": null,
 	"month": null,
 	"year": null,
-	"categories_major": null
+	"categories_major": null,
+	"output": "save"
 }

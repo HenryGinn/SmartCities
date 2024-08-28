@@ -8,7 +8,7 @@ from matplotlib import rc
 from hgutilities.utils import make_folder
 
 from DataProcessing.crime import Crime
-from utils import purple, blue, grey, get_base_path
+from utils import purple, blue, grey, get_base_path, add_line_breaks
 
 
 plt.rcParams.update({"font.family": "Times New Roman"})
@@ -22,9 +22,13 @@ crime = crime.crime
 fig = plt.figure(figsize=(5, 5))
 ax = fig.add_axes([0.2, 0.3, 0.8, 0.6])
 
-ax.bar(crime["Major Category"], crime["Crime"], color=purple)
+labels = [add_line_breaks(label, length=20)
+          for label in crime["Major Category"].values]
+
+ax.bar(labels, crime["Crime"], color=purple)
 fig.suptitle("Crime Rates by Category", fontsize=20)
 
+ax.set_xticks(ax.get_xticks())
 ax.set_xticklabels(ax.get_xticklabels(), rotation=45,
                    ha='right', fontsize=10)
 ax.set_ylabel("Reported Crimes per 100,000 People", fontsize=14)

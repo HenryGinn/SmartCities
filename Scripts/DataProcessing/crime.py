@@ -220,6 +220,7 @@ class Crime():
         self.crime = self.crime.loc[self.crime["Major Category"] != category]
 
     def plot(self, **kwargs):
+        print(kwargs)
         self.plot_obj = Plot(self, **kwargs)
         self.plot_obj.plot(**kwargs)
 
