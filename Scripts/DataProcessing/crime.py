@@ -88,7 +88,7 @@ class Crime():
     def aggregate_spatial_city(self):
         agg_functions = {"LSOA": "first",
                          "Borough": "first",
-                         "Population": "first"}
+                         "Population": "sum"}
         group_columns = ["Major Category", "Minor Category"]
         self.aggregate_and_group(agg_functions, group_columns)
 

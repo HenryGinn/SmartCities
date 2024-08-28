@@ -14,7 +14,7 @@ from utils import purple, blue, grey, get_base_path, add_line_breaks
 plt.rcParams.update({"font.family": "Times New Roman"})
 
 
-crime = Crime(agg_time="Total", agg_crime="Major", agg_spatial="City")
+crime = Crime(agg_time="Total", agg_crime="Major", agg_spatial="City", population_weighted=False)
 crime.process()
 crime.remove_major()
 crime = crime.crime

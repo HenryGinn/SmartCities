@@ -23,11 +23,16 @@ df_with_polygons = pd.merge(
 """
 
 
+import sys
 import os
+from os.path import dirname, join
+sys.path.append(dirname(dirname(__file__)))
+
+import itertools
 
 import pandas as pd
 
-from utils import get_capitalised
+from utils import get_base_path, get_capitalised
 from hgutilities.utils import get_dict_string
 
 
@@ -38,7 +43,7 @@ class PreProcess():
 
     def set_paths(self):
         self.path_cwd = os.getcwd()
-        self.path_base = os.path.dirname(self.path_cwd)
+        self.path_base = get_base_path(self)
         self.set_paths_data()
         
     def set_paths_data(self):
@@ -72,6 +77,7 @@ class PreProcess():
         self.crime_categories_title_case()
         self.add_population_column()
         self.process_time_columns()
+        self.add_missing_rows()
 
     def human_readable_borough(self):
         lsoa_names = list(self.crime["LSOA Name"])
@@ -118,6 +124,20 @@ class PreProcess():
         year, month = name[:4], name[4:]
         new_name = f"{year} {month}"
         return new_name
+
+    def add_missing_rows(self):
+        crime_dict = dict(self.crime.groupby("Minor Category").first().reset_index()[["Minor Category", "Major Category"]].values)
+        lsoas = self.crime[['LSOA', 'Borough', 'Population']].drop_duplicates()
+        time_columns = list(self.crime.columns.values[6:])
+        all_combinations = pd.DataFrame(list(itertools.product(lsoas['LSOA'], list(crime_dict.keys()))), columns=['LSOA', 'Minor Category'])
+        all_combinations = pd.merge(all_combinations, lsoas, on='LSOA', how='left')
+        all_combinations['Major Category'] = all_combinations['Minor Category'].map(crime_dict)
+        df_full = pd.merge(all_combinations, self.crime, on=['LSOA', 'Borough', 'Major Category', 'Minor Category', 'Population'], how='left').fillna(0)
+        df_full[time_columns] = df_full[time_columns].astype(int)
+        df_full = df_full.sort_values(by=["Borough", 'LSOA', 'Minor Category']).reset_index(drop=True)
+        df_full = df_full[['LSOA', 'Borough', 'Major Category', 'Minor Category', 'Population', *time_columns]]
+        self.crime = df_full
+
 
 preprocess = PreProcess()
 preprocess.preprocess()
