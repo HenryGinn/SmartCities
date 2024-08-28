@@ -14,6 +14,7 @@ from hgutilities import defaults, utils
 import matplotlib.pyplot as plt
 import geopandas as gpd
 import pandas as pd
+import numpy as np
 from shapely.wkt import loads
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from matplotlib.colors import LogNorm
@@ -168,10 +169,11 @@ class Plot():
 
     def plot(self, **kwargs):
         self.preplot_checks_and_settings(**kwargs)
-        self.setup_figure()
-        self.plot_values()
-        self.plot_peripheries()
-        self.output_figure()
+        if self.is_valid_plot():
+            self.setup_figure()
+            self.plot_values()
+            self.plot_peripheries()
+            self.output_figure()
 
     def preplot_checks_and_settings(self, **kwargs):
         defaults.kwargs(self, kwargs)
@@ -189,6 +191,12 @@ class Plot():
         raise ValueError("Crime category is not defined.\n"
                          "Either aggregate or filter to a unique crime\n"
                          f"Categories: {', '.join(crime_types)}")
+
+    def is_valid_plot(self):
+        if np.size(self.data[self.plot_column]) > 0:
+            if np.max(self.data[self.plot_column].values) > 0:
+                return True
+        return False
 
     def setup_figure(self):
         plt.close('all')

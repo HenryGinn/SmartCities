@@ -62,7 +62,7 @@ class Time():
         self.set_plotting_function()
         self.set_labels()
         self.plot_values()
-        self.plot_peripheries()
+        self.plot_peripherals()
         self.output_figure()
 
     def setup_figure(self):

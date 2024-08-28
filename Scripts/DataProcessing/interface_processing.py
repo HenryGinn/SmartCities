@@ -25,7 +25,12 @@ from DataProcessing.timeseries import Time
 #crime.process()
 #crime.plot(year=None, month=None)
 
+#interesting = Interesting(figures=True, csv=True, series=True)
+#interesting.analyse()
+#interesting.output()
+
 plotter = Plotter()
+#plotter.generate(crime_type="Major", region="Borough", resolution="LSOA", time="Total")
 #plotter.generate(crime_type="Major", region="Borough", resolution="LSOA", time="Total")
 #plotter.generate(crime_type="Major", region="City", resolution="LSOA", time="Total")
 #plotter.generate(crime_type="Total", region="Borough", resolution="LSOA", time="Total")
@@ -34,23 +39,46 @@ plotter = Plotter()
 #plotter.generate(animate=True, time="Month", region="Borough", crime_type="Total")
 #plotter.generate(animate=True, time="Year", region="Borough", crime_type="Total")
 plotter.generate(animate=True, time="Full", region="Borough", crime_type="Total")
-plotter.generate(animate=True, time="Full", region="City", crime_type="Total")
-plotter.generate(animate=True, time="Month", region="City", crime_type="Total")
-plotter.generate(animate=True, time="Year", region="City", crime_type="Total")
-plotter.generate(animate=True, time="Month", region="Borough", crime_type="Major")
-plotter.generate(animate=True, time="Year", region="Borough", crime_type="Major")
-plotter.generate(animate=True, time="Full", region="Borough", crime_type="Major")
-plotter.generate(animate=True, time="Full", region="City", crime_type="Major")
-plotter.generate(animate=True, time="Month", region="City", crime_type="Major")
-plotter.generate(animate=True, time="Year", region="City", crime_type="Major")
+print("########## FAIL 1 #################")
+try:
+    plotter.generate(animate=True, time="Full", region="City", crime_type="Total")
+except:
+    print("########## FAIL 2 #################")
+try:
+    plotter.generate(animate=True, time="Month", region="City", crime_type="Total")
+except:
+    print("########## FAIL 3 ################")
+try:
+    plotter.generate(animate=True, time="Year", region="City", crime_type="Total")
+except:
+    print("########## FAIL 4 ################")
+try:
+    plotter.generate(animate=True, time="Month", region="Borough", crime_type="Major")
+except:
+    print("########## FAIL 5 ################")
+try:
+    plotter.generate(animate=True, time="Year", region="Borough", crime_type="Major")
+except:
+    print("########## FAIL 6 ################")
+try:
+    plotter.generate(animate=True, time="Full", region="Borough", crime_type="Major")
+except:
+    print("########## FAIL 7 ################")
+try:
+    plotter.generate(animate=True, time="Full", region="City", crime_type="Major")
+except:
+    print("########## FAIL 8 ################")
+try:
+    plotter.generate(animate=True, time="Month", region="City", crime_type="Major")
+except:
+    print("########## FAIL 9 ################")
+try:
+    plotter.generate(animate=True, time="Year", region="City", crime_type="Major")
+except:
+    print("########## FAIL 10 ################")
 #plotter.generate(animate=True, time="Full", region="City", crime_type="Total", resolution="Borough")
 #plotter.generate(animate=True, time="Month", region="City", crime_type="Total", resolution="Borough")
 #plotter.generate(animate=True, time="Year", region="City", crime_type="Total", resolution="Borough")
-
-#interesting = Interesting(figures=True, csv=True, series=True)
-#interesting.analyse()
-#interesting.output(measure="Flat")
-#interesting.output_category(measure="Mean", category="Theft")
 
 """
 crime_1 = Crime(agg_crime="Major", major="Arson and Criminal Damage", lsoa="E01004734", population_weighted=False)

@@ -136,7 +136,7 @@ class PreProcess():
         df_full[time_columns] = df_full[time_columns].astype(int)
         df_full = df_full.sort_values(by=["Borough", 'LSOA', 'Minor Category']).reset_index(drop=True)
         df_full = df_full[['LSOA', 'Borough', 'Major Category', 'Minor Category', 'Population', *time_columns]]
-        self.crime = df_full
+        self.crime = df_full.reset_index()
 
 
 preprocess = PreProcess()

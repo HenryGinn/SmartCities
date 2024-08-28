@@ -102,11 +102,12 @@ class Interesting():
         measures = [column for column in self.scores.columns.values
                     if column not in self.non_time_columns]
         for measure in measures:
-            function(measure=measure, *args, **kwargs)
+            kwargs.update({"measure": measure})
+            function(*args, **kwargs)
 
     def output_overall(self, measure=None):
         if measure is None:
-            self.process_measure(output_overall, self.scores)
+            self.process_measure(self.output_overall, self.scores)
         else:
             self.output_from_dataframe(measure, self.scores, "Overall")
 
@@ -187,7 +188,6 @@ class Interesting():
         self.time_series_title = add_line_breaks(
             f"Interesting Candidates: {self.name}")
         
-
 
 defaults.load(Interesting)
 

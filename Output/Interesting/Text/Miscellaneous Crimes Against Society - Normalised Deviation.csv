@@ -1,3 +1,3 @@
-,Borough,Major Category,LSOA,Population,Mean,Range,Normalised Deviation,Regression
-46976,Westminster,Miscellaneous Crimes Against Society,E01004734,1699,179.3,1.0528598833010106e-05,22322.85,0.189
-47013,Westminster,Miscellaneous Crimes Against Society,E01035716,2201,178.8,1.119076674008332e-05,18738.24,0.151
+,LSOA,Major Category,Borough,Population,Mean,Normalised Deviation,Regression,Flat
+49240,E01004734,Miscellaneous Crimes Against Society,Westminster,1699,179.3,22322.85,0.189,5.291005291005291
+54795,E01035716,Miscellaneous Crimes Against Society,Westminster,2201,178.8,18738.24,0.151,6.622516556291391

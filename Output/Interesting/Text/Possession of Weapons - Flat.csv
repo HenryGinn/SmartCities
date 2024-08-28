@@ -1,2 +1,2 @@
-,LSOA,Borough,Major Category,Population,Mean,Normalised Deviation,Regression,Flat
-42771,E01004734,Westminster,Possession of Weapons,1699,163.4,19558.98,0.181,5.524861878453039
+,LSOA,Major Category,Borough,Population,Mean,Normalised Deviation,Regression,Flat
+49241,E01004734,Possession of Weapons,Westminster,1699,163.4,19558.98,0.181,5.524861878453039

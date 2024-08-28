@@ -15,6 +15,7 @@ import os
 from math import ceil, floor
 
 from hgutilities import defaults, utils
+import numpy as np
 import imageio
 
 from crime import Crime
@@ -233,7 +234,8 @@ class Plotter():
 
     def create_animation(self):
         self.animate_obj = Animate(self)
-        self.animate_obj.create_animation()
+        if np.max(self.crime.crime[self.time_columns].values) != 0:
+            self.animate_obj.create_animation()
 
 defaults.load(Plotter)
 
