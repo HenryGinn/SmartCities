@@ -227,6 +227,7 @@ class Crime():
         self.time_obj = Time(self.crime, **kwargs)
 
     def time_plot(self, **kwargs):
+        self.time()
         self.time_obj.kwargs.update(kwargs)
         defaults.kwargs(self.time_obj, self.time_obj.kwargs)
         self.time_obj.create_figure()

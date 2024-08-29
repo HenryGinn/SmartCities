@@ -25,11 +25,36 @@ from DataProcessing.timeseries import Time
 #crime.process()
 #crime.plot(year=None, month=None)
 
+a = Crime(major="Public Order Offences", agg_crime="Major", population_weighted=False)
+a.process()
+b = a.crime.copy()
+b["Total"] = b.iloc[:, 4:].sum(axis=1)
+b["Ratio"] = b.iloc[:, -36:].mean(axis=1).values/b.iloc[:, 6:42].mean(axis=1).values
+c = b.sort_values("Ratio", ascending=False)
+d = c.loc[c["Ratio"] != np.inf]
+d = d.loc[d["Total"] > 300]
+d = d.dropna()
+print(len(d))
+
+k = 2
+for i in range(50):
+    data = d.iloc[k*i:k*(i+1), :-2]
+    print(d.iloc[k*i:k*(i+1), :])
+    t = Time(data, output="Show", label_format='f"{borough} {lsoa}"')
+    t.create_figure()
+
+#crime = Crime(lsoa="E01001562", major="Public Order Offences", agg_crime="Major")
+#crime = Crime(agg_spatial="City", major="Public Order Offences", agg_crime="Major")
+#crime.process()
+#crime.time_plot(output="Show")
+
+#b["Ratio"] = b.iloc[:, -36:].mean(axis=1).values/b.iloc[:, 6:42].mean(axis=1).values
+
 #interesting = Interesting(figures=True, csv=True, series=True)
 #interesting.analyse()
 #interesting.output()
 
-plotter = Plotter()
+#plotter = Plotter()
 #plotter.generate(crime_type="Major", region="Borough", resolution="LSOA", time="Total")
 #plotter.generate(crime_type="Major", region="Borough", resolution="LSOA", time="Total")
 #plotter.generate(crime_type="Major", region="City", resolution="LSOA", time="Total")
@@ -39,26 +64,15 @@ plotter = Plotter()
 #plotter.generate(animate=True, time="Month", region="Borough", crime_type="Total")
 #plotter.generate(animate=True, time="Year", region="Borough", crime_type="Total")
 #plotter.generate(animate=True, time="Full", region="Borough", crime_type="Total")
-#try: plotter.generate(animate=True, time="Full", region="City", crime_type="Total")
-#except: print("########## FAIL 2 #################")
-#try: plotter.generate(animate=True, time="Month", region="City", crime_type="Total")
-#except: print("########## FAIL 3 ################")
-#try: plotter.generate(animate=True, time="Year", region="City", crime_type="Total")
-#except: print("########## FAIL 4 ################")
-#try: plotter.generate(animate=True, time="Month", region="Borough", crime_type="Major")
-#except: print("########## FAIL 5 ################")
-#try: plotter.generate(animate=True, time="Year", region="Borough", crime_type="Major")
-#except: print("########## FAIL 6 ################")
-#try: plotter.generate(animate=True, time="Full", region="Borough", crime_type="Major")
-#except: print("########## FAIL 7 ################")
-#try: plotter.generate(animate=True, time="Full", region="City", crime_type="Major")
-#except: print("########## FAIL 8 ################")
-#try: plotter.generate(animate=True, time="Month", region="City", crime_type="Major")
-#except: print("########## FAIL 9 ################")
-plotter.generate(animate=True, time="Year", region="City", crime_type="Major")
-#try: plotter.generate(animate=True, time="Year", region="City", crime_type="Major")
-#except: print("########## FAIL 10 ################")
-
+#plotter.generate(animate=True, time="Full", region="City", crime_type="Total")
+#plotter.generate(animate=True, time="Month", region="City", crime_type="Total")
+#plotter.generate(animate=True, time="Year", region="City", crime_type="Total")
+#plotter.generate(animate=True, time="Month", region="Borough", crime_type="Major")
+#plotter.generate(animate=True, time="Year", region="Borough", crime_type="Major")
+#plotter.generate(animate=True, time="Full", region="Borough", crime_type="Major")
+#plotter.generate(animate=True, time="Full", region="City", crime_type="Major")
+#plotter.generate(animate=True, time="Month", region="City", crime_type="Major")
+#plotter.generate(animate=True, time="Year", region="City", crime_type="Major")
 #plotter.generate(animate=True, time="Full", region="City", crime_type="Total", resolution="Borough")
 #plotter.generate(animate=True, time="Month", region="City", crime_type="Total", resolution="Borough")
 #plotter.generate(animate=True, time="Year", region="City", crime_type="Total", resolution="Borough")

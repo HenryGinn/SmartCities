@@ -20,7 +20,7 @@ crime = Crime(agg_time="Total", agg_crime="Major",
               major="Violence Against the Person")
 crime.process()
 crime.plot(output=None, year=None, month=None,
-           figsize=(5, 5), axis_size=[0, 0, 0.8, 0.9])
+           figsize=(5, 4.1), axis_size=[0, 0.04, 0.8, 0.76])
 
 crime.plot_obj.cbar_fig.set_yticks([10000])
 crime.plot_obj.cbar_fig.set_yticklabels(
@@ -30,7 +30,8 @@ crime.plot_obj.cbar_fig.set_yticks([
 crime.plot_obj.cbar_fig.set_yticklabels(
     [r"$5 \cdot 10^3$", "", "", "", "", "", "", "", r"$5 \cdot 10^4$"],
     minor=True, fontsize=12)
-crime.plot_obj.cbar_fig.set_ylabel("Reported Crimes Per 100,000 People", labelpad=5)
+crime.plot_obj.cbar_fig.set_ylabel(
+    "Recorded Crimes Per 100,000 People", labelpad=5, fontsize=16)
 
 crime.plot_obj.ax.set_title("")
 crime.plot_obj.fig.suptitle(

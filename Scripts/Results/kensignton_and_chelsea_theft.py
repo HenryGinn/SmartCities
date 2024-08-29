@@ -20,8 +20,9 @@ crime = Crime(agg_time="Total", agg_crime="Major",
               major="Theft")
 crime.process()
 crime.plot(output=None, year=None, month=None,
-           figsize=(5, 5), axis_size=[0, 0, 0.8, 0.9])
-crime.plot_obj.cbar_fig.set_ylabel("Reported Crimes Per 100,000 People", labelpad=15.5)
+           figsize=(5, 4.1), axis_size=[0, 0.04, 0.8, 0.76])
+crime.plot_obj.cbar_fig.set_ylabel(
+    "Recorded Crimes Per 100,000 People", labelpad=15.5, fontsize=16)
 
 crime.plot_obj.ax.set_title("")
 crime.plot_obj.fig.suptitle(

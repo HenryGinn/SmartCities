@@ -27,7 +27,7 @@ correlations = (crime.groupby("Borough")
                        include_groups=False))
 correlations = correlations.sort_values(ascending=False)
 
-fig = plt.figure(figsize=(8, 4))
+fig = plt.figure(figsize=(10, 4))
 ax = fig.add_axes([0.1, 0.4, 0.9, 0.5])
 ax.bar(correlations.index, correlations.values, color=purple)
 

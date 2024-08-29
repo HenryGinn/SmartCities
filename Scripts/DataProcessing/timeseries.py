@@ -91,10 +91,12 @@ class Time():
             self.labels_crime = None
 
     def set_labels_borough(self):
+        self.labels_borough = [""] * len(self.data.columns.values)
         if "Borough" in self.data.columns.names:
             self.labels_borough = self.data.columns.to_frame()["Borough"].values
 
     def set_labels_lsoa(self):
+        self.labels_lsoa = [""] * len(self.data.columns.values)
         if "LSOA" in self.data.columns.names:
             self.labels_lsoa = self.data.columns.to_frame()["LSOA"].values
 

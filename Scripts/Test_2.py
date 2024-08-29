@@ -1,22 +1,22 @@
-import os
-import webbrowser
+import matplotlib.pyplot as plt
+import matplotlib.dates as mdates
+import pandas as pd
 
-# Define the path to the parent folder containing all subfolders
-parent_folder = '/home/henry/Documents/Python/SmartCities/Output/Forecasting_ARIMA/Case_1'
+# Create a sample datetime index and series
+dates = pd.date_range(start="2010-01-01", end="2024-01-01", freq="M")
+data = range(len(dates))
+series = pd.Series(data, index=dates)
 
-# Define the name of the image files that are inside each subfolder
-image_filename = 'Case_1__Stage_Normalised__FitCategory_train__PlotType_Crime Count.pdf'
+# Plotting using pandas' built-in plot
+ax = series.plot()
 
-# Loop through each subfolder
-for subfolder in os.listdir(parent_folder):
-    subfolder_path = os.path.join(parent_folder, subfolder)
-    
-    # Check if it's a directory
-    if os.path.isdir(subfolder_path):
-        # Construct the full path to the image
-        image_path = os.path.join(subfolder_path, image_filename)
-        
-        # Check if the image exists
-        if os.path.isfile(image_path):
-            # Open the image in Firefox
-            webbrowser.get('firefox').open(image_path)
+# Set major ticks to every 2 years starting from the first even year in the range
+ax.xaxis.set_major_locator(mdates.YearLocator(base=2, month=1, day=1))
+
+# Set the formatter to display the year only
+ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+
+# Rotate labels if needed
+plt.xticks(rotation=45)
+
+plt.show()
