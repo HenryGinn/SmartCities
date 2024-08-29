@@ -25,7 +25,6 @@ class Animate():
             "Region": split(self.plotter.path_region)[1],
             "Crime": split(self.plotter.path_crime)[1],
             "Time": self.plotter.time}, timestamp=False)
-        print(self.gif_name)
     
     def create_animation(self):
         frames = self.get_frames()

@@ -38,44 +38,27 @@ plotter = Plotter()
 #plotter.generate(boroughs=["Westminster"], categories_major=["Theft"], animate=True, time="Full", start=2024, region="Borough")
 #plotter.generate(animate=True, time="Month", region="Borough", crime_type="Total")
 #plotter.generate(animate=True, time="Year", region="Borough", crime_type="Total")
-plotter.generate(animate=True, time="Full", region="Borough", crime_type="Total")
-print("########## FAIL 1 #################")
-try:
-    plotter.generate(animate=True, time="Full", region="City", crime_type="Total")
-except:
-    print("########## FAIL 2 #################")
-try:
-    plotter.generate(animate=True, time="Month", region="City", crime_type="Total")
-except:
-    print("########## FAIL 3 ################")
-try:
-    plotter.generate(animate=True, time="Year", region="City", crime_type="Total")
-except:
-    print("########## FAIL 4 ################")
-try:
-    plotter.generate(animate=True, time="Month", region="Borough", crime_type="Major")
-except:
-    print("########## FAIL 5 ################")
-try:
-    plotter.generate(animate=True, time="Year", region="Borough", crime_type="Major")
-except:
-    print("########## FAIL 6 ################")
-try:
-    plotter.generate(animate=True, time="Full", region="Borough", crime_type="Major")
-except:
-    print("########## FAIL 7 ################")
-try:
-    plotter.generate(animate=True, time="Full", region="City", crime_type="Major")
-except:
-    print("########## FAIL 8 ################")
-try:
-    plotter.generate(animate=True, time="Month", region="City", crime_type="Major")
-except:
-    print("########## FAIL 9 ################")
-try:
-    plotter.generate(animate=True, time="Year", region="City", crime_type="Major")
-except:
-    print("########## FAIL 10 ################")
+#plotter.generate(animate=True, time="Full", region="Borough", crime_type="Total")
+#try: plotter.generate(animate=True, time="Full", region="City", crime_type="Total")
+#except: print("########## FAIL 2 #################")
+#try: plotter.generate(animate=True, time="Month", region="City", crime_type="Total")
+#except: print("########## FAIL 3 ################")
+#try: plotter.generate(animate=True, time="Year", region="City", crime_type="Total")
+#except: print("########## FAIL 4 ################")
+#try: plotter.generate(animate=True, time="Month", region="Borough", crime_type="Major")
+#except: print("########## FAIL 5 ################")
+#try: plotter.generate(animate=True, time="Year", region="Borough", crime_type="Major")
+#except: print("########## FAIL 6 ################")
+#try: plotter.generate(animate=True, time="Full", region="Borough", crime_type="Major")
+#except: print("########## FAIL 7 ################")
+#try: plotter.generate(animate=True, time="Full", region="City", crime_type="Major")
+#except: print("########## FAIL 8 ################")
+#try: plotter.generate(animate=True, time="Month", region="City", crime_type="Major")
+#except: print("########## FAIL 9 ################")
+plotter.generate(animate=True, time="Year", region="City", crime_type="Major")
+#try: plotter.generate(animate=True, time="Year", region="City", crime_type="Major")
+#except: print("########## FAIL 10 ################")
+
 #plotter.generate(animate=True, time="Full", region="City", crime_type="Total", resolution="Borough")
 #plotter.generate(animate=True, time="Month", region="City", crime_type="Total", resolution="Borough")
 #plotter.generate(animate=True, time="Year", region="City", crime_type="Total", resolution="Borough")
