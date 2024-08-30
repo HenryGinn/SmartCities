@@ -25,5 +25,8 @@
 	"vmax": null,
 	"animate": false,
 	"other_cb_kwargs": {},
-	"axis_size": null
+	"axis_size": null,
+	"colorbar_pad": 0.1,
+	"cax_percent": 5,
+	"cax_position": null
 }

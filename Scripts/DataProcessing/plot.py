@@ -274,8 +274,12 @@ class Plot():
             self.colorbar_kwargs = {}
 
     def setup_colorbar(self):
-        divider = make_axes_locatable(self.ax)
-        self.cax = divider.append_axes("right", size="5%", pad=0.1)
+        if self.cax_position is None:
+            divider = make_axes_locatable(self.ax)
+            self.cax = divider.append_axes(
+                "right", size=f"{self.cax_percent}%", pad=self.colorbar_pad)
+        else:
+            self.cax = self.fig.add_axes(self.cax_position)
         self.set_norm()
         self.set_colorbar_label()
 
