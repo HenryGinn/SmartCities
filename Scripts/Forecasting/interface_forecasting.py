@@ -35,7 +35,7 @@ def fit_manual_model(model, fit_category, predict_function="predict"):
     model.set_fit_category(fit_category)
     model.preprocess()
     model.fit()
-    model.save()
+    #model.save()
     model.plot_history()
     output(model, predict_function)
 
@@ -73,7 +73,7 @@ def run_SARIMA():
     fit(model, "test", "predict_test")
     return model
 
-
+"""
 architectures = {
     1: Architecture(False, False, 32,    64, False),
     2: Architecture(32   , False, False, 64, False),
@@ -92,8 +92,9 @@ for method in methods[1:]:
     for case_number in range(1, 5):
         print(method, case_number)
         run()
-
 """
+
+
 # Defining different architectures for validation
 
 architectures = [
@@ -171,9 +172,9 @@ seasonals = [(0, 0, 0, 12), (2, 1, 2, 12)]
 
 # Testing a range of architectures
 
-
+"""
 # LSTM
-for case_number in range(3, 5):
+for case_number in range(1, 5):
     model = LSTM(case=case_number, look_back=24, verbose=0, epochs=25, output="save")
     for architecture in architectures:
         architecture.model = model
@@ -184,11 +185,11 @@ for case_number in range(3, 5):
         fit_manual_model(model, "validate")
         fit_manual_model(model, "test")
         model.save_results_summary()
-
+"""
 
 
 # ARIMA
-for case_number in [4, 3]:
+for case_number in range(1, 5):
     for seasonal in seasonals:
         for order in orders:      
             try:
@@ -202,4 +203,4 @@ for case_number in [4, 3]:
                 model.save_results_summary()
             except:
                 print("Fail")
-"""
+

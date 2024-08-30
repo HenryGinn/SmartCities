@@ -60,6 +60,7 @@ from DataProcessing.timeseries import Time
 #plotter.generate(animate=True, time="Month", region="City", crime_type="Total", resolution="Borough")
 #plotter.generate(animate=True, time="Year", region="City", crime_type="Total", resolution="Borough")
 
+"""
 from scipy.optimize import curve_fit
 from sklearn.metrics import r2_score
 import warnings
@@ -93,6 +94,7 @@ for i in range(50):
     print(b.iloc[k*i:k*(i+1), :])
     t = Time(data, output="Show", label_format='f"{borough} {lsoa} {crime}"')
     t.create_figure()
+"""
 
 """
 a = Crime(major="Public Order Offences", agg_crime="Major", population_weighted=False)

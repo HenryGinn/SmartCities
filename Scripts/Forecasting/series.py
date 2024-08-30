@@ -45,7 +45,7 @@ class Series():
     def read_data(self, path):
         self.time_series = pd.read_csv(
             path, skiprows=3, index_col="Time", dtype=np.float32,
-            date_format="%Y-%m-%d", parse_dates=True)
+            date_format="%d/%m/%Y", parse_dates=True)
 
     def read_metadata(self, path):
         with open(path) as file:
