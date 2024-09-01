@@ -35,7 +35,7 @@ def fit_manual_model(model, fit_category, predict_function="predict"):
     model.set_fit_category(fit_category)
     model.preprocess()
     model.fit()
-    #model.save()
+    model.save_history()
     model.plot_history()
     output(model, predict_function)
 
@@ -44,6 +44,7 @@ def output(model, predict_function="predict"):
     model.postprocess()
     model.output_results(plot_type="Crime Count", stage="Normalised")
     model.create_correlograms()
+    model.save_autocorrelations()
     model.create_histogram()
     model.output_results(plot_type="Crime Count", stage="Original")
     model.add_to_results_summary()
@@ -54,6 +55,7 @@ def run():
     match method:
         case "LSTM"  : model = run_LSTM()
         case "SARIMA": model = run_SARIMA()
+    model.save_results_summary()
 
 def run_LSTM():
     model = LSTM(case=case_number, look_back=24, output_folder="Results",
@@ -61,6 +63,7 @@ def run_LSTM():
     architecture = architectures[case_number]
     architecture.model = model
     architecture.create_model()
+    fit_manual_model(model, "train", "predict_test")
     fit_manual_model(model, "validate", "predict_test")
     fit_manual_model(model, "test", "predict_test")
     return model
@@ -69,6 +72,7 @@ def run_SARIMA():
     order, seasonal = orders[case_number]
     model = ARIMA(case=case_number, order=order, output_folder="Results",
                   seasonal_order=seasonal, output="save", folder_name="SARIMA")
+    fit(model, "train", "predict_test")
     fit(model, "validate", "predict_test")
     fit(model, "test", "predict_test")
     return model
@@ -88,7 +92,7 @@ orders = {
 
 
 methods = ["LSTM", "SARIMA"]
-for method in methods[:1]:
+for method in methods[1:]:
     for case_number in range(1, 5):
         print(method, case_number)
         run()

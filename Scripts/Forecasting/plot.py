@@ -74,7 +74,7 @@ class Plot(Series):
     def add_modelled_results_to_plot(self):
         self.add_original_to_plot()
         self.add_modelled_to_plot()
-        if hasattr(self, "conf_lower") and self.stage == "Normalised":
+        if hasattr(self, "conf_lower"):
             self.add_confidence_intervals_to_plot()
 
     def add_residuals_results_to_plot(self):

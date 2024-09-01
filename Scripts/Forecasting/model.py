@@ -106,5 +106,11 @@ class Model(Plot, Process):
         path = join(self.path_model, f"TimeSeries_{self.fit_category}.csv")
         self.time_series.to_csv(path)
 
+    def save_autocorrelations(self):
+        autocorrelations = {"ACF": list(self.acf), "PACF": list(self.pacf), "Confidence": list(self.cf_confidence.reshape(-1))}
+        path = join(self.path_model, f"Autocorrelations_{self.fit_category}.json")
+        with open(path, "w+") as file:
+            dump(autocorrelations, file, indent=2)
+
 
 defaults.load(Model)
