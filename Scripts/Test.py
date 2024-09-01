@@ -1,18 +1,14 @@
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 
-# Example data
-data = {'values': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]}
-df = pd.DataFrame(data)
+# Create a figure and axis
+fig, ax = plt.subplots()
 
-window_size = 11
+# Plot something for demonstration
+ax.plot([0, 1, 2], [0, 1, 4])
 
-# Apply the weighted moving average
-df['centred_moving_average'] = df['values'].rolling(window=window_size, center=True, min_periods=1).mean()
-a = df['values'].rolling(window=window_size, center=True, min_periods=1).mean()
+# Set axis labels
+ax.set_xlabel('X-axis label')
+ax.set_ylabel('Y-axis label', position=(0.5, 0.5))
 
-print(len(df))
-print(len(a))
-df.plot()
+# Show the plot
 plt.show()

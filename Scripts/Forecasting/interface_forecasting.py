@@ -73,7 +73,7 @@ def run_SARIMA():
     fit(model, "test", "predict_test")
     return model
 
-"""
+
 architectures = {
     1: Architecture(False, False, 32,    64, False),
     2: Architecture(32   , False, False, 64, False),
@@ -88,11 +88,10 @@ orders = {
 
 
 methods = ["LSTM", "SARIMA"]
-for method in methods[1:]:
+for method in methods[:1]:
     for case_number in range(1, 5):
         print(method, case_number)
         run()
-"""
 
 
 # Defining different architectures for validation
@@ -187,7 +186,7 @@ for case_number in range(1, 5):
         model.save_results_summary()
 """
 
-
+"""
 # ARIMA
 for case_number in range(1, 5):
     for seasonal in seasonals:
@@ -203,4 +202,4 @@ for case_number in range(1, 5):
                 model.save_results_summary()
             except:
                 print("Fail")
-
+"""
