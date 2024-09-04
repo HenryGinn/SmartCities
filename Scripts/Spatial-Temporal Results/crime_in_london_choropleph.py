@@ -25,7 +25,7 @@ crime.plot_obj.cbar_fig.set_ylabel(
 
 crime.plot_obj.ax.set_title("")
 crime.plot_obj.fig.suptitle(
-    "Overall London Crime Rate Since 2010",
+    "Overall London Crime Rate\nFrom 2010 to 2024",
     fontsize=20, y=0.97)
 
 crime.plot_obj.fig.subplots_adjust(left=0, bottom=0, right=1,

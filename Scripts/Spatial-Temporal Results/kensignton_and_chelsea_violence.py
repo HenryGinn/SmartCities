@@ -35,7 +35,7 @@ crime.plot_obj.cbar_fig.set_ylabel(
 
 crime.plot_obj.ax.set_title("")
 crime.plot_obj.fig.suptitle(
-    "Violence Against the Person in\nKensington and Chelsea Since 2010",
+    "Violence Against the Person in Kensington\nand Chelsea From 2010 to 2024",
     fontsize=20, y=0.97)
 
 crime.plot_obj.fig.subplots_adjust(left=0.05, bottom=-0.2, right=0.83,
