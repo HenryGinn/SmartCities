@@ -19,34 +19,34 @@ crime = Crime(major="Public Order Offences",
               population_weighted=False)
 
 crime.process()
-crime = crime.crime[["Minor Category", "2011", "2023"]]
+crime = crime.crime[["Minor Category", "2010", "2024"]]
 crime = crime.loc[crime["Minor Category"] != "Violent Disorder"]
 
 minor_map = {
-    "Public Fear Alarm or Distress": "Public Fear\nAlarm or Distress",
-    "Race or Religious Agg Public Fear": "Race or Religious\nAggravated Public Fear",
-    "Other Offences Public Order": "Other Public\nOrder Offences"}
+    "Public Fear Alarm or Distress": "Alarm or\nDistress",
+    "Race or Religious Agg Public Fear": "Racially or\nReligiously Aggravated",
+    "Other Offences Public Order": "Other"}
 crime["Minor Category"] = crime["Minor Category"].apply(minor_map.get)
 
-h = 0.85
+h = 0.83
 w = 0.5
-b = 0.1
+b = 0.12
 fig = plt.figure(figsize=(9, 5))
 ax1 = fig.add_axes([0, b, w, h])
 ax2 = fig.add_axes([0.5, b, w, h])
 
-ax1.pie(crime["2011"], colors=colors, startangle=100, explode=[False, 0.2, False],
+ax1.pie(crime["2010"], colors=colors, startangle=100, explode=[False, 0.2, False],
         wedgeprops={"edgecolor":"k",'linewidth': 1, 'antialiased': True})
-ax2.pie(crime["2023"], colors=colors, startangle=100, explode=[False, 0.2, False],
+ax2.pie(crime["2024"], colors=colors, startangle=100, explode=[False, 0.2, False],
         wedgeprops={"edgecolor":"k",'linewidth': 1, 'antialiased': True})
 
-ax1.set_title("2011", fontsize=16, y=0.95)
-ax2.set_title("2023", fontsize=16, y=0.95)
+ax1.set_title("2010", fontsize=24, y=0.92, x=0.3)
+ax2.set_title("2024", fontsize=24, y=0.92, x=0.7)
 
-fig.suptitle("Public Order Offences", fontsize=20)
+fig.suptitle("Public Order Offences", fontsize=28)
 legend = fig.legend(
     crime["Minor Category"], loc="lower center",
-    fontsize=16, ncols=3)
+    fontsize=19, ncols=3)
 for t in legend.get_texts():
     t.set_ha('center')
 
