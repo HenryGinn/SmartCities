@@ -1,14 +1,18 @@
+import numpy as np
 import matplotlib.pyplot as plt
+from scipy.interpolate import CubicSpline
+from scipy.interpolate import PchipInterpolator
 
-# Create a figure and axis
-fig, ax = plt.subplots()
 
-# Plot something for demonstration
-ax.plot([0, 1, 2], [0, 1, 4])
+x = np.array([0, 1, 2, 3, 4])
+y = np.array([10, 0, 10, 0, 10])
 
-# Set axis labels
-ax.set_xlabel('X-axis label')
-ax.set_ylabel('Y-axis label', position=(0.5, 0.5))
+cs = PchipInterpolator(x, y)
+x_smooth = np.linspace(x.min(), x.max(), 100)
+y_smooth = cs(x_smooth)
 
-# Show the plot
+plt.plot(x_smooth, y_smooth, label='Cubic Spline Interpolation')
+plt.scatter(x, y, color='red', label='Data Points')
+plt.legend()
+plt.title('Cubic Spline Interpolation of Data Points')
 plt.show()
