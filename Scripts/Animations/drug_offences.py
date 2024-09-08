@@ -2,8 +2,7 @@ import sys
 import os
 from os.path import dirname, join
 sys.path.append(dirname(dirname(__file__)))
-import io
-import PIL
+import imageio.v2 as imageio
 
 import matplotlib.pyplot as plt
 from matplotlib import rc
@@ -68,22 +67,22 @@ def create_figure(data, month):
     crime.plot_obj.fig.subplots_adjust(left=0, bottom=0, right=1,
                                        top=1, wspace=0, hspace=0)
 
-def get_frame(data, year):
-    create_figure(data, year)
-    buffer = io.BytesIO()
-    plt.savefig(buffer, dpi=300)
-    buffer.seek(0)
-    image = PIL.Image.open(buffer)
-    return image
-
-
-output_path = join(
+folder = join(
     get_base_path(__file__),
-    "Output", "Results", "Animations",
-    "DrugOffences.gif")
+    "Output", "Results", "Animations", "Drug Offences")
+output_path = join(dirname(folder), "Drug Offences.gif")
+make_folder(folder)
 
-make_folder(dirname(output_path))
+for index, (time, month) in enumerate(zip(times_smooth, months)):
+    data = df[["LSOA", "Borough", time]]
+    create_figure(data, month)
+    frame_path = join(folder, f"{index:03}.png")
+    plt.savefig(frame_path, dpi=600)
 
-frames = [get_frame(df[["LSOA", "Borough", time]], month)
-          for time, month in zip(times_smooth, months)]
-frames[0].save(output_path, loop=True, save_all=True, append_images=frames[1:])
+image_files = sorted([os.path.join(folder, file)
+                      for file in os.listdir(folder)])
+images = []
+for path in image_files:
+    images.append(imageio.imread(path))
+
+imageio.mimsave(output_path, images, fps=10, loop=0)
