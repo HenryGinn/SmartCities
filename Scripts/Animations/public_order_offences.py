@@ -2,7 +2,7 @@ import sys
 import os
 from os.path import dirname, join
 sys.path.append(dirname(dirname(__file__)))
-import io
+import imageio.v2 as imageio
 import PIL
 
 import matplotlib.pyplot as plt
@@ -28,7 +28,7 @@ df = crime.crime
 
 
 times = np.arange(2010, 2025)
-times_smooth = np.linspace(times.min(), times.max(), 100)
+times_smooth = np.linspace(times.min(), times.max(), 150)
 time_columns = [str(year) for year in times]
 years = [str(round(year)) for year in times_smooth]
 
@@ -75,13 +75,23 @@ def get_frame(data, year):
     return image
 
 
-output_path = join(
+folder = join(
     get_base_path(__file__),
     "Output", "Results", "Animations",
-    "PublicOrderOffences.gif")
+    "Public Order Offences")
+output_path = join(dirname(folder), "Public Order Offences.gif")
+make_folder(folder)
 
-make_folder(dirname(output_path))
+for index, (time, year) in enumerate(zip(times_smooth, years)):
+    data = df[["LSOA", "Borough", time]]
+    create_figure(data, year)
+    frame_path = join(folder, f"{index:03}.png")
+    plt.savefig(frame_path, dpi=600)
 
-frames = [get_frame(df[["LSOA", "Borough", time]], year)
-          for time, year in zip(times_smooth, years)]
-frames[0].save(output_path, loop=True, save_all=True, append_images=frames[1:])
+image_files = sorted([os.path.join(folder, file)
+                      for file in os.listdir(folder)])
+images = []
+for path in image_files:
+    images.append(imageio.imread(path))
+
+imageio.mimsave(output_path, images, fps=30, loop=0)

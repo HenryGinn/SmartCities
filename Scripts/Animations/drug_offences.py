@@ -29,7 +29,7 @@ df = crime.crime
 
 time_columns = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
 times = np.array([int(time) for time in time_columns])
-times_smooth = np.linspace(times.min(), times.max(), 90)
+times_smooth = np.linspace(times.min(), times.max(), 150)
 months = [str(round(month)) for month in times_smooth]
 
 def interpolate(x):
@@ -85,4 +85,4 @@ images = []
 for path in image_files:
     images.append(imageio.imread(path))
 
-imageio.mimsave(output_path, images, fps=10, loop=0)
+imageio.mimsave(output_path, images, fps=30, loop=0)
